@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-15T08:38:14.070Z</updated>
+  <updated>2019-03-15T08:59:06.001Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>others-时间管理</title>
+    <link href="http://yoursite.com/2019/03/15/others-%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
+    <id>http://yoursite.com/2019/03/15/others-时间管理/</id>
+    <published>2019-03-15T08:56:51.000Z</published>
+    <updated>2019-03-15T08:59:06.001Z</updated>
+    
+    <content type="html"><![CDATA[<p>目标设定是第一步，提供路线图</p><p>你的目标是什么？<br>短期内。你希望达成什么样的愿望？<br>长期来说。你希望你的人生是什么样子？</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;目标设定是第一步，提供路线图&lt;/p&gt;
+&lt;p&gt;你的目标是什么？&lt;br&gt;短期内。你希望达成什么样的愿望？&lt;br&gt;长期来说。你希望你的人生是什么样子？&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://yoursite.com/categories/tattle/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>cpp-关于内存泄漏的问题</title>
