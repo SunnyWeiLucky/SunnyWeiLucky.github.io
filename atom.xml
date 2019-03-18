@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-18T10:22:36.055Z</updated>
+  <updated>2019-03-18T10:29:41.612Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,20 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>markdown语言的总结</title>
+    <link href="http://yoursite.com/2019/03/18/markdown%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2019/03/18/markdown语言的总结/</id>
+    <published>2019-03-18T10:29:41.000Z</published>
+    <updated>2019-03-18T10:29:41.612Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>s3-关于s3cmd的下载</title>
     <link href="http://yoursite.com/2019/03/18/s3-%E5%85%B3%E4%BA%8Es3cmd%E7%9A%84%E4%B8%8B%E8%BD%BD/"/>
     <id>http://yoursite.com/2019/03/18/s3-关于s3cmd的下载/</id>
     <published>2019-03-18T10:02:31.000Z</published>
-    <updated>2019-03-18T10:22:36.055Z</updated>
+    <updated>2019-03-18T10:32:20.290Z</updated>
     
-    <content type="html"><![CDATA[<p>很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p><h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote><p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p></blockquote><h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote><p>python get-pip.py</p></blockquote><h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote><p>pip install s3cmd</p></blockquote><h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote><p>主要设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p><h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote><p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p></blockquote><h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote><p>python get-pip.py</p></blockquote><h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote><p>pip install s3cmd</p></blockquote><h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote><p>设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p></blockquote>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。&lt;/p&gt;
-&lt;h2 id=&quot;s3cmd的下载&quot;&gt;&lt;a href=&quot;#s3cmd的下载&quot; class=&quot;heade
+        &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。&lt;/p&gt;
+&lt;h2 id=&quot;s3cmd的下载&quot;&gt;&lt;a href=
       
     
     </summary>
