@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo-常用命令]]></title>
+    <url>%2F2019%2F04%2F12%2Fhexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;&nbsp;&nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。 新建文章1hexo new &quot;postname&quot; (hexo n postname) 新建页面1hexo new page &quot;pagename&quot; 启动本地web服务12hexo server (hexo s)本地网址：localhost:4000 生成静态文件1hexo generate (hexo g) 生成部署1hexo d -g 生成预览1hexo s -g 清理public文件夹1hexo clean]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ffmpeg_avfilter的使用详解]]></title>
     <url>%2F2019%2F03%2F27%2Fffmpeg-avfilter%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter， 过滤的过程解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面]]></content>
@@ -45,8 +57,8 @@
         <category>cpp</category>
       </categories>
       <tags>
-        <tag>ffmpeg</tag>
         <tag>cpp</tag>
+        <tag>ffmpeg</tag>
       </tags>
   </entry>
   <entry>

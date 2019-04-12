@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sunnyweilucky.github.io/"/>
-  <updated>2019-03-27T02:27:39.336Z</updated>
+  <updated>2019-04-12T10:47:13.029Z</updated>
   <id>https://sunnyweilucky.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo-常用命令</title>
+    <link href="https://sunnyweilucky.github.io/2019/04/12/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://sunnyweilucky.github.io/2019/04/12/hexo-常用命令/</id>
+    <published>2019-04-12T10:35:51.000Z</published>
+    <updated>2019-04-12T10:47:13.029Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。</p><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postname&quot; (hexo n postname)</span><br></pre></td></tr></table></figure><h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;pagename&quot;</span><br></pre></td></tr></table></figure><h3 id="启动本地web服务"><a href="#启动本地web服务" class="headerlink" title="启动本地web服务"></a>启动本地web服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo server (hexo s)</span><br><span class="line">本地网址：localhost:4000</span><br></pre></td></tr></table></figure><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate (hexo g)</span><br></pre></td></tr></table></figure><h3 id="生成部署"><a href="#生成部署" class="headerlink" title="生成部署"></a>生成部署</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure><h3 id="生成预览"><a href="#生成预览" class="headerlink" title="生成预览"></a>生成预览</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g</span><br></pre></td></tr></table></figure><h3 id="清理public文件夹"><a href="#清理public文件夹" class="headerlink" title="清理public文件夹"></a>清理public文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。&lt;/p&gt;
+&lt;h3 id=&quot;新建文章&quot;&gt;&lt;a href=&quot;#新建文章&quot; class=&quot;headerlink&quot; title=&quot;新建文章&quot;&gt;&lt;/a&gt;新建文章&lt;
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://sunnyweilucky.github.io/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="https://sunnyweilucky.github.io/tags/hexo/"/>
+    
+      <category term="tools" scheme="https://sunnyweilucky.github.io/tags/tools/"/>
+    
+  </entry>
   
   <entry>
     <title>ffmpeg_avfilter的使用详解</title>
@@ -133,9 +161,9 @@
       <category term="cpp" scheme="https://sunnyweilucky.github.io/categories/cpp/"/>
     
     
-      <category term="ffmpeg" scheme="https://sunnyweilucky.github.io/tags/ffmpeg/"/>
-    
       <category term="cpp" scheme="https://sunnyweilucky.github.io/tags/cpp/"/>
+    
+      <category term="ffmpeg" scheme="https://sunnyweilucky.github.io/tags/ffmpeg/"/>
     
   </entry>
   
