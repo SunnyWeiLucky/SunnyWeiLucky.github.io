@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ffmpeg_avfilter的使用详解]]></title>
+    <url>%2F2019%2F03%2F27%2Fffmpeg-avfilter%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter， 过滤的过程解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面]]></content>
+      <categories>
+        <category>ffmpeg</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+        <tag>avfilter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[markdown语言的总结]]></title>
     <url>%2F2019%2F03%2F18%2Fmarkdown%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"></content>
@@ -13,8 +25,8 @@
         <category>s3对象存储</category>
       </categories>
       <tags>
-        <tag>centos7</tag>
         <tag>s3</tag>
+        <tag>centos7</tag>
       </tags>
   </entry>
   <entry>
@@ -40,13 +52,12 @@
   <entry>
     <title><![CDATA[git-常用的命令]]></title>
     <url>%2F2019%2F03%2F15%2Fgit-%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[这里是学习git的基地，我们可以好好的在这里讨论git的相关知识]]></content>
+    <content type="text"><![CDATA[&nbsp;&nbsp;&nbsp;&nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。 重命名文件夹1git mv -f oldfolder newfolder 删除中间的某次提交1git revert commit id 版本回退12git reset --hard commitid这个不会保留之前的记录 撤销本地提交123git reset --soft commitidgit reset --mixed commitid两者的区别，--soft会将改动放在缓存区 --mixed不会讲改动放在缓存区 撤销远程的提交123git loggit reset --hard commitidgit push origin HEAD:master --force 强制提交1git push -u origin master -f 将某个分支的提交copy到另一个分支上1234例如，有两个分支，a,b,想要将a的某次提交，copy到b分支上1,在a分支上 git log 查询commitid2,git checkout b 切换分支3,git cherry-pick commitid 统计当前分支的提交数目1git rev-list HEAD | wc -l 将当前工作区的修改暂存起来123456git stash 冻结当前的分支修改git stash save &quot;说明信息&quot;git stash list 列出所有的工作现场存储git stash apply stash@&#123;n&#125; 恢复某个工作现场git stash drop stash@&#123;n&#125; 删除存储的某个工作现场git stash pop stash@&#123;n&#125; 恢复的同时把stash内容也删除了]]></content>
       <categories>
         <category>git</category>
       </categories>
       <tags>
         <tag>git</tag>
-        <tag>centos7</tag>
       </tags>
   </entry>
   <entry>
