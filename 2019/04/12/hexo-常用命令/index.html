@@ -369,16 +369,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/12/hexo-常用命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/12/hexo-常用命令/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -552,7 +542,7 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div id="gitalk-container"></div>
       
     </div>
 
@@ -904,45 +894,29 @@
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'SunnyWeiLucky',
-            repo: 'SunnyWeiLucky.github.io',
-            
-            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: 'c99c2a5abb2ab4c2fc57cb2cb2f50a8ebf8820c0',
-            
-                client_id: '68b2a5e69d91ab70d6ec'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '68b2a5e69d91ab70d6ec',
+          clientSecret: 'c99c2a5abb2ab4c2fc57cb2cb2f50a8ebf8820c0',
+          repo: 'comment',
+          owner: 'SunnyWeiLucky',
+          admin: [''],
+          id:'_20190412183551',
+          labels: ''.split(',').filter(1 => 1),
+          perPage: 10,
+          pagerDirection: 'last',
+          createIssueManually: true,
+          distractionFreeMode: false
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
