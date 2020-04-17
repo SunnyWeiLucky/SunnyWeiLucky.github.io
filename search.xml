@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mysql-centos7源码安装mysql8.0]]></title>
+    <url>%2F2020%2F04%2F17%2Fmysql-centos7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85mysql8-0%2F</url>
+    <content type="text"><![CDATA[因为直接通过yum安装的是mariadb，所以我们需要通过另外的方法来进行安装 一，下载mysql地址：https://dev.mysql.com/downloads/repo/yum/。选择对应版本下载 二，使用wget下载12在网站上看对应的版本号就好了wget https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm 三，安装mysql的源1yum -y localinstall mysql80-community-release-el7-1.noarch.rpm（对应版本） 四，在线安装mysql1yum -y install mysql-community-server 五，linux下设置不区分大小写 使用root账号登录，修改/etc/my.cnf； 在[mysqld]下加入一行：lower_case_table_names=1 mysqld –user=mysql –lower-case-table-names=1 –initialize-insecure datadir=/var/lib/mysql 六，设置开机自启12systemctl enable mysqldsystemctl daemon-reload 七，修改本地root的密码 查看root账户的临时密码，vim /var/log/mysqld.log 登录mysql，mysql -u root -p，输入1，中的临时密码 ALTER USER ‘root‘@’localhost’ IDENTIFIED BY ‘你的密码’;修改密码为 你的密码 (备注：默认密码策略要求密码必须是大小写字母数字特殊字母的组合，至少8位) 八， 修改密码策略要求~默认密码策略要求密码是大小写字母+数字+特殊字母的组合而且最少8位,不需要修改策略的可以跳过这步~ 1234567891，查看密码的策略SHOW VARIABLES LIKE &apos;validate_password%&apos;;2，修改密码的策略set global validate_password.check_user_name=OFF;set global validate_password.policy=LOW;set global validate_password.length=4;flush privileges;3，修改密码ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;root&apos;; 九，设置允许远程连接123451，重新登录mysql；2，选择mysql表； use mysql;3,更新表的内容；update user set Host=&apos;%&apos; where User=&apos;root&apos;;GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; WITH GRANT OPTION;//可能会报错，执行两次即可（不成功就再flush privileges;一次） 十，查看加密方式123select user, host, plugin, authentication_string from user\G;查看加密方式8.0加密方式（caching_sha2_password）有些客户端还不支持 ，导致客户端连接失败，所以使用mysql_native_password加密alter user &apos;root&apos;@&apos;%&apos; identified with mysql_native_password by &apos;helios2020&apos;; 九，卸载mysql123456删除Mysqlyum remove mysql mysql-server mysql-libs mysql-server;find / -name mysql 将找到的相关东西delete掉(rm -rf /var/lib/mysql)；rpm -qa|grep mysql(查询出来的东东yum remove掉)rm /etc/my.cnf （可能不存在）]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>centos7</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[gcc-5.1.0源码安装]]></title>
+    <url>%2F2020%2F04%2F17%2Fgcc-5-1-0%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[对于一些源码的编译如poco库，需要的GCC的版本要求比较高，所以需要源码编译GCC、 一，源码下载123地址：https://ftp.gnu.org/gnu/gcc/gcc-5.1.0 可以支持C++14 二，依赖环境安装12cd gcc-5.1.0./contrib/download_prerequisites 1234567Building GCC requires GMP 4.2+, MPFR 2.4.0+ and MPC 0.8.0+地址：ftp://gcc.gnu.org/pub/gcc/infrastructure/wget ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.1.0.tar.bz2wget ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-3.1.4.tar.bz2wget ftp://gcc.gnu.org/pub/gcc/infrastructure/mpc-1.0.3.tar.gz 三，依赖解压安装12345678910111213141516171819201，安装gmptar -jxvf gmp-6.1.0.tar.bz2cd gmp-6.1.0./configuremake &amp;&amp; make installerror:No usable m4 in $PATH or /usr/5binyum install m42,安装mpfrtar -jxvf mpfr-3.1.4.tar.bz2cd mpfr-3.1.4./configuremake &amp;&amp; make install3,安装mpctar -zxvf mpc-1.0.3.tar.gzcd mpc-1.0.3./configuremake &amp;&amp; make install 四，源码安装12345678./configure --enable-checking=release --enable-languages=c,c++ --disable-multilibmake make install#将链接复制cp -vf /usr/local/lib64/libstdc++.* /usr/lib64/gcc -vgcc version 5.1.0 (GCC)]]></content>
+      <categories>
+        <category>gcc</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+        <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[poco-源码编译包含mysql]]></title>
+    <url>%2F2020%2F04%2F17%2Fpoco-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%8C%85%E5%90%ABmysql%2F</url>
+    <content type="text"><![CDATA[一，源码下载库12先在git上fork，然后同步到码云上，在clone可以加快下载的速度git clone https://gitee.com/helioswei/poco.git 二，编译环境准备1yum install gcc-c++ make openssl-devel 三，安装mysql12见mysql的源码安装，安装时没有头文件，所以我们需要安装头文件yum install mysql-devel 四，编译12需要提前安装GCC5.1.0来支持c++14./configure --shared --prefix=/usr/local/poco --cflags=-std=c++14 --include-path=/usr/include/mysql/ --library-path=/usr/lib64/mysql/ --omit=Data/ODBC,MongoDB,PDF]]></content>
+      <categories>
+        <category>poco</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[image-libraw相机图片库源码编译]]></title>
     <url>%2F2020%2F01%2F17%2Fimage-libraw%E7%9B%B8%E6%9C%BA%E5%9B%BE%E7%89%87%E5%BA%93%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%2F</url>
     <content type="text"><![CDATA[1LibRaw is a library for reading RAW files from digital photo cameras (CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are supported). 一，源码下载1git clone https://github.com/LibRaw/LibRaw.git 二，编译环境准备1234561，查看文件DEVELOPER-NOTES，提示我们,执行mkdist.sh脚本来生成编译的东西2， 安装需要的软件 yum install autoconf automake freetype-devel gcc gcc-c++ libtool make pkgconfig -y yum install wget -y yum install lcms2 lcms2-devel -y yum install jasper jasper-devel 三，准备编译遇到的错误1234下载dcraw.c失败，我们需要手动的下载修改mkdist.sh脚本文件wget https://www.dechifro.org/dcraw/dcraw.c然后在执行 mkdist.sh脚本 四，编译123./configure --prefix=/usr/local/helios CXX=/usr/local/bin/g++makemake install 五，执行遇到的问题1在程序中执行 open_file CR2的时候程序崩溃，因为自己的g++编译是4.8.5的，但是更新到4.9.2后就成功了]]></content>
@@ -8,8 +45,8 @@
         <category>图片处理</category>
       </categories>
       <tags>
-        <tag>image</tag>
         <tag>centos7</tag>
+        <tag>image</tag>
         <tag>lib.so</tag>
       </tags>
   </entry>
@@ -21,8 +58,8 @@
         <category>图片处理</category>
       </categories>
       <tags>
-        <tag>image</tag>
         <tag>centos7</tag>
+        <tag>image</tag>
         <tag>lib.so</tag>
       </tags>
   </entry>
@@ -34,8 +71,8 @@
         <category>图片处理</category>
       </categories>
       <tags>
-        <tag>image</tag>
         <tag>centos7</tag>
+        <tag>image</tag>
         <tag>lib.so</tag>
       </tags>
   </entry>
@@ -59,8 +96,8 @@
         <category>grpc</category>
       </categories>
       <tags>
-        <tag>centos7</tag>
         <tag>grpc</tag>
+        <tag>centos7</tag>
       </tags>
   </entry>
   <entry>
@@ -104,8 +141,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
         <tag>tools</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>

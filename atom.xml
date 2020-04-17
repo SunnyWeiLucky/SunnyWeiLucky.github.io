@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sunnyweilucky.github.io/"/>
-  <updated>2020-01-17T09:39:39.131Z</updated>
+  <updated>2020-04-17T02:25:33.008Z</updated>
   <id>https://sunnyweilucky.github.io/</id>
   
   <author>
@@ -15,6 +15,91 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql-centos7源码安装mysql8.0</title>
+    <link href="https://sunnyweilucky.github.io/2020/04/17/mysql-centos7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85mysql8-0/"/>
+    <id>https://sunnyweilucky.github.io/2020/04/17/mysql-centos7源码安装mysql8-0/</id>
+    <published>2020-04-17T02:24:23.000Z</published>
+    <updated>2020-04-17T02:25:33.008Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>因为直接通过yum安装的是mariadb，所以我们需要通过另外的方法来进行安装</code></pre><h3 id="一，下载mysql"><a href="#一，下载mysql" class="headerlink" title="一，下载mysql"></a>一，下载mysql</h3><p>地址：<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/repo/yum/</a>。选择对应版本下载</p><h3 id="二，使用wget下载"><a href="#二，使用wget下载" class="headerlink" title="二，使用wget下载"></a>二，使用wget下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在网站上看对应的版本号就好了</span><br><span class="line">wget https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm</span><br></pre></td></tr></table></figure><h3 id="三，安装mysql的源"><a href="#三，安装mysql的源" class="headerlink" title="三，安装mysql的源"></a>三，安装mysql的源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y localinstall mysql80-community-release-el7-1.noarch.rpm（对应版本）</span><br></pre></td></tr></table></figure><h3 id="四，在线安装mysql"><a href="#四，在线安装mysql" class="headerlink" title="四，在线安装mysql"></a>四，在线安装mysql</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure><h3 id="五，linux下设置不区分大小写"><a href="#五，linux下设置不区分大小写" class="headerlink" title="五，linux下设置不区分大小写"></a>五，linux下设置不区分大小写</h3><ol><li>使用root账号登录，修改/etc/my.cnf；</li><li>在[mysqld]下加入一行：lower_case_table_names=1</li><li>mysqld –user=mysql –lower-case-table-names=1 –initialize-insecure datadir=/var/lib/mysql</li></ol><h3 id="六，设置开机自启"><a href="#六，设置开机自启" class="headerlink" title="六，设置开机自启"></a>六，设置开机自启</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure><h3 id="七，修改本地root的密码"><a href="#七，修改本地root的密码" class="headerlink" title="七，修改本地root的密码"></a>七，修改本地root的密码</h3><ol><li>查看root账户的临时密码，vim  /var/log/mysqld.log</li><li>登录mysql，mysql -u root -p，输入1，中的临时密码</li><li>ALTER USER ‘root‘@’localhost’ IDENTIFIED BY ‘你的密码’;<br>修改密码为 你的密码 (备注：默认密码策略要求密码必须是大小写字母数字特殊字母的组合，至少8位)</li></ol><h3 id="八，-修改密码策略要求"><a href="#八，-修改密码策略要求" class="headerlink" title="八， 修改密码策略要求"></a>八， 修改密码策略要求</h3><p>~默认密码策略要求密码是大小写字母+数字+特殊字母的组合而且最少8位,不需要修改策略的可以跳过这步~</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1，查看密码的策略</span><br><span class="line">SHOW VARIABLES LIKE &apos;validate_password%&apos;;</span><br><span class="line">2，修改密码的策略</span><br><span class="line">set global validate_password.check_user_name=OFF;</span><br><span class="line">set global validate_password.policy=LOW;</span><br><span class="line">set global validate_password.length=4;</span><br><span class="line">flush privileges;</span><br><span class="line">3，修改密码</span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;root&apos;;</span><br></pre></td></tr></table></figure><h3 id="九，设置允许远程连接"><a href="#九，设置允许远程连接" class="headerlink" title="九，设置允许远程连接"></a>九，设置允许远程连接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1，重新登录mysql；</span><br><span class="line">2，选择mysql表； use mysql;</span><br><span class="line">3,更新表的内容；</span><br><span class="line">update user set Host=&apos;%&apos; where User=&apos;root&apos;;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; WITH GRANT OPTION;//可能会报错，执行两次即可（不成功就再flush privileges;一次）</span><br></pre></td></tr></table></figure><h3 id="十，查看加密方式"><a href="#十，查看加密方式" class="headerlink" title="十，查看加密方式"></a>十，查看加密方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select user, host, plugin, authentication_string from user\G;查看加密方式</span><br><span class="line">8.0加密方式（caching_sha2_password）有些客户端还不支持 ，导致客户端连接失败，所以使用mysql_native_password加密</span><br><span class="line">alter user &apos;root&apos;@&apos;%&apos; identified with mysql_native_password by &apos;helios2020&apos;;</span><br></pre></td></tr></table></figure><h3 id="九，卸载mysql"><a href="#九，卸载mysql" class="headerlink" title="九，卸载mysql"></a>九，卸载mysql</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">删除Mysql</span><br><span class="line">yum remove mysql mysql-server mysql-libs mysql-server;</span><br><span class="line">find / -name mysql 将找到的相关东西delete掉</span><br><span class="line">(rm -rf /var/lib/mysql)；</span><br><span class="line">rpm -qa|grep mysql(查询出来的东东yum remove掉)</span><br><span class="line">rm /etc/my.cnf （可能不存在）</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;因为直接通过yum安装的是mariadb，所以我们需要通过另外的方法来进行安装
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;一，下载mysql&quot;&gt;&lt;a href=&quot;#一，下载mysql&quot; class=&quot;headerlink&quot; title=&quot;一，下载mysql&quot;
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://sunnyweilucky.github.io/categories/mysql/"/>
+    
+    
+      <category term="tools" scheme="https://sunnyweilucky.github.io/tags/tools/"/>
+    
+      <category term="centos7" scheme="https://sunnyweilucky.github.io/tags/centos7/"/>
+    
+      <category term="mysql" scheme="https://sunnyweilucky.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gcc-5.1.0源码安装</title>
+    <link href="https://sunnyweilucky.github.io/2020/04/17/gcc-5-1-0%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/"/>
+    <id>https://sunnyweilucky.github.io/2020/04/17/gcc-5-1-0源码安装/</id>
+    <published>2020-04-17T02:15:55.000Z</published>
+    <updated>2020-04-17T02:16:48.542Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于一些源码的编译如poco库，需要的GCC的版本要求比较高，所以需要源码编译GCC、</p><h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">地址：</span><br><span class="line">https://ftp.gnu.org/gnu/gcc/</span><br><span class="line">gcc-5.1.0 可以支持C++14</span><br></pre></td></tr></table></figure><h3 id="二，依赖环境安装"><a href="#二，依赖环境安装" class="headerlink" title="二，依赖环境安装"></a>二，依赖环境安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd gcc-5.1.0</span><br><span class="line">./contrib/download_prerequisites</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Building GCC requires GMP 4.2+, MPFR 2.4.0+ and MPC 0.8.0+</span><br><span class="line">地址：</span><br><span class="line">ftp://gcc.gnu.org/pub/gcc/infrastructure/</span><br><span class="line"></span><br><span class="line">wget ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.1.0.tar.bz2</span><br><span class="line">wget ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-3.1.4.tar.bz2</span><br><span class="line">wget ftp://gcc.gnu.org/pub/gcc/infrastructure/mpc-1.0.3.tar.gz</span><br></pre></td></tr></table></figure><h3 id="三，依赖解压安装"><a href="#三，依赖解压安装" class="headerlink" title="三，依赖解压安装"></a>三，依赖解压安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1，安装gmp</span><br><span class="line">tar -jxvf gmp-6.1.0.tar.bz2</span><br><span class="line">cd gmp-6.1.0</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">error:No usable m4 in $PATH or /usr/5bin</span><br><span class="line">yum install m4</span><br><span class="line"></span><br><span class="line">2,安装mpfr</span><br><span class="line">tar -jxvf mpfr-3.1.4.tar.bz2</span><br><span class="line">cd mpfr-3.1.4</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">3,安装mpc</span><br><span class="line">tar -zxvf mpc-1.0.3.tar.gz</span><br><span class="line">cd mpc-1.0.3</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure><h3 id="四，源码安装"><a href="#四，源码安装" class="headerlink" title="四，源码安装"></a>四，源码安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./configure  --enable-checking=release --enable-languages=c,c++ --disable-multilib</span><br><span class="line">make </span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">#将链接复制</span><br><span class="line">cp -vf /usr/local/lib64/libstdc++.*  /usr/lib64/</span><br><span class="line">gcc -v</span><br><span class="line">gcc version 5.1.0 (GCC)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;对于一些源码的编译如poco库，需要的GCC的版本要求比较高，所以需要源码编译GCC、&lt;/p&gt;
+&lt;h3 id=&quot;一，源码下载&quot;&gt;&lt;a href=&quot;#一，源码下载&quot; class=&quot;headerlink&quot; title=&quot;一，源码下载&quot;&gt;&lt;/a&gt;一，源码下载&lt;/h3&gt;&lt;figur
+      
+    
+    </summary>
+    
+      <category term="gcc" scheme="https://sunnyweilucky.github.io/categories/gcc/"/>
+    
+    
+      <category term="cpp" scheme="https://sunnyweilucky.github.io/tags/cpp/"/>
+    
+      <category term="tools" scheme="https://sunnyweilucky.github.io/tags/tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>poco-源码编译包含mysql</title>
+    <link href="https://sunnyweilucky.github.io/2020/04/17/poco-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%8C%85%E5%90%ABmysql/"/>
+    <id>https://sunnyweilucky.github.io/2020/04/17/poco-源码编译包含mysql/</id>
+    <published>2020-04-17T02:08:59.000Z</published>
+    <updated>2020-04-17T02:15:09.258Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一，源码下载库"><a href="#一，源码下载库" class="headerlink" title="一，源码下载库"></a>一，源码下载库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">先在git上fork，然后同步到码云上，在clone可以加快下载的速度</span><br><span class="line">git clone https://gitee.com/helioswei/poco.git</span><br></pre></td></tr></table></figure><h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc-c++ make openssl-devel</span><br></pre></td></tr></table></figure><h3 id="三，安装mysql"><a href="#三，安装mysql" class="headerlink" title="三，安装mysql"></a>三，安装mysql</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">见mysql的源码安装，安装时没有头文件，所以我们需要安装头文件</span><br><span class="line">yum install mysql-devel</span><br></pre></td></tr></table></figure><h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">需要提前安装GCC5.1.0来支持c++14</span><br><span class="line">./configure --shared --prefix=/usr/local/poco  --cflags=-std=c++14 --include-path=/usr/include/mysql/ --library-path=/usr/lib64/mysql/ --omit=Data/ODBC,MongoDB,PDF</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;一，源码下载库&quot;&gt;&lt;a href=&quot;#一，源码下载库&quot; class=&quot;headerlink&quot; title=&quot;一，源码下载库&quot;&gt;&lt;/a&gt;一，源码下载库&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
+      
+    
+    </summary>
+    
+      <category term="poco" scheme="https://sunnyweilucky.github.io/categories/poco/"/>
+    
+    
+      <category term="cpp" scheme="https://sunnyweilucky.github.io/tags/cpp/"/>
+    
+      <category term="mysql" scheme="https://sunnyweilucky.github.io/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>image-libraw相机图片库源码编译</title>
@@ -37,9 +122,9 @@
       <category term="图片处理" scheme="https://sunnyweilucky.github.io/categories/image/"/>
     
     
-      <category term="image" scheme="https://sunnyweilucky.github.io/tags/image/"/>
-    
       <category term="centos7" scheme="https://sunnyweilucky.github.io/tags/centos7/"/>
+    
+      <category term="image" scheme="https://sunnyweilucky.github.io/tags/image/"/>
     
       <category term="lib.so" scheme="https://sunnyweilucky.github.io/tags/lib-so/"/>
     
@@ -66,9 +151,9 @@
       <category term="图片处理" scheme="https://sunnyweilucky.github.io/categories/image/"/>
     
     
-      <category term="image" scheme="https://sunnyweilucky.github.io/tags/image/"/>
-    
       <category term="centos7" scheme="https://sunnyweilucky.github.io/tags/centos7/"/>
+    
+      <category term="image" scheme="https://sunnyweilucky.github.io/tags/image/"/>
     
       <category term="lib.so" scheme="https://sunnyweilucky.github.io/tags/lib-so/"/>
     
@@ -95,9 +180,9 @@
       <category term="图片处理" scheme="https://sunnyweilucky.github.io/categories/image/"/>
     
     
-      <category term="image" scheme="https://sunnyweilucky.github.io/tags/image/"/>
-    
       <category term="centos7" scheme="https://sunnyweilucky.github.io/tags/centos7/"/>
+    
+      <category term="image" scheme="https://sunnyweilucky.github.io/tags/image/"/>
     
       <category term="lib.so" scheme="https://sunnyweilucky.github.io/tags/lib-so/"/>
     
@@ -154,9 +239,9 @@
       <category term="grpc" scheme="https://sunnyweilucky.github.io/categories/grpc/"/>
     
     
-      <category term="centos7" scheme="https://sunnyweilucky.github.io/tags/centos7/"/>
-    
       <category term="grpc" scheme="https://sunnyweilucky.github.io/tags/grpc/"/>
+    
+      <category term="centos7" scheme="https://sunnyweilucky.github.io/tags/centos7/"/>
     
   </entry>
   
@@ -259,9 +344,9 @@
       <category term="hexo" scheme="https://sunnyweilucky.github.io/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://sunnyweilucky.github.io/tags/hexo/"/>
-    
       <category term="tools" scheme="https://sunnyweilucky.github.io/tags/tools/"/>
+    
+      <category term="hexo" scheme="https://sunnyweilucky.github.io/tags/hexo/"/>
     
   </entry>
   
