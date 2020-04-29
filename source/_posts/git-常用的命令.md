@@ -1,0 +1,64 @@
+---
+title: git-常用的命令
+date: 2019-03-15 16:27:10
+categories: git
+tags: git
+---
+
+&nbsp;&nbsp;&nbsp;&nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。
+
+### 重命名文件夹
+```
+git  mv -f oldfolder newfolder
+```
+
+### 删除中间的某次提交
+```
+git revert commit id
+```
+
+### 版本回退
+```
+git reset --hard commitid
+这个不会保留之前的记录
+```
+### 撤销本地提交
+```
+git reset --soft commitid
+git reset --mixed commitid
+两者的区别，--soft会将改动放在缓存区 --mixed不会讲改动放在缓存区
+```
+
+### 撤销远程的提交
+```
+git log
+git reset --hard commitid
+git push origin HEAD:master --force
+```
+
+### 强制提交
+```
+git push -u origin master -f
+```
+
+### 将某个分支的提交copy到另一个分支上
+```
+例如，有两个分支，a,b,想要将a的某次提交，copy到b分支上
+1,在a分支上 git log 查询commitid
+2,git checkout b  切换分支
+3,git cherry-pick commitid
+```
+
+### 统计当前分支的提交数目
+```
+git rev-list HEAD | wc -l
+```
+### 将当前工作区的修改暂存起来
+```
+git stash 冻结当前的分支修改
+git stash save "说明信息"
+git stash list 列出所有的工作现场存储
+git stash apply stash@{n}  恢复某个工作现场
+git stash drop stash@{n}  删除存储的某个工作现场
+git stash pop stash@{n} 恢复的同时把stash内容也删除了
+```
