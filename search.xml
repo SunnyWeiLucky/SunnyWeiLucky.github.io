@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mupdf-源码安装]]></title>
+    <url>%2F2020%2F04%2F29%2Fmupdf-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[一，源码下载123直接到官网上下载源码包https://www.mupdf.com/downloads/index.htmlmupdf-1.16.1-source.tar.gz 二，相关依赖下载1234This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licensesyum install freeglut-devel 三，编译安装1make prefix=/usr/local install 四，使用注意在cmake的项目中使用静态库的时候，你只能生成静态链接库，在生成应用的时候，链接静态库和动态库都是一样的用法]]></content>
+      <categories>
+        <category>doc</category>
+      </categories>
+      <tags>
+        <tag>pdf</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[opencv-源码安装]]></title>
+    <url>%2F2020%2F04%2F29%2Fopencv-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[一，源码下载​ 通过git源码下载OpenCV，直接在GitHub上下载的速度特别慢，所以我们需要先将其fork，然后同步到gitee上面，通过自己的gitee账号来进行下载，这个速度比较快。 1git clone https://gitee.com/helioswei/opencv.git 二，源码编译1，cmake版本需求12CMake 3.5.1 or higher is required. You are running version 2.8.12.2我们需要先源码编译cmake 2，安装相关的依赖11，需要Python的依赖包 2，编译12345在OpenCV目录中，创建build目录，然后直接cmakecd opencvmkdir buildcd buildcmake ..]]></content>
+      <categories>
+        <category>opencv</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[mysql-centos7源码安装mysql8.0]]></title>
     <url>%2F2020%2F04%2F17%2Fmysql-centos7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85mysql8-0%2F</url>
     <content type="text"><![CDATA[因为直接通过yum安装的是mariadb，所以我们需要通过另外的方法来进行安装 一，下载mysql地址：https://dev.mysql.com/downloads/repo/yum/。选择对应版本下载 二，使用wget下载12在网站上看对应的版本号就好了wget https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm 三，安装mysql的源1yum -y localinstall mysql80-community-release-el7-1.noarch.rpm（对应版本） 四，在线安装mysql1yum -y install mysql-community-server 五，linux下设置不区分大小写 使用root账号登录，修改/etc/my.cnf； 在[mysqld]下加入一行：lower_case_table_names=1 mysqld –user=mysql –lower-case-table-names=1 –initialize-insecure datadir=/var/lib/mysql 六，设置开机自启12systemctl enable mysqldsystemctl daemon-reload 七，修改本地root的密码 查看root账户的临时密码，vim /var/log/mysqld.log 登录mysql，mysql -u root -p，输入1，中的临时密码 ALTER USER ‘root‘@’localhost’ IDENTIFIED BY ‘你的密码’;修改密码为 你的密码 (备注：默认密码策略要求密码必须是大小写字母数字特殊字母的组合，至少8位) 八， 修改密码策略要求~默认密码策略要求密码是大小写字母+数字+特殊字母的组合而且最少8位,不需要修改策略的可以跳过这步~ 1234567891，查看密码的策略SHOW VARIABLES LIKE &apos;validate_password%&apos;;2，修改密码的策略set global validate_password.check_user_name=OFF;set global validate_password.policy=LOW;set global validate_password.length=4;flush privileges;3，修改密码ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;root&apos;; 九，设置允许远程连接123451，重新登录mysql；2，选择mysql表； use mysql;3,更新表的内容；update user set Host=&apos;%&apos; where User=&apos;root&apos;;GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; WITH GRANT OPTION;//可能会报错，执行两次即可（不成功就再flush privileges;一次） 十，查看加密方式123select user, host, plugin, authentication_string from user\G;查看加密方式8.0加密方式（caching_sha2_password）有些客户端还不支持 ，导致客户端连接失败，所以使用mysql_native_password加密alter user &apos;root&apos;@&apos;%&apos; identified with mysql_native_password by &apos;helios2020&apos;; 九，卸载mysql123456删除Mysqlyum remove mysql mysql-server mysql-libs mysql-server;find / -name mysql 将找到的相关东西delete掉(rm -rf /var/lib/mysql)；rpm -qa|grep mysql(查询出来的东东yum remove掉)rm /etc/my.cnf （可能不存在）]]></content>
