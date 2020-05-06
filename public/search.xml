@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[centos7-epel源下载]]></title>
+    <url>%2F2020%2F05%2F06%2Fcentos7-epel%E6%BA%90%E4%B8%8B%E8%BD%BD%2F</url>
+    <content type="text"><![CDATA[一，什么是epelEPEL的全称叫 Extra Packages for Enterprise Linux 。EPEL是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS、Scientific Linux 等提供高质量软件包的项目。装上了 EPEL之后，就相当于添加了一个第三方源。 如果你知道rpmfusion.org的话，拿 rpmfusion 做比较还是很恰当的，rpmfusion 主要为桌面发行版提供大量rpm包，而EPEL则为服务器版本提供大量的rpm包，而且大多数rpm包在官方 repository 中是找不到的\ 另外一个特点是绝大多数rpm包要比官方repository 的rpm包版本要来得新。所以，我们有时候在yum下载的时候如果没有找到某个包或者版本过低，可以使用这个方式来尝试。 二，yum下载1yum install -y epel-release]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+      <tags>
+        <tag>yum源</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[centos7-163yum源下载]]></title>
+    <url>%2F2020%2F05%2F06%2Fcentos7-163yum%E6%BA%90%E4%B8%8B%E8%BD%BD%2F</url>
+    <content type="text"><![CDATA[我们在centos7上下载东西的时候，有时候自带的源里面没有我们需要的软件，所有我们需要更换源来进行下载 一，下载repo文件1wget http://mirrors.163.com/.help/CentOS7-Base-163.repo 二，备份并且替代系统的repo文件1234567cp CentOS7-Base-163.repo /etc/yum.repos.d/ cd /etc/yum.repos.d/ mv CentOS-Base.repo CentOS-Base.repo.bak mv CentOS7-Base-163.repo CentOS-Base.repo 三，执行yum源更新命令12345yum clean all yum makecache yum update]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+      <tags>
+        <tag>yum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2020%2F05%2F06%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[mupdf-源码安装]]></title>
     <url>%2F2020%2F04%2F29%2Fmupdf-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%2F</url>
     <content type="text"><![CDATA[一，源码下载123直接到官网上下载源码包https://www.mupdf.com/downloads/index.htmlmupdf-1.16.1-source.tar.gz 二，相关依赖下载1234This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licensesyum install freeglut-devel 三，编译安装1make prefix=/usr/local install 四，使用注意在cmake的项目中使用静态库的时候，你只能生成静态链接库，在生成应用的时候，链接静态库和动态库都是一样的用法]]></content>
@@ -234,10 +261,5 @@
       <categories>
         <category>centos7</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F03%2F08%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
