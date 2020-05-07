@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Helios">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。 重命名文件夹1git  mv -f oldfolder newfolder 删除中间的某次提交">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-06T03:13:27.173Z">
+<meta property="og:updated_time" content="2020-05-06T03:56:49.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git-常用的命令">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。 重命名文件夹1git  mv -f oldfolder newfolder 删除中间的某次提交">
@@ -141,6 +141,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3cc4cc512f6c5ac8a8cb2d249a9cc87c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -369,9 +379,30 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/15/git-常用的命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/15/git-常用的命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
+          
+             <span id="/2019/03/15/git-常用的命令/" class="leancloud_visitors" data-flag-title="git-常用的命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -392,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  385
+                  409
                 </span>
               
 
@@ -427,6 +458,7 @@
 <h3 id="将某个分支的提交copy到另一个分支上"><a href="#将某个分支的提交copy到另一个分支上" class="headerlink" title="将某个分支的提交copy到另一个分支上"></a>将某个分支的提交copy到另一个分支上</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例如，有两个分支，a,b,想要将a的某次提交，copy到b分支上</span><br><span class="line">1,在a分支上 git log 查询commitid</span><br><span class="line">2,git checkout b  切换分支</span><br><span class="line">3,git cherry-pick commitid</span><br></pre></td></tr></table></figure>
 <h3 id="统计当前分支的提交数目"><a href="#统计当前分支的提交数目" class="headerlink" title="统计当前分支的提交数目"></a>统计当前分支的提交数目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rev-list HEAD | wc -l</span><br></pre></td></tr></table></figure>
 <h3 id="将当前工作区的修改暂存起来"><a href="#将当前工作区的修改暂存起来" class="headerlink" title="将当前工作区的修改暂存起来"></a>将当前工作区的修改暂存起来</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git stash 冻结当前的分支修改</span><br><span class="line">git stash save &quot;说明信息&quot;</span><br><span class="line">git stash list 列出所有的工作现场存储</span><br><span class="line">git stash apply stash@&#123;n&#125;  恢复某个工作现场</span><br><span class="line">git stash drop stash@&#123;n&#125;  删除存储的某个工作现场</span><br><span class="line">git stash pop stash@&#123;n&#125; 恢复的同时把stash内容也删除了</span><br></pre></td></tr></table></figure>
+<h3 id="解决git-clone-项目中某个文件都需要输入密码"><a href="#解决git-clone-项目中某个文件都需要输入密码" class="headerlink" title="解决git clone 项目中某个文件都需要输入密码"></a>解决git clone 项目中某个文件都需要输入密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -542,11 +574,7 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitalk-container"></div>
-      
     </div>
-
   
 
 
@@ -597,7 +625,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -608,7 +636,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -619,7 +647,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -673,7 +701,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#重命名文件夹"><span class="nav-number">1.</span> <span class="nav-text">重命名文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除中间的某次提交"><span class="nav-number">2.</span> <span class="nav-text">删除中间的某次提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">3.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销本地提交"><span class="nav-number">4.</span> <span class="nav-text">撤销本地提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销远程的提交"><span class="nav-number">5.</span> <span class="nav-text">撤销远程的提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制提交"><span class="nav-number">6.</span> <span class="nav-text">强制提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将某个分支的提交copy到另一个分支上"><span class="nav-number">7.</span> <span class="nav-text">将某个分支的提交copy到另一个分支上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计当前分支的提交数目"><span class="nav-number">8.</span> <span class="nav-text">统计当前分支的提交数目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将当前工作区的修改暂存起来"><span class="nav-number">9.</span> <span class="nav-text">将当前工作区的修改暂存起来</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#重命名文件夹"><span class="nav-number">1.</span> <span class="nav-text">重命名文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除中间的某次提交"><span class="nav-number">2.</span> <span class="nav-text">删除中间的某次提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">3.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销本地提交"><span class="nav-number">4.</span> <span class="nav-text">撤销本地提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销远程的提交"><span class="nav-number">5.</span> <span class="nav-text">撤销远程的提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制提交"><span class="nav-number">6.</span> <span class="nav-text">强制提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将某个分支的提交copy到另一个分支上"><span class="nav-number">7.</span> <span class="nav-text">将某个分支的提交copy到另一个分支上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计当前分支的提交数目"><span class="nav-number">8.</span> <span class="nav-text">统计当前分支的提交数目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将当前工作区的修改暂存起来"><span class="nav-number">9.</span> <span class="nav-text">将当前工作区的修改暂存起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决git-clone-项目中某个文件都需要输入密码"><span class="nav-number">10.</span> <span class="nav-text">解决git clone 项目中某个文件都需要输入密码</span></a></li></ol></div>
             
 
           </div>
@@ -707,7 +735,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.4k</span>
+    <span title="Site words total count">9.3k</span>
   
 </div>
 
@@ -898,26 +926,29 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'VJCtNz0yRV5ElIWfo69UWL1z-gzGzoHsz',
+        appKey: '2ilUYLK5yS9O9NyOnlW2vTUp',
+        placeholder: '欢迎畅所预言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: '68b2a5e69d91ab70d6ec',
-          clientSecret: 'c99c2a5abb2ab4c2fc57cb2cb2f50a8ebf8820c0',
-          repo: 'SunnyWeiLucky.github.io',
-          owner: 'SunnyWeiLucky',
-          admin: [''],
-          id:'_20190315162710',
-          labels: ''.split(',').filter(1 => 1),
-          perPage: 10,
-          pagerDirection: 'last',
-          createIssueManually: true,
-          distractionFreeMode: false
-        })
-        gitalk.render('gitalk-container')           
-       </script>
 
 
 
@@ -1245,6 +1276,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("VJCtNz0yRV5ElIWfo69UWL1z-gzGzoHsz", "2ilUYLK5yS9O9NyOnlW2vTUp");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

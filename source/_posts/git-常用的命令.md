@@ -62,3 +62,10 @@ git stash apply stash@{n}  恢复某个工作现场
 git stash drop stash@{n}  删除存储的某个工作现场
 git stash pop stash@{n} 恢复的同时把stash内容也删除了
 ```
+
+### 解决git clone 项目中某个文件都需要输入密码
+
+~~~
+git config --global credential.helper store
+~~~
+

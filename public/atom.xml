@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sunnyweilucky.github.io/"/>
-  <updated>2020-05-06T03:23:35.251Z</updated>
+  <updated>2020-05-07T10:17:12.268Z</updated>
   <id>https://sunnyweilucky.github.io/</id>
   
   <author>
@@ -15,6 +15,84 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo-next主题配置</title>
+    <link href="https://sunnyweilucky.github.io/2020/05/07/hexo-next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
+    <id>https://sunnyweilucky.github.io/2020/05/07/hexo-next主题配置/</id>
+    <published>2020-05-07T08:46:52.000Z</published>
+    <updated>2020-05-07T10:17:12.268Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要记录一下自己在搭建个人博客的时候，一些配置，基本上是查阅别人的文章，这里记录一下</p><h3 id="一，hexo安装"><a href="#一，hexo安装" class="headerlink" title="一，hexo安装"></a>一，hexo安装</h3><p><a href="https://www.jianshu.com/p/eded1dd2d794" target="_blank" rel="noopener">hexo安装</a></p><p><a href="https://www.jianshu.com/p/b20fc983005f" target="_blank" rel="noopener">next主题设置</a></p><h3 id="二，添加LocalSearch搜索"><a href="#二，添加LocalSearch搜索" class="headerlink" title="二，添加LocalSearch搜索"></a>二，添加LocalSearch搜索</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> npm install hexo-generator-searchdb --save</span><br><span class="line"> </span><br><span class="line"> 编辑主题配置文件，启用本地搜素</span><br><span class="line"> # Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure><h3 id="三，网站访问量统计"><a href="#三，网站访问量统计" class="headerlink" title="三，网站访问量统计"></a>三，网站访问量统计</h3><p><img src="/images/blog/baidu.png" alt="baidu.png"></p><h3 id="四，阅读次数统计"><a href="#四，阅读次数统计" class="headerlink" title="四，阅读次数统计"></a>四，阅读次数统计</h3><p><a href="https://www.cnblogs.com/lijianming180/p/12433189.html" target="_blank" rel="noopener">LeanCloud添加阅读次数</a></p><h3 id="五，添加评论"><a href="#五，添加评论" class="headerlink" title="五，添加评论"></a>五，添加评论</h3><p><a href="https://blog.csdn.net/jiunian_2761/article/details/97388997" target="_blank" rel="noopener">valine</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;主要记录一下自己在搭建个人博客的时候，一些配置，基本上是查阅别人的文章，这里记录一下&lt;/p&gt;
+&lt;h3 id=&quot;一，hexo安装&quot;&gt;&lt;a href=&quot;#一，hexo安装&quot; class=&quot;headerlink&quot; title=&quot;一，hexo安装&quot;&gt;&lt;/a&gt;一，hexo安装&lt;/h3
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://sunnyweilucky.github.io/categories/hexo/"/>
+    
+    
+      <category term="next" scheme="https://sunnyweilucky.github.io/tags/next/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cuda-cuda10.0安装</title>
+    <link href="https://sunnyweilucky.github.io/2020/05/07/cuda-cuda10-0%E5%AE%89%E8%A3%85/"/>
+    <id>https://sunnyweilucky.github.io/2020/05/07/cuda-cuda10-0安装/</id>
+    <published>2020-05-07T02:48:26.000Z</published>
+    <updated>2020-05-07T08:21:06.421Z</updated>
+    
+    <content type="html"><![CDATA[<p>​        在转码的过程中，我们可以使用硬件来进行转码的加速，今天记录一下在Centos7环境下安装驱动以及cuda模块。</p><h3 id="下载驱动"><a href="#下载驱动" class="headerlink" title="下载驱动"></a>下载驱动</h3><p><code>如果打算安装CUDA10.0及以上的版本则不需要单独安装驱动，cuda10.0自带驱动驱动</code><strong>忽略该驱动的安装</strong></p><p><a href="https://www.nvidia.cn/Download/Find.aspx?lang=cn&amp;QNF=1" target="_blank" rel="noopener">驱动下载地址</a></p><p>例如我们下载Quadro P2000 linux64的驱动</p><p><img src="/images/cuda/图片1.png" alt="图片1.png"></p><p><img src="/images/cuda/图片2.png" alt="图片2.png"></p><p>之所以安装这个驱动是因为要安装的cuda10.0也是410的，之后运行安装驱动程序就好了。</p><h3 id="安装cuda10-0"><a href="#安装cuda10-0" class="headerlink" title="安装cuda10.0"></a>安装cuda10.0</h3><h5 id="1，下载安装包"><a href="#1，下载安装包" class="headerlink" title="1，下载安装包"></a>1，下载安装包</h5><p>​    <a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=CentOS&amp;target_version=7&amp;target_type=runfilelocal" target="_blank" rel="noopener">安装包下载</a>    在该网站上下载安装包</p><p><img src="/images/cuda/图片3.png" alt="图片3.png"></p><h5 id="2，版本选择"><a href="#2，版本选择" class="headerlink" title="2，版本选择"></a>2，版本选择</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过以下按钮选择历史版本的cuda，找到10.0下载，然后选择对应的系统</span><br></pre></td></tr></table></figure><p><img src="/images/cuda/图片4.png" alt="图片4.png"></p><h5 id="3，运行-run文件"><a href="#3，运行-run文件" class="headerlink" title="3，运行.run文件"></a>3，运行.run文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">下载完安装包放在linux上直接运行.run文件</span><br><span class="line"></span><br><span class="line">chmod +x cuda_10.0.130_410.48_linux.run </span><br><span class="line">./cuda_10.0.130_410.48_linux.run</span><br></pre></td></tr></table></figure><h5 id="4，然后一直按回车键直到："><a href="#4，然后一直按回车键直到：" class="headerlink" title="4，然后一直按回车键直到："></a>4，然后一直按回车键直到：</h5><p><img src="/images/cuda/图片5.png" alt="图片5.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">回答：accept</span><br></pre></td></tr></table></figure><h5 id="5，是否安装驱动"><a href="#5，是否安装驱动" class="headerlink" title="5，是否安装驱动"></a>5，是否安装驱动</h5><p><img src="/images/cuda/图片6.png" alt="图片6.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">是否安装驱动，这里选择安装：y,因为我们自己没有提前安装驱动，如果提前安装过驱动，这里就不选择安装：n</span><br></pre></td></tr></table></figure><h5 id="6，是否安装OpenGL"><a href="#6，是否安装OpenGL" class="headerlink" title="6，是否安装OpenGL"></a>6，是否安装OpenGL</h5><p><img src="/images/cuda/图片7.png" alt="图片7.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择;n</span><br></pre></td></tr></table></figure><h5 id="7，是否安装x-config"><a href="#7，是否安装x-config" class="headerlink" title="7，是否安装x-config"></a>7，是否安装x-config</h5><p><img src="/images/cuda/图片8.png" alt="图片8.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择：n</span><br></pre></td></tr></table></figure><h5 id="8，是否安装Toolkit"><a href="#8，是否安装Toolkit" class="headerlink" title="8，是否安装Toolkit"></a>8，是否安装Toolkit</h5><p><img src="/images/cuda/图片10.png" alt="图片10.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择：y</span><br></pre></td></tr></table></figure><h5 id="9，cuda目录"><a href="#9，cuda目录" class="headerlink" title="9，cuda目录"></a>9，cuda目录</h5><p><img src="/images/cuda/图片11.png" alt="图片11.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">直接回车，选择默认安装路径</span><br></pre></td></tr></table></figure><h5 id="10，是否创建软连接"><a href="#10，是否创建软连接" class="headerlink" title="10，是否创建软连接"></a>10，是否创建软连接</h5><p><img src="/images/cuda/图片12.png" alt="图片12.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择：y</span><br></pre></td></tr></table></figure><h5 id="11，是否安装示例"><a href="#11，是否安装示例" class="headerlink" title="11，是否安装示例"></a>11，是否安装示例</h5><p><img src="/images/cuda/图片13.png" alt="图片13.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">为了节约空间，这个不安装</span><br><span class="line">选择：n</span><br></pre></td></tr></table></figure><h5 id="12，然后开始安装"><a href="#12，然后开始安装" class="headerlink" title="12，然后开始安装"></a>12，然后开始安装</h5><p><img src="/images/cuda/图片14.png" alt="图片14.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表示安装成功</span><br></pre></td></tr></table></figure><h5 id="13，添加配置文件"><a href="#13，添加配置文件" class="headerlink" title="13，添加配置文件"></a>13，添加配置文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim  /etc/profile</span><br><span class="line">写入：</span><br><span class="line">export PATH=/usr/local/cuda-10.0/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH</span><br><span class="line">保存：</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure><h5 id="14，卸载驱动及cuda"><a href="#14，卸载驱动及cuda" class="headerlink" title="14，卸载驱动及cuda"></a>14，卸载驱动及cuda</h5><p><img src="/images/cuda/图片15.png" alt="图片15.png"></p><font color="red"><strong>注意</strong></font><p><code>1,千万不要重复安装显卡驱动，会导致系统损坏</code></p><p><code>2.升级cuda的时候，一定要将旧版本的cuda卸载干净，否则会出现意想不到的错误</code></p><h5 id="15，查看命令"><a href="#15，查看命令" class="headerlink" title="15，查看命令"></a>15，查看命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1，检查显卡类型</span><br><span class="line">yum install pciutils（如果没有这个命令，则下载）</span><br><span class="line">lspci | grep VGA</span><br></pre></td></tr></table></figure><p><img src="/images/cuda/图片17.png" alt="图片17.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2，检查安装是否成功</span><br><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure><p><img src="/images/cuda/图片16.png" alt="图片16.png"></p><h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><h5 id="1，-usr-bin-perl-bad-interpreter-No-such-file-or-directory"><a href="#1，-usr-bin-perl-bad-interpreter-No-such-file-or-directory" class="headerlink" title="1， /usr/bin/perl: bad interpreter: No such file or directory"></a>1， /usr/bin/perl: bad interpreter: No such file or directory</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc</span><br><span class="line">yum install perl</span><br></pre></td></tr></table></figure><h5 id="2，kernel源安装"><a href="#2，kernel源安装" class="headerlink" title="2，kernel源安装"></a>2，kernel源安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检查系统版本</span><br><span class="line">uname -a</span><br><span class="line">yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r)</span><br><span class="line">先查看源是否相同，如果没有则需要下载</span><br></pre></td></tr></table></figure><h5 id="3，禁用nouveau（对某些版本需要）"><a href="#3，禁用nouveau（对某些版本需要）" class="headerlink" title="3，禁用nouveau（对某些版本需要）"></a>3，禁用nouveau（对某些版本需要）</h5><h6 id="1，修改文件"><a href="#1，修改文件" class="headerlink" title="1，修改文件"></a>1，修改文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1，修改文件</span><br><span class="line">cd /etc/modprobe.d</span><br><span class="line">vim nvidia-installer-disable-nouveau.conf（如果没有这个文件，则手动生成）</span><br><span class="line"> </span><br><span class="line"> 内容：</span><br><span class="line"> # generated by nvidia-installer</span><br><span class="line"> blacklist nouveau</span><br><span class="line"> options nouveau modeset=0</span><br></pre></td></tr></table></figure><h6 id="2，备份-initramfs"><a href="#2，备份-initramfs" class="headerlink" title="2，备份 initramfs"></a>2，备份 initramfs</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r).img.bak</span><br></pre></td></tr></table></figure><h6 id="3，重建-initramfs"><a href="#3，重建-initramfs" class="headerlink" title="3，重建 initramfs"></a>3，重建 initramfs</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dracut -v /boot/initramfs-$(uname -r).img $(uname -r)</span><br></pre></td></tr></table></figure><h6 id="4，重启机器"><a href="#4，重启机器" class="headerlink" title="4，重启机器"></a>4，重启机器</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure><h6 id="5，检查nouveau-driver确保没有被加载"><a href="#5，检查nouveau-driver确保没有被加载" class="headerlink" title="5，检查nouveau driver确保没有被加载"></a>5，检查nouveau driver确保没有被加载</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep nouveau</span><br><span class="line">没有加载则为空，有加载则如图，说明设置没有生效，需要重新设置</span><br></pre></td></tr></table></figure><p><img src="/images/cuda/nouveau.png" alt="nouveau.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​        在转码的过程中，我们可以使用硬件来进行转码的加速，今天记录一下在Centos7环境下安装驱动以及cuda模块。&lt;/p&gt;
+&lt;h3 id=&quot;下载驱动&quot;&gt;&lt;a href=&quot;#下载驱动&quot; class=&quot;headerlink&quot; title=&quot;下载驱动&quot;&gt;&lt;/a&gt;下载
+      
+    
+    </summary>
+    
+      <category term="cuda" scheme="https://sunnyweilucky.github.io/categories/cuda/"/>
+    
+    
+      <category term="nvidia" scheme="https://sunnyweilucky.github.io/tags/nvidia/"/>
+    
+      <category term="驱动" scheme="https://sunnyweilucky.github.io/tags/%E9%A9%B1%E5%8A%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos7-常用的命令</title>
+    <link href="https://sunnyweilucky.github.io/2020/05/06/centos7-%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/"/>
+    <id>https://sunnyweilucky.github.io/2020/05/06/centos7-常用的命令/</id>
+    <published>2020-05-06T06:52:04.000Z</published>
+    <updated>2020-05-06T08:11:53.402Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下自己常用的centos7上的命令行</p><h3 id="mount挂载"><a href="#mount挂载" class="headerlink" title="mount挂载"></a>mount挂载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">虚拟机和主机共享目录</span><br><span class="line">mount -t cifs //192.168.30.97/code /mnt -o username=Administrator,password=Helios</span><br><span class="line"></span><br><span class="line">/code 是主机上的目录，需要设置为共享的</span><br><span class="line">username 为主机的用户名</span><br><span class="line">password 是主机的密码</span><br><span class="line">/mnt 是虚拟机上的目录</span><br><span class="line"></span><br><span class="line">卸载：</span><br><span class="line">umount /mnt</span><br><span class="line">卸载失败可以重启服务器</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;记录一下自己常用的centos7上的命令行&lt;/p&gt;
+&lt;h3 id=&quot;mount挂载&quot;&gt;&lt;a href=&quot;#mount挂载&quot; class=&quot;headerlink&quot; title=&quot;mount挂载&quot;&gt;&lt;/a&gt;mount挂载&lt;/h3&gt;&lt;figure class=&quot;highlight
+      
+    
+    </summary>
+    
+      <category term="centos7" scheme="https://sunnyweilucky.github.io/categories/centos7/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>centos7-epel源下载</title>
@@ -469,76 +547,6 @@
       <category term="tools" scheme="https://sunnyweilucky.github.io/tags/tools/"/>
     
       <category term="hexo" scheme="https://sunnyweilucky.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ffmpeg_avfilter的使用详解</title>
-    <link href="https://sunnyweilucky.github.io/2019/03/27/ffmpeg-avfilter%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://sunnyweilucky.github.io/2019/03/27/ffmpeg-avfilter的使用详解/</id>
-    <published>2019-03-27T02:23:18.000Z</published>
-    <updated>2020-05-06T03:13:27.172Z</updated>
-    
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，</p><p>过滤的过程<br>解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，&lt;/p&gt;
-&lt;p&gt;过滤的过程&lt;br&gt;解码后的画面 -&amp;gt; buffer过滤器 -&amp;gt; 其他过滤器 -&amp;gt; buffersink 
-      
-    
-    </summary>
-    
-      <category term="ffmpeg" scheme="https://sunnyweilucky.github.io/categories/ffmpeg/"/>
-    
-    
-      <category term="ffmpeg" scheme="https://sunnyweilucky.github.io/tags/ffmpeg/"/>
-    
-      <category term="avfilter" scheme="https://sunnyweilucky.github.io/tags/avfilter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown语言的总结</title>
-    <link href="https://sunnyweilucky.github.io/2019/03/18/markdown%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%BB%E7%BB%93/"/>
-    <id>https://sunnyweilucky.github.io/2019/03/18/markdown语言的总结/</id>
-    <published>2019-03-18T10:29:41.000Z</published>
-    <updated>2020-05-06T03:13:27.176Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>s3-关于s3cmd的下载</title>
-    <link href="https://sunnyweilucky.github.io/2019/03/18/s3-%E5%85%B3%E4%BA%8Es3cmd%E7%9A%84%E4%B8%8B%E8%BD%BD/"/>
-    <id>https://sunnyweilucky.github.io/2019/03/18/s3-关于s3cmd的下载/</id>
-    <published>2019-03-18T10:02:31.000Z</published>
-    <updated>2020-05-06T03:13:27.177Z</updated>
-    
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p><h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote><p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p></blockquote><h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote><p>python get-pip.py</p></blockquote><h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote><p>pip install s3cmd</p></blockquote><h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote><p>设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。&lt;/p&gt;
-&lt;h2 id=&quot;s3cmd的下载&quot;&gt;&lt;a href=
-      
-    
-    </summary>
-    
-      <category term="s3对象存储" scheme="https://sunnyweilucky.github.io/categories/s3/"/>
-    
-    
-      <category term="centos7" scheme="https://sunnyweilucky.github.io/tags/centos7/"/>
-    
-      <category term="s3" scheme="https://sunnyweilucky.github.io/tags/s3/"/>
     
   </entry>
   

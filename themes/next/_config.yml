@@ -40,7 +40,7 @@ keywords: "Hexo, NexT"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss:
+rss: /atom.xml
 
 footer:
   # Specify the date when the site was setup.
@@ -356,7 +356,7 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: 3cc4cc512f6c5ac8a8cb2d249a9cc87c
 
 # Duoshuo ShortName
 #duoshuo_shortname:
@@ -381,15 +381,17 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: false
-  appid:  # your leancloud application appid
-  appkey:  # your leancloud application appkey
+  enable: true 
+  appid: VJCtNz0yRV5ElIWfo69UWL1z-gzGzoHsz # your leancloud application appid
+  appkey: 2ilUYLK5yS9O9NyOnlW2vTUp  # your leancloud application appkey
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
-  placeholder: Just go go # comment box placeholder
+  placeholder: 欢迎畅所预言 # comment box placeholder
   avatar: mm # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
+  visitor: false
+  comment_count: true
 
 
 # Support for youyan comments system.
@@ -534,9 +536,9 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  enable: true 
+  app_id: VJCtNz0yRV5ElIWfo69UWL1z-gzGzoHsz #<app_id>
+  app_key: 2ilUYLK5yS9O9NyOnlW2vTUp #<app_key>
 
 # Another tool to show number of visitors to each article.
 # visit https://console.firebase.google.com/u/0/ to get apiKey and projectId
@@ -807,7 +809,7 @@ vendors:
   needMoreShare2:
 
 gitalk: 
-  enable: true
+  enable: false 
   ClientID: 68b2a5e69d91ab70d6ec 
   ClientSecret: c99c2a5abb2ab4c2fc57cb2cb2f50a8ebf8820c0
   repo: SunnyWeiLucky.github.io
