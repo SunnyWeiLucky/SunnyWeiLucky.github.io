@@ -1,8 +1,12 @@
 ---
 title: image-图片处理库总结
-date: 2020-01-15 09:47:54
 categories: 图片处理
-tags: [image,centos7,lib.so]
+tags:
+  - image
+  - centos7
+  - lib.so
+abbrlink: 3226112650
+date: 2020-01-15 09:47:54
 ---
 
 ### 一，提取exif信息的库

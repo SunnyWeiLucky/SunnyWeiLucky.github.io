@@ -12,10 +12,17 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://sunnyweilucky.github.io/
+#url: https://sunnyweilucky.github.io/
+url: http://www.helioswei.top/
 root: /
-permalink: :year/:month/:day/:title/
+#permalink: :year/:month/:day/:title/
+permalink: :title/:abbrlink.html
 permalink_defaults:
+
+#abbrlimk config
+abbrlink:
+        alg: crc32
+        rep: dec
 
 # Directory
 source_dir: source
@@ -94,3 +101,7 @@ search:
   field: post
   format: html
   limit: 10000
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml              
+          

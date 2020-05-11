@@ -1,8 +1,11 @@
 ---
 title: cuda-cuda10.0安装
-date: 2020-05-07 10:48:26
 categories: cuda
-tags: [nvidia,驱动]
+tags:
+  - nvidia
+  - 驱动
+abbrlink: 2055195890
+date: 2020-05-07 10:48:26
 ---
 
 ​		在转码的过程中，我们可以使用硬件来进行转码的加速，今天记录一下在Centos7环境下安装驱动以及cuda模块。

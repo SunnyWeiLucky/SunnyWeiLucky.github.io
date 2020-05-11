@@ -1,8 +1,11 @@
 ---
 title: ffmpeg_avfilter的使用详解
-date: 2019-03-27 10:23:18
 categories: ffmpeg
-tags: [ffmpeg,avfilter]
+tags:
+  - ffmpeg
+  - avfilter
+abbrlink: 4030313287
+date: 2019-03-27 10:23:18
 ---
 
 &nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，

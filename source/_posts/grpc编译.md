@@ -1,8 +1,11 @@
 ---
 title: grpc编译
-date: 2020-01-14 18:54:12
 categories: grpc
-tags: [grpc,centos7]
+tags:
+  - grpc
+  - centos7
+abbrlink: 1473358207
+date: 2020-01-14 18:54:12
 ---
 
 ~~~

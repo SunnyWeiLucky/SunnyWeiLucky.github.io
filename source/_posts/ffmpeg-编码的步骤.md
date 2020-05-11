@@ -1,8 +1,9 @@
 ---
 title: ffmpeg-编码的步骤
-date: 2019-05-05 14:39:17
 categories: ffmpeg
 tags: ffmpeg
+abbrlink: 3394448682
+date: 2019-05-05 14:39:17
 ---
 
 &nbsp;&nbsp;&nbsp;&nbsp;总结一下编码的大致过程，方便自己下一次的处理，分为音频编码和视频

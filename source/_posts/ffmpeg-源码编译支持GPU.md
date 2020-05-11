@@ -1,8 +1,11 @@
 ---
 title: ffmpeg-源码编译支持GPU
-date: 2020-01-14 19:09:01
 categories: ffmpeg
-tags: [ffmpeg,centos7]
+tags:
+  - ffmpeg
+  - centos7
+abbrlink: 2764140538
+date: 2020-01-14 19:09:01
 ---
 
 > ​	源码编译需要很多的库的支持，一种是基础的库，一种是你需要的编解码信息的库

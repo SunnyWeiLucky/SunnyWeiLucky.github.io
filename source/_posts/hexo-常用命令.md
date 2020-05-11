@@ -1,8 +1,11 @@
 ---
 title: hexo-常用命令
-date: 2019-04-12 18:35:51
 categories: hexo
-tags: [hexo,tools]
+tags:
+  - hexo
+  - tools
+abbrlink: 3973852728
+date: 2019-04-12 18:35:51
 ---
 
 &nbsp;&nbsp;&nbsp;&nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。

@@ -1,7 +1,8 @@
 ---
 title: centos7-控制系统的CPU
-date: 2019-03-15 16:26:01
 categories: centos7
+abbrlink: 3687663458
+date: 2019-03-15 16:26:01
 tags:
 ---
 

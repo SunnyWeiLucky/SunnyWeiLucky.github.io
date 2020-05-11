@@ -1,8 +1,9 @@
 ---
 title: centos7-epel源下载
-date: 2020-05-06 11:20:01
 categories: centos7
 tags: yum源
+abbrlink: 3859923575
+date: 2020-05-06 11:20:01
 ---
 
 

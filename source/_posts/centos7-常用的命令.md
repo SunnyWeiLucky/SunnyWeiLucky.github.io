@@ -1,8 +1,9 @@
 ---
 title: centos7-常用的命令
-date: 2020-05-06 14:52:04
 categories: centos7
-tags: 
+abbrlink: 2689943165
+date: 2020-05-06 14:52:04
+tags:
 ---
 
 记录一下自己常用的centos7上的命令行

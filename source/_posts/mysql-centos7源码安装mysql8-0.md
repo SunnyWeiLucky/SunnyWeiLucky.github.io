@@ -1,8 +1,12 @@
 ---
 title: mysql-centos7源码安装mysql8.0
-date: 2020-04-17 10:24:23
 categories: mysql
-tags: [centos7,mysql,tools]
+tags:
+  - centos7
+  - mysql
+  - tools
+abbrlink: 1044847951
+date: 2020-04-17 10:24:23
 ---
 
 	因为直接通过yum安装的是mariadb，所以我们需要通过另外的方法来进行安装

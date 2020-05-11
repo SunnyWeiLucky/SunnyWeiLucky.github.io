@@ -1,8 +1,11 @@
 ---
 title: poco-源码编译包含mysql
-date: 2020-04-17 10:08:59
 categories: poco
-tags: [mysql,cpp]
+tags:
+  - mysql
+  - cpp
+abbrlink: 3587508548
+date: 2020-04-17 10:08:59
 ---
 
 ### 一，源码下载库

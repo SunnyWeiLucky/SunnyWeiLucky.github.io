@@ -1,8 +1,11 @@
 ---
 title: s3-关于s3cmd的下载
-date: 2019-03-18 18:02:31
 categories: s3对象存储
-tags: [s3,centos7]
+tags:
+  - s3
+  - centos7
+abbrlink: 3778876136
+date: 2019-03-18 18:02:31
 ---
 
 &nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。

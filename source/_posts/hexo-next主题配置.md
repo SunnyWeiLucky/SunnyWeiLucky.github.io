@@ -1,8 +1,9 @@
 ---
 title: hexo-next主题配置
-date: 2020-05-07 16:46:52
 categories: hexo
 tags: next
+abbrlink: 1968653668
+date: 2020-05-07 16:46:52
 ---
 
 

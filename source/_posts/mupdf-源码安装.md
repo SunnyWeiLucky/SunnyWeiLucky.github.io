@@ -1,8 +1,10 @@
 ---
 title: mupdf-源码安装
-date: 2020-04-29 11:44:14
 categories: doc
-tags: [pdf]
+tags:
+  - pdf
+abbrlink: 3549577056
+date: 2020-04-29 11:44:14
 ---
 
 ### 一，源码下载

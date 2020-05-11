@@ -1,8 +1,9 @@
 ---
 title: git-常用的命令
-date: 2019-03-15 16:27:10
 categories: git
 tags: git
+abbrlink: 2063445917
+date: 2019-03-15 16:27:10
 ---
 
 &nbsp;&nbsp;&nbsp;&nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。
