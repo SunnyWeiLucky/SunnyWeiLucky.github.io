@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Helios">
 <meta property="og:description" content="一，源码下载​        通过git源码下载OpenCV，直接在GitHub上下载的速度特别慢，所以我们需要先将其fork，然后同步到gitee上面，通过自己的gitee账号来进行下载，这个速度比较快。 1git clone https://gitee.com/helioswei/opencv.git 二，源码编译1，cmake版本需求12CMake 3.5.1 or higher is re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-11T06:54:15.366Z">
+<meta property="og:updated_time" content="2020-05-11T10:02:09.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="opencv-源码安装">
 <meta name="twitter:description" content="一，源码下载​        通过git源码下载OpenCV，直接在GitHub上下载的速度特别慢，所以我们需要先将其fork，然后同步到gitee上面，通过自己的gitee账号来进行下载，这个速度比较快。 1git clone https://gitee.com/helioswei/opencv.git 二，源码编译1，cmake版本需求12CMake 3.5.1 or higher is re">
@@ -180,7 +180,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">喜爱古风的码农小哥哥</p>
+        <h1 class="site-subtitle" itemprop="description">喜爱古风的码农小哥哥</h1>
       
   </div>
 
@@ -331,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">opencv-源码安装</h1>
+          <h2 class="post-title" itemprop="name headline">opencv-源码安装</h2>
         
 
         <div class="post-meta">
@@ -609,7 +609,7 @@
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="Helioswei">
             
               <p class="site-author-name" itemprop="name">Helioswei</p>
-              <p class="site-description motion-element" itemprop="description">江南烟雨浓</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -741,6 +741,34 @@
   <span class="post-meta-divider">|</span>
 
 
+
+<div id="days"></div>
+	
+	<script language="javascript">
+	function show_date_time(){
+	window.setTimeout("show_date_time()", 1000);
+	BirthDay=new Date("11/29/2019 20:00:00");
+	today=new Date();
+	timeold=(today.getTime()-BirthDay.getTime());
+	sectimeold=timeold/1000
+	secondsold=Math.floor(sectimeold);
+	msPerDay=24*60*60*1000
+	e_daysold=timeold/msPerDay
+	daysold=Math.floor(e_daysold);
+	e_hrsold=(e_daysold-daysold)*24;
+	hrsold=setzero(Math.floor(e_hrsold));
+	e_minsold=(e_hrsold-hrsold)*60;
+	minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+	seconds=setzero(Math.floor((e_minsold-minsold)*60));
+	document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+	}
+	function setzero(i){
+	if (i<10)
+	{i="0" + i};
+	return i;
+	}
+	show_date_time();
+	</script>
 
   <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
@@ -1394,5 +1422,7 @@
   
 <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 </html>

@@ -179,7 +179,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">喜爱古风的码农小哥哥</p>
+        <h1 class="site-subtitle" itemprop="description">喜爱古风的码农小哥哥</h1>
       
   </div>
 
@@ -330,9 +330,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/ffmpeg-avfilter的使用详解/4030313287.html" itemprop="url">ffmpeg_avfilter的使用详解</a></h1>
+                <a class="post-title-link" href="/ffmpeg-avfilter的使用详解/4030313287.html" itemprop="url">ffmpeg_avfilter的使用详解</a></h2>
         
 
         <div class="post-meta">
@@ -520,9 +520,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/markdown语言的总结/769639735.html" itemprop="url">markdown语言的总结</a></h1>
+                <a class="post-title-link" href="/markdown语言的总结/769639735.html" itemprop="url">markdown语言的总结</a></h2>
         
 
         <div class="post-meta">
@@ -686,9 +686,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/s3-关于s3cmd的下载/3778876136.html" itemprop="url">s3-关于s3cmd的下载</a></h1>
+                <a class="post-title-link" href="/s3-关于s3cmd的下载/3778876136.html" itemprop="url">s3-关于s3cmd的下载</a></h2>
         
 
         <div class="post-meta">
@@ -876,9 +876,9 @@ wget  https://boots
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/others-时间管理/1904238135.html" itemprop="url">others-时间管理</a></h1>
+                <a class="post-title-link" href="/others-时间管理/1904238135.html" itemprop="url">others-时间管理</a></h2>
         
 
         <div class="post-meta">
@@ -1066,9 +1066,9 @@ wget  https://boots
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/cpp-关于内存泄漏的问题/834551784.html" itemprop="url">cpp-关于内存泄漏的问题</a></h1>
+                <a class="post-title-link" href="/cpp-关于内存泄漏的问题/834551784.html" itemprop="url">cpp-关于内存泄漏的问题</a></h2>
         
 
         <div class="post-meta">
@@ -1255,9 +1255,9 @@ wget  https://boots
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/git-常用的命令/2063445917.html" itemprop="url">git-常用的命令</a></h1>
+                <a class="post-title-link" href="/git-常用的命令/2063445917.html" itemprop="url">git-常用的命令</a></h2>
         
 
         <div class="post-meta">
@@ -1443,9 +1443,9 @@ wget  https://boots
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/centos7-控制系统的CPU/3687663458.html" itemprop="url">centos7-控制系统的CPU</a></h1>
+                <a class="post-title-link" href="/centos7-控制系统的CPU/3687663458.html" itemprop="url">centos7-控制系统的CPU</a></h2>
         
 
         <div class="post-meta">
@@ -1644,7 +1644,7 @@ wget  https://boots
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="Helioswei">
             
               <p class="site-author-name" itemprop="name">Helioswei</p>
-              <p class="site-description motion-element" itemprop="description">江南烟雨浓</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1760,6 +1760,34 @@ wget  https://boots
   <span class="post-meta-divider">|</span>
 
 
+
+<div id="days"></div>
+	
+	<script language="javascript">
+	function show_date_time(){
+	window.setTimeout("show_date_time()", 1000);
+	BirthDay=new Date("11/29/2019 20:00:00");
+	today=new Date();
+	timeold=(today.getTime()-BirthDay.getTime());
+	sectimeold=timeold/1000
+	secondsold=Math.floor(sectimeold);
+	msPerDay=24*60*60*1000
+	e_daysold=timeold/msPerDay
+	daysold=Math.floor(e_daysold);
+	e_hrsold=(e_daysold-daysold)*24;
+	hrsold=setzero(Math.floor(e_hrsold));
+	e_minsold=(e_hrsold-hrsold)*60;
+	minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+	seconds=setzero(Math.floor((e_minsold-minsold)*60));
+	document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+	}
+	function setzero(i){
+	if (i<10)
+	{i="0" + i};
+	return i;
+	}
+	show_date_time();
+	</script>
 
   <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
@@ -2409,5 +2437,7 @@ wget  https://boots
   
 <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 </html>
