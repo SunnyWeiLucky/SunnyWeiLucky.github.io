@@ -40,3 +40,29 @@ local_search:
 ### 五，添加评论
 
 [valine](https://blog.csdn.net/jiunian_2761/article/details/97388997)
+
+### 六，域名申请
+
+[域名申请](https://blog.csdn.net/linshuhe1/article/details/73013730)
+
+### 七，谷歌检索
+
+[谷歌检索](https://www.itrhx.com/2019/09/17/A48-submit-search-engine-inclusion/)
+
+### 八，永久文章链接
+
+[abbrlink](https://www.jianshu.com/p/c7de2ae59975)
+
+### 九，404
+
+[404错误](https://www.jianshu.com/p/2349c763cc02)
+
+### 十，码云+GitHub部署
+
+![gitee.png](/images/blog/gitee.png)
+
+~~~
+需要在站点配置文件中配置gitee和GitHub的仓库地址
+然后就可以部署了，不过我们在gitee上部署后，每次都需要手动的去更新gitee page，才能生效
+~~~
+

@@ -90,7 +90,9 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/SunnyWeiLucky/SunnyWeiLucky.github.io.git
+  repository:
+          gitee: https://gitee.com/helioswei/helioswei.git
+          github: https://github.com/SunnyWeiLucky/SunnyWeiLucky.github.io.git
   branch: master
 
 
