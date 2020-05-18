@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="centos7,">
 
 
 
@@ -89,16 +89,19 @@
 
 
 <meta name="description" content="记录一下自己常用的centos7上的命令行 mount挂载1234567891011虚拟机和主机共享目录mount -t cifs //192.168.30.97/code /mnt -o username=Administrator,password=Helios/code 是主机上的目录，需要设置为共享的username 为主机的用户名password 是主机的密码/mnt 是虚拟机上的目录卸">
+<meta name="keywords" content="centos7">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos7-常用的命令">
 <meta property="og:url" content="http://www.helioswei.top/centos7-常用的命令/2689943165.html">
 <meta property="og:site_name" content="Helios">
 <meta property="og:description" content="记录一下自己常用的centos7上的命令行 mount挂载1234567891011虚拟机和主机共享目录mount -t cifs //192.168.30.97/code /mnt -o username=Administrator,password=Helios/code 是主机上的目录，需要设置为共享的username 为主机的用户名password 是主机的密码/mnt 是虚拟机上的目录卸">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-11T10:02:09.556Z">
+<meta property="og:image" content="http://www.helioswei.top/images/linux/cache.png">
+<meta property="og:updated_time" content="2020-05-18T02:10:07.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7-常用的命令">
 <meta name="twitter:description" content="记录一下自己常用的centos7上的命令行 mount挂载1234567891011虚拟机和主机共享目录mount -t cifs //192.168.30.97/code /mnt -o username=Administrator,password=Helios/code 是主机上的目录，需要设置为共享的username 为主机的用户名password 是主机的密码/mnt 是虚拟机上的目录卸">
+<meta name="twitter:image" content="http://www.helioswei.top/images/linux/cache.png">
 
 
 
@@ -422,7 +425,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  96
+                  442
                 </span>
               
 
@@ -449,6 +452,18 @@
       
         <p>记录一下自己常用的centos7上的命令行</p>
 <h3 id="mount挂载"><a href="#mount挂载" class="headerlink" title="mount挂载"></a>mount挂载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">虚拟机和主机共享目录</span><br><span class="line">mount -t cifs //192.168.30.97/code /mnt -o username=Administrator,password=Helios</span><br><span class="line"></span><br><span class="line">/code 是主机上的目录，需要设置为共享的</span><br><span class="line">username 为主机的用户名</span><br><span class="line">password 是主机的密码</span><br><span class="line">/mnt 是虚拟机上的目录</span><br><span class="line"></span><br><span class="line">卸载：</span><br><span class="line">umount /mnt</span><br><span class="line">卸载失败可以重启服务器</span><br></pre></td></tr></table></figure>
+<h3 id="nohup常驻服务"><a href="#nohup常驻服务" class="headerlink" title="nohup常驻服务"></a>nohup常驻服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">linux平台上，要在后台运行脚本的话，一般是在命令之后加上&amp;即可。</span><br><span class="line">常驻服务的运行，退出终端也可以的命令行</span><br><span class="line">nohup</span><br><span class="line">具体方法</span><br><span class="line">nohup ./videotool &amp;</span><br></pre></td></tr></table></figure>
+<h3 id="查看系统的状态的命令"><a href="#查看系统的状态的命令" class="headerlink" title="查看系统的状态的命令"></a>查看系统的状态的命令</h3><h5 id="查看内存"><a href="#查看内存" class="headerlink" title="查看内存"></a>查看内存</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -h</span><br></pre></td></tr></table></figure>
+<h5 id="查看磁盘使用"><a href="#查看磁盘使用" class="headerlink" title="查看磁盘使用"></a>查看磁盘使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<h5 id="查看文件大小"><a href="#查看文件大小" class="headerlink" title="查看文件大小"></a>查看文件大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh 11.mkv</span><br></pre></td></tr></table></figure>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cp  -rfd   ./oldname  ./newname</span><br><span class="line">-r 复制目录</span><br><span class="line">-f 强制复制</span><br><span class="line">-d 复制软连接</span><br><span class="line"></span><br><span class="line">忽略冲突复制</span><br><span class="line">\cp  -rfd   ./oldname  ./newname</span><br></pre></td></tr></table></figure>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">基本格式：</span><br><span class="line">* * * * * command  </span><br><span class="line">含义：</span><br><span class="line">分 时 天 月 周  </span><br><span class="line">使用*/n 表示此字段上每隔n执行一次，同时注意如果低时间使用了，会覆盖高时间的*/n,不要同时使用某一天与一周的某一天，如果这个两个相等，则会执行两次</span><br></pre></td></tr></table></figure>
+<h5 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+<h5 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure>
+<h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -r  这个表示删除所有的定时任务，如果需要删除单个，则使用crontab -e 进行编辑，然后删除某一行</span><br></pre></td></tr></table></figure>
+<h3 id="获取服务运行时使用的内存"><a href="#获取服务运行时使用的内存" class="headerlink" title="获取服务运行时使用的内存"></a>获取服务运行时使用的内存</h3><p><img src="/images/linux/cache.png" alt="cache.png"></p>
+<h3 id="控制进程使用cpu数目"><a href="#控制进程使用cpu数目" class="headerlink" title="控制进程使用cpu数目"></a>控制进程使用cpu数目</h3><h5 id="获取进程id"><a href="#获取进程id" class="headerlink" title="获取进程id"></a>获取进程id</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pgrep  -f   servername</span><br><span class="line"></span><br><span class="line">pidof   servername</span><br></pre></td></tr></table></figure>
+<h5 id="设置CPU使用"><a href="#设置CPU使用" class="headerlink" title="设置CPU使用"></a>设置CPU使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注意： 默认情况下，taskset不会影响进程的所有线程（LWP）。使用任务集的“-a”选项来影响流程中的所有线程</span><br><span class="line"></span><br><span class="line">一般可以这样设置：   taskset   -apc  0   8991     (这个目前最有效）</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -505,6 +520,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/centos7/" rel="tag"># centos7</a>
+          
+        </div>
       
 
       
@@ -685,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mount挂载"><span class="nav-number">1.</span> <span class="nav-text">mount挂载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mount挂载"><span class="nav-number">1.</span> <span class="nav-text">mount挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nohup常驻服务"><span class="nav-number">2.</span> <span class="nav-text">nohup常驻服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看系统的状态的命令"><span class="nav-number">3.</span> <span class="nav-text">查看系统的状态的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看内存"><span class="nav-number">3.0.1.</span> <span class="nav-text">查看内存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看磁盘使用"><span class="nav-number">3.0.2.</span> <span class="nav-text">查看磁盘使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看文件大小"><span class="nav-number">3.0.3.</span> <span class="nav-text">查看文件大小</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#复制"><span class="nav-number">4.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时任务"><span class="nav-number">5.</span> <span class="nav-text">定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加"><span class="nav-number">5.0.1.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看"><span class="nav-number">5.0.2.</span> <span class="nav-text">查看</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除"><span class="nav-number">5.0.3.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取服务运行时使用的内存"><span class="nav-number">6.</span> <span class="nav-text">获取服务运行时使用的内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制进程使用cpu数目"><span class="nav-number">7.</span> <span class="nav-text">控制进程使用cpu数目</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取进程id"><span class="nav-number">7.0.1.</span> <span class="nav-text">获取进程id</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置CPU使用"><span class="nav-number">7.0.2.</span> <span class="nav-text">设置CPU使用</span></a></li></ol></li></div>
             
 
           </div>
@@ -719,7 +740,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.4k</span>
+    <span title="Site words total count">9.8k</span>
   
 </div>
 
