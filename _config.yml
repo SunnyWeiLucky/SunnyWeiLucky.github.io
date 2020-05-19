@@ -16,7 +16,8 @@ timezone:
 url: http://www.helioswei.top/
 root: /
 #permalink: :year/:month/:day/:title/
-permalink: :title/:abbrlink.html
+#permalink: :title/:abbrlink.html
+permalink: article/:abbrlink.html
 permalink_defaults:
 
 #abbrlimk config

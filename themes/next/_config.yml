@@ -296,7 +296,7 @@ highlight_theme: normal
 # Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS
 # ---------------------------------------------------------------
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default).
   host: //fonts.lug.ustc.edu.cn # fonts.lug.ustc.edu.cn是中科大的源
@@ -330,7 +330,7 @@ font:
   logo:
     external: true
     family: Lobster Two
-    size:
+    size: 24
 
   # Font settings for <code> and code blocks.
   codes:
