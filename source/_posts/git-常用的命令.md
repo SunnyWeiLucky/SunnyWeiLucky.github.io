@@ -70,3 +70,11 @@ git stash pop stash@{n} 恢复的同时把stash内容也删除了
 git config --global credential.helper store
 ~~~
 
+### 删除缓存的远程分支列表
+
+~~~
+git remote prune origin
+or
+git fetch -p
+~~~
+
