@@ -78,3 +78,9 @@ or
 git fetch -p
 ~~~
 
+### 删除新增的多个文件
+
+~~~
+git clean -xdf
+~~~
+

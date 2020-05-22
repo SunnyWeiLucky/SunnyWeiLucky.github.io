@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git-大文件上传管理]]></title>
+    <url>%2Farticle%2F3538252460.html</url>
+    <content type="text"><![CDATA[git lfs安装和配置git lfs 需要客户端支持, 请根据自己的操作系统下载对应的客户端 git lfs客户端下载 以Centos7为例，下载客户端后运行rpm安装 12rpm -i git-lfs-2.2.1-1.el7.x86_64.rpmgit lfs install（完成初始化） 设置管理的文件类型12345678910#压缩包git lfs track *.tar *.tar.gz *.tgz *.zip *.7z#图片git lfs track *.jpg *.png *.jpeg *.bmp *.gif *.tiff#库git lfs track *.jar *.war *.so *.so.*#非文本文档git lfs track *.doc *.docx *.ppt *.pptx *.pdf *.xls *.xlsx#安装包git lfs track *.rpm *.deb *.img *.iso 设置完之后会在项目根目录下出现.gitattributes文件]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2Farticle%2F1243066710.html</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
@@ -167,8 +178,8 @@
         <category>ffmpeg</category>
       </categories>
       <tags>
-        <tag>centos7</tag>
         <tag>ffmpeg</tag>
+        <tag>centos7</tag>
       </tags>
   </entry>
   <entry>
@@ -273,14 +284,14 @@
         <category>cpp</category>
       </categories>
       <tags>
-        <tag>cpp</tag>
         <tag>ffmpeg</tag>
+        <tag>cpp</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[git-常用的命令]]></title>
     <url>%2Farticle%2F2063445917.html</url>
-    <content type="text"><![CDATA[&nbsp;&nbsp;&nbsp;&nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。 重命名文件夹1git mv -f oldfolder newfolder 删除中间的某次提交1git revert commit id 版本回退12git reset --hard commitid这个不会保留之前的记录 撤销本地提交123git reset --soft commitidgit reset --mixed commitid两者的区别，--soft会将改动放在缓存区 --mixed不会讲改动放在缓存区 撤销远程的提交123git loggit reset --hard commitidgit push origin HEAD:master --force 强制提交1git push -u origin master -f 将某个分支的提交copy到另一个分支上1234例如，有两个分支，a,b,想要将a的某次提交，copy到b分支上1,在a分支上 git log 查询commitid2,git checkout b 切换分支3,git cherry-pick commitid 统计当前分支的提交数目1git rev-list HEAD | wc -l 将当前工作区的修改暂存起来123456git stash 冻结当前的分支修改git stash save &quot;说明信息&quot;git stash list 列出所有的工作现场存储git stash apply stash@&#123;n&#125; 恢复某个工作现场git stash drop stash@&#123;n&#125; 删除存储的某个工作现场git stash pop stash@&#123;n&#125; 恢复的同时把stash内容也删除了 解决git clone 项目中某个文件都需要输入密码1git config --global credential.helper store 删除缓存的远程分支列表123git remote prune originorgit fetch -p]]></content>
+    <content type="text"><![CDATA[&nbsp;&nbsp;&nbsp;&nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。 重命名文件夹1git mv -f oldfolder newfolder 删除中间的某次提交1git revert commit id 版本回退12git reset --hard commitid这个不会保留之前的记录 撤销本地提交123git reset --soft commitidgit reset --mixed commitid两者的区别，--soft会将改动放在缓存区 --mixed不会讲改动放在缓存区 撤销远程的提交123git loggit reset --hard commitidgit push origin HEAD:master --force 强制提交1git push -u origin master -f 将某个分支的提交copy到另一个分支上1234例如，有两个分支，a,b,想要将a的某次提交，copy到b分支上1,在a分支上 git log 查询commitid2,git checkout b 切换分支3,git cherry-pick commitid 统计当前分支的提交数目1git rev-list HEAD | wc -l 将当前工作区的修改暂存起来123456git stash 冻结当前的分支修改git stash save &quot;说明信息&quot;git stash list 列出所有的工作现场存储git stash apply stash@&#123;n&#125; 恢复某个工作现场git stash drop stash@&#123;n&#125; 删除存储的某个工作现场git stash pop stash@&#123;n&#125; 恢复的同时把stash内容也删除了 解决git clone 项目中某个文件都需要输入密码1git config --global credential.helper store 删除缓存的远程分支列表123git remote prune originorgit fetch -p 删除新增的多个文件1git clean -xdf]]></content>
       <categories>
         <category>git</category>
       </categories>

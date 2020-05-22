@@ -140,7 +140,7 @@
 <meta property="og:site_name" content="Helios">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。 重命名文件夹1git  mv -f oldfolder newfolder 删除中间的某次提交">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-21T08:38:48.632Z">
+<meta property="og:updated_time" content="2020-05-22T02:10:53.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git-常用的命令">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。 重命名文件夹1git  mv -f oldfolder newfolder 删除中间的某次提交">
@@ -467,7 +467,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  426
+                  438
                 </span>
               
 
@@ -504,6 +504,7 @@
 <h3 id="将当前工作区的修改暂存起来"><a href="#将当前工作区的修改暂存起来" class="headerlink" title="将当前工作区的修改暂存起来"></a>将当前工作区的修改暂存起来</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git stash 冻结当前的分支修改</span><br><span class="line">git stash save &quot;说明信息&quot;</span><br><span class="line">git stash list 列出所有的工作现场存储</span><br><span class="line">git stash apply stash@&#123;n&#125;  恢复某个工作现场</span><br><span class="line">git stash drop stash@&#123;n&#125;  删除存储的某个工作现场</span><br><span class="line">git stash pop stash@&#123;n&#125; 恢复的同时把stash内容也删除了</span><br></pre></td></tr></table></figure>
 <h3 id="解决git-clone-项目中某个文件都需要输入密码"><a href="#解决git-clone-项目中某个文件都需要输入密码" class="headerlink" title="解决git clone 项目中某个文件都需要输入密码"></a>解决git clone 项目中某个文件都需要输入密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
 <h3 id="删除缓存的远程分支列表"><a href="#删除缓存的远程分支列表" class="headerlink" title="删除缓存的远程分支列表"></a>删除缓存的远程分支列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote prune origin</span><br><span class="line">or</span><br><span class="line">git fetch -p</span><br></pre></td></tr></table></figure>
+<h3 id="删除新增的多个文件"><a href="#删除新增的多个文件" class="headerlink" title="删除新增的多个文件"></a>删除新增的多个文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clean -xdf</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -670,7 +671,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -746,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#重命名文件夹"><span class="nav-number">1.</span> <span class="nav-text">重命名文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除中间的某次提交"><span class="nav-number">2.</span> <span class="nav-text">删除中间的某次提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">3.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销本地提交"><span class="nav-number">4.</span> <span class="nav-text">撤销本地提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销远程的提交"><span class="nav-number">5.</span> <span class="nav-text">撤销远程的提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制提交"><span class="nav-number">6.</span> <span class="nav-text">强制提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将某个分支的提交copy到另一个分支上"><span class="nav-number">7.</span> <span class="nav-text">将某个分支的提交copy到另一个分支上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计当前分支的提交数目"><span class="nav-number">8.</span> <span class="nav-text">统计当前分支的提交数目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将当前工作区的修改暂存起来"><span class="nav-number">9.</span> <span class="nav-text">将当前工作区的修改暂存起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决git-clone-项目中某个文件都需要输入密码"><span class="nav-number">10.</span> <span class="nav-text">解决git clone 项目中某个文件都需要输入密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除缓存的远程分支列表"><span class="nav-number">11.</span> <span class="nav-text">删除缓存的远程分支列表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#重命名文件夹"><span class="nav-number">1.</span> <span class="nav-text">重命名文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除中间的某次提交"><span class="nav-number">2.</span> <span class="nav-text">删除中间的某次提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">3.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销本地提交"><span class="nav-number">4.</span> <span class="nav-text">撤销本地提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销远程的提交"><span class="nav-number">5.</span> <span class="nav-text">撤销远程的提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制提交"><span class="nav-number">6.</span> <span class="nav-text">强制提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将某个分支的提交copy到另一个分支上"><span class="nav-number">7.</span> <span class="nav-text">将某个分支的提交copy到另一个分支上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计当前分支的提交数目"><span class="nav-number">8.</span> <span class="nav-text">统计当前分支的提交数目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将当前工作区的修改暂存起来"><span class="nav-number">9.</span> <span class="nav-text">将当前工作区的修改暂存起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决git-clone-项目中某个文件都需要输入密码"><span class="nav-number">10.</span> <span class="nav-text">解决git clone 项目中某个文件都需要输入密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除缓存的远程分支列表"><span class="nav-number">11.</span> <span class="nav-text">删除缓存的远程分支列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除新增的多个文件"><span class="nav-number">12.</span> <span class="nav-text">删除新增的多个文件</span></a></li></ol></div>
             
 
           </div>
@@ -780,7 +781,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.8k</span>
+    <span title="Site words total count">10k</span>
   
 </div>
 

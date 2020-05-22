@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.helioswei.top/"/>
-  <updated>2020-05-11T10:02:09.559Z</updated>
+  <updated>2020-05-22T08:46:21.612Z</updated>
   <id>http://www.helioswei.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git-大文件上传管理</title>
+    <link href="http://www.helioswei.top/article/3538252460.html"/>
+    <id>http://www.helioswei.top/article/3538252460.html</id>
+    <published>2020-05-22T08:32:56.000Z</published>
+    <updated>2020-05-22T08:46:21.612Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="git-lfs安装和配置"><a href="#git-lfs安装和配置" class="headerlink" title="git lfs安装和配置"></a>git lfs安装和配置</h3><p>git lfs 需要客户端支持, 请根据自己的操作系统下载对应的客户端</p><p><a href="https://git-lfs.github.com/" target="_blank" rel="noopener">git lfs客户端下载</a></p><p><code>以Centos7为例，下载客户端后运行rpm安装</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -i git-lfs-2.2.1-1.el7.x86_64.rpm</span><br><span class="line">git lfs install（完成初始化）</span><br></pre></td></tr></table></figure><h3 id="设置管理的文件类型"><a href="#设置管理的文件类型" class="headerlink" title="设置管理的文件类型"></a>设置管理的文件类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#压缩包</span><br><span class="line">git lfs track *.tar *.tar.gz *.tgz *.zip *.7z</span><br><span class="line">#图片</span><br><span class="line">git lfs track *.jpg *.png *.jpeg *.bmp *.gif *.tiff</span><br><span class="line">#库</span><br><span class="line">git lfs track *.jar *.war *.so *.so.*</span><br><span class="line">#非文本文档</span><br><span class="line">git  lfs  track *.doc *.docx *.ppt *.pptx *.pdf *.xls *.xlsx</span><br><span class="line">#安装包</span><br><span class="line">git  lfs  track *.rpm *.deb *.img *.iso</span><br></pre></td></tr></table></figure><p><code>设置完之后会在项目根目录下出现.gitattributes文件</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;git-lfs安装和配置&quot;&gt;&lt;a href=&quot;#git-lfs安装和配置&quot; class=&quot;headerlink&quot; title=&quot;git lfs安装和配置&quot;&gt;&lt;/a&gt;git lfs安装和配置&lt;/h3&gt;&lt;p&gt;git lfs 需要客户端支持, 请根据自己的操作系统下载对
+      
+    
+    </summary>
+    
+      <category term="git" scheme="http://www.helioswei.top/categories/git/"/>
+    
+    
+      <category term="git" scheme="http://www.helioswei.top/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -414,9 +439,9 @@
       <category term="ffmpeg" scheme="http://www.helioswei.top/categories/ffmpeg/"/>
     
     
-      <category term="centos7" scheme="http://www.helioswei.top/tags/centos7/"/>
-    
       <category term="ffmpeg" scheme="http://www.helioswei.top/tags/ffmpeg/"/>
+    
+      <category term="centos7" scheme="http://www.helioswei.top/tags/centos7/"/>
     
   </entry>
   
@@ -521,34 +546,6 @@
     
     
       <category term="image" scheme="http://www.helioswei.top/tags/image/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo-常用命令</title>
-    <link href="http://www.helioswei.top/article/3973852728.html"/>
-    <id>http://www.helioswei.top/article/3973852728.html</id>
-    <published>2019-04-12T10:35:51.000Z</published>
-    <updated>2020-05-11T10:02:09.560Z</updated>
-    
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。</p><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postname&quot; (hexo n postname)</span><br></pre></td></tr></table></figure><h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;pagename&quot;</span><br></pre></td></tr></table></figure><h3 id="启动本地web服务"><a href="#启动本地web服务" class="headerlink" title="启动本地web服务"></a>启动本地web服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo server (hexo s)</span><br><span class="line">本地网址：localhost:4000</span><br></pre></td></tr></table></figure><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate (hexo g)</span><br></pre></td></tr></table></figure><h3 id="生成部署"><a href="#生成部署" class="headerlink" title="生成部署"></a>生成部署</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure><h3 id="生成预览"><a href="#生成预览" class="headerlink" title="生成预览"></a>生成预览</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g</span><br></pre></td></tr></table></figure><h3 id="清理public文件夹"><a href="#清理public文件夹" class="headerlink" title="清理public文件夹"></a>清理public文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。&lt;/p&gt;
-&lt;h3 id=&quot;新建文章&quot;&gt;&lt;a href=&quot;#新建文章&quot; class=&quot;headerlink&quot; title=&quot;新建文章&quot;&gt;&lt;/a&gt;新建文章&lt;
-      
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://www.helioswei.top/categories/hexo/"/>
-    
-    
-      <category term="tools" scheme="http://www.helioswei.top/tags/tools/"/>
-    
-      <category term="hexo" scheme="http://www.helioswei.top/tags/hexo/"/>
     
   </entry>
   
