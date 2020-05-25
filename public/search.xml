@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo-gulp压缩]]></title>
+    <url>%2Farticle%2F2127593710.html</url>
+    <content type="text"><![CDATA[插件安装1234#全局安装npm install gulp -g#站点目录安装npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify --save 在这里说明一下，使用该工具可以压缩 HTML、CSS、JavaScript 文件，但我并没有压缩 JavaScript 文件，因为有很大的概率会报错，实际也并不需要压缩，因为大部分 JavaScript 都已压缩过。 如果你也考虑不压缩 JavaScript 文件，可以选择不安装 gulp-uglify。 gulpfile.js在站点文件夹的根目录下，新建一个文件。命名为gulpfile.js 12345678910111213141516171819202122232425262728293031323334353637383940414243var gulp = require(&apos;gulp&apos;);// Plugins 模块获取var minifycss = require(&apos;gulp-minify-css&apos;);var uglify = require(&apos;gulp-uglify&apos;);var htmlmin = require(&apos;gulp-htmlmin&apos;);var htmlclean = require(&apos;gulp-htmlclean&apos;);// 压缩 cssgulp.task(&apos;minify-css&apos;, function () &#123; return gulp.src(&apos;./public/**/*.css&apos;) .pipe(minifycss()) .pipe(gulp.dest(&apos;./public&apos;));&#125;);// 压缩 htmlgulp.task(&apos;minify-html&apos;, function () &#123; return gulp.src(&apos;./public/**/*.html&apos;) .pipe(htmlclean()) .pipe(htmlmin(&#123; removeComments: true, minifyJS: true, minifyCSS: true, minifyURLs: true, &#125;)) .pipe(gulp.dest(&apos;./public&apos;))&#125;);// 压缩 js 不压缩 min.jsgulp.task(&apos;minify-js&apos;, function () &#123; return gulp.src([&apos;./public/**/*.js&apos;, &apos;!./public/**/*.min.js&apos;]) .pipe(uglify()) .pipe(gulp.dest(&apos;./public&apos;));&#125;);// 4.0 以前的写法 // gulp.task(&apos;default&apos;, [ // &apos;minify-html&apos;, &apos;minify-css&apos;, &apos;minify-js&apos;// ]);// 4.0 以后的写法// 执行 gulp 命令时执行的任务gulp.task(&apos;default&apos;, gulp.parallel(&apos;minify-html&apos;, &apos;minify-css&apos;, &apos;minify-js&apos;)); 如果不压缩 JavaScript 文件，则将上述代码中有关minify-js的代码删除即可 运行结果12345678[10:24:57] Starting &apos;default&apos;...[10:24:57] Starting &apos;minify-html&apos;...[10:24:57] Starting &apos;minify-css&apos;...[10:24:57] Starting &apos;minify-js&apos;...[10:25:05] Finished &apos;minify-css&apos; after 8.3 s[10:25:05] Finished &apos;minify-js&apos; after 8.49 s[10:25:09] Finished &apos;minify-html&apos; after 12 s[10:25:09] Finished &apos;default&apos; after 12 s]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>gulp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[git-大文件上传管理]]></title>
     <url>%2Farticle%2F3538252460.html</url>
     <content type="text"><![CDATA[git lfs安装和配置git lfs 需要客户端支持, 请根据自己的操作系统下载对应的客户端 git lfs客户端下载 以Centos7为例，下载客户端后运行rpm安装 12rpm -i git-lfs-2.2.1-1.el7.x86_64.rpmgit lfs install（完成初始化） 设置管理的文件类型12345678910#压缩包git lfs track *.tar *.tar.gz *.tgz *.zip *.7z#图片git lfs track *.jpg *.png *.jpeg *.bmp *.gif *.tiff#库git lfs track *.jar *.war *.so *.so.*#非文本文档git lfs track *.doc *.docx *.ppt *.pptx *.pdf *.xls *.xlsx#安装包git lfs track *.rpm *.deb *.img *.iso 设置完之后会在项目根目录下出现.gitattributes文件]]></content>
@@ -178,8 +190,8 @@
         <category>ffmpeg</category>
       </categories>
       <tags>
-        <tag>ffmpeg</tag>
         <tag>centos7</tag>
+        <tag>ffmpeg</tag>
       </tags>
   </entry>
   <entry>
@@ -284,8 +296,8 @@
         <category>cpp</category>
       </categories>
       <tags>
-        <tag>ffmpeg</tag>
         <tag>cpp</tag>
+        <tag>ffmpeg</tag>
       </tags>
   </entry>
   <entry>

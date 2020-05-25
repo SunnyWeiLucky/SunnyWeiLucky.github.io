@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.helioswei.top/"/>
-  <updated>2020-05-22T08:46:21.612Z</updated>
+  <updated>2020-05-25T02:25:55.376Z</updated>
   <id>http://www.helioswei.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo-gulp压缩</title>
+    <link href="http://www.helioswei.top/article/2127593710.html"/>
+    <id>http://www.helioswei.top/article/2127593710.html</id>
+    <published>2020-05-25T02:21:08.000Z</published>
+    <updated>2020-05-25T02:25:55.376Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#全局安装</span><br><span class="line">npm install gulp -g</span><br><span class="line">#站点目录安装</span><br><span class="line">npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify --save</span><br></pre></td></tr></table></figure><p>在这里说明一下，使用该工具可以压缩 HTML、CSS、JavaScript 文件，但我并没有压缩 JavaScript 文件，因为有很大的概率会报错，实际也并不需要压缩，因为大部分 JavaScript 都已压缩过。</p><p>如果你也考虑不压缩 JavaScript 文件，可以选择不安装 <code>gulp-uglify</code>。</p><h3 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h3><p>在站点文件夹的根目录下，新建一个文件。命名为gulpfile.js</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;);</span><br><span class="line"></span><br><span class="line">// Plugins 模块获取</span><br><span class="line">var minifycss = require(&apos;gulp-minify-css&apos;);</span><br><span class="line">var uglify = require(&apos;gulp-uglify&apos;);</span><br><span class="line">var htmlmin = require(&apos;gulp-htmlmin&apos;);</span><br><span class="line">var htmlclean = require(&apos;gulp-htmlclean&apos;);</span><br><span class="line"></span><br><span class="line">// 压缩 css</span><br><span class="line">gulp.task(&apos;minify-css&apos;, function () &#123;</span><br><span class="line">return gulp.src(&apos;./public/**/*.css&apos;)</span><br><span class="line">.pipe(minifycss())</span><br><span class="line">.pipe(gulp.dest(&apos;./public&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 压缩 html</span><br><span class="line">gulp.task(&apos;minify-html&apos;, function () &#123;</span><br><span class="line">return gulp.src(&apos;./public/**/*.html&apos;)</span><br><span class="line">.pipe(htmlclean())</span><br><span class="line">.pipe(htmlmin(&#123;</span><br><span class="line">removeComments: true,</span><br><span class="line">minifyJS: true,</span><br><span class="line">minifyCSS: true,</span><br><span class="line">minifyURLs: true,</span><br><span class="line">&#125;))</span><br><span class="line">.pipe(gulp.dest(&apos;./public&apos;))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 压缩 js 不压缩 min.js</span><br><span class="line">gulp.task(&apos;minify-js&apos;, function () &#123;</span><br><span class="line">return gulp.src([&apos;./public/**/*.js&apos;, &apos;!./public/**/*.min.js&apos;])</span><br><span class="line">.pipe(uglify())</span><br><span class="line">.pipe(gulp.dest(&apos;./public&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 4.0 以前的写法 </span><br><span class="line">// gulp.task(&apos;default&apos;, [</span><br><span class="line">  //   &apos;minify-html&apos;, &apos;minify-css&apos;, &apos;minify-js&apos;</span><br><span class="line">// ]);</span><br><span class="line"></span><br><span class="line">// 4.0 以后的写法</span><br><span class="line">// 执行 gulp 命令时执行的任务</span><br><span class="line">gulp.task(&apos;default&apos;, gulp.parallel(&apos;minify-html&apos;, &apos;minify-css&apos;, &apos;minify-js&apos;));</span><br></pre></td></tr></table></figure><p><code>如果不压缩 JavaScript 文件，则将上述代码中有关</code>minify-js<code>的代码删除即可</code></p><h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[10:24:57] Starting &apos;default&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-html&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-css&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-js&apos;...</span><br><span class="line">[10:25:05] Finished &apos;minify-css&apos; after 8.3 s</span><br><span class="line">[10:25:05] Finished &apos;minify-js&apos; after 8.49 s</span><br><span class="line">[10:25:09] Finished &apos;minify-html&apos; after 12 s</span><br><span class="line">[10:25:09] Finished &apos;default&apos; after 12 s</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;插件安装&quot;&gt;&lt;a href=&quot;#插件安装&quot; class=&quot;headerlink&quot; title=&quot;插件安装&quot;&gt;&lt;/a&gt;插件安装&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://www.helioswei.top/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://www.helioswei.top/tags/hexo/"/>
+    
+      <category term="gulp" scheme="http://www.helioswei.top/tags/gulp/"/>
+    
+  </entry>
   
   <entry>
     <title>git-大文件上传管理</title>
@@ -439,9 +466,9 @@
       <category term="ffmpeg" scheme="http://www.helioswei.top/categories/ffmpeg/"/>
     
     
-      <category term="ffmpeg" scheme="http://www.helioswei.top/tags/ffmpeg/"/>
-    
       <category term="centos7" scheme="http://www.helioswei.top/tags/centos7/"/>
+    
+      <category term="ffmpeg" scheme="http://www.helioswei.top/tags/ffmpeg/"/>
     
   </entry>
   
@@ -520,32 +547,6 @@
     
     
       <category term="tools" scheme="http://www.helioswei.top/tags/tools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>相机底片的解析</title>
-    <link href="http://www.helioswei.top/article/4054922039.html"/>
-    <id>http://www.helioswei.top/article/4054922039.html</id>
-    <published>2019-04-16T03:31:36.000Z</published>
-    <updated>2020-05-11T10:02:09.562Z</updated>
-    
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;公司要求对相机原生格式如后缀为dng,CR2等的图片进行转码，然后预览，自己查找了一下资料，目前仅仅是用命令行来进行处理的，因为我们是linux端的服务，所以直接封装命令行比较的简单。</p><h3 id="DNG数据格式的介绍"><a href="#DNG数据格式的介绍" class="headerlink" title="DNG数据格式的介绍"></a>DNG数据格式的介绍</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.cnblogs.com/adong7639/p/4446828.html</span><br><span class="line">https://blog.csdn.net/wgx571859177/article/details/80755793?utm_source=blogxgwz1</span><br></pre></td></tr></table></figure><h3 id="DNG格式基本的概念"><a href="#DNG格式基本的概念" class="headerlink" title="DNG格式基本的概念"></a>DNG格式基本的概念</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  DNG格式是在TIFF的基础上扩展出来的，要了解DNG，需要清楚TIFF,</span><br><span class="line">TIFF/EP,DNG,RAW之间的关系。</span><br><span class="line">  DNG（Digital Negative）是Adobe开发的一种开发的raw image file format ,</span><br><span class="line">主要是为了统一不同厂商的raw格式。里面使用的tag基本上都定义在TIFF或者TIFF/EP 中，</span><br><span class="line">在DNG Sepcification中只是定义或者建议了数据的组织方式，颜色空间的转换等等。</span><br></pre></td></tr></table></figure><h3 id="TIFF-EP"><a href="#TIFF-EP" class="headerlink" title="TIFF/EP"></a>TIFF/EP</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TIFF是一个灵活适应性强的文件格式。通过在文件标头中使用&quot;标签&quot;，它能够在一个</span><br><span class="line">文件中处理多幅图像和数据。标签能够标明图像的如图像大小这样的基本几何尺寸，</span><br><span class="line">或者定义图像数据是如何排列的，或者是否使用了各种各样的图像压缩选项。</span><br><span class="line"></span><br><span class="line">TIFF/EP的全称是&quot;Tag Image File Format / Electronic Photography&quot;。 </span><br><span class="line">它是一个名为&quot;Electronic still-picture imaging – Removable </span><br><span class="line">memory – Part 2: TIFF/EP image data format&quot;ISO标准， 标准号为</span><br><span class="line">ISO12234-2。TIFF/EP对TIFF文件扩展部分标记属性。</span><br></pre></td></tr></table></figure><h3 id="RAW"><a href="#RAW" class="headerlink" title="RAW"></a>RAW</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">RAW文件包含创建一个可视图像所必须的相机传感器数据信息。RAW文件的结构，包括ISO标准的RAW图像格式ISO 12234-2 ，TIFF / EP，往往遵循一个共同的模式，那就是：</span><br><span class="line"></span><br><span class="line">一个短的文件头，它通常包含文件的字节顺序，文件标识符和主数据的文件偏移量摄像传感器元数据，用来描述图像传感器的数据，包括传感器的尺寸， 颜色滤波矩阵(color filter array)的属性和它的颜色配置文件</span><br><span class="line"></span><br><span class="line">列入任何CMS环境或数据库中需要的图像元数据。这些措施包括曝光设定，相机/扫描仪/镜头模型，拍摄/扫描日期（和可选的位置信息），创作信息和其他。一些原始文件包含可交换图像格式的标准化元数据节；</span><br><span class="line"></span><br><span class="line">图像缩略图；</span><br><span class="line"></span><br><span class="line">可选的JPEG格式缩小尺寸的图像，可用于快速预览；</span><br><span class="line"></span><br><span class="line">在电影胶片扫描中，无论是文件序列的时间码，序列码或帧编号都代表在扫描卷轴中的帧顺序。这个项目允许文件被被按帧顺序排列（不依赖于它的文件名​）；</span><br><span class="line"></span><br><span class="line">传感器图像数据；</span><br></pre></td></tr></table></figure><h3 id="常见的RAW格式"><a href="#常见的RAW格式" class="headerlink" title="常见的RAW格式"></a>常见的RAW格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">许多RAW格式, 包括 3FR (Hasselblad), DCR, K25, KDC (Kodak), IIQ (Phase One), CR2 (Canon), </span><br><span class="line">ERF (Epson), MEF (Mamiya), MOS (Leaf), NEF (Nikon), ORF (Olympus), PEF (Pentax), </span><br><span class="line">RW2 (Panasonic) and ARW, SRF, SR2 (Sony), 都是基于TIFF格式。 这些文件可能在许多方面偏离TIFF标准，</span><br><span class="line">包括使用一个非标准的文件头，列入额外的图像标记和一些标签的数据加密。</span><br></pre></td></tr></table></figure><h3 id="TIFF-TIFF-EP-DNG-RAW之间的关系"><a href="#TIFF-TIFF-EP-DNG-RAW之间的关系" class="headerlink" title="TIFF, TIFF/EP, DNG, RAW之间的关系"></a>TIFF, TIFF/EP, DNG, RAW之间的关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TIFF和DNG同为Specification，分别定义了后缀名为.tif/.tiff和.dng的文件格式同时在TIFF Specification也定义个baseline及部分扩展的tag。</span><br><span class="line"></span><br><span class="line">TIFF/EP则定义并规范了在电子影像中所使用的TAG。</span><br><span class="line"></span><br><span class="line">DNG同时与TIFF和TIFF/EP兼容，并包含了EXIF和XMP信息。DNG实际上就是扩张的TIFF， 把DNG的扩展名改成TIF就可以直接预览图片。</span><br><span class="line"></span><br><span class="line">在DNG出现以前，各个数码相机制造商都有自己的格式，比如Canon(cr2/crw), Nikon(nef), Olympus(orf), Pentex(pef)等等。之所以出现这么多格式，一方面的原因是在这之前没有统一的raw格式， 但更重要的是，各个厂商希望用这个只对自己公开的数据格式来保护自己的私密信息。Adobe推出DNG希望能一统raw的天下。</span><br></pre></td></tr></table></figure><h3 id="处理不同格式RAW或者DNG底片的方法"><a href="#处理不同格式RAW或者DNG底片的方法" class="headerlink" title="处理不同格式RAW或者DNG底片的方法"></a>处理不同格式RAW或者DNG底片的方法</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;为了能够得到RAW格式或者DNG格式的jpg图片供我们预览，可以使用DCRAW和ffmpeg来结合使用</p><h4 id="dcraw介绍"><a href="#dcraw介绍" class="headerlink" title="dcraw介绍"></a>dcraw介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/bi_diu1368/article/details/80411304</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1,dcraw 下载   yum  install dcraw</span><br><span class="line">2.1,如果相机底片有缩略图，则直接可以通过  dcraw  -e   test.dng  获得其缩略图（注意，缩略图也有不存在的时候）</span><br><span class="line"></span><br><span class="line">2.2,如果没有缩略图，则可以先将RAW格式的转化为ppm   dcraw  -v  test.dng  获取其ppm的图片；</span><br><span class="line">然后在通过ffmpeg可以将 ppm格式的图片转码jpg  ffmpeg  -i  test.ppm out.jpg</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;公司要求对相机原生格式如后缀为dng,CR2等的图片进行转码，然后预览，自己查找了一下资料，目前仅仅是用命令行来进行处理的，因为我们是linux端的服务，所以直接封装命令行比较的简单。&lt;/p&gt;
-&lt;h3 id=&quot;DNG数据格式的
-      
-    
-    </summary>
-    
-      <category term="图片处理" scheme="http://www.helioswei.top/categories/image/"/>
-    
-    
-      <category term="image" scheme="http://www.helioswei.top/tags/image/"/>
     
   </entry>
   
