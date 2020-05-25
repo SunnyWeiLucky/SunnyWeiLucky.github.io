@@ -41,4 +41,5 @@ gulp.task('minify-js', function () {
 // 4.0 以后的写法
 // 执行 gulp 命令时执行的任务
 gulp.task('default', gulp.parallel('minify-html', 'minify-css', 'minify-js'));
+//gulp.task('default', gulp.parallel('minify-html', 'minify-css'));
 
