@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.helioswei.top/"/>
-  <updated>2020-05-25T02:25:55.376Z</updated>
+  <updated>2020-05-25T03:10:54.337Z</updated>
   <id>http://www.helioswei.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo-代码块添加复制功能</title>
+    <link href="http://www.helioswei.top/article/853195356.html"/>
+    <id>http://www.helioswei.top/article/853195356.html</id>
+    <published>2020-05-25T02:58:19.000Z</published>
+    <updated>2020-05-25T03:10:54.337Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一，添加copy-code-swig"><a href="#一，添加copy-code-swig" class="headerlink" title="一，添加copy-code.swig"></a>一，添加copy-code.swig</h3><p>在博客根目录下，输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd themes/next/layout/_third-party/</span><br></pre></td></tr></table></figure><p>然后在次文件夹下创建copy-code.swig的文件，内容如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.codeblock.copy_button.enable %&#125;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .copy-btn &#123;</span><br><span class="line">      display: inline-block;</span><br><span class="line">      padding: 6px 12px;</span><br><span class="line">      font-size: 13px;</span><br><span class="line">      font-weight: 700;</span><br><span class="line">      line-height: 20px;</span><br><span class="line">      color: #333;</span><br><span class="line">      white-space: nowrap;</span><br><span class="line">      vertical-align: middle;</span><br><span class="line">      cursor: pointer;</span><br><span class="line">      background-color: #eee;</span><br><span class="line">      background-image: linear-gradient(#fcfcfc, #eee);</span><br><span class="line">      border: 1px solid #d5d5d5;</span><br><span class="line">      border-radius: 3px;</span><br><span class="line">      user-select: none;</span><br><span class="line">      outline: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .highlight-wrap .copy-btn &#123;</span><br><span class="line">      transition: opacity .3s ease-in-out;</span><br><span class="line">      opacity: 0;</span><br><span class="line">      padding: 2px 6px;</span><br><span class="line">      position: absolute;</span><br><span class="line">      right: 4px;</span><br><span class="line">      top: 8px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .highlight-wrap:hover .copy-btn,</span><br><span class="line">    .highlight-wrap .copy-btn:focus &#123;</span><br><span class="line">      opacity: 1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .highlight-wrap &#123;</span><br><span class="line">      position: relative;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    $(&apos;.highlight&apos;).each(function (i, e) &#123;</span><br><span class="line">      var $wrap = $(&apos;&lt;div&gt;&apos;).addClass(&apos;highlight-wrap&apos;)</span><br><span class="line">      $(e).after($wrap)</span><br><span class="line">      $wrap.append($(&apos;&lt;button&gt;&apos;).addClass(&apos;copy-btn&apos;).append(&apos;&#123;&#123;__(&quot;post.copy_button&quot;)&#125;&#125;&apos;).on(&apos;click&apos;, function (e) &#123;</span><br><span class="line">        var code = $(this).parent().find(&apos;.code&apos;).find(&apos;.line&apos;).map(function (i, e) &#123;</span><br><span class="line">          return $(e).text()</span><br><span class="line">        &#125;).toArray().join(&apos;\n&apos;)</span><br><span class="line">        var ta = document.createElement(&apos;textarea&apos;)</span><br><span class="line">        document.body.appendChild(ta)</span><br><span class="line">        ta.style.position = &apos;absolute&apos;</span><br><span class="line">        ta.style.top = &apos;0px&apos;</span><br><span class="line">        ta.style.left = &apos;0px&apos;</span><br><span class="line">        ta.value = code</span><br><span class="line">        ta.select()</span><br><span class="line">        ta.focus()</span><br><span class="line">        var result = document.execCommand(&apos;copy&apos;)</span><br><span class="line">        document.body.removeChild(ta)</span><br><span class="line">        &#123;% if theme.codeblock.copy_button.show_result %&#125;</span><br><span class="line">          if(result)$(this).text(&apos;&#123;&#123;__(&quot;post.copy_success&quot;)&#125;&#125;&apos;)</span><br><span class="line">          else $(this).text(&apos;&#123;&#123;__(&quot;post.copy_failure&quot;)&#125;&#125;&apos;)</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">        $(this).blur()</span><br><span class="line">      &#125;)).on(&apos;mouseleave&apos;, function (e) &#123;</span><br><span class="line">        var $b = $(this).find(&apos;.copy-btn&apos;)</span><br><span class="line">        setTimeout(function () &#123;</span><br><span class="line">          $b.text(&apos;&#123;&#123;__(&quot;post.copy_button&quot;)&#125;&#125;&apos;)</span><br><span class="line">        &#125;, 300)</span><br><span class="line">      &#125;).append(e)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure><p>然后返回上一层目录，即<code>layout</code>文件夹下，编辑_layout.swig,如下图</p><p><img src="/images/codecopy.png" alt="codecopy.png"></p><p>在图中位置添加：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include &apos;_third-party/copy-code.swig&apos; %&#125;</span><br></pre></td></tr></table></figure><p><a href="https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">参考这位作者的文章</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;一，添加copy-code-swig&quot;&gt;&lt;a href=&quot;#一，添加copy-code-swig&quot; class=&quot;headerlink&quot; title=&quot;一，添加copy-code.swig&quot;&gt;&lt;/a&gt;一，添加copy-code.swig&lt;/h3&gt;&lt;p&gt;在博客根目录
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://www.helioswei.top/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://www.helioswei.top/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo-gulp压缩</title>
@@ -522,31 +547,6 @@
     
     
       <category term="ffmpeg" scheme="http://www.helioswei.top/tags/ffmpeg/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>系统io状态排查</title>
-    <link href="http://www.helioswei.top/article/4148759935.html"/>
-    <id>http://www.helioswei.top/article/4148759935.html</id>
-    <published>2019-04-28T06:36:56.000Z</published>
-    <updated>2020-05-11T10:02:09.563Z</updated>
-    
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;这几天在排查自己写的转码服务性能上不去，转码特别慢，正常情况下，转码时CPU可以飙到很高，但是在问题机器上CPU只要50%左右，排查了好久，最终确定是某个其它服务io资源占用了太多，导致了我的转码服务io占用几乎没有，所以出现了问题，介绍几个io的工具，帮助以后查看系统的情况。</p><h3 id="iostat"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;iostat主要是用来查看系统的io使用情况，<br>只记录自己使用的命令</p><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install sysstat</span><br></pre></td></tr></table></figure><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iostat [-c ] [ -d ] [ -k ] [ -m ] [ -x ]</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;这几天在排查自己写的转码服务性能上不去，转码特别慢，正常情况下，转码时CPU可以飙到很高，但是在问题机器上CPU只要50%左右，排查了好久，最终确定是某个其它服务io资源占用了太多，导致了我的转码服务io占用几乎没有，所以出现
-      
-    
-    </summary>
-    
-      <category term="centos7" scheme="http://www.helioswei.top/categories/centos7/"/>
-    
-    
-      <category term="tools" scheme="http://www.helioswei.top/tags/tools/"/>
     
   </entry>
   
