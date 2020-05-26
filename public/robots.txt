@@ -4,5 +4,6 @@ Allow: /archives/
 Allow: /categories/
 Allow: /tags/
 Allow: /about/
+Allow: /article/
 
 Sitemap: http://www.helioswei.top/sitemap.xml

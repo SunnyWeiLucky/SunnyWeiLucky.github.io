@@ -65,11 +65,25 @@ docker rm $(docker ps -a | grep IMAGEID|awk '{print $1}') -f
 docker rmi IMAGEID
 ~~~
 
+##### 删除none镜像
+
+~~~
+docker rmi $(docker images | grep '<none>'|awk '{print $3}') -f
+~~~
+
 ##### 镜像运行
 
 ~~~
 docker run -it e2cbe0447a2b /bin/bash
 ~~~
+
+镜像运行时添加环境变量
+
+~~~
+docker run -e MEDIA_REDIS_IP=127.0.0.1 -e MEDIA_REDIS_PORT=5555  -it d3796bd153f8 /bin/bash
+~~~
+
+
 
 ### 容器
 

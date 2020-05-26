@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[docker-docker常用命令]]></title>
     <url>%2Farticle%2F2019996800.html</url>
-    <content type="text"><![CDATA[记录一下自己在工作中常用的docker命令 安装1yum -y install docker 1systemctl start docker 验证是否可以正常运行 1docker run hello-world 镜像镜像构建通过dockfile1docker build -t datatom/video-worker:v4.2.0 -f Dockerfile . 镜像打包1docker save -o video-worker.v4.2.0.tar datatom/video-worker:v4.2.0 镜像导入1docker load -i video-worker.v4.2.0.tar 查看镜像1docker images 删除镜像1docker rmi IMAGEID 如果当前镜像正在被容器使用，则需要先删除容器，可以使用如下命令删除 12docker rm $(docker ps -a | grep IMAGEID|awk &apos;&#123;print $1&#125;&apos;) -fdocker rmi IMAGEID 镜像运行1docker run -it e2cbe0447a2b /bin/bash 容器查看正在运行的容器1docker ps -a 停止容器1docker stop CONTAINERID 删除容器1docker rm CONTAINERID 强制删除1docker rm CONTAINERID -f]]></content>
+    <content type="text"><![CDATA[记录一下自己在工作中常用的docker命令 安装1yum -y install docker 1systemctl start docker 验证是否可以正常运行 1docker run hello-world 镜像镜像构建通过dockfile1docker build -t datatom/video-worker:v4.2.0 -f Dockerfile . 镜像打包1docker save -o video-worker.v4.2.0.tar datatom/video-worker:v4.2.0 镜像导入1docker load -i video-worker.v4.2.0.tar 查看镜像1docker images 删除镜像1docker rmi IMAGEID 如果当前镜像正在被容器使用，则需要先删除容器，可以使用如下命令删除 12docker rm $(docker ps -a | grep IMAGEID|awk &apos;&#123;print $1&#125;&apos;) -fdocker rmi IMAGEID 删除none镜像1docker rmi $(docker images | grep &apos;&lt;none&gt;&apos;|awk &apos;&#123;print $3&#125;&apos;) -f 镜像运行1docker run -it e2cbe0447a2b /bin/bash 镜像运行时添加环境变量 1docker run -e MEDIA_REDIS_IP=127.0.0.1 -e MEDIA_REDIS_PORT=5555 -it d3796bd153f8 /bin/bash 容器查看正在运行的容器1docker ps -a 停止容器1docker stop CONTAINERID 删除容器1docker rm CONTAINERID 强制删除1docker rm CONTAINERID -f]]></content>
       <categories>
         <category>docker</category>
       </categories>
