@@ -18,6 +18,10 @@ date: 2020-05-06 11:14:01
 wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
 ~~~
 
+~~~
+curl -o CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
+~~~
+
 
 
 ### 二，备份并且替代系统的repo文件

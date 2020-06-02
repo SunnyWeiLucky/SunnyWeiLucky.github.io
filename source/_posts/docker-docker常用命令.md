@@ -83,8 +83,6 @@ docker run -it e2cbe0447a2b /bin/bash
 docker run -e MEDIA_REDIS_IP=127.0.0.1 -e MEDIA_REDIS_PORT=5555  -it d3796bd153f8 /bin/bash
 ~~~
 
-
-
 ### 容器
 
 ##### 查看正在运行的容器
@@ -109,6 +107,14 @@ docker rm CONTAINERID
 
 ~~~
 docker rm CONTAINERID -f
+~~~
+
+### tag
+
+##### 修改镜像的tagid
+
+~~~
+docker  tag   f92b7e4509da  datatom/image-worker:v4.1.1
 ~~~
 
 
