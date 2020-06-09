@@ -73,6 +73,15 @@ hexo g
 hexo d
 ~~~
 
+##### npm包的问题
+
+在新的环境下执行npm包的升级
+
+~~~
+ npm install npm -g
+ npm update
+~~~
+
 
 
 ### hexo常用命令
