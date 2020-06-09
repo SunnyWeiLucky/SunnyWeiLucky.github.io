@@ -22,12 +22,31 @@ date: 2020-06-01 15:23:20
 
 ### 二，修改hosts
 
-在linux上 
+通过[查询IP地址网站](https://www.ipaddress.com/)查询下面两个域名的IP地址
 
 ~~~
-vim  /etc/hosts
-#添加
-151.101.72.249 github.http://global.ssl.fastly.net
-192.30.253.112 github.com
+github.global.ssl.fastly.net
 ~~~
 
+~~~
+github.com
+~~~
+
+##### 在linux上  vim /etc/hosts
+
+~~~
+199.232.69.194 github.global.ssl.fastly.net
+140.82.113.3 github.com
+~~~
+
+##### 在Windows上 修改 C:\Windows\System32\drivers\etc\hosts
+
+1. 对于Windows下的hosts执行需要权限，我们可以将其先拷贝到桌面，修改后再copy回去
+
+2. 打开cmd命令行，执行下面的命令
+
+3. ~~~
+   ipconfig/flushdns
+   ~~~
+
+   
