@@ -17,6 +17,15 @@
       </tags>
   </entry>
   <entry>
+    <title>centos7-控制系统的CPU</title>
+    <url>/article/3687663458.html</url>
+    <content><![CDATA[<p>这里是linux的学习基地，我们可以学习一些linux的常用知识</p>
+]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+  </entry>
+  <entry>
     <title>centos7-epel源下载</title>
     <url>/article/3859923575.html</url>
     <content><![CDATA[<h3 id="一，什么是epel"><a href="#一，什么是epel" class="headerlink" title="一，什么是epel"></a>一，什么是epel</h3><p><strong>EPEL的全称叫 Extra Packages for Enterprise Linux</strong> 。EPEL是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS、Scientific Linux 等提供高质量软件包的项目。装上了 EPEL之后，就相当于添加了一个第三方源。</p>
@@ -48,12 +57,61 @@
 <h3 id="获取服务运行时使用的内存"><a href="#获取服务运行时使用的内存" class="headerlink" title="获取服务运行时使用的内存"></a>获取服务运行时使用的内存</h3><p><img src="/images/linux/cache.png" alt="cache.png"></p>
 <h3 id="控制进程使用cpu数目"><a href="#控制进程使用cpu数目" class="headerlink" title="控制进程使用cpu数目"></a>控制进程使用cpu数目</h3><h5 id="获取进程id"><a href="#获取进程id" class="headerlink" title="获取进程id"></a>获取进程id</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pgrep  -f   servername</span><br><span class="line"></span><br><span class="line">pidof   servername</span><br></pre></td></tr></table></figure>
 <h5 id="设置CPU使用"><a href="#设置CPU使用" class="headerlink" title="设置CPU使用"></a>设置CPU使用</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">注意： 默认情况下，taskset不会影响进程的所有线程（LWP）。使用任务集的“-a”选项来影响流程中的所有线程</span><br><span class="line"></span><br><span class="line">一般可以这样设置：   taskset   -apc  0   8991     (这个目前最有效）</span><br></pre></td></tr></table></figure>
+<h3 id="脚本中生成随机数"><a href="#脚本中生成随机数" class="headerlink" title="脚本中生成随机数"></a>脚本中生成随机数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">UUID=`echo $RANDOM`</span><br></pre></td></tr></table></figure>
+<h3 id="记录程序运行的资源到文件中"><a href="#记录程序运行的资源到文件中" class="headerlink" title="记录程序运行的资源到文件中"></a>记录程序运行的资源到文件中</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y time</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/usr/bin/time -v -o video.log ffmpeg -i xxx.mp4</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>centos7</category>
       </categories>
       <tags>
         <tag>centos7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cpp-关于内存泄漏的问题</title>
+    <url>/article/834551784.html</url>
+    <content><![CDATA[<p>今天我们讨论一些怎么处理内存泄漏的问题</p>
+]]></content>
+      <categories>
+        <category>cpp</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+        <tag>ffmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7-网络设置</title>
+    <url>/article/3594159119.html</url>
+    <content><![CDATA[<p>配置centos7的网络，让其可以正常的连接网络</p>
+<h3 id="一，打开网络配置所在的文件"><a href="#一，打开网络配置所在的文件" class="headerlink" title="一，打开网络配置所在的文件"></a>一，打开网络配置所在的文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts</span><br><span class="line">vi ifcfg-ens160 (不同的系统，文件名不同)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">#设置静态ip还是动态IP</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens160</span><br><span class="line">UUID=750fb5d2-4bff-437d-ab4e-75eaf038429d</span><br><span class="line">DEVICE=ens160</span><br><span class="line">#开机自启动</span><br><span class="line">ONBOOT=yes</span><br><span class="line">#静态ip地址</span><br><span class="line">IPADDR=192.168.50.72</span><br><span class="line">#静态网关</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">#路由</span><br><span class="line">GATEWAY=192.168.50.1</span><br></pre></td></tr></table></figure>
+<p>设置好之后，重启网络服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
+<h3 id="二，配置域名解析"><a href="#二，配置域名解析" class="headerlink" title="二，配置域名解析"></a>二，配置域名解析</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<p>添加内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nameserver   8.8.8.8</span><br><span class="line"></span><br><span class="line">nameserver   8.8.4.4</span><br><span class="line"></span><br><span class="line">nameserver    114.114.114.114</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ffmpeg_avfilter的使用详解</title>
+    <url>/article/4030313287.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，</p>
+<p>过滤的过程<br>解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面</p>
+]]></content>
+      <categories>
+        <category>ffmpeg</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+        <tag>avfilter</tag>
       </tags>
   </entry>
   <entry>
@@ -117,28 +175,6 @@
       </tags>
   </entry>
   <entry>
-    <title>centos7-控制系统的CPU</title>
-    <url>/article/3687663458.html</url>
-    <content><![CDATA[<p>这里是linux的学习基地，我们可以学习一些linux的常用知识</p>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>cpp-关于内存泄漏的问题</title>
-    <url>/article/834551784.html</url>
-    <content><![CDATA[<p>今天我们讨论一些怎么处理内存泄漏的问题</p>
-]]></content>
-      <categories>
-        <category>cpp</category>
-      </categories>
-      <tags>
-        <tag>cpp</tag>
-        <tag>ffmpeg</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker-docker常用命令</title>
     <url>/article/2019996800.html</url>
     <content><![CDATA[<p>记录一下自己在工作中常用的docker命令</p>
@@ -169,20 +205,6 @@
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ffmpeg_avfilter的使用详解</title>
-    <url>/article/4030313287.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，</p>
-<p>过滤的过程<br>解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面</p>
-]]></content>
-      <categories>
-        <category>ffmpeg</category>
-      </categories>
-      <tags>
-        <tag>ffmpeg</tag>
-        <tag>avfilter</tag>
       </tags>
   </entry>
   <entry>
@@ -323,25 +345,6 @@
       </tags>
   </entry>
   <entry>
-    <title>centos7-网络设置</title>
-    <url>/article/3594159119.html</url>
-    <content><![CDATA[<p>配置centos7的网络，让其可以正常的连接网络</p>
-<h3 id="一，打开网络配置所在的文件"><a href="#一，打开网络配置所在的文件" class="headerlink" title="一，打开网络配置所在的文件"></a>一，打开网络配置所在的文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts</span><br><span class="line">vi ifcfg-ens160 (不同的系统，文件名不同)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">#设置静态ip还是动态IP</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens160</span><br><span class="line">UUID=750fb5d2-4bff-437d-ab4e-75eaf038429d</span><br><span class="line">DEVICE=ens160</span><br><span class="line">#开机自启动</span><br><span class="line">ONBOOT=yes</span><br><span class="line">#静态ip地址</span><br><span class="line">IPADDR=192.168.50.72</span><br><span class="line">#静态网关</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">#路由</span><br><span class="line">GATEWAY=192.168.50.1</span><br></pre></td></tr></table></figure>
-<p>设置好之后，重启网络服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
-<h3 id="二，配置域名解析"><a href="#二，配置域名解析" class="headerlink" title="二，配置域名解析"></a>二，配置域名解析</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/resolv.conf</span><br></pre></td></tr></table></figure>
-<p>添加内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nameserver   8.8.8.8</span><br><span class="line"></span><br><span class="line">nameserver   8.8.4.4</span><br><span class="line"></span><br><span class="line">nameserver    114.114.114.114</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ffmpeg-编码的步骤</title>
     <url>/article/3394448682.html</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;总结一下编码的大致过程，方便自己下一次的处理，分为音频编码和视频</p>
@@ -376,6 +379,23 @@
       <tags>
         <tag>cpp</tag>
         <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-大文件上传管理</title>
+    <url>/article/3538252460.html</url>
+    <content><![CDATA[<h3 id="git-lfs安装和配置"><a href="#git-lfs安装和配置" class="headerlink" title="git lfs安装和配置"></a>git lfs安装和配置</h3><p>git lfs 需要客户端支持, 请根据自己的操作系统下载对应的客户端</p>
+<p><a href="https://git-lfs.github.com/" target="_blank" rel="noopener">git lfs客户端下载</a></p>
+<p><code>以Centos7为例，下载客户端后运行rpm安装</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -i git-lfs-2.2.1-1.el7.x86_64.rpm</span><br><span class="line">git lfs install（完成初始化）</span><br></pre></td></tr></table></figure>
+<h3 id="设置管理的文件类型"><a href="#设置管理的文件类型" class="headerlink" title="设置管理的文件类型"></a>设置管理的文件类型</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#压缩包</span><br><span class="line">git lfs track *.tar *.tar.gz *.tgz *.zip *.7z</span><br><span class="line">#图片</span><br><span class="line">git lfs track *.jpg *.png *.jpeg *.bmp *.gif *.tiff</span><br><span class="line">#库</span><br><span class="line">git lfs track *.jar *.war *.so *.so.*</span><br><span class="line">#非文本文档</span><br><span class="line">git  lfs  track *.doc *.docx *.ppt *.pptx *.pdf *.xls *.xlsx</span><br><span class="line">#安装包</span><br><span class="line">git  lfs  track *.rpm *.deb *.img *.iso</span><br></pre></td></tr></table></figure>
+<p><code>设置完之后会在项目根目录下出现.gitattributes文件</code></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -416,20 +436,51 @@
       </tags>
   </entry>
   <entry>
-    <title>git-大文件上传管理</title>
-    <url>/article/3538252460.html</url>
-    <content><![CDATA[<h3 id="git-lfs安装和配置"><a href="#git-lfs安装和配置" class="headerlink" title="git lfs安装和配置"></a>git lfs安装和配置</h3><p>git lfs 需要客户端支持, 请根据自己的操作系统下载对应的客户端</p>
-<p><a href="https://git-lfs.github.com/" target="_blank" rel="noopener">git lfs客户端下载</a></p>
-<p><code>以Centos7为例，下载客户端后运行rpm安装</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -i git-lfs-2.2.1-1.el7.x86_64.rpm</span><br><span class="line">git lfs install（完成初始化）</span><br></pre></td></tr></table></figure>
-<h3 id="设置管理的文件类型"><a href="#设置管理的文件类型" class="headerlink" title="设置管理的文件类型"></a>设置管理的文件类型</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#压缩包</span><br><span class="line">git lfs track *.tar *.tar.gz *.tgz *.zip *.7z</span><br><span class="line">#图片</span><br><span class="line">git lfs track *.jpg *.png *.jpeg *.bmp *.gif *.tiff</span><br><span class="line">#库</span><br><span class="line">git lfs track *.jar *.war *.so *.so.*</span><br><span class="line">#非文本文档</span><br><span class="line">git  lfs  track *.doc *.docx *.ppt *.pptx *.pdf *.xls *.xlsx</span><br><span class="line">#安装包</span><br><span class="line">git  lfs  track *.rpm *.deb *.img *.iso</span><br></pre></td></tr></table></figure>
-<p><code>设置完之后会在项目根目录下出现.gitattributes文件</code></p>
+    <title>github-解决GitHub clone慢的问题</title>
+    <url>/article/814027255.html</url>
+    <content><![CDATA[<p>哎，有时候自己在GitHub上下载东西的时候总是很慢，这里记载一下几个加快的方法</p>
+<h3 id="一，使用gitee码云来进行clone"><a href="#一，使用gitee码云来进行clone" class="headerlink" title="一，使用gitee码云来进行clone"></a>一，使用gitee码云来进行clone</h3><p>将需要clone的项目，先转移到码云上，然后通过码云来下载本地，速度很快；</p>
+<h3 id="二，修改hosts"><a href="#二，修改hosts" class="headerlink" title="二，修改hosts"></a>二，修改hosts</h3><p>通过<a href="https://www.ipaddress.com/" target="_blank" rel="noopener">查询IP地址网站</a>查询下面两个域名的IP地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">github.com</span><br></pre></td></tr></table></figure>
+<h5 id="在linux上-vim-etc-hosts"><a href="#在linux上-vim-etc-hosts" class="headerlink" title="在linux上  vim /etc/hosts"></a>在linux上  vim /etc/hosts</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">199.232.69.194 github.global.ssl.fastly.net</span><br><span class="line">140.82.113.3 github.com</span><br></pre></td></tr></table></figure>
+<h5 id="在Windows上-修改-C-Windows-System32-drivers-etc-hosts"><a href="#在Windows上-修改-C-Windows-System32-drivers-etc-hosts" class="headerlink" title="在Windows上 修改 C:\Windows\System32\drivers\etc\hosts"></a>在Windows上 修改 C:\Windows\System32\drivers\etc\hosts</h5><ol>
+<li><p>对于Windows下的hosts执行需要权限，我们可以将其先拷贝到桌面，修改后再copy回去</p>
+</li>
+<li><p>打开cmd命令行，执行下面的命令</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ipconfig/flushdns</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 ]]></content>
       <categories>
+        <category>github</category>
         <category>git</category>
       </categories>
       <tags>
         <tag>git</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>grpc编译</title>
+    <url>/article/1473358207.html</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">环境 centos7</span><br></pre></td></tr></table></figure>
+<h2 id="一，安装编译依赖的环境"><a href="#一，安装编译依赖的环境" class="headerlink" title="一，安装编译依赖的环境"></a>一，安装编译依赖的环境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y pkgconfig autoconf automake libtool make gcc-c++ unzip</span><br><span class="line">yum install -y gflags-devel gtest-devel clang libcxx-devel</span><br><span class="line">yum install -y openssl  openssl-devel</span><br><span class="line">yum install -y  libunwind libunwind-devel</span><br><span class="line">yum install -y epel-release</span><br><span class="line">yum install -y golang</span><br></pre></td></tr></table></figure>
+<h2 id="二，源码下载"><a href="#二，源码下载" class="headerlink" title="二，源码下载"></a>二，源码下载</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/grpc/grpc.git</span><br><span class="line">cd grpc</span><br><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
+<h2 id="三，编译"><a href="#三，编译" class="headerlink" title="三，编译"></a>三，编译</h2><h4 id="1，编译cmake"><a href="#1，编译cmake" class="headerlink" title="1，编译cmake"></a>1，编译cmake</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">需要下载cmake高级版本，yum安装的版本太低</span><br><span class="line">https://cmake.org/download/</span><br><span class="line">源码安装cmake，</span><br><span class="line">（1）删除原来版本的cmake</span><br><span class="line">（2）./configure</span><br><span class="line">（3）make &amp;&amp; make install</span><br><span class="line">如果找不到，则创建软链接</span><br><span class="line">ln -s /usr/local/bin/cmake /usr/bin/cmake</span><br></pre></td></tr></table></figure>
+<h4 id="2，先编译protobuf"><a href="#2，先编译protobuf" class="headerlink" title="2，先编译protobuf"></a>2，先编译protobuf</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd third_party/protobuf</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --prefix=/usr/local/helios/protobuf</span><br><span class="line">make </span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line">2,建立软链接</span><br><span class="line">ln -s /usr/local/helios/protobuf/bin/protoc /usr/local/bin/protoc</span><br><span class="line">检测是否安装成功</span><br><span class="line">protoc --version</span><br></pre></td></tr></table></figure>
+<h4 id="3，编译grpc（cmake"><a href="#3，编译grpc（cmake" class="headerlink" title="3，编译grpc（cmake)"></a>3，编译grpc（cmake)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd grpc</span><br><span class="line">mkdir -p  cmake/build</span><br><span class="line">cmake -DBUILD_SHARED_LIBS=on -DCMAKE_INSTALL_PREFIX=/usr/local/helios/grpc -DCMAKE_BUILD_TYPE=DEBUG -Wno-dev ../../</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h4 id="4，编译（make-不建议使用）"><a href="#4，编译（make-不建议使用）" class="headerlink" title="4，编译（make,不建议使用）"></a>4，编译（make,不建议使用）</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2,编译grpc</span><br><span class="line">cd grpc根目录</span><br><span class="line">make -j 4</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h4 id="5，问题"><a href="#5，问题" class="headerlink" title="5，问题"></a>5，问题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对于cpp的使用，当编译好了之后，运行helloworld程序，没有响应，有很大的问题</span><br><span class="line">https://github.com/grpc/grpc/issues/21280#issuecomment-558164977</span><br><span class="line"></span><br><span class="line">解决方法：修改源码（不使用）</span><br><span class="line">vim / src / core / lib / surface / init.cc</span><br><span class="line"></span><br><span class="line">diff --git a/src/core/lib/surface/init.cc b/src/core/lib/surface/init.cc</span><br><span class="line">index 2812427f7a..3c6a547b20 100644</span><br><span class="line">--- a/src/core/lib/surface/init.cc</span><br><span class="line">+++ b/src/core/lib/surface/init.cc</span><br><span class="line">@@ -156,7 +156,7 @@ void grpc_init(void) &#123;</span><br><span class="line">      * at the appropriate time */</span><br><span class="line">     grpc_register_security_filters();</span><br><span class="line">     register_builtin_channel_init();</span><br><span class="line">-    grpc_tracer_init();将源码中的这个给注销</span><br><span class="line">+    // grpc_tracer_init();</span><br><span class="line">     /* no more changes to channel init pipelines */</span><br><span class="line">     grpc_channel_init_finalize();</span><br><span class="line">     grpc_iomgr_start();</span><br><span class="line">     </span><br><span class="line">修改源码：</span><br><span class="line">vim src/core/lib/debug/trace.cc</span><br><span class="line"> void TraceFlagList::Add(TraceFlag* flag) &#123;</span><br><span class="line">+  TraceFlag* t;</span><br><span class="line">+  for (t = root_tracer_; t; t = t -&gt; next_tracer_) &#123;</span><br><span class="line">+       if (t == flag ) return;</span><br><span class="line">+  &#125;</span><br><span class="line">   flag-&gt;next_tracer_ = root_tracer_;</span><br><span class="line">   root_tracer_ = flag;</span><br><span class="line">遍历链表，如果存在则不加入</span><br></pre></td></tr></table></figure>
+<h4 id="6，运行helloworld程序"><a href="#6，运行helloworld程序" class="headerlink" title="6，运行helloworld程序"></a>6，运行helloworld程序</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd examples/cpp/helloworld</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">出现问题：</span><br><span class="line">which: no grpc_cpp_plugin in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin)</span><br><span class="line">因为自己配置的路径，所以先给grpc_cpp_plugin  建立软连接</span><br><span class="line">ln -s /usr/local/helios/grpc/bin/grpc_cpp_plugin   /usr/local/bin/grpc_cpp_plugin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">helloworld.pb.h:10:40: fatal error: google/protobuf/port_def.inc: No such file or directory</span><br><span class="line">配置cpp头文件路径</span><br><span class="line">export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/helios/grpc/include</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Package protobuf was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `protobuf.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;protobuf&apos; found</span><br><span class="line">Package grpc was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `grpc.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;grpc&apos; found</span><br><span class="line">配置pkgconfig搜索路径</span><br><span class="line">export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/helios/protobuf/lib/pkgconfig/:/usr/local/helios/grpc/lib/pkgconfig/</span><br><span class="line"></span><br><span class="line">error while loading shared libraries: libgrpc_plugin_support.so.1: cannot open shared object file</span><br><span class="line">配置cpp动态库搜索路径</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/helios/grpc/lib/:/usr/local/helios/grpc/lib64/:/usr/local/helios/protobuf/lib</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>grpc</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+        <tag>grpc</tag>
       </tags>
   </entry>
   <entry>
@@ -463,27 +514,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>gulp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>grpc编译</title>
-    <url>/article/1473358207.html</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">环境 centos7</span><br></pre></td></tr></table></figure>
-<h2 id="一，安装编译依赖的环境"><a href="#一，安装编译依赖的环境" class="headerlink" title="一，安装编译依赖的环境"></a>一，安装编译依赖的环境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y pkgconfig autoconf automake libtool make gcc-c++ unzip</span><br><span class="line">yum install -y gflags-devel gtest-devel clang libcxx-devel</span><br><span class="line">yum install -y openssl  openssl-devel</span><br><span class="line">yum install -y  libunwind libunwind-devel</span><br><span class="line">yum install -y epel-release</span><br><span class="line">yum install -y golang</span><br></pre></td></tr></table></figure>
-<h2 id="二，源码下载"><a href="#二，源码下载" class="headerlink" title="二，源码下载"></a>二，源码下载</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/grpc/grpc.git</span><br><span class="line">cd grpc</span><br><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
-<h2 id="三，编译"><a href="#三，编译" class="headerlink" title="三，编译"></a>三，编译</h2><h4 id="1，编译cmake"><a href="#1，编译cmake" class="headerlink" title="1，编译cmake"></a>1，编译cmake</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">需要下载cmake高级版本，yum安装的版本太低</span><br><span class="line">https://cmake.org/download/</span><br><span class="line">源码安装cmake，</span><br><span class="line">（1）删除原来版本的cmake</span><br><span class="line">（2）./configure</span><br><span class="line">（3）make &amp;&amp; make install</span><br><span class="line">如果找不到，则创建软链接</span><br><span class="line">ln -s /usr/local/bin/cmake /usr/bin/cmake</span><br></pre></td></tr></table></figure>
-<h4 id="2，先编译protobuf"><a href="#2，先编译protobuf" class="headerlink" title="2，先编译protobuf"></a>2，先编译protobuf</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd third_party/protobuf</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --prefix=/usr/local/helios/protobuf</span><br><span class="line">make </span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line">2,建立软链接</span><br><span class="line">ln -s /usr/local/helios/protobuf/bin/protoc /usr/local/bin/protoc</span><br><span class="line">检测是否安装成功</span><br><span class="line">protoc --version</span><br></pre></td></tr></table></figure>
-<h4 id="3，编译grpc（cmake"><a href="#3，编译grpc（cmake" class="headerlink" title="3，编译grpc（cmake)"></a>3，编译grpc（cmake)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd grpc</span><br><span class="line">mkdir -p  cmake/build</span><br><span class="line">cmake -DBUILD_SHARED_LIBS=on -DCMAKE_INSTALL_PREFIX=/usr/local/helios/grpc -DCMAKE_BUILD_TYPE=DEBUG -Wno-dev ../../</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h4 id="4，编译（make-不建议使用）"><a href="#4，编译（make-不建议使用）" class="headerlink" title="4，编译（make,不建议使用）"></a>4，编译（make,不建议使用）</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2,编译grpc</span><br><span class="line">cd grpc根目录</span><br><span class="line">make -j 4</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h4 id="5，问题"><a href="#5，问题" class="headerlink" title="5，问题"></a>5，问题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对于cpp的使用，当编译好了之后，运行helloworld程序，没有响应，有很大的问题</span><br><span class="line">https://github.com/grpc/grpc/issues/21280#issuecomment-558164977</span><br><span class="line"></span><br><span class="line">解决方法：修改源码（不使用）</span><br><span class="line">vim / src / core / lib / surface / init.cc</span><br><span class="line"></span><br><span class="line">diff --git a/src/core/lib/surface/init.cc b/src/core/lib/surface/init.cc</span><br><span class="line">index 2812427f7a..3c6a547b20 100644</span><br><span class="line">--- a/src/core/lib/surface/init.cc</span><br><span class="line">+++ b/src/core/lib/surface/init.cc</span><br><span class="line">@@ -156,7 +156,7 @@ void grpc_init(void) &#123;</span><br><span class="line">      * at the appropriate time */</span><br><span class="line">     grpc_register_security_filters();</span><br><span class="line">     register_builtin_channel_init();</span><br><span class="line">-    grpc_tracer_init();将源码中的这个给注销</span><br><span class="line">+    // grpc_tracer_init();</span><br><span class="line">     /* no more changes to channel init pipelines */</span><br><span class="line">     grpc_channel_init_finalize();</span><br><span class="line">     grpc_iomgr_start();</span><br><span class="line">     </span><br><span class="line">修改源码：</span><br><span class="line">vim src/core/lib/debug/trace.cc</span><br><span class="line"> void TraceFlagList::Add(TraceFlag* flag) &#123;</span><br><span class="line">+  TraceFlag* t;</span><br><span class="line">+  for (t = root_tracer_; t; t = t -&gt; next_tracer_) &#123;</span><br><span class="line">+       if (t == flag ) return;</span><br><span class="line">+  &#125;</span><br><span class="line">   flag-&gt;next_tracer_ = root_tracer_;</span><br><span class="line">   root_tracer_ = flag;</span><br><span class="line">遍历链表，如果存在则不加入</span><br></pre></td></tr></table></figure>
-<h4 id="6，运行helloworld程序"><a href="#6，运行helloworld程序" class="headerlink" title="6，运行helloworld程序"></a>6，运行helloworld程序</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd examples/cpp/helloworld</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">出现问题：</span><br><span class="line">which: no grpc_cpp_plugin in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin)</span><br><span class="line">因为自己配置的路径，所以先给grpc_cpp_plugin  建立软连接</span><br><span class="line">ln -s /usr/local/helios/grpc/bin/grpc_cpp_plugin   /usr/local/bin/grpc_cpp_plugin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">helloworld.pb.h:10:40: fatal error: google/protobuf/port_def.inc: No such file or directory</span><br><span class="line">配置cpp头文件路径</span><br><span class="line">export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/helios/grpc/include</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Package protobuf was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `protobuf.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;protobuf&apos; found</span><br><span class="line">Package grpc was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `grpc.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;grpc&apos; found</span><br><span class="line">配置pkgconfig搜索路径</span><br><span class="line">export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/helios/protobuf/lib/pkgconfig/:/usr/local/helios/grpc/lib/pkgconfig/</span><br><span class="line"></span><br><span class="line">error while loading shared libraries: libgrpc_plugin_support.so.1: cannot open shared object file</span><br><span class="line">配置cpp动态库搜索路径</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/helios/grpc/lib/:/usr/local/helios/grpc/lib64/:/usr/local/helios/protobuf/lib</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>grpc</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-        <tag>grpc</tag>
       </tags>
   </entry>
   <entry>
@@ -550,33 +580,6 @@
       </tags>
   </entry>
   <entry>
-    <title>github-解决GitHub clone慢的问题</title>
-    <url>/article/814027255.html</url>
-    <content><![CDATA[<p>哎，有时候自己在GitHub上下载东西的时候总是很慢，这里记载一下几个加快的方法</p>
-<h3 id="一，使用gitee码云来进行clone"><a href="#一，使用gitee码云来进行clone" class="headerlink" title="一，使用gitee码云来进行clone"></a>一，使用gitee码云来进行clone</h3><p>将需要clone的项目，先转移到码云上，然后通过码云来下载本地，速度很快；</p>
-<h3 id="二，修改hosts"><a href="#二，修改hosts" class="headerlink" title="二，修改hosts"></a>二，修改hosts</h3><p>通过<a href="https://www.ipaddress.com/" target="_blank" rel="noopener">查询IP地址网站</a>查询下面两个域名的IP地址</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">github.com</span><br></pre></td></tr></table></figure>
-<h5 id="在linux上-vim-etc-hosts"><a href="#在linux上-vim-etc-hosts" class="headerlink" title="在linux上  vim /etc/hosts"></a>在linux上  vim /etc/hosts</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">199.232.69.194 github.global.ssl.fastly.net</span><br><span class="line">140.82.113.3 github.com</span><br></pre></td></tr></table></figure>
-<h5 id="在Windows上-修改-C-Windows-System32-drivers-etc-hosts"><a href="#在Windows上-修改-C-Windows-System32-drivers-etc-hosts" class="headerlink" title="在Windows上 修改 C:\Windows\System32\drivers\etc\hosts"></a>在Windows上 修改 C:\Windows\System32\drivers\etc\hosts</h5><ol>
-<li><p>对于Windows下的hosts执行需要权限，我们可以将其先拷贝到桌面，修改后再copy回去</p>
-</li>
-<li><p>打开cmd命令行，执行下面的命令</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ipconfig/flushdns</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>github</category>
-        <category>git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>image-libraw相机图片库源码编译</title>
     <url>/article/1731984249.html</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LibRaw is a library for reading RAW files from digital photo cameras (CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are supported).</span><br></pre></td></tr></table></figure>
@@ -616,26 +619,6 @@
       </tags>
   </entry>
   <entry>
-    <title>markdown语言的总结</title>
-    <url>/article/769639735.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>mupdf-源码安装</title>
-    <url>/article/3549577056.html</url>
-    <content><![CDATA[<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">直接到官网上下载源码包</span><br><span class="line">https://www.mupdf.com/downloads/index.html</span><br><span class="line">mupdf-1.16.1-source.tar.gz</span><br></pre></td></tr></table></figure>
-<h3 id="二，相关依赖下载"><a href="#二，相关依赖下载" class="headerlink" title="二，相关依赖下载"></a>二，相关依赖下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</span><br><span class="line">You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licenses</span><br><span class="line"></span><br><span class="line">yum install freeglut-devel</span><br></pre></td></tr></table></figure>
-<h3 id="三，编译安装"><a href="#三，编译安装" class="headerlink" title="三，编译安装"></a>三，编译安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make prefix=/usr/local install</span><br></pre></td></tr></table></figure>
-<h3 id="四，使用注意"><a href="#四，使用注意" class="headerlink" title="四，使用注意"></a>四，使用注意</h3><p>在cmake的项目中使用静态库的时候，你只能生成静态链接库，在生成应用的时候，链接静态库和动态库都是一样的用法</p>
-]]></content>
-      <categories>
-        <category>doc</category>
-      </categories>
-      <tags>
-        <tag>pdf</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>image-图片处理库总结</title>
     <url>/article/3226112650.html</url>
     <content><![CDATA[<h3 id="一，提取exif信息的库"><a href="#一，提取exif信息的库" class="headerlink" title="一，提取exif信息的库"></a>一，提取exif信息的库</h3><p><a href="https://www.exiv2.org/" target="_blank" rel="noopener">Exif</a></p>
@@ -658,6 +641,26 @@
         <tag>centos7</tag>
         <tag>image</tag>
         <tag>lib.so</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown语言的总结</title>
+    <url>/article/769639735.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>mupdf-源码安装</title>
+    <url>/article/3549577056.html</url>
+    <content><![CDATA[<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">直接到官网上下载源码包</span><br><span class="line">https://www.mupdf.com/downloads/index.html</span><br><span class="line">mupdf-1.16.1-source.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="二，相关依赖下载"><a href="#二，相关依赖下载" class="headerlink" title="二，相关依赖下载"></a>二，相关依赖下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</span><br><span class="line">You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licenses</span><br><span class="line"></span><br><span class="line">yum install freeglut-devel</span><br></pre></td></tr></table></figure>
+<h3 id="三，编译安装"><a href="#三，编译安装" class="headerlink" title="三，编译安装"></a>三，编译安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make prefix=/usr/local install</span><br></pre></td></tr></table></figure>
+<h3 id="四，使用注意"><a href="#四，使用注意" class="headerlink" title="四，使用注意"></a>四，使用注意</h3><p>在cmake的项目中使用静态库的时候，你只能生成静态链接库，在生成应用的时候，链接静态库和动态库都是一样的用法</p>
+]]></content>
+      <categories>
+        <category>doc</category>
+      </categories>
+      <tags>
+        <tag>pdf</tag>
       </tags>
   </entry>
   <entry>
@@ -757,6 +760,31 @@
       </tags>
   </entry>
   <entry>
+    <title>s3-关于s3cmd的下载</title>
+    <url>/article/3778876136.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p>
+<h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote>
+<p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
+</blockquote>
+<h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote>
+<p>python get-pip.py</p>
+</blockquote>
+<h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote>
+<p>pip install s3cmd</p>
+</blockquote>
+<h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote>
+<p>设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>s3对象存储</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+        <tag>s3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>相机底片的解析</title>
     <url>/article/4054922039.html</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;公司要求对相机原生格式如后缀为dng,CR2等的图片进行转码，然后预览，自己查找了一下资料，目前仅仅是用命令行来进行处理的，因为我们是linux端的服务，所以直接封装命令行比较的简单。</p>
@@ -789,31 +817,6 @@
       </categories>
       <tags>
         <tag>tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>s3-关于s3cmd的下载</title>
-    <url>/article/3778876136.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p>
-<h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote>
-<p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
-</blockquote>
-<h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote>
-<p>python get-pip.py</p>
-</blockquote>
-<h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote>
-<p>pip install s3cmd</p>
-</blockquote>
-<h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote>
-<p>设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>s3对象存储</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-        <tag>s3</tag>
       </tags>
   </entry>
 </search>

@@ -128,5 +128,21 @@ pidof   servername
 一般可以这样设置：   taskset   -apc  0   8991     (这个目前最有效）
 ~~~
 
+### 脚本中生成随机数
+
+~~~
+UUID=`echo $RANDOM`
+~~~
+
+### 记录程序运行的资源到文件中
+
+~~~
+yum install -y time
+~~~
+
+~~~
+/usr/bin/time -v -o video.log ffmpeg -i xxx.mp4
+~~~
+
 
 
