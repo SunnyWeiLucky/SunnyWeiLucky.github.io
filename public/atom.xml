@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.helioswei.top/"/>
-  <updated>2020-06-09T06:26:49.843Z</updated>
+  <updated>2020-06-19T08:05:18.355Z</updated>
   <id>http://www.helioswei.top/</id>
   
   <author>
@@ -15,6 +15,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cpp-pistache源码编译之实现cpp restful接口</title>
+    <link href="http://www.helioswei.top/article/2728951675.html"/>
+    <id>http://www.helioswei.top/article/2728951675.html</id>
+    <published>2020-06-19T07:07:56.000Z</published>
+    <updated>2020-06-19T08:05:18.355Z</updated>
+    
+    <content type="html"><![CDATA[<p>cpp实现restful类型的接口比较的复杂，我们使用pistache库来解决这个问题，经对比，这个库是速度最快的。</p><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/oktal/pistache.git</span><br></pre></td></tr></table></figure><h3 id="第三方库更新"><a href="#第三方库更新" class="headerlink" title="第三方库更新"></a>第三方库更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><h5 id="依赖下载gcc升级"><a href="#依赖下载gcc升级" class="headerlink" title="依赖下载gcc升级"></a>依赖下载gcc升级</h5><p><a href="http://www.helioswei.top/article/2230395924.html">gcc5.1.0源码编译</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc version &gt;5.1.0 #我们需要支持c++14</span><br></pre></td></tr></table></figure><p>我们虽然重新编译安装了gcc，但系统有多个gcc的环境，我们在使用的时候可能还是默认的调用gcc4.8的低级版本，为了解决这个问题，我们可以显示的设置调用，我们需要设置编译器的环境变量，将5.1.0的编译器命令行设置到环境变量中：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CC=/usr/local/bin/gcc</span><br><span class="line">export CXX=/usr/local/bin/g++</span><br></pre></td></tr></table></figure><h5 id="cmake升级"><a href="#cmake升级" class="headerlink" title="cmake升级"></a>cmake升级</h5><p><a href="https://cmake.org/download/" target="_blank" rel="noopener">cmake下载</a>，选择最新的下载即可，然后执行安装三部曲</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake version &gt; 3.18.0</span><br></pre></td></tr></table></figure><h5 id="curl-devel下载"><a href="#curl-devel下载" class="headerlink" title="curl-devel下载"></a>curl-devel下载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel -y</span><br></pre></td></tr></table></figure><h5 id="编译-1"><a href="#编译-1" class="headerlink" title="编译"></a>编译</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd pistache</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake -G &quot;Unix Makefiles&quot; -DCMAKE_BUILD_TYPE=Release -DPISTACHE_BUILD_EXAMPLES=true -DPISTACHE_BUILD_TESTS=true -DPISTACHE_BUILD_DOCS=false -DPISTACHE_USE_SSL=true -DCMAKE_INSTALL_PREFIX=/usr/local/pistache ..</span><br><span class="line">make -j 4</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;cpp实现restful类型的接口比较的复杂，我们使用pistache库来解决这个问题，经对比，这个库是速度最快的。&lt;/p&gt;
+&lt;h3 id=&quot;源码下载&quot;&gt;&lt;a href=&quot;#源码下载&quot; class=&quot;headerlink&quot; title=&quot;源码下载&quot;&gt;&lt;/a&gt;源码下载&lt;/h3
+      
+    
+    </summary>
+    
+      <category term="cpp" scheme="http://www.helioswei.top/categories/cpp/"/>
+    
+    
+      <category term="cpp" scheme="http://www.helioswei.top/tags/cpp/"/>
+    
+      <category term="restful" scheme="http://www.helioswei.top/tags/restful/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cpp-centos7常用环境变量的设置</title>
+    <link href="http://www.helioswei.top/article/1768093973.html"/>
+    <id>http://www.helioswei.top/article/1768093973.html</id>
+    <published>2020-06-19T03:56:16.000Z</published>
+    <updated>2020-06-19T07:08:04.003Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们在centos7开发的cpp的时候，在编译的时候需要设置一些常有的环境变量，如头文件的路径，动态库的路径</p><h3 id="设置c语言的头文件的搜索路径"><a href="#设置c语言的头文件的搜索路径" class="headerlink" title="设置c语言的头文件的搜索路径"></a>设置c语言的头文件的搜索路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export C_INCLUDE_PATH =</span><br></pre></td></tr></table></figure><h3 id="设置c语言的链接库的搜索路径"><a href="#设置c语言的链接库的搜索路径" class="headerlink" title="设置c语言的链接库的搜索路径"></a>设置c语言的链接库的搜索路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LIBRARY_PATH =</span><br></pre></td></tr></table></figure><h3 id="设置cpp的头文件的搜索路径"><a href="#设置cpp的头文件的搜索路径" class="headerlink" title="设置cpp的头文件的搜索路径"></a>设置cpp的头文件的搜索路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CPLUS_INCLUDE_PATH =</span><br></pre></td></tr></table></figure><h3 id="设置cpp的链接库的搜索路径"><a href="#设置cpp的链接库的搜索路径" class="headerlink" title="设置cpp的链接库的搜索路径"></a>设置cpp的链接库的搜索路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LD_LIBRARY_PATH =</span><br></pre></td></tr></table></figure><h3 id="对于GCC版本的选择"><a href="#对于GCC版本的选择" class="headerlink" title="对于GCC版本的选择"></a>对于GCC版本的选择</h3><p>我们在用cmake编译源码的时候，有时候需要gcc不同的版本，以支持c++11的特性</p><p><code>gcc4.8.5以下不支持`</code>gcc5.1.0支持c++11`,我们在编译的时候可以显示的设置编译器的选择,下面是我自己编译的gcc5.1.0版本，这样在编译的时候就会调用</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CC=/usr/local/bin/gcc</span><br><span class="line">export CXX=/usr/local/bin/g++</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们在centos7开发的cpp的时候，在编译的时候需要设置一些常有的环境变量，如头文件的路径，动态库的路径&lt;/p&gt;
+&lt;h3 id=&quot;设置c语言的头文件的搜索路径&quot;&gt;&lt;a href=&quot;#设置c语言的头文件的搜索路径&quot; class=&quot;headerlink&quot; title=&quot;设置
+      
+    
+    </summary>
+    
+      <category term="cpp" scheme="http://www.helioswei.top/categories/cpp/"/>
+    
+    
+      <category term="cpp" scheme="http://www.helioswei.top/tags/cpp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>json-cpp处理json</title>
+    <link href="http://www.helioswei.top/article/3190039070.html"/>
+    <id>http://www.helioswei.top/article/3190039070.html</id>
+    <published>2020-06-16T03:27:54.000Z</published>
+    <updated>2020-06-16T03:44:42.648Z</updated>
+    
+    <content type="html"><![CDATA[<p>cpp处理json常用的库</p><h3 id="poco-json"><a href="#poco-json" class="headerlink" title="poco-json"></a>poco-json</h3><p>poco库中处理json的模块，将其转换为json字符串时键名会按照字母的顺序排列</p><h3 id="jsoncpp"><a href="#jsoncpp" class="headerlink" title="jsoncpp"></a>jsoncpp</h3><p>jsoncpp这个库，将其转换为json字符串时键名也会按照字母的顺序排序</p><h4 id="1，下载"><a href="#1，下载" class="headerlink" title="1，下载"></a>1，下载</h4><p><a href="https://sourceforge.net/projects/jsoncpp/" target="_blank" rel="noopener">jsonspp下载</a></p><h4 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h4><h5 id="scons下载"><a href="#scons下载" class="headerlink" title="scons下载"></a>scons下载</h5><p>使用scons来安装，如果yum没有找到，则需要<a href="http://www.helioswei.top/article/3859923575.html">更新yum库</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install scons -y</span><br></pre></td></tr></table></figure><h5 id="编译jsoncpp"><a href="#编译jsoncpp" class="headerlink" title="编译jsoncpp"></a>编译jsoncpp</h5><p>编译好的链接库，存放在jsoncpp源目录下的libs中<code>libjson_linux-gcc-4.8.5_libmt.so</code>，头文件放在include目录下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd jsoncpp的源目录</span><br><span class="line"></span><br><span class="line">scons platform=linux-gcc</span><br></pre></td></tr></table></figure><h3 id="protobuf"><a href="#protobuf" class="headerlink" title="protobuf"></a>protobuf</h3><p>序列化，这个将其转换为json字符串时会按照message的顺序，比较的好。</p><h4 id="1，使用步骤"><a href="#1，使用步骤" class="headerlink" title="1，使用步骤"></a>1，使用步骤</h4><h5 id="先写proto的文件-status-proto"><a href="#先写proto的文件-status-proto" class="headerlink" title="先写proto的文件 status.proto"></a>先写proto的文件 status.proto</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">syntax = &quot;proto3&quot;;                                                                                                                    </span><br><span class="line">package biyi;</span><br><span class="line"> </span><br><span class="line">message UnifiedLog&#123;</span><br><span class="line">    Cont content = 1;</span><br><span class="line">    string sign = 2;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">message Cont&#123;</span><br><span class="line">    string time_iso8601 = 1;</span><br><span class="line">    string companyId = 2;</span><br><span class="line">    string company = 3;</span><br><span class="line">    string projectNameCN = 4;</span><br><span class="line">    string projectName = 5;</span><br><span class="line">    string componentName = 6;</span><br><span class="line">    string componentMethodName = 7;</span><br><span class="line">    string componentType = 8;</span><br><span class="line">    string componentVer = 9;</span><br><span class="line">    string componentLang = 10; </span><br><span class="line">    string userName = 11; </span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="cpp调用"><a href="#cpp调用" class="headerlink" title="cpp调用"></a>cpp调用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;../build/proto/status.pb.h&quot;</span><br><span class="line">#include &lt;google/protobuf/util/json_util.h&gt;</span><br><span class="line"> </span><br><span class="line">namespace proto = google::protobuf::util;</span><br><span class="line"> </span><br><span class="line">using namespace biyi;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main() &#123;</span><br><span class="line">    UnifiedLog uniLog;</span><br><span class="line">    uniLog.set_sign(</span><br><span class="line">        &quot;68f3ea8baebbaddc5a47d6d955ecf53892edb4d3d8a3afe08cf4518204d30af5&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_time_iso8601(&quot;2020-03-09T11:11:14+08:00&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_companyid(&quot;000&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_company(&quot;ctsi&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_projectnamecn(&quot;001&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_projectname(&quot;biyi&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentname(&quot;micro-service-statics&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentmethodname(&quot;DemoBean.echo&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componenttype(&quot;微服务组件&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentver(&quot;v1.0.0&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentlang(&quot;java&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_username(&quot;admin&quot;);</span><br><span class="line"> </span><br><span class="line">    cout &lt;&lt; uniLog.sign() &lt;&lt; endl;</span><br><span class="line">    // message to json string</span><br><span class="line">    string str;</span><br><span class="line">    proto::Status status = proto::MessageToJsonString(uniLog, &amp;str);</span><br><span class="line">    if (!status.ok()) &#123;</span><br><span class="line">        cout &lt;&lt; status.ToString() &lt;&lt; endl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;str: &quot; &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;cpp处理json常用的库&lt;/p&gt;
+&lt;h3 id=&quot;poco-json&quot;&gt;&lt;a href=&quot;#poco-json&quot; class=&quot;headerlink&quot; title=&quot;poco-json&quot;&gt;&lt;/a&gt;poco-json&lt;/h3&gt;&lt;p&gt;poco库中处理json的模块，将其转换为
+      
+    
+    </summary>
+    
+      <category term="cpp" scheme="http://www.helioswei.top/categories/cpp/"/>
+    
+    
+      <category term="cpp" scheme="http://www.helioswei.top/tags/cpp/"/>
+    
+      <category term="json" scheme="http://www.helioswei.top/tags/json/"/>
+    
+  </entry>
   
   <entry>
     <title>centos7-网络设置</title>
@@ -458,91 +540,6 @@
       <category term="cpp" scheme="http://www.helioswei.top/tags/cpp/"/>
     
       <category term="tools" scheme="http://www.helioswei.top/tags/tools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>poco-源码编译包含mysql</title>
-    <link href="http://www.helioswei.top/article/3587508548.html"/>
-    <id>http://www.helioswei.top/article/3587508548.html</id>
-    <published>2020-04-17T02:08:59.000Z</published>
-    <updated>2020-06-09T03:52:17.379Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="一，源码下载库"><a href="#一，源码下载库" class="headerlink" title="一，源码下载库"></a>一，源码下载库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">先在git上fork，然后同步到码云上，在clone可以加快下载的速度</span><br><span class="line">git clone https://gitee.com/helioswei/poco.git</span><br></pre></td></tr></table></figure><h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc-c++ make openssl-devel</span><br></pre></td></tr></table></figure><h3 id="三，安装mysql"><a href="#三，安装mysql" class="headerlink" title="三，安装mysql"></a>三，安装mysql</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">见mysql的源码安装，安装时没有头文件，所以我们需要安装头文件</span><br><span class="line">yum install mysql-devel</span><br></pre></td></tr></table></figure><h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">需要提前安装GCC5.1.0来支持c++14</span><br><span class="line">./configure --shared --prefix=/usr/local/poco  --cflags=-std=c++14 --include-path=/usr/include/mysql/ --library-path=/usr/lib64/mysql/ --omit=Data/ODBC,MongoDB,PDF</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;一，源码下载库&quot;&gt;&lt;a href=&quot;#一，源码下载库&quot; class=&quot;headerlink&quot; title=&quot;一，源码下载库&quot;&gt;&lt;/a&gt;一，源码下载库&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
-      
-    
-    </summary>
-    
-      <category term="poco" scheme="http://www.helioswei.top/categories/poco/"/>
-    
-    
-      <category term="cpp" scheme="http://www.helioswei.top/tags/cpp/"/>
-    
-      <category term="mysql" scheme="http://www.helioswei.top/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>image-libraw相机图片库源码编译</title>
-    <link href="http://www.helioswei.top/article/1731984249.html"/>
-    <id>http://www.helioswei.top/article/1731984249.html</id>
-    <published>2020-01-17T09:37:04.000Z</published>
-    <updated>2020-06-09T03:52:17.378Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LibRaw is a library for reading RAW files from digital photo cameras (CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are supported).</span><br></pre></td></tr></table></figure><h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/LibRaw/LibRaw.git</span><br></pre></td></tr></table></figure><h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1，查看文件DEVELOPER-NOTES，提示我们,执行mkdist.sh脚本来生成编译的东西</span><br><span class="line">2， 安装需要的软件</span><br><span class="line"> yum install autoconf automake freetype-devel gcc gcc-c++ libtool make pkgconfig -y</span><br><span class="line"> yum install wget -y</span><br><span class="line"> yum install lcms2 lcms2-devel -y</span><br><span class="line"> yum install jasper jasper-devel</span><br></pre></td></tr></table></figure><h3 id="三，准备编译遇到的错误"><a href="#三，准备编译遇到的错误" class="headerlink" title="三，准备编译遇到的错误"></a>三，准备编译遇到的错误</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">下载dcraw.c失败，我们需要手动的下载</span><br><span class="line">修改mkdist.sh脚本文件</span><br><span class="line">wget https://www.dechifro.org/dcraw/dcraw.c</span><br><span class="line">然后在执行 mkdist.sh脚本</span><br></pre></td></tr></table></figure><h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/helios CXX=/usr/local/bin/g++</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><h3 id="五，执行遇到的问题"><a href="#五，执行遇到的问题" class="headerlink" title="五，执行遇到的问题"></a>五，执行遇到的问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在程序中执行 open_file CR2的时候程序崩溃，因为自己的g++编译是4.8.5的，但是更新到4.9.2后就成功了</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span cla
-      
-    
-    </summary>
-    
-      <category term="图片处理" scheme="http://www.helioswei.top/categories/image/"/>
-    
-    
-      <category term="centos7" scheme="http://www.helioswei.top/tags/centos7/"/>
-    
-      <category term="image" scheme="http://www.helioswei.top/tags/image/"/>
-    
-      <category term="lib.so" scheme="http://www.helioswei.top/tags/lib-so/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>image-图片处理库总结</title>
-    <link href="http://www.helioswei.top/article/3226112650.html"/>
-    <id>http://www.helioswei.top/article/3226112650.html</id>
-    <published>2020-01-15T01:47:54.000Z</published>
-    <updated>2020-06-09T03:52:17.378Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="一，提取exif信息的库"><a href="#一，提取exif信息的库" class="headerlink" title="一，提取exif信息的库"></a>一，提取exif信息的库</h3><p><a href="https://www.exiv2.org/" target="_blank" rel="noopener">Exif</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Exiv2 是一个用来提取图片中的EXIF、LPTC 和 XMP 元数据信息的C++类库。同时还提供了命令行工具。示例代码： Exiv2::Image::AutoPtr image =Exiv2::ImageFactory::open(argv[1]);assert(image.get() != 0);image-&gt;readMetadata(); Exi... 更多Exiv2信息</span><br></pre></td></tr></table></figure><p><a href="https://github.com/libvips/libvips" target="_blank" rel="noopener">libvips</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">libvips是一个需求驱动的水平线程 图像处理库。与类似的库相比，libvips运行迅速且几乎不占用内存。libvips是根据LGPL 2.1+许可的。</span><br><span class="line"></span><br><span class="line">它具有约300种运算， 涵盖算术，直方图，卷积，形态运算，频率滤波，颜色，重采样，统计等。它支持多种数字类型，从8位int到128位复数。图像可以具有任意数量的波段。它支持各种图像格式，包括JPEG，TIFF，PNG，WebP，HEIC，FITS，Matlab，OpenEXR，PDF，SVG，HDR，PPM / PGM / PFM，CSV，GIF，分析，NIfTI，DeepZoom和OpenSlide 。它还可以通过ImageMagick或GraphicsMagick加载图像，使其与DICOM等格式一起使用。</span><br><span class="line"></span><br><span class="line">主要用这个处理苹果平台heic图片格式的转码</span><br></pre></td></tr></table></figure><p><a href="http://cimg.eu/" target="_blank" rel="noopener">CImg</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">就一个.h文件所以用起来很简明，但感觉功能上不如CxImage。可以与CxImage配合使用，因为CImg提供了基于</span><br><span class="line">lapack的矩阵运算函数和完善的线性滤波卷积函数，同时CImg做像素运算还是很方便的。另外，独有Display类可以方便的</span><br><span class="line">实现各种显示，包括显示图像、打字、画线等等。还有，该库有个基于光流的多尺度图像配准例子，很好.</span><br><span class="line"></span><br><span class="line">使用很方便，但是对于特殊的格式如heic，相机原生格式不支持</span><br></pre></td></tr></table></figure><p><a href="https://www.libraw.org/docs" target="_blank" rel="noopener">libraw</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LibRaw是一个用于从数码相机读取RAW文件的库（CRW / CR2，NEF，RAF，DNG，MOS，KDC，DCR等，实际上支持所有RAW格式）。</span><br><span class="line"></span><br><span class="line">它特别注意正确检索后续RAW转换所需的数据。</span><br><span class="line"></span><br><span class="line">该库旨在使用RAW文件作为初始数据嵌入RAW转换器，数据分析器和其他程序中。</span><br></pre></td></tr></table></figure><p><a href="https://www.codeproject.com/Articles/1300/CxImage" target="_blank" rel="noopener">CxImage</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">对CxImage考察的印象：该开发包完全开放源代码，图像封装为一个类，功能极为强大，与Windows、MFC支持极好，支</span><br><span class="line">持图像的多种操作（线性滤波、中值滤波、直方图操作、旋转缩放、区域选取、阈值处理、膨胀腐蚀、alpha混合等等），支</span><br><span class="line">持从文件、内存或者win32api定义的位图图像格式中读取图像，支持将图像显示在任意窗口，功能可谓很强大了，而且对像</span><br><span class="line">素的操作很方便，另外还有一个界面很强的demo，可以直接在上面进行二次开发，推荐使用！</span><br><span class="line">缺点：里面的子库很多，用起来可能较麻烦；而且感觉速度稍慢，不如后面提到的freeimage</span><br><span class="line">但功能真的十分强大啊！</span><br><span class="line"></span><br><span class="line">主要使用这个处理相机原生图片，可以linux下自己不会编译</span><br></pre></td></tr></table></figure><p><a href="https://opencv.org/" target="_blank" rel="noopener">OpenCV</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">对OpenCV的印象：功能十分的强大，而且支持目前先进的图像处理技术，体系十分完善，操作手册很详细，手册首先给大</span><br><span class="line">家补计算机视觉的知识，几乎涵盖了近10年内的主流算法；然后将图像格式和矩阵运算，然后将各个算法的实现函数。我用</span><br><span class="line">它来做了一个Harris角点检测器和Canny边缘检测器，总共就花了一个小时（第一次用OpenCV）。而且该库显示图像极其</span><br><span class="line">方便，两句话就可以。但该库似乎不大稳定，对32F和16S、8U的图像数据支持上bug重重。我用cvFilter2D函数进行线性</span><br><span class="line">滤波，屡屡出错，后来一查原来是大bug。后来用cvmGet来取矩阵元素也是频繁出错，仔细检查了N遍确保程序没问题之后</span><br><span class="line">在yahoogroup上找到答案：仍然是bug。。。但好歹该库是开放的，所以自己可以修改；而且支持CVS。另外该库用的是</span><br><span class="line">IPL矩阵库，速度奇快～～</span><br><span class="line"></span><br><span class="line">目前没有使用</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;一，提取exif信息的库&quot;&gt;&lt;a href=&quot;#一，提取exif信息的库&quot; class=&quot;headerlink&quot; title=&quot;一，提取exif信息的库&quot;&gt;&lt;/a&gt;一，提取exif信息的库&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.exiv2.org
-      
-    
-    </summary>
-    
-      <category term="图片处理" scheme="http://www.helioswei.top/categories/image/"/>
-    
-    
-      <category term="centos7" scheme="http://www.helioswei.top/tags/centos7/"/>
-    
-      <category term="image" scheme="http://www.helioswei.top/tags/image/"/>
-    
-      <category term="lib.so" scheme="http://www.helioswei.top/tags/lib-so/"/>
     
   </entry>
   
