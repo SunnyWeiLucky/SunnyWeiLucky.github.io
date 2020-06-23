@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.helioswei.top/"/>
-  <updated>2020-06-19T08:05:18.355Z</updated>
+  <updated>2020-06-19T08:56:10.736Z</updated>
   <id>http://www.helioswei.top/</id>
   
   <author>
@@ -17,13 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>cpp-devtoolset切换gcc的版本</title>
+    <link href="http://www.helioswei.top/article/2538200340.html"/>
+    <id>http://www.helioswei.top/article/2538200340.html</id>
+    <published>2020-06-19T08:47:14.000Z</published>
+    <updated>2020-06-19T08:56:10.736Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们在编译cpp的时候，有时候需要支持c++11/14的一些特性，就需要升级gcc的版本，为了简单的升级，Red Hat提供了scl软件集来为用户提供一种以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是更新的）版本的方式，同时避免把系统搞乱。下载devtoolset</p><p>使用scl升级gcc的步骤</p><h3 id="一，安装scl源"><a href="#一，安装scl源" class="headerlink" title="一，安装scl源"></a>一，安装scl源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-scl scl-utils-build</span><br></pre></td></tr></table></figure><h3 id="二，列出scl有哪些可用的源"><a href="#二，列出scl有哪些可用的源" class="headerlink" title="二，列出scl有哪些可用的源"></a>二，列出scl有哪些可用的源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list all --enablerepo=&apos;centos-sclo-rh&apos; | grep devtoolset</span><br></pre></td></tr></table></figure><h3 id="三，安装gcc，g"><a href="#三，安装gcc，g" class="headerlink" title="三，安装gcc，g++"></a>三，安装gcc，g++</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install devtoolset-7-gcc devtoolset-7-gcc-c++</span><br></pre></td></tr></table></figure><h3 id="四，切换版本"><a href="#四，切换版本" class="headerlink" title="四，切换版本"></a>四，切换版本</h3><p>这个版本的切换仅对当前的环境有用</p><h5 id="启动环境"><a href="#启动环境" class="headerlink" title="启动环境"></a>启动环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scl enable devtoolset-7 bash</span><br><span class="line">gcc -v</span><br></pre></td></tr></table></figure><h5 id="退出环境"><a href="#退出环境" class="headerlink" title="退出环境"></a>退出环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们在编译cpp的时候，有时候需要支持c++11/14的一些特性，就需要升级gcc的版本，为了简单的升级，Red Hat提供了scl软件集来为用户提供一种以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是更新的）版本的方式，同时避免把系统搞乱。下载devtool
+      
+    
+    </summary>
+    
+      <category term="cpp" scheme="http://www.helioswei.top/categories/cpp/"/>
+    
+    
+      <category term="cpp" scheme="http://www.helioswei.top/tags/cpp/"/>
+    
+      <category term="gcc" scheme="http://www.helioswei.top/tags/gcc/"/>
+    
+      <category term="devtoolset" scheme="http://www.helioswei.top/tags/devtoolset/"/>
+    
+  </entry>
+  
+  <entry>
     <title>cpp-pistache源码编译之实现cpp restful接口</title>
     <link href="http://www.helioswei.top/article/2728951675.html"/>
     <id>http://www.helioswei.top/article/2728951675.html</id>
     <published>2020-06-19T07:07:56.000Z</published>
-    <updated>2020-06-19T08:05:18.355Z</updated>
+    <updated>2020-06-23T03:15:57.443Z</updated>
     
-    <content type="html"><![CDATA[<p>cpp实现restful类型的接口比较的复杂，我们使用pistache库来解决这个问题，经对比，这个库是速度最快的。</p><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/oktal/pistache.git</span><br></pre></td></tr></table></figure><h3 id="第三方库更新"><a href="#第三方库更新" class="headerlink" title="第三方库更新"></a>第三方库更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><h5 id="依赖下载gcc升级"><a href="#依赖下载gcc升级" class="headerlink" title="依赖下载gcc升级"></a>依赖下载gcc升级</h5><p><a href="http://www.helioswei.top/article/2230395924.html">gcc5.1.0源码编译</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc version &gt;5.1.0 #我们需要支持c++14</span><br></pre></td></tr></table></figure><p>我们虽然重新编译安装了gcc，但系统有多个gcc的环境，我们在使用的时候可能还是默认的调用gcc4.8的低级版本，为了解决这个问题，我们可以显示的设置调用，我们需要设置编译器的环境变量，将5.1.0的编译器命令行设置到环境变量中：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CC=/usr/local/bin/gcc</span><br><span class="line">export CXX=/usr/local/bin/g++</span><br></pre></td></tr></table></figure><h5 id="cmake升级"><a href="#cmake升级" class="headerlink" title="cmake升级"></a>cmake升级</h5><p><a href="https://cmake.org/download/" target="_blank" rel="noopener">cmake下载</a>，选择最新的下载即可，然后执行安装三部曲</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake version &gt; 3.18.0</span><br></pre></td></tr></table></figure><h5 id="curl-devel下载"><a href="#curl-devel下载" class="headerlink" title="curl-devel下载"></a>curl-devel下载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel -y</span><br></pre></td></tr></table></figure><h5 id="编译-1"><a href="#编译-1" class="headerlink" title="编译"></a>编译</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd pistache</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake -G &quot;Unix Makefiles&quot; -DCMAKE_BUILD_TYPE=Release -DPISTACHE_BUILD_EXAMPLES=true -DPISTACHE_BUILD_TESTS=true -DPISTACHE_BUILD_DOCS=false -DPISTACHE_USE_SSL=true -DCMAKE_INSTALL_PREFIX=/usr/local/pistache ..</span><br><span class="line">make -j 4</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>cpp实现restful类型的接口比较的复杂，我们使用pistache库来解决这个问题，经对比，这个库是速度最快的。</p><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/oktal/pistache.git</span><br></pre></td></tr></table></figure><h3 id="第三方库更新"><a href="#第三方库更新" class="headerlink" title="第三方库更新"></a>第三方库更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><h5 id="依赖下载gcc升级"><a href="#依赖下载gcc升级" class="headerlink" title="依赖下载gcc升级"></a>依赖下载gcc升级</h5><p><a href="http://www.helioswei.top/article/2230395924.html">gcc5.1.0源码编译</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc version &gt;5.1.0 #我们需要支持c++14</span><br></pre></td></tr></table></figure><p>我们虽然重新编译安装了gcc，但系统有多个gcc的环境，我们在使用的时候可能还是默认的调用gcc4.8的低级版本，为了解决这个问题，我们可以显示的设置调用，我们需要设置编译器的环境变量，将5.1.0的编译器命令行设置到环境变量中：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CC=/usr/local/bin/gcc</span><br><span class="line">export CXX=/usr/local/bin/g++</span><br></pre></td></tr></table></figure><h5 id="cmake升级"><a href="#cmake升级" class="headerlink" title="cmake升级"></a>cmake升级</h5><p><a href="https://cmake.org/download/" target="_blank" rel="noopener">cmake下载</a>，选择最新的下载即可，然后执行安装三部曲</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake version &gt; 3.18.0</span><br></pre></td></tr></table></figure><h5 id="curl-devel下载"><a href="#curl-devel下载" class="headerlink" title="curl-devel下载"></a>curl-devel下载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel -y</span><br></pre></td></tr></table></figure><h5 id="编译-1"><a href="#编译-1" class="headerlink" title="编译"></a>编译</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd pistache</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake -G &quot;Unix Makefiles&quot; -DCMAKE_BUILD_TYPE=Release -DPISTACHE_BUILD_EXAMPLES=true -DPISTACHE_BUILD_TESTS=true -DPISTACHE_BUILD_DOCS=false -DPISTACHE_USE_SSL=true -DCMAKE_INSTALL_PREFIX=/usr/local/pistache ..</span><br><span class="line">make -j 4</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><code>注意，这个在使用的时候需要选择c++的标准,设置</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -std=c++14 #一般常用的是c++11</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -512,34 +541,6 @@
       <category term="tools" scheme="http://www.helioswei.top/tags/tools/"/>
     
       <category term="mysql" scheme="http://www.helioswei.top/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gcc-5.1.0源码安装</title>
-    <link href="http://www.helioswei.top/article/2230395924.html"/>
-    <id>http://www.helioswei.top/article/2230395924.html</id>
-    <published>2020-04-17T02:15:55.000Z</published>
-    <updated>2020-06-09T03:52:17.377Z</updated>
-    
-    <content type="html"><![CDATA[<p>对于一些源码的编译如poco库，需要的GCC的版本要求比较高，所以需要源码编译GCC、</p><h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">地址：</span><br><span class="line">https://ftp.gnu.org/gnu/gcc/</span><br><span class="line">gcc-5.1.0 可以支持C++14</span><br></pre></td></tr></table></figure><h3 id="二，依赖环境安装"><a href="#二，依赖环境安装" class="headerlink" title="二，依赖环境安装"></a>二，依赖环境安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd gcc-5.1.0</span><br><span class="line">./contrib/download_prerequisites</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Building GCC requires GMP 4.2+, MPFR 2.4.0+ and MPC 0.8.0+</span><br><span class="line">地址：</span><br><span class="line">ftp://gcc.gnu.org/pub/gcc/infrastructure/</span><br><span class="line"></span><br><span class="line">wget ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.1.0.tar.bz2</span><br><span class="line">wget ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-3.1.4.tar.bz2</span><br><span class="line">wget ftp://gcc.gnu.org/pub/gcc/infrastructure/mpc-1.0.3.tar.gz</span><br></pre></td></tr></table></figure><h3 id="三，依赖解压安装"><a href="#三，依赖解压安装" class="headerlink" title="三，依赖解压安装"></a>三，依赖解压安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1，安装gmp</span><br><span class="line">tar -jxvf gmp-6.1.0.tar.bz2</span><br><span class="line">cd gmp-6.1.0</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">error:No usable m4 in $PATH or /usr/5bin</span><br><span class="line">yum install m4</span><br><span class="line"></span><br><span class="line">2,安装mpfr</span><br><span class="line">tar -jxvf mpfr-3.1.4.tar.bz2</span><br><span class="line">cd mpfr-3.1.4</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">3,安装mpc</span><br><span class="line">tar -zxvf mpc-1.0.3.tar.gz</span><br><span class="line">cd mpc-1.0.3</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure><h3 id="四，源码安装"><a href="#四，源码安装" class="headerlink" title="四，源码安装"></a>四，源码安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./configure  --enable-checking=release --enable-languages=c,c++ --disable-multilib</span><br><span class="line">make </span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">#将链接复制</span><br><span class="line">cp -vf /usr/local/lib64/libstdc++.*  /usr/lib64/</span><br><span class="line">gcc -v</span><br><span class="line">gcc version 5.1.0 (GCC)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;对于一些源码的编译如poco库，需要的GCC的版本要求比较高，所以需要源码编译GCC、&lt;/p&gt;
-&lt;h3 id=&quot;一，源码下载&quot;&gt;&lt;a href=&quot;#一，源码下载&quot; class=&quot;headerlink&quot; title=&quot;一，源码下载&quot;&gt;&lt;/a&gt;一，源码下载&lt;/h3&gt;&lt;figur
-      
-    
-    </summary>
-    
-      <category term="gcc" scheme="http://www.helioswei.top/categories/gcc/"/>
-    
-    
-      <category term="cpp" scheme="http://www.helioswei.top/tags/cpp/"/>
-    
-      <category term="tools" scheme="http://www.helioswei.top/tags/tools/"/>
     
   </entry>
   
