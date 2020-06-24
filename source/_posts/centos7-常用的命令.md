@@ -144,5 +144,15 @@ yum install -y time
 /usr/bin/time -v -o video.log ffmpeg -i xxx.mp4
 ~~~
 
+### 查看机器是物理机还是虚拟机
 
+~~~
+dmidecode -s system-product-name
+~~~
+
+结果如图：
+
+![syss.png](/images/linux/syss.png)
+
+![sysv.png](/images/linux/sysv.png)
 
