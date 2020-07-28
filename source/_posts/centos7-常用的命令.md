@@ -38,8 +38,6 @@ nohup ./videotool &
 
 ~~~
 
-
-
 ### 查看系统的状态的命令
 
 ##### 查看内存
@@ -58,6 +56,24 @@ df -h
 
 ~~~
 du -sh 11.mkv
+~~~
+
+##### 查看进程的线程数
+
+~~~
+ps -T -p pid
+~~~
+
+##### 查看centos7的物理核数
+
+~~~
+cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
+~~~
+
+##### 查看centos7的逻辑核数
+
+~~~
+cat /proc/cpuinfo| grep "processor"| wc -l
 ~~~
 
 
@@ -108,8 +124,6 @@ crontab -r  这个表示删除所有的定时任务，如果需要删除单个�
 
 ![cache.png](/images/linux/cache.png)
 
-
-
 ### 控制进程使用cpu数目
 
 ##### 获取进程id
@@ -155,4 +169,24 @@ dmidecode -s system-product-name
 ![syss.png](/images/linux/syss.png)
 
 ![sysv.png](/images/linux/sysv.png)
+
+### 搜索
+
+##### grep
+
+搜索文件中包含某个单词
+
+~~~
+grep -rn  weiyang *
+~~~
+
+##### 过滤本身
+
+~~~
+ps -ef | grep vim |grep -v grep
+~~~
+
+
+
+##### 
 
