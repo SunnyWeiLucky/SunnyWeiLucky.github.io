@@ -76,7 +76,11 @@ cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
 cat /proc/cpuinfo| grep "processor"| wc -l
 ~~~
 
+##### 测试系统的io速度
 
+~~~
+time dd bs=4M count=1024 if=/dev/zero of=test_02 conv=fdatasync
+~~~
 
 ### 复制
 
@@ -186,7 +190,49 @@ grep -rn  weiyang *
 ps -ef | grep vim |grep -v grep
 ~~~
 
+### 编码问题
+
+centos7常常会遇到一些编码问题，我们可以通过命令行来进行一些编码的转码
+
+##### [enca](https://www.2cto.com/os/201404/295528.html)
+
+支持的编码比较少，一些无法转换，如UTF16,UCS-2就无法通过这个转换
+
+直接识别字符集
+
+~~~
+enca -L zh_CN test.cpp
+~~~
+
+ 转换命令简单
+
+~~~
+enca -L zh_CN -x UTF-8 test.cpp or enca -L zh_CN -x GB2312 test.cpp
+~~~
+
+##### iconv
+
+可以支持多种编码，有一个缺点，必须知道原来文件的编码
+
+~~~
+iconv  -f UTF-16 -t UTF-8 b.txt -o uni3.txt
+~~~
+
+##### 任意转换
+
+所有可以通过enca和iconv两者结合来使用
+
+~~~
+iconv -f $(enca -L zh_CN b.txt |head -n 1|cut -d ";" -f 2) -t UTF-8 b.txt -o b.txt
+~~~
+
+leopard修改`/opt/dana/leopard/python/fileConv.py `
+
+~~~
+codecmd= 'iconv -f $(enca -L zh_CN %s |head -n 1|cut -d ";" -f 2) -t UTF-8 %s -o %s'% (input_name, input_name, input_name)
+~~~
 
 
-##### 
+
+
 

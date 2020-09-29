@@ -268,3 +268,29 @@ fo.close()
 brower.quit()
 ~~~
 
+### windows搭建python的环境
+
+[直接到官网](https://www.python.org/downloads/windows/)下载对应版本的
+
+submit text3执行python
+
+##### 设置build
+
+~~~
+打开sublime，依次点击菜单Tools-->Build System-->New Build System
+~~~
+
+~~~
+{
+	"cmd": ["D:\helios\software\python\python.exe", "-u", "$file"],
+	"file_regex": "[ ]File \"(…?)\", line ([0-9]*)",
+	"selector": "source.python"
+}
+~~~
+
+~~~
+ctrl + b来执行python
+~~~
+
+
+
