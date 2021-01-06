@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>centos7-libreoffice安装和启动</title>
+    <url>/article/3025513893.html</url>
+    <content><![CDATA[<p>​    centos7下的文档转码的利器<code>libreoffice</code>，下面介绍一下centos7平台上对于这个软件的安装</p>
+<h3 id="libreoffice下载"><a href="#libreoffice下载" class="headerlink" title="libreoffice下载"></a>libreoffice下载</h3><p><a href="https://www.libreoffice.org/download/download/" target="_blank" rel="noopener">libreoffice下载</a>，在这里可以下载LO的最新的版本</p>
+<p>这个是网上找的镜像，<a href="http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/" target="_blank" rel="noopener">可以参考</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz -C /root/libreoffice</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入每个目录下的RPMS目录下使用以下命令执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install cairo</span><br><span class="line">yum install cups-libs</span><br><span class="line">yum install libSM</span><br></pre></td></tr></table></figure>
+<h4 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum groupinstall "fonts"</span><br></pre></td></tr></table></figure>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">libreoffice6.4 --headless --invisible --convert-to pdf test.docx --outdir /data/file</span><br></pre></td></tr></table></figure>
+<h3 id="bug提交"><a href="#bug提交" class="headerlink" title="bug提交"></a>bug提交</h3><p>在使用的过程中，我发现了一个bug，影响了我产品的功能，所有让社区的管理帮忙提交了bug修复，<a href="https://bbs.libreofficechina.org/thread-2616-1-1.html" target="_blank" rel="noopener">见下</a></p>
+]]></content>
+      <categories>
+        <category>centos7</category>
+        <category>libreoffice</category>
+      </categories>
+      <tags>
+        <tag>libreoffice</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7-163yum源下载</title>
+    <url>/article/2361785990.html</url>
+    <content><![CDATA[<p>我们在centos7上下载东西的时候，有时候自带的源里面没有我们需要的软件，所有我们需要更换源来进行下载</p>
+<h3 id="一，下载repo文件"><a href="#一，下载repo文件" class="headerlink" title="一，下载repo文件"></a>一，下载repo文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http://mirrors.163.com/.help/CentOS7-Base-163.repo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -o CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo</span><br></pre></td></tr></table></figure>
+<h3 id="二，备份并且替代系统的repo文件"><a href="#二，备份并且替代系统的repo文件" class="headerlink" title="二，备份并且替代系统的repo文件"></a>二，备份并且替代系统的repo文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp  CentOS7-Base-163.repo  /etc/yum.repos.d/ </span><br><span class="line"></span><br><span class="line">cd /etc/yum.repos.d/ </span><br><span class="line"></span><br><span class="line">mv CentOS-Base.repo CentOS-Base.repo.bak </span><br><span class="line"></span><br><span class="line">mv CentOS7-Base-163.repo CentOS-Base.repo</span><br></pre></td></tr></table></figure>
+<h3 id="三，执行yum源更新命令"><a href="#三，执行yum源更新命令" class="headerlink" title="三，执行yum源更新命令"></a>三，执行yum源更新命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum clean all </span><br><span class="line"></span><br><span class="line">yum makecache </span><br><span class="line"></span><br><span class="line">yum update</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+      <tags>
+        <tag>yum</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AI-PaddleHub的体验使用</title>
     <url>/article/1959613013.html</url>
     <content><![CDATA[<p>​        最近体验了一下比较火的AI项目，<a href="https://github.com/PaddlePaddle/PaddleHub" target="_blank" rel="noopener">PaddleHub</a>，对于python我是陌生的，所以下面是作为新手的一些操作指南，保证能够正确的尝试到这个项目的有趣之处。</p>
@@ -42,100 +81,6 @@
       <tags>
         <tag>yum</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>centos7-openoffice安装和启动</title>
-    <url>/article/1736132591.html</url>
-    <content><![CDATA[<p>  本文介绍了openoffice在Centos7下的安装和启动以及使用的方法，供大家学习和参考。</p>
-<h3 id="openoffice包的下载"><a href="#openoffice包的下载" class="headerlink" title="openoffice包的下载"></a>openoffice包的下载</h3><p><a href="http://www.openoffice.org/download/" target="_blank" rel="noopener">openoffice下载</a></p>
-<p><img src="/images/openoffice/openoffice.png" alt="open"></p>
-<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf Apache_OpenOffice_4.1.8_Linux_x86-64_install-rpm_zh-CN.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="进入解压目录"><a href="#进入解压目录" class="headerlink" title="进入解压目录"></a>进入解压目录</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd zh-CN/RPMS</span><br></pre></td></tr></table></figure>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure>
-<p><code>装完后会在当前目录下生成一个desktop-integration目录</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd zh-CN/RPMS/desktop-integration/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -ivh openoffice4.1.5-redhat-menus-4.1.5-9789.noarch.rpm</span><br></pre></td></tr></table></figure>
-<h4 id="下载依赖包"><a href="#下载依赖包" class="headerlink" title="下载依赖包"></a>下载依赖包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install libXext.x86_64</span><br></pre></td></tr></table></figure>
-<h4 id="下载java环境"><a href="#下载java环境" class="headerlink" title="下载java环境"></a>下载java环境</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install jre java-devel</span><br></pre></td></tr></table></figure>
-<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=<span class="string">"socket,host=127.0.0.1,port=8100;urp;"</span> -nofirststartwizard</span><br></pre></td></tr></table></figure>
-<h3 id="JODConverter下载"><a href="#JODConverter下载" class="headerlink" title="JODConverter下载"></a>JODConverter下载</h3><p><a href="https://sourceforge.net/projects/jodconverter/" target="_blank" rel="noopener">jodConverter下载</a></p>
-<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unzip jodconverter-2.2.2.zip</span><br></pre></td></tr></table></figure>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p><code>必须先启动openoffice的服务，然后再使用这个命令行</code></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  inputfileName outputfileName</span><br></pre></td></tr></table></figure>
-<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  media/01-自然语言处理-中文分词算法的实现.pptx.pptx  media/o1.pdf</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>centos7</category>
-        <category>doc</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-        <tag>openoffice</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos7-libreoffice安装和启动</title>
-    <url>/article/3025513893.html</url>
-    <content><![CDATA[<p>​    centos7下的文档转码的利器<code>libreoffice</code>，下面介绍一下centos7平台上对于这个软件的安装</p>
-<h3 id="libreoffice下载"><a href="#libreoffice下载" class="headerlink" title="libreoffice下载"></a>libreoffice下载</h3><p><a href="https://www.libreoffice.org/download/download/" target="_blank" rel="noopener">libreoffice下载</a>，在这里可以下载LO的最新的版本</p>
-<p>这个是网上找的镜像，<a href="http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/" target="_blank" rel="noopener">可以参考</a></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz -C /root/libreoffice</span><br></pre></td></tr></table></figure>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入每个目录下的RPMS目录下使用以下命令执行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure>
-<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install cairo</span><br><span class="line">yum install cups-libs</span><br><span class="line">yum install libSM</span><br></pre></td></tr></table></figure>
-<h4 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum groupinstall "fonts"</span><br></pre></td></tr></table></figure>
-<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">libreoffice6.4 --headless --invisible --convert-to pdf test.docx --outdir /data/file</span><br></pre></td></tr></table></figure>
-<h3 id="bug提交"><a href="#bug提交" class="headerlink" title="bug提交"></a>bug提交</h3><p>在使用的过程中，我发现了一个bug，影响了我产品的功能，所有让社区的管理帮忙提交了bug修复，<a href="https://bbs.libreofficechina.org/thread-2616-1-1.html" target="_blank" rel="noopener">见下</a></p>
-]]></content>
-      <categories>
-        <category>centos7</category>
-        <category>libreoffice</category>
-      </categories>
-      <tags>
-        <tag>libreoffice</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos7-yum的使用</title>
-    <url>/article/1714992348.html</url>
-    <content><![CDATA[<p>记录yum的使用</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="搜索指定的版本安装"><a href="#搜索指定的版本安装" class="headerlink" title="搜索指定的版本安装"></a>搜索指定的版本安装</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum list --showduplicates xxx</span><br></pre></td></tr></table></figure>
-<h4 id="下载软件包"><a href="#下载软件包" class="headerlink" title="下载软件包"></a>下载软件包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install yum-plugin-downloadonly</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install fontconfig --downloadonly --downloaddir=/root/wei/</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
-      <tags>
-        <tag>yum</tag>
-        <tag>centos7</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos7-163yum源下载</title>
-    <url>/article/2361785990.html</url>
-    <content><![CDATA[<p>我们在centos7上下载东西的时候，有时候自带的源里面没有我们需要的软件，所有我们需要更换源来进行下载</p>
-<h3 id="一，下载repo文件"><a href="#一，下载repo文件" class="headerlink" title="一，下载repo文件"></a>一，下载repo文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http://mirrors.163.com/.help/CentOS7-Base-163.repo</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -o CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo</span><br></pre></td></tr></table></figure>
-<h3 id="二，备份并且替代系统的repo文件"><a href="#二，备份并且替代系统的repo文件" class="headerlink" title="二，备份并且替代系统的repo文件"></a>二，备份并且替代系统的repo文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp  CentOS7-Base-163.repo  /etc/yum.repos.d/ </span><br><span class="line"></span><br><span class="line">cd /etc/yum.repos.d/ </span><br><span class="line"></span><br><span class="line">mv CentOS-Base.repo CentOS-Base.repo.bak </span><br><span class="line"></span><br><span class="line">mv CentOS7-Base-163.repo CentOS-Base.repo</span><br></pre></td></tr></table></figure>
-<h3 id="三，执行yum源更新命令"><a href="#三，执行yum源更新命令" class="headerlink" title="三，执行yum源更新命令"></a>三，执行yum源更新命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum clean all </span><br><span class="line"></span><br><span class="line">yum makecache </span><br><span class="line"></span><br><span class="line">yum update</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
-      <tags>
-        <tag>yum</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos7-控制系统的CPU</title>
-    <url>/article/3687663458.html</url>
-    <content><![CDATA[<p>这里是linux的学习基地，我们可以学习一些linux的常用知识</p>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
   </entry>
   <entry>
     <title>centos7-常用的命令</title>
@@ -189,22 +134,71 @@
       </tags>
   </entry>
   <entry>
-    <title>centos7-网络设置</title>
-    <url>/article/3594159119.html</url>
-    <content><![CDATA[<p>配置centos7的网络，让其可以正常的连接网络</p>
-<h3 id="一，打开网络配置所在的文件"><a href="#一，打开网络配置所在的文件" class="headerlink" title="一，打开网络配置所在的文件"></a>一，打开网络配置所在的文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts</span><br><span class="line">vi ifcfg-ens160 (不同的系统，文件名不同)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">#设置静态ip还是动态IP</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens160</span><br><span class="line">UUID=750fb5d2-4bff-437d-ab4e-75eaf038429d</span><br><span class="line">DEVICE=ens160</span><br><span class="line">#开机自启动</span><br><span class="line">ONBOOT=yes</span><br><span class="line">#静态ip地址</span><br><span class="line">IPADDR=192.168.50.72</span><br><span class="line">#静态网关</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">#路由</span><br><span class="line">GATEWAY=192.168.50.1</span><br></pre></td></tr></table></figure>
-<p>设置好之后，重启网络服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
-<h3 id="二，配置域名解析"><a href="#二，配置域名解析" class="headerlink" title="二，配置域名解析"></a>二，配置域名解析</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/resolv.conf</span><br></pre></td></tr></table></figure>
-<p>添加内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nameserver   8.8.8.8</span><br><span class="line"></span><br><span class="line">nameserver   8.8.4.4</span><br><span class="line"></span><br><span class="line">nameserver    114.114.114.114</span><br></pre></td></tr></table></figure>
+    <title>centos7-yum的使用</title>
+    <url>/article/1714992348.html</url>
+    <content><![CDATA[<p>记录yum的使用</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="搜索指定的版本安装"><a href="#搜索指定的版本安装" class="headerlink" title="搜索指定的版本安装"></a>搜索指定的版本安装</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum list --showduplicates xxx</span><br></pre></td></tr></table></figure>
+<h4 id="下载软件包"><a href="#下载软件包" class="headerlink" title="下载软件包"></a>下载软件包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install yum-plugin-downloadonly</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install fontconfig --downloadonly --downloaddir=/root/wei/</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>centos7</category>
       </categories>
       <tags>
+        <tag>yum</tag>
         <tag>centos7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7-openoffice安装和启动</title>
+    <url>/article/1736132591.html</url>
+    <content><![CDATA[<p>  本文介绍了openoffice在Centos7下的安装和启动以及使用的方法，供大家学习和参考。</p>
+<h3 id="openoffice包的下载"><a href="#openoffice包的下载" class="headerlink" title="openoffice包的下载"></a>openoffice包的下载</h3><p><a href="http://www.openoffice.org/download/" target="_blank" rel="noopener">openoffice下载</a></p>
+<p><img src="/images/openoffice/openoffice.png" alt="open"></p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf Apache_OpenOffice_4.1.8_Linux_x86-64_install-rpm_zh-CN.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="进入解压目录"><a href="#进入解压目录" class="headerlink" title="进入解压目录"></a>进入解压目录</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd zh-CN/RPMS</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure>
+<p><code>装完后会在当前目录下生成一个desktop-integration目录</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd zh-CN/RPMS/desktop-integration/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -ivh openoffice4.1.5-redhat-menus-4.1.5-9789.noarch.rpm</span><br></pre></td></tr></table></figure>
+<h4 id="下载依赖包"><a href="#下载依赖包" class="headerlink" title="下载依赖包"></a>下载依赖包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install libXext.x86_64</span><br></pre></td></tr></table></figure>
+<h4 id="下载java环境"><a href="#下载java环境" class="headerlink" title="下载java环境"></a>下载java环境</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install jre java-devel</span><br></pre></td></tr></table></figure>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=<span class="string">"socket,host=127.0.0.1,port=8100;urp;"</span> -nofirststartwizard</span><br></pre></td></tr></table></figure>
+<h3 id="JODConverter下载"><a href="#JODConverter下载" class="headerlink" title="JODConverter下载"></a>JODConverter下载</h3><p><a href="https://sourceforge.net/projects/jodconverter/" target="_blank" rel="noopener">jodConverter下载</a></p>
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unzip jodconverter-2.2.2.zip</span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p><code>必须先启动openoffice的服务，然后再使用这个命令行</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  inputfileName outputfileName</span><br></pre></td></tr></table></figure>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  media/01-自然语言处理-中文分词算法的实现.pptx.pptx  media/o1.pdf</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>centos7</category>
+        <category>doc</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+        <tag>openoffice</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7-zsh的使用和配置</title>
+    <url>/article/192192511.html</url>
+    <content><![CDATA[<p>​     本文主要是记录centos7搭建自己个性的命令行。</p>
+<h3 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install zsh</span><br></pre></td></tr></table></figure>
+<h4 id="将其设置为默认shell"><a href="#将其设置为默认shell" class="headerlink" title="将其设置为默认shell"></a>将其设置为默认shell</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<p><code>可以通过echo $SHELL来查看当前默认的shell，如果没有改为/bin/zsh,那么需要重新启动shell</code></p>
+<h3 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh-my-zsh"></a>安装oh-my-zsh</h3><p><a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank" rel="noopener">地址</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>​    默认的配置文件是在<code>/root/.zshrc</code>，可以通过配置文件来配置一下插件以及功能</p>
+<h5 id="主题修改"><a href="#主题修改" class="headerlink" title="主题修改"></a>主题修改</h5><p>在<code>.zshrc</code>中找到<code>ZSH_THEME</code>，即可修改主题，<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/themes" target="_blank" rel="noopener">主题地址</a>可自己修改</p>
+<h5 id="zsh扩展"><a href="#zsh扩展" class="headerlink" title="zsh扩展"></a>zsh扩展</h5><p>​    在<code>/root/.zshrc</code>中找到<code>plugins</code>关键字，就可以自定义启用的插件了，目前插件存放在workspace上</p>
+]]></content>
+      <categories>
+        <category>centos7</category>
+        <category>zsh</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+        <tag>zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -225,6 +219,15 @@
       <tags>
         <tag>cpp</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>centos7-控制系统的CPU</title>
+    <url>/article/3687663458.html</url>
+    <content><![CDATA[<p>这里是linux的学习基地，我们可以学习一些linux的常用知识</p>
+]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
   </entry>
   <entry>
     <title>cpp-devtoolset切换gcc的版本</title>
@@ -248,6 +251,25 @@
       </tags>
   </entry>
   <entry>
+    <title>centos7-网络设置</title>
+    <url>/article/3594159119.html</url>
+    <content><![CDATA[<p>配置centos7的网络，让其可以正常的连接网络</p>
+<h3 id="一，打开网络配置所在的文件"><a href="#一，打开网络配置所在的文件" class="headerlink" title="一，打开网络配置所在的文件"></a>一，打开网络配置所在的文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts</span><br><span class="line">vi ifcfg-ens160 (不同的系统，文件名不同)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">#设置静态ip还是动态IP</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens160</span><br><span class="line">UUID=750fb5d2-4bff-437d-ab4e-75eaf038429d</span><br><span class="line">DEVICE=ens160</span><br><span class="line">#开机自启动</span><br><span class="line">ONBOOT=yes</span><br><span class="line">#静态ip地址</span><br><span class="line">IPADDR=192.168.50.72</span><br><span class="line">#静态网关</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">#路由</span><br><span class="line">GATEWAY=192.168.50.1</span><br></pre></td></tr></table></figure>
+<p>设置好之后，重启网络服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
+<h3 id="二，配置域名解析"><a href="#二，配置域名解析" class="headerlink" title="二，配置域名解析"></a>二，配置域名解析</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<p>添加内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nameserver   8.8.8.8</span><br><span class="line"></span><br><span class="line">nameserver   8.8.4.4</span><br><span class="line"></span><br><span class="line">nameserver    114.114.114.114</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>cpp-关于内存泄漏的问题</title>
     <url>/article/834551784.html</url>
     <content><![CDATA[<p>今天我们讨论一些怎么处理内存泄漏的问题</p>
@@ -258,6 +280,39 @@
       <tags>
         <tag>cpp</tag>
         <tag>ffmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker-docker常用命令</title>
+    <url>/article/2019996800.html</url>
+    <content><![CDATA[<p>记录一下自己在工作中常用的docker命令</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<p>验证是否可以正常运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><h5 id="镜像构建通过dockfile"><a href="#镜像构建通过dockfile" class="headerlink" title="镜像构建通过dockfile"></a>镜像构建通过dockfile</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker build -t datatom/video-worker:v4.2.0 -f Dockerfile .</span><br></pre></td></tr></table></figure>
+<h5 id="镜像打包"><a href="#镜像打包" class="headerlink" title="镜像打包"></a>镜像打包</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker save -o video-worker.v4.2.0.tar datatom/video-worker:v4.2.0</span><br></pre></td></tr></table></figure>
+<h5 id="镜像导入"><a href="#镜像导入" class="headerlink" title="镜像导入"></a>镜像导入</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker load -i video-worker.v4.2.0.tar</span><br></pre></td></tr></table></figure>
+<h5 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p><img src="/images/docker/docker.png" alt="docker.png"></p>
+<h5 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi IMAGEID</span><br></pre></td></tr></table></figure>
+<p>如果当前镜像正在被容器使用，则需要先删除容器，可以使用如下命令删除</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm $(docker ps -a | grep IMAGEID|awk &apos;&#123;print $1&#125;&apos;) -f</span><br><span class="line">docker rmi IMAGEID</span><br></pre></td></tr></table></figure>
+<h5 id="删除none镜像"><a href="#删除none镜像" class="headerlink" title="删除none镜像"></a>删除none镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi $(docker images | grep &apos;&lt;none&gt;&apos;|awk &apos;&#123;print $3&#125;&apos;) -f</span><br></pre></td></tr></table></figure>
+<h5 id="镜像运行"><a href="#镜像运行" class="headerlink" title="镜像运行"></a>镜像运行</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -it e2cbe0447a2b /bin/bash</span><br></pre></td></tr></table></figure>
+<p>镜像运行时添加环境变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -e MEDIA_REDIS_IP=127.0.0.1 -e MEDIA_REDIS_PORT=5555  -it d3796bd153f8 /bin/bash</span><br></pre></td></tr></table></figure>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><h5 id="查看正在运行的容器"><a href="#查看正在运行的容器" class="headerlink" title="查看正在运行的容器"></a>查看正在运行的容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<h5 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker stop CONTAINERID</span><br></pre></td></tr></table></figure>
+<h5 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm CONTAINERID</span><br></pre></td></tr></table></figure>
+<h5 id="强制删除"><a href="#强制删除" class="headerlink" title="强制删除"></a>强制删除</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm CONTAINERID -f</span><br></pre></td></tr></table></figure>
+<h3 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h3><h5 id="修改镜像的tagid"><a href="#修改镜像的tagid" class="headerlink" title="修改镜像的tagid"></a>修改镜像的tagid</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker  tag   f92b7e4509da  datatom/image-worker:v4.1.1</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -313,13 +368,102 @@
       </tags>
   </entry>
   <entry>
+    <title>ffmpeg_avfilter的使用详解</title>
+    <url>/article/4030313287.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，</p>
+<p>过滤的过程<br>解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面</p>
+]]></content>
+      <categories>
+        <category>ffmpeg</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+        <tag>avfilter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cuda-cuda10.0安装</title>
+    <url>/article/2055195890.html</url>
+    <content><![CDATA[<p>​        在转码的过程中，我们可以使用硬件来进行转码的加速，今天记录一下在Centos7环境下安装驱动以及cuda模块。</p>
+<h3 id="下载驱动"><a href="#下载驱动" class="headerlink" title="下载驱动"></a>下载驱动</h3><p><code>如果打算安装CUDA10.0及以上的版本则不需要单独安装驱动，cuda10.0自带驱动驱动</code><strong>忽略该驱动的安装</strong></p>
+<p><a href="https://www.nvidia.cn/Download/Find.aspx?lang=cn&amp;QNF=1" target="_blank" rel="noopener">驱动下载地址</a></p>
+<p>例如我们下载Quadro P2000 linux64的驱动</p>
+<p><img src="/images/cuda/图片1.png" alt="图片1.png"></p>
+<p><img src="/images/cuda/图片2.png" alt="图片2.png"></p>
+<p>之所以安装这个驱动是因为要安装的cuda10.0也是410的，之后运行安装驱动程序就好了。</p>
+<h3 id="安装cuda10-0"><a href="#安装cuda10-0" class="headerlink" title="安装cuda10.0"></a>安装cuda10.0</h3><h5 id="1，下载安装包"><a href="#1，下载安装包" class="headerlink" title="1，下载安装包"></a>1，下载安装包</h5><p>​    <a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=CentOS&amp;target_version=7&amp;target_type=runfilelocal" target="_blank" rel="noopener">安装包下载</a>    在该网站上下载安装包</p>
+<p><img src="/images/cuda/图片3.png" alt="图片3.png"></p>
+<h5 id="2，版本选择"><a href="#2，版本选择" class="headerlink" title="2，版本选择"></a>2，版本选择</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">通过以下按钮选择历史版本的cuda，找到10.0下载，然后选择对应的系统</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cuda/图片4.png" alt="图片4.png"></p>
+<h5 id="3，运行-run文件"><a href="#3，运行-run文件" class="headerlink" title="3，运行.run文件"></a>3，运行.run文件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下载完安装包放在linux上直接运行.run文件</span><br><span class="line"></span><br><span class="line">chmod +x cuda_10.0.130_410.48_linux.run </span><br><span class="line">./cuda_10.0.130_410.48_linux.run</span><br></pre></td></tr></table></figure>
+<h5 id="4，然后一直按回车键直到："><a href="#4，然后一直按回车键直到：" class="headerlink" title="4，然后一直按回车键直到："></a>4，然后一直按回车键直到：</h5><p><img src="/images/cuda/图片5.png" alt="图片5.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">回答：accept</span><br></pre></td></tr></table></figure>
+<h5 id="5，是否安装驱动"><a href="#5，是否安装驱动" class="headerlink" title="5，是否安装驱动"></a>5，是否安装驱动</h5><p><img src="/images/cuda/图片6.png" alt="图片6.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">是否安装驱动，这里选择安装：y,因为我们自己没有提前安装驱动，如果提前安装过驱动，这里就不选择安装：n</span><br></pre></td></tr></table></figure>
+<h5 id="6，是否安装OpenGL"><a href="#6，是否安装OpenGL" class="headerlink" title="6，是否安装OpenGL"></a>6，是否安装OpenGL</h5><p><img src="/images/cuda/图片7.png" alt="图片7.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择;n</span><br></pre></td></tr></table></figure>
+<h5 id="7，是否安装x-config"><a href="#7，是否安装x-config" class="headerlink" title="7，是否安装x-config"></a>7，是否安装x-config</h5><p><img src="/images/cuda/图片8.png" alt="图片8.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择：n</span><br></pre></td></tr></table></figure>
+<h5 id="8，是否安装Toolkit"><a href="#8，是否安装Toolkit" class="headerlink" title="8，是否安装Toolkit"></a>8，是否安装Toolkit</h5><p><img src="/images/cuda/图片10.png" alt="图片10.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择：y</span><br></pre></td></tr></table></figure>
+<h5 id="9，cuda目录"><a href="#9，cuda目录" class="headerlink" title="9，cuda目录"></a>9，cuda目录</h5><p><img src="/images/cuda/图片11.png" alt="图片11.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">直接回车，选择默认安装路径</span><br></pre></td></tr></table></figure>
+<h5 id="10，是否创建软连接"><a href="#10，是否创建软连接" class="headerlink" title="10，是否创建软连接"></a>10，是否创建软连接</h5><p><img src="/images/cuda/图片12.png" alt="图片12.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择：y</span><br></pre></td></tr></table></figure>
+<h5 id="11，是否安装示例"><a href="#11，是否安装示例" class="headerlink" title="11，是否安装示例"></a>11，是否安装示例</h5><p><img src="/images/cuda/图片13.png" alt="图片13.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">为了节约空间，这个不安装</span><br><span class="line">选择：n</span><br></pre></td></tr></table></figure>
+<h5 id="12，然后开始安装"><a href="#12，然后开始安装" class="headerlink" title="12，然后开始安装"></a>12，然后开始安装</h5><p><img src="/images/cuda/图片14.png" alt="图片14.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">表示安装成功</span><br></pre></td></tr></table></figure>
+<h5 id="13，添加配置文件"><a href="#13，添加配置文件" class="headerlink" title="13，添加配置文件"></a>13，添加配置文件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim  /etc/profile</span><br><span class="line">写入：</span><br><span class="line">export PATH=/usr/local/cuda-10.0/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH</span><br><span class="line">保存：</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<h5 id="14，卸载驱动及cuda"><a href="#14，卸载驱动及cuda" class="headerlink" title="14，卸载驱动及cuda"></a>14，卸载驱动及cuda</h5><p><img src="/images/cuda/图片15.png" alt="图片15.png"></p>
+<font color="red"><strong>注意</strong></font>
+
+<p><code>1,千万不要重复安装显卡驱动，会导致系统损坏</code></p>
+<p><code>2.升级cuda的时候，一定要将旧版本的cuda卸载干净，否则会出现意想不到的错误</code></p>
+<h5 id="15，查看命令"><a href="#15，查看命令" class="headerlink" title="15，查看命令"></a>15，查看命令</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，检查显卡类型</span><br><span class="line">yum install pciutils（如果没有这个命令，则下载）</span><br><span class="line">lspci | grep VGA</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cuda/图片17.png" alt="图片17.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2，检查安装是否成功</span><br><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cuda/图片16.png" alt="图片16.png"></p>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><h5 id="1，-usr-bin-perl-bad-interpreter-No-such-file-or-directory"><a href="#1，-usr-bin-perl-bad-interpreter-No-such-file-or-directory" class="headerlink" title="1， /usr/bin/perl: bad interpreter: No such file or directory"></a>1， /usr/bin/perl: bad interpreter: No such file or directory</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc</span><br><span class="line">yum install perl</span><br></pre></td></tr></table></figure>
+<h5 id="2，kernel源安装"><a href="#2，kernel源安装" class="headerlink" title="2，kernel源安装"></a>2，kernel源安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">检查系统版本</span><br><span class="line">uname -a</span><br><span class="line">yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r)</span><br><span class="line">先查看源是否相同，如果没有则需要下载</span><br></pre></td></tr></table></figure>
+<h5 id="3，禁用nouveau（对某些版本需要）"><a href="#3，禁用nouveau（对某些版本需要）" class="headerlink" title="3，禁用nouveau（对某些版本需要）"></a>3，禁用nouveau（对某些版本需要）</h5><h6 id="1，修改文件"><a href="#1，修改文件" class="headerlink" title="1，修改文件"></a>1，修改文件</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，修改文件</span><br><span class="line">cd /etc/modprobe.d</span><br><span class="line">vim nvidia-installer-disable-nouveau.conf（如果没有这个文件，则手动生成）</span><br><span class="line"> </span><br><span class="line"> 内容：</span><br><span class="line"> # generated by nvidia-installer</span><br><span class="line"> blacklist nouveau</span><br><span class="line"> options nouveau modeset=0</span><br></pre></td></tr></table></figure>
+<h6 id="2，备份-initramfs"><a href="#2，备份-initramfs" class="headerlink" title="2，备份 initramfs"></a>2，备份 initramfs</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r).img.bak</span><br></pre></td></tr></table></figure>
+<h6 id="3，重建-initramfs"><a href="#3，重建-initramfs" class="headerlink" title="3，重建 initramfs"></a>3，重建 initramfs</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dracut -v /boot/initramfs-$(uname -r).img $(uname -r)</span><br></pre></td></tr></table></figure>
+<h6 id="4，重启机器"><a href="#4，重启机器" class="headerlink" title="4，重启机器"></a>4，重启机器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h6 id="5，检查nouveau-driver确保没有被加载"><a href="#5，检查nouveau-driver确保没有被加载" class="headerlink" title="5，检查nouveau driver确保没有被加载"></a>5，检查nouveau driver确保没有被加载</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsmod | grep nouveau</span><br><span class="line">没有加载则为空，有加载则如图，说明设置没有生效，需要重新设置</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cuda/nouveau.png" alt="nouveau.png"></p>
+]]></content>
+      <categories>
+        <category>cuda</category>
+      </categories>
+      <tags>
+        <tag>nvidia</tag>
+        <tag>驱动</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ffmpeg-内存io模式(内存区做输入或输出)</title>
     <url>/article/2452888490.html</url>
     <content><![CDATA[<p>​    在转码的过程中，我们有时候需要从远程下载文件，当文件很大的时候会占用本地的磁盘空间，同时下载的时间也比较的长，这时候我们考虑直接读取流信息或者写入流信息来进行操作，而不是上传或者下载整个文件来解决。</p>
+<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><p>​    转码的基础逻辑不变，仅仅是在输入输出读取的方式不同，我们需要自己实现输入输出的函数。</p>
+<h4 id="关键结构体"><a href="#关键结构体" class="headerlink" title="关键结构体"></a>关键结构体</h4><p>​    <code>AVIOContext</code>，我们需要初始化这个结构体来存放内存的数据。</p>
 <h3 id="内存读取数据"><a href="#内存读取数据" class="headerlink" title="内存读取数据"></a>内存读取数据</h3><p>​        转码的基本流程不变，仅仅是在开始读取数据的时候有些不同</p>
 <h4 id="读取本地文件"><a href="#读取本地文件" class="headerlink" title="读取本地文件"></a>读取本地文件</h4><p><img src="/images/ffmpeg/file.png" alt="file"></p>
 <h4 id="读取流文件"><a href="#读取流文件" class="headerlink" title="读取流文件"></a>读取流文件</h4><p><img src="/images/ffmpeg/stream.png" alt="stream"></p>
 <p><img src="/images/ffmpeg/readstream.png" alt="read"></p>
+<h3 id="ffmpeg内存读取数据"><a href="#ffmpeg内存读取数据" class="headerlink" title="ffmpeg内存读取数据"></a>ffmpeg内存读取数据</h3><p>​    如图,<font color="red">红色框</font>内是当输入是流时的处理，<font color="green">绿色框</font>内是当输入是文件时的处理，二选一即可。<img src="/images/ffmpeg/stream/input.png" alt="input.png"></p>
+<p><code>fill_iobuffer</code> 函数是我们自己实现的输入流的函数，内容如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="number">359</span> <span class="comment">//读取流数据</span></span><br><span class="line"><span class="number">360</span> <span class="function"><span class="keyword">int</span> <span class="title">fill_iobuffer</span><span class="params">(<span class="keyword">void</span> *opaque, <span class="keyword">uint8_t</span> *buf, <span class="keyword">int</span> buf_size)</span> </span>&#123;</span><br><span class="line"><span class="number">361</span>     <span class="built_in">string</span> hosts = <span class="string">"192.168.50.31:7480"</span>;</span><br><span class="line"><span class="number">362</span>     <span class="built_in">string</span> ak = <span class="string">"11043ee2070d01eb5740f9870dfe3abd"</span>;</span><br><span class="line"><span class="number">363</span>     <span class="built_in">string</span> sk = <span class="string">"bb31a3a96b829976513ee62b4e28ee3f"</span>;</span><br><span class="line"><span class="number">364</span>     S3::<span class="function">Client <span class="title">client</span><span class="params">(hosts, ak, sk)</span></span>;</span><br><span class="line"><span class="number">365</span>     <span class="keyword">static</span> <span class="keyword">uint64_t</span> offset = <span class="number">0</span>;</span><br><span class="line"><span class="number">366</span>     <span class="keyword">uint64_t</span> num;</span><br><span class="line"><span class="number">367</span>     <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="number">368</span>         <span class="comment">// num  = client.GetObject("leopardsrc", "video-H263-AC3.avi",offset,</span></span><br><span class="line"><span class="number">369</span>         <span class="comment">// buf_size, (char* )buf);</span></span><br><span class="line"><span class="number">370</span>         num = client.GetObject(<span class="string">"leopardsrc"</span>, <span class="string">"video-H264-AAC.m4v"</span>, offset,</span><br><span class="line"><span class="number">371</span>                                buf_size, (<span class="keyword">char</span> *)buf);</span><br><span class="line"><span class="number">372</span>         offset += num;</span><br><span class="line"><span class="number">373</span>         <span class="keyword">return</span> num;</span><br><span class="line"><span class="number">374</span>     &#125;</span><br><span class="line"><span class="number">375</span>     <span class="keyword">catch</span> (S3::S3Exception &amp;e) &#123;</span><br><span class="line"><span class="number">376</span>         LOG(ERROR) &lt;&lt; e.str();</span><br><span class="line"><span class="number">377</span>         <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">378</span>     &#125;</span><br><span class="line"><span class="number">379</span> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ffmpeg内存存储数据"><a href="#ffmpeg内存存储数据" class="headerlink" title="ffmpeg内存存储数据"></a>ffmpeg内存存储数据</h3><p>​    如图,<font color="red">红色框</font>内是当输入是流时的处理，<font color="green">绿色框</font>内是当输入是文件时的处理，二选一即可。<img src="/images/ffmpeg/stream/output.png" alt="output.png"></p>
+<p><code>write_buffer</code> 函数是我们自己实现的输出流的函数，内容如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="number">614</span> <span class="function"><span class="keyword">int</span> <span class="title">write_buffer</span><span class="params">(<span class="keyword">void</span> *opaque, <span class="keyword">uint8_t</span> *buf, <span class="keyword">int</span> buf_size)</span> </span>&#123;</span><br><span class="line"><span class="number">627</span>     <span class="keyword">if</span> (!feof(fp_write)) &#123;</span><br><span class="line"><span class="number">634</span>         <span class="keyword">int</span> true_size = fwrite(buf, <span class="number">1</span>, buf_size, fp_write);</span><br><span class="line"><span class="number">635</span>         <span class="keyword">return</span> true_size;</span><br><span class="line"><span class="number">636</span>     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="number">637</span>         <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"><span class="number">638</span>     &#125;</span><br><span class="line"><span class="number">639</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>​    目前这个是测试ffmpeg能够支持自己的输出函数，如果是关于s3的输出支持，需要看s3关于流的实现接口。目前s3是不支持流的处理，只能考虑s3的分块上传。</p>
+<h4 id="输出到内存注意事项"><a href="#输出到内存注意事项" class="headerlink" title="输出到内存注意事项"></a>输出到内存注意事项</h4><h5 id="avio-open"><a href="#avio-open" class="headerlink" title="avio_open"></a>avio_open</h5><p>​    当你的输出函数是自己实现的，不是默认的写入到本地文件，则<code>avio_open</code>这个函数不能够被调用。如图,加入一个判断，当输出为自定义函数时不调用avio_open函数。<img src="/images/ffmpeg/stream/avio.png" alt="avio.png"></p>
+<p>同样，在释放资源的时候也需要做相同的处理。在文件<code>mediainfo.h</code>中的<code>~FileInfoStruct()</code>函数中加入一层判断。<img src="/images/ffmpeg/stream/avio1.png" alt="avio1.png"></p>
+<h5 id="输出封装格式的限制"><a href="#输出封装格式的限制" class="headerlink" title="输出封装格式的限制"></a>输出封装格式的限制</h5><p>​    有一些封装格式不支持以流的方式作为输出，如mp4，错误信息如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[mp4 @ 0x8d0c80] muxer does not support non seekable output</span><br></pre></td></tr></table></figure>
+<p>​    解决方法：通过将mp4文件进行碎片化，即生成Fmp4格式来进行操作。如图  <img src="/images/ffmpeg/stream/fmp4.png" alt="fmp4.png"></p>
+<p>​    我们需要添加<code>movflags</code>参数来进行处理。</p>
 ]]></content>
       <categories>
         <category>ffmpeg</category>
@@ -327,6 +471,25 @@
       <tags>
         <tag>ffmpeg</tag>
         <tag>io</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ffmpeg-编码的步骤</title>
+    <url>/article/3394448682.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;总结一下编码的大致过程，方便自己下一次的处理，分为音频编码和视频</p>
+<h3 id="音频编码的过程"><a href="#音频编码的过程" class="headerlink" title="音频编码的过程"></a>音频编码的过程</h3><h4 id="1，打开输出的文件流"><a href="#1，打开输出的文件流" class="headerlink" title="1，打开输出的文件流"></a>1，打开输出的文件流</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AVFormatContext *ofmt_ctx;</span><br><span class="line">avformat_alloc_output_context2(&amp;ofmt_ctx, NULL, NULL, filename);</span><br></pre></td></tr></table></figure>
+<h4 id="2，创建输出的音频流"><a href="#2，创建输出的音频流" class="headerlink" title="2，创建输出的音频流"></a>2，创建输出的音频流</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AVStream *audioStream;</span><br><span class="line">AVCodec *encoder;</span><br><span class="line">AVCodecContext *enc_ctx;</span><br><span class="line">audioStream = avformat_new_stream(ofmt_ctx, NULL);</span><br><span class="line">if (!audioStream)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br><span class="line">encoder = avcodec_find_encoder(AV_CODEC_ID_AAC);</span><br><span class="line">if(!encoder)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3，设置编码的上下文"><a href="#3，设置编码的上下文" class="headerlink" title="3，设置编码的上下文"></a>3，设置编码的上下文</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enc_ctx = avcodec_alloc_context3(encoder);</span><br><span class="line">if (!enc_ctx)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br><span class="line">enc_ctx -&gt; bit_rate = 64000;</span><br><span class="line">enc_ctx -&gt; sample_rate = 44100;</span><br><span class="line">enc_ctx -&gt; channel_layout = 2;//这个可以根据输入来设置</span><br><span class="line">enc_ctx -&gt; channels = av_get_channel_layout_nb_channels(enc_ctx -&gt; channel_layout);</span><br><span class="line">enc_ctx -&gt; sample_fmt = encoder -&gt; sample_fmts[0];</span><br><span class="line">AVRational time_base = &#123;1, enc_ctx -&gt; sample_rate&#125;;</span><br><span class="line">enc_ctx -&gt; time_base = time_base;</span><br></pre></td></tr></table></figure>
+<h4 id="4，设置flag"><a href="#4，设置flag" class="headerlink" title="4，设置flag"></a>4，设置flag</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (ofmt_ctx -&gt; oformat -&gt; flags &amp; AVFMT_GLOBALHEADER)</span><br><span class="line">	enc_ctx -&gt; flags |= AV_CODEC_FLAG_GLOBAL_HEADER;</span><br></pre></td></tr></table></figure>
+<h4 id="5，打开编码器"><a href="#5，打开编码器" class="headerlink" title="5，打开编码器"></a>5，打开编码器</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ret = avcodec_open2(enc_ctx, encoder, NULL);</span><br><span class="line">if (ret &lt; 0)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6，设置codec-tag"><a href="#6，设置codec-tag" class="headerlink" title="6，设置codec_tag"></a>6，设置codec_tag</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">audioStream -&gt; codecpar -&gt; codec_tag = 0;</span><br></pre></td></tr></table></figure>
+<h4 id="7，copy-code-to-stream"><a href="#7，copy-code-to-stream" class="headerlink" title="7，copy code to stream"></a>7，copy code to stream</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ret = avcodec_parameters_from_context(audioStream -&gt; codecpar, enc_ctx);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ffmpeg</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
       </tags>
   </entry>
   <entry>
@@ -467,82 +630,20 @@
       </tags>
   </entry>
   <entry>
-    <title>ffmpeg-编码的步骤</title>
-    <url>/article/3394448682.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;总结一下编码的大致过程，方便自己下一次的处理，分为音频编码和视频</p>
-<h3 id="音频编码的过程"><a href="#音频编码的过程" class="headerlink" title="音频编码的过程"></a>音频编码的过程</h3><h4 id="1，打开输出的文件流"><a href="#1，打开输出的文件流" class="headerlink" title="1，打开输出的文件流"></a>1，打开输出的文件流</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AVFormatContext *ofmt_ctx;</span><br><span class="line">avformat_alloc_output_context2(&amp;ofmt_ctx, NULL, NULL, filename);</span><br></pre></td></tr></table></figure>
-<h4 id="2，创建输出的音频流"><a href="#2，创建输出的音频流" class="headerlink" title="2，创建输出的音频流"></a>2，创建输出的音频流</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AVStream *audioStream;</span><br><span class="line">AVCodec *encoder;</span><br><span class="line">AVCodecContext *enc_ctx;</span><br><span class="line">audioStream = avformat_new_stream(ofmt_ctx, NULL);</span><br><span class="line">if (!audioStream)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br><span class="line">encoder = avcodec_find_encoder(AV_CODEC_ID_AAC);</span><br><span class="line">if(!encoder)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="3，设置编码的上下文"><a href="#3，设置编码的上下文" class="headerlink" title="3，设置编码的上下文"></a>3，设置编码的上下文</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enc_ctx = avcodec_alloc_context3(encoder);</span><br><span class="line">if (!enc_ctx)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br><span class="line">enc_ctx -&gt; bit_rate = 64000;</span><br><span class="line">enc_ctx -&gt; sample_rate = 44100;</span><br><span class="line">enc_ctx -&gt; channel_layout = 2;//这个可以根据输入来设置</span><br><span class="line">enc_ctx -&gt; channels = av_get_channel_layout_nb_channels(enc_ctx -&gt; channel_layout);</span><br><span class="line">enc_ctx -&gt; sample_fmt = encoder -&gt; sample_fmts[0];</span><br><span class="line">AVRational time_base = &#123;1, enc_ctx -&gt; sample_rate&#125;;</span><br><span class="line">enc_ctx -&gt; time_base = time_base;</span><br></pre></td></tr></table></figure>
-<h4 id="4，设置flag"><a href="#4，设置flag" class="headerlink" title="4，设置flag"></a>4，设置flag</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (ofmt_ctx -&gt; oformat -&gt; flags &amp; AVFMT_GLOBALHEADER)</span><br><span class="line">	enc_ctx -&gt; flags |= AV_CODEC_FLAG_GLOBAL_HEADER;</span><br></pre></td></tr></table></figure>
-<h4 id="5，打开编码器"><a href="#5，打开编码器" class="headerlink" title="5，打开编码器"></a>5，打开编码器</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ret = avcodec_open2(enc_ctx, encoder, NULL);</span><br><span class="line">if (ret &lt; 0)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="6，设置codec-tag"><a href="#6，设置codec-tag" class="headerlink" title="6，设置codec_tag"></a>6，设置codec_tag</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">audioStream -&gt; codecpar -&gt; codec_tag = 0;</span><br></pre></td></tr></table></figure>
-<h4 id="7，copy-code-to-stream"><a href="#7，copy-code-to-stream" class="headerlink" title="7，copy code to stream"></a>7，copy code to stream</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ret = avcodec_parameters_from_context(audioStream -&gt; codecpar, enc_ctx);</span><br></pre></td></tr></table></figure>
+    <title>git-大文件上传管理</title>
+    <url>/article/3538252460.html</url>
+    <content><![CDATA[<h3 id="git-lfs安装和配置"><a href="#git-lfs安装和配置" class="headerlink" title="git lfs安装和配置"></a>git lfs安装和配置</h3><p>git lfs 需要客户端支持, 请根据自己的操作系统下载对应的客户端</p>
+<p><a href="https://git-lfs.github.com/" target="_blank" rel="noopener">git lfs客户端下载</a></p>
+<p><code>以Centos7为例，下载客户端后运行rpm安装</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -i git-lfs-2.2.1-1.el7.x86_64.rpm</span><br><span class="line">git lfs install（完成初始化）</span><br></pre></td></tr></table></figure>
+<h3 id="设置管理的文件类型"><a href="#设置管理的文件类型" class="headerlink" title="设置管理的文件类型"></a>设置管理的文件类型</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#压缩包</span><br><span class="line">git lfs track *.tar *.tar.gz *.tgz *.zip *.7z</span><br><span class="line">#图片</span><br><span class="line">git lfs track *.jpg *.png *.jpeg *.bmp *.gif *.tiff</span><br><span class="line">#库</span><br><span class="line">git lfs track *.jar *.war *.so *.so.*</span><br><span class="line">#非文本文档</span><br><span class="line">git  lfs  track *.doc *.docx *.ppt *.pptx *.pdf *.xls *.xlsx</span><br><span class="line">#安装包</span><br><span class="line">git  lfs  track *.rpm *.deb *.img *.iso</span><br></pre></td></tr></table></figure>
+<p><code>设置完之后会在项目根目录下出现.gitattributes文件</code></p>
 ]]></content>
       <categories>
-        <category>ffmpeg</category>
+        <category>git</category>
       </categories>
       <tags>
-        <tag>ffmpeg</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>cuda-cuda10.0安装</title>
-    <url>/article/2055195890.html</url>
-    <content><![CDATA[<p>​        在转码的过程中，我们可以使用硬件来进行转码的加速，今天记录一下在Centos7环境下安装驱动以及cuda模块。</p>
-<h3 id="下载驱动"><a href="#下载驱动" class="headerlink" title="下载驱动"></a>下载驱动</h3><p><code>如果打算安装CUDA10.0及以上的版本则不需要单独安装驱动，cuda10.0自带驱动驱动</code><strong>忽略该驱动的安装</strong></p>
-<p><a href="https://www.nvidia.cn/Download/Find.aspx?lang=cn&amp;QNF=1" target="_blank" rel="noopener">驱动下载地址</a></p>
-<p>例如我们下载Quadro P2000 linux64的驱动</p>
-<p><img src="/images/cuda/图片1.png" alt="图片1.png"></p>
-<p><img src="/images/cuda/图片2.png" alt="图片2.png"></p>
-<p>之所以安装这个驱动是因为要安装的cuda10.0也是410的，之后运行安装驱动程序就好了。</p>
-<h3 id="安装cuda10-0"><a href="#安装cuda10-0" class="headerlink" title="安装cuda10.0"></a>安装cuda10.0</h3><h5 id="1，下载安装包"><a href="#1，下载安装包" class="headerlink" title="1，下载安装包"></a>1，下载安装包</h5><p>​    <a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=CentOS&amp;target_version=7&amp;target_type=runfilelocal" target="_blank" rel="noopener">安装包下载</a>    在该网站上下载安装包</p>
-<p><img src="/images/cuda/图片3.png" alt="图片3.png"></p>
-<h5 id="2，版本选择"><a href="#2，版本选择" class="headerlink" title="2，版本选择"></a>2，版本选择</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">通过以下按钮选择历史版本的cuda，找到10.0下载，然后选择对应的系统</span><br></pre></td></tr></table></figure>
-<p><img src="/images/cuda/图片4.png" alt="图片4.png"></p>
-<h5 id="3，运行-run文件"><a href="#3，运行-run文件" class="headerlink" title="3，运行.run文件"></a>3，运行.run文件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下载完安装包放在linux上直接运行.run文件</span><br><span class="line"></span><br><span class="line">chmod +x cuda_10.0.130_410.48_linux.run </span><br><span class="line">./cuda_10.0.130_410.48_linux.run</span><br></pre></td></tr></table></figure>
-<h5 id="4，然后一直按回车键直到："><a href="#4，然后一直按回车键直到：" class="headerlink" title="4，然后一直按回车键直到："></a>4，然后一直按回车键直到：</h5><p><img src="/images/cuda/图片5.png" alt="图片5.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">回答：accept</span><br></pre></td></tr></table></figure>
-<h5 id="5，是否安装驱动"><a href="#5，是否安装驱动" class="headerlink" title="5，是否安装驱动"></a>5，是否安装驱动</h5><p><img src="/images/cuda/图片6.png" alt="图片6.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">是否安装驱动，这里选择安装：y,因为我们自己没有提前安装驱动，如果提前安装过驱动，这里就不选择安装：n</span><br></pre></td></tr></table></figure>
-<h5 id="6，是否安装OpenGL"><a href="#6，是否安装OpenGL" class="headerlink" title="6，是否安装OpenGL"></a>6，是否安装OpenGL</h5><p><img src="/images/cuda/图片7.png" alt="图片7.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择;n</span><br></pre></td></tr></table></figure>
-<h5 id="7，是否安装x-config"><a href="#7，是否安装x-config" class="headerlink" title="7，是否安装x-config"></a>7，是否安装x-config</h5><p><img src="/images/cuda/图片8.png" alt="图片8.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择：n</span><br></pre></td></tr></table></figure>
-<h5 id="8，是否安装Toolkit"><a href="#8，是否安装Toolkit" class="headerlink" title="8，是否安装Toolkit"></a>8，是否安装Toolkit</h5><p><img src="/images/cuda/图片10.png" alt="图片10.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择：y</span><br></pre></td></tr></table></figure>
-<h5 id="9，cuda目录"><a href="#9，cuda目录" class="headerlink" title="9，cuda目录"></a>9，cuda目录</h5><p><img src="/images/cuda/图片11.png" alt="图片11.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">直接回车，选择默认安装路径</span><br></pre></td></tr></table></figure>
-<h5 id="10，是否创建软连接"><a href="#10，是否创建软连接" class="headerlink" title="10，是否创建软连接"></a>10，是否创建软连接</h5><p><img src="/images/cuda/图片12.png" alt="图片12.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">选择：y</span><br></pre></td></tr></table></figure>
-<h5 id="11，是否安装示例"><a href="#11，是否安装示例" class="headerlink" title="11，是否安装示例"></a>11，是否安装示例</h5><p><img src="/images/cuda/图片13.png" alt="图片13.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">为了节约空间，这个不安装</span><br><span class="line">选择：n</span><br></pre></td></tr></table></figure>
-<h5 id="12，然后开始安装"><a href="#12，然后开始安装" class="headerlink" title="12，然后开始安装"></a>12，然后开始安装</h5><p><img src="/images/cuda/图片14.png" alt="图片14.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">表示安装成功</span><br></pre></td></tr></table></figure>
-<h5 id="13，添加配置文件"><a href="#13，添加配置文件" class="headerlink" title="13，添加配置文件"></a>13，添加配置文件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim  /etc/profile</span><br><span class="line">写入：</span><br><span class="line">export PATH=/usr/local/cuda-10.0/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH</span><br><span class="line">保存：</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-<h5 id="14，卸载驱动及cuda"><a href="#14，卸载驱动及cuda" class="headerlink" title="14，卸载驱动及cuda"></a>14，卸载驱动及cuda</h5><p><img src="/images/cuda/图片15.png" alt="图片15.png"></p>
-<font color="red"><strong>注意</strong></font>
-
-<p><code>1,千万不要重复安装显卡驱动，会导致系统损坏</code></p>
-<p><code>2.升级cuda的时候，一定要将旧版本的cuda卸载干净，否则会出现意想不到的错误</code></p>
-<h5 id="15，查看命令"><a href="#15，查看命令" class="headerlink" title="15，查看命令"></a>15，查看命令</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，检查显卡类型</span><br><span class="line">yum install pciutils（如果没有这个命令，则下载）</span><br><span class="line">lspci | grep VGA</span><br></pre></td></tr></table></figure>
-<p><img src="/images/cuda/图片17.png" alt="图片17.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2，检查安装是否成功</span><br><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
-<p><img src="/images/cuda/图片16.png" alt="图片16.png"></p>
-<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><h5 id="1，-usr-bin-perl-bad-interpreter-No-such-file-or-directory"><a href="#1，-usr-bin-perl-bad-interpreter-No-such-file-or-directory" class="headerlink" title="1， /usr/bin/perl: bad interpreter: No such file or directory"></a>1， /usr/bin/perl: bad interpreter: No such file or directory</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc</span><br><span class="line">yum install perl</span><br></pre></td></tr></table></figure>
-<h5 id="2，kernel源安装"><a href="#2，kernel源安装" class="headerlink" title="2，kernel源安装"></a>2，kernel源安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">检查系统版本</span><br><span class="line">uname -a</span><br><span class="line">yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r)</span><br><span class="line">先查看源是否相同，如果没有则需要下载</span><br></pre></td></tr></table></figure>
-<h5 id="3，禁用nouveau（对某些版本需要）"><a href="#3，禁用nouveau（对某些版本需要）" class="headerlink" title="3，禁用nouveau（对某些版本需要）"></a>3，禁用nouveau（对某些版本需要）</h5><h6 id="1，修改文件"><a href="#1，修改文件" class="headerlink" title="1，修改文件"></a>1，修改文件</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，修改文件</span><br><span class="line">cd /etc/modprobe.d</span><br><span class="line">vim nvidia-installer-disable-nouveau.conf（如果没有这个文件，则手动生成）</span><br><span class="line"> </span><br><span class="line"> 内容：</span><br><span class="line"> # generated by nvidia-installer</span><br><span class="line"> blacklist nouveau</span><br><span class="line"> options nouveau modeset=0</span><br></pre></td></tr></table></figure>
-<h6 id="2，备份-initramfs"><a href="#2，备份-initramfs" class="headerlink" title="2，备份 initramfs"></a>2，备份 initramfs</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r).img.bak</span><br></pre></td></tr></table></figure>
-<h6 id="3，重建-initramfs"><a href="#3，重建-initramfs" class="headerlink" title="3，重建 initramfs"></a>3，重建 initramfs</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dracut -v /boot/initramfs-$(uname -r).img $(uname -r)</span><br></pre></td></tr></table></figure>
-<h6 id="4，重启机器"><a href="#4，重启机器" class="headerlink" title="4，重启机器"></a>4，重启机器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<h6 id="5，检查nouveau-driver确保没有被加载"><a href="#5，检查nouveau-driver确保没有被加载" class="headerlink" title="5，检查nouveau driver确保没有被加载"></a>5，检查nouveau driver确保没有被加载</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsmod | grep nouveau</span><br><span class="line">没有加载则为空，有加载则如图，说明设置没有生效，需要重新设置</span><br></pre></td></tr></table></figure>
-<p><img src="/images/cuda/nouveau.png" alt="nouveau.png"></p>
-]]></content>
-      <categories>
-        <category>cuda</category>
-      </categories>
-      <tags>
-        <tag>nvidia</tag>
-        <tag>驱动</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -561,53 +662,6 @@
       <tags>
         <tag>cpp</tag>
         <tag>tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker-docker常用命令</title>
-    <url>/article/2019996800.html</url>
-    <content><![CDATA[<p>记录一下自己在工作中常用的docker命令</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
-<p>验证是否可以正常运行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
-<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><h5 id="镜像构建通过dockfile"><a href="#镜像构建通过dockfile" class="headerlink" title="镜像构建通过dockfile"></a>镜像构建通过dockfile</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker build -t datatom/video-worker:v4.2.0 -f Dockerfile .</span><br></pre></td></tr></table></figure>
-<h5 id="镜像打包"><a href="#镜像打包" class="headerlink" title="镜像打包"></a>镜像打包</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker save -o video-worker.v4.2.0.tar datatom/video-worker:v4.2.0</span><br></pre></td></tr></table></figure>
-<h5 id="镜像导入"><a href="#镜像导入" class="headerlink" title="镜像导入"></a>镜像导入</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker load -i video-worker.v4.2.0.tar</span><br></pre></td></tr></table></figure>
-<h5 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p><img src="/images/docker/docker.png" alt="docker.png"></p>
-<h5 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi IMAGEID</span><br></pre></td></tr></table></figure>
-<p>如果当前镜像正在被容器使用，则需要先删除容器，可以使用如下命令删除</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm $(docker ps -a | grep IMAGEID|awk &apos;&#123;print $1&#125;&apos;) -f</span><br><span class="line">docker rmi IMAGEID</span><br></pre></td></tr></table></figure>
-<h5 id="删除none镜像"><a href="#删除none镜像" class="headerlink" title="删除none镜像"></a>删除none镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi $(docker images | grep &apos;&lt;none&gt;&apos;|awk &apos;&#123;print $3&#125;&apos;) -f</span><br></pre></td></tr></table></figure>
-<h5 id="镜像运行"><a href="#镜像运行" class="headerlink" title="镜像运行"></a>镜像运行</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -it e2cbe0447a2b /bin/bash</span><br></pre></td></tr></table></figure>
-<p>镜像运行时添加环境变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -e MEDIA_REDIS_IP=127.0.0.1 -e MEDIA_REDIS_PORT=5555  -it d3796bd153f8 /bin/bash</span><br></pre></td></tr></table></figure>
-<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><h5 id="查看正在运行的容器"><a href="#查看正在运行的容器" class="headerlink" title="查看正在运行的容器"></a>查看正在运行的容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-<h5 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker stop CONTAINERID</span><br></pre></td></tr></table></figure>
-<h5 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm CONTAINERID</span><br></pre></td></tr></table></figure>
-<h5 id="强制删除"><a href="#强制删除" class="headerlink" title="强制删除"></a>强制删除</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm CONTAINERID -f</span><br></pre></td></tr></table></figure>
-<h3 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h3><h5 id="修改镜像的tagid"><a href="#修改镜像的tagid" class="headerlink" title="修改镜像的tagid"></a>修改镜像的tagid</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker  tag   f92b7e4509da  datatom/image-worker:v4.1.1</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ffmpeg_avfilter的使用详解</title>
-    <url>/article/4030313287.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，</p>
-<p>过滤的过程<br>解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面</p>
-]]></content>
-      <categories>
-        <category>ffmpeg</category>
-      </categories>
-      <tags>
-        <tag>ffmpeg</tag>
-        <tag>avfilter</tag>
       </tags>
   </entry>
   <entry>
@@ -686,6 +740,41 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/article/1243066710.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>grpc编译</title>
+    <url>/article/1473358207.html</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">环境 centos7</span><br></pre></td></tr></table></figure>
+<h2 id="一，安装编译依赖的环境"><a href="#一，安装编译依赖的环境" class="headerlink" title="一，安装编译依赖的环境"></a>一，安装编译依赖的环境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y pkgconfig autoconf automake libtool make gcc-c++ unzip</span><br><span class="line">yum install -y gflags-devel gtest-devel clang libcxx-devel</span><br><span class="line">yum install -y openssl  openssl-devel</span><br><span class="line">yum install -y  libunwind libunwind-devel</span><br><span class="line">yum install -y epel-release</span><br><span class="line">yum install -y golang</span><br></pre></td></tr></table></figure>
+<h2 id="二，源码下载"><a href="#二，源码下载" class="headerlink" title="二，源码下载"></a>二，源码下载</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/grpc/grpc.git</span><br><span class="line">cd grpc</span><br><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
+<h2 id="三，编译"><a href="#三，编译" class="headerlink" title="三，编译"></a>三，编译</h2><h4 id="1，编译cmake"><a href="#1，编译cmake" class="headerlink" title="1，编译cmake"></a>1，编译cmake</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">需要下载cmake高级版本，yum安装的版本太低</span><br><span class="line">https://cmake.org/download/</span><br><span class="line">源码安装cmake，</span><br><span class="line">（1）删除原来版本的cmake</span><br><span class="line">（2）./configure</span><br><span class="line">（3）make &amp;&amp; make install</span><br><span class="line">如果找不到，则创建软链接</span><br><span class="line">ln -s /usr/local/bin/cmake /usr/bin/cmake</span><br></pre></td></tr></table></figure>
+<h4 id="2，先编译protobuf"><a href="#2，先编译protobuf" class="headerlink" title="2，先编译protobuf"></a>2，先编译protobuf</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd third_party/protobuf</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --prefix=/usr/local/helios/protobuf</span><br><span class="line">make </span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line">2,建立软链接</span><br><span class="line">ln -s /usr/local/helios/protobuf/bin/protoc /usr/local/bin/protoc</span><br><span class="line">检测是否安装成功</span><br><span class="line">protoc --version</span><br></pre></td></tr></table></figure>
+<h4 id="3，编译grpc（cmake"><a href="#3，编译grpc（cmake" class="headerlink" title="3，编译grpc（cmake)"></a>3，编译grpc（cmake)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd grpc</span><br><span class="line">mkdir -p  cmake/build</span><br><span class="line">cmake -DBUILD_SHARED_LIBS=on -DCMAKE_INSTALL_PREFIX=/usr/local/helios/grpc -DCMAKE_BUILD_TYPE=DEBUG -Wno-dev ../../</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h4 id="4，编译（make-不建议使用）"><a href="#4，编译（make-不建议使用）" class="headerlink" title="4，编译（make,不建议使用）"></a>4，编译（make,不建议使用）</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2,编译grpc</span><br><span class="line">cd grpc根目录</span><br><span class="line">make -j 4</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h4 id="5，问题"><a href="#5，问题" class="headerlink" title="5，问题"></a>5，问题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对于cpp的使用，当编译好了之后，运行helloworld程序，没有响应，有很大的问题</span><br><span class="line">https://github.com/grpc/grpc/issues/21280#issuecomment-558164977</span><br><span class="line"></span><br><span class="line">解决方法：修改源码（不使用）</span><br><span class="line">vim / src / core / lib / surface / init.cc</span><br><span class="line"></span><br><span class="line">diff --git a/src/core/lib/surface/init.cc b/src/core/lib/surface/init.cc</span><br><span class="line">index 2812427f7a..3c6a547b20 100644</span><br><span class="line">--- a/src/core/lib/surface/init.cc</span><br><span class="line">+++ b/src/core/lib/surface/init.cc</span><br><span class="line">@@ -156,7 +156,7 @@ void grpc_init(void) &#123;</span><br><span class="line">      * at the appropriate time */</span><br><span class="line">     grpc_register_security_filters();</span><br><span class="line">     register_builtin_channel_init();</span><br><span class="line">-    grpc_tracer_init();将源码中的这个给注销</span><br><span class="line">+    // grpc_tracer_init();</span><br><span class="line">     /* no more changes to channel init pipelines */</span><br><span class="line">     grpc_channel_init_finalize();</span><br><span class="line">     grpc_iomgr_start();</span><br><span class="line">     </span><br><span class="line">修改源码：</span><br><span class="line">vim src/core/lib/debug/trace.cc</span><br><span class="line"> void TraceFlagList::Add(TraceFlag* flag) &#123;</span><br><span class="line">+  TraceFlag* t;</span><br><span class="line">+  for (t = root_tracer_; t; t = t -&gt; next_tracer_) &#123;</span><br><span class="line">+       if (t == flag ) return;</span><br><span class="line">+  &#125;</span><br><span class="line">   flag-&gt;next_tracer_ = root_tracer_;</span><br><span class="line">   root_tracer_ = flag;</span><br><span class="line">遍历链表，如果存在则不加入</span><br></pre></td></tr></table></figure>
+<h4 id="6，运行helloworld程序"><a href="#6，运行helloworld程序" class="headerlink" title="6，运行helloworld程序"></a>6，运行helloworld程序</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd examples/cpp/helloworld</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">出现问题：</span><br><span class="line">which: no grpc_cpp_plugin in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin)</span><br><span class="line">因为自己配置的路径，所以先给grpc_cpp_plugin  建立软连接</span><br><span class="line">ln -s /usr/local/helios/grpc/bin/grpc_cpp_plugin   /usr/local/bin/grpc_cpp_plugin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">helloworld.pb.h:10:40: fatal error: google/protobuf/port_def.inc: No such file or directory</span><br><span class="line">配置cpp头文件路径</span><br><span class="line">export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/helios/grpc/include</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Package protobuf was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `protobuf.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;protobuf&apos; found</span><br><span class="line">Package grpc was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `grpc.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;grpc&apos; found</span><br><span class="line">配置pkgconfig搜索路径</span><br><span class="line">export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/helios/protobuf/lib/pkgconfig/:/usr/local/helios/grpc/lib/pkgconfig/</span><br><span class="line"></span><br><span class="line">error while loading shared libraries: libgrpc_plugin_support.so.1: cannot open shared object file</span><br><span class="line">配置cpp动态库搜索路径</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/helios/grpc/lib/:/usr/local/helios/grpc/lib64/:/usr/local/helios/protobuf/lib</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>grpc</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+        <tag>grpc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>github-解决GitHub clone慢的问题</title>
     <url>/article/814027255.html</url>
     <content><![CDATA[<p>哎，有时候自己在GitHub上下载东西的时候总是很慢，这里记载一下几个加快的方法</p>
@@ -713,44 +802,6 @@
       </tags>
   </entry>
   <entry>
-    <title>grpc编译</title>
-    <url>/article/1473358207.html</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">环境 centos7</span><br></pre></td></tr></table></figure>
-<h2 id="一，安装编译依赖的环境"><a href="#一，安装编译依赖的环境" class="headerlink" title="一，安装编译依赖的环境"></a>一，安装编译依赖的环境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y pkgconfig autoconf automake libtool make gcc-c++ unzip</span><br><span class="line">yum install -y gflags-devel gtest-devel clang libcxx-devel</span><br><span class="line">yum install -y openssl  openssl-devel</span><br><span class="line">yum install -y  libunwind libunwind-devel</span><br><span class="line">yum install -y epel-release</span><br><span class="line">yum install -y golang</span><br></pre></td></tr></table></figure>
-<h2 id="二，源码下载"><a href="#二，源码下载" class="headerlink" title="二，源码下载"></a>二，源码下载</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/grpc/grpc.git</span><br><span class="line">cd grpc</span><br><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
-<h2 id="三，编译"><a href="#三，编译" class="headerlink" title="三，编译"></a>三，编译</h2><h4 id="1，编译cmake"><a href="#1，编译cmake" class="headerlink" title="1，编译cmake"></a>1，编译cmake</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">需要下载cmake高级版本，yum安装的版本太低</span><br><span class="line">https://cmake.org/download/</span><br><span class="line">源码安装cmake，</span><br><span class="line">（1）删除原来版本的cmake</span><br><span class="line">（2）./configure</span><br><span class="line">（3）make &amp;&amp; make install</span><br><span class="line">如果找不到，则创建软链接</span><br><span class="line">ln -s /usr/local/bin/cmake /usr/bin/cmake</span><br></pre></td></tr></table></figure>
-<h4 id="2，先编译protobuf"><a href="#2，先编译protobuf" class="headerlink" title="2，先编译protobuf"></a>2，先编译protobuf</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd third_party/protobuf</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --prefix=/usr/local/helios/protobuf</span><br><span class="line">make </span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line">2,建立软链接</span><br><span class="line">ln -s /usr/local/helios/protobuf/bin/protoc /usr/local/bin/protoc</span><br><span class="line">检测是否安装成功</span><br><span class="line">protoc --version</span><br></pre></td></tr></table></figure>
-<h4 id="3，编译grpc（cmake"><a href="#3，编译grpc（cmake" class="headerlink" title="3，编译grpc（cmake)"></a>3，编译grpc（cmake)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd grpc</span><br><span class="line">mkdir -p  cmake/build</span><br><span class="line">cmake -DBUILD_SHARED_LIBS=on -DCMAKE_INSTALL_PREFIX=/usr/local/helios/grpc -DCMAKE_BUILD_TYPE=DEBUG -Wno-dev ../../</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h4 id="4，编译（make-不建议使用）"><a href="#4，编译（make-不建议使用）" class="headerlink" title="4，编译（make,不建议使用）"></a>4，编译（make,不建议使用）</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2,编译grpc</span><br><span class="line">cd grpc根目录</span><br><span class="line">make -j 4</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h4 id="5，问题"><a href="#5，问题" class="headerlink" title="5，问题"></a>5，问题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对于cpp的使用，当编译好了之后，运行helloworld程序，没有响应，有很大的问题</span><br><span class="line">https://github.com/grpc/grpc/issues/21280#issuecomment-558164977</span><br><span class="line"></span><br><span class="line">解决方法：修改源码（不使用）</span><br><span class="line">vim / src / core / lib / surface / init.cc</span><br><span class="line"></span><br><span class="line">diff --git a/src/core/lib/surface/init.cc b/src/core/lib/surface/init.cc</span><br><span class="line">index 2812427f7a..3c6a547b20 100644</span><br><span class="line">--- a/src/core/lib/surface/init.cc</span><br><span class="line">+++ b/src/core/lib/surface/init.cc</span><br><span class="line">@@ -156,7 +156,7 @@ void grpc_init(void) &#123;</span><br><span class="line">      * at the appropriate time */</span><br><span class="line">     grpc_register_security_filters();</span><br><span class="line">     register_builtin_channel_init();</span><br><span class="line">-    grpc_tracer_init();将源码中的这个给注销</span><br><span class="line">+    // grpc_tracer_init();</span><br><span class="line">     /* no more changes to channel init pipelines */</span><br><span class="line">     grpc_channel_init_finalize();</span><br><span class="line">     grpc_iomgr_start();</span><br><span class="line">     </span><br><span class="line">修改源码：</span><br><span class="line">vim src/core/lib/debug/trace.cc</span><br><span class="line"> void TraceFlagList::Add(TraceFlag* flag) &#123;</span><br><span class="line">+  TraceFlag* t;</span><br><span class="line">+  for (t = root_tracer_; t; t = t -&gt; next_tracer_) &#123;</span><br><span class="line">+       if (t == flag ) return;</span><br><span class="line">+  &#125;</span><br><span class="line">   flag-&gt;next_tracer_ = root_tracer_;</span><br><span class="line">   root_tracer_ = flag;</span><br><span class="line">遍历链表，如果存在则不加入</span><br></pre></td></tr></table></figure>
-<h4 id="6，运行helloworld程序"><a href="#6，运行helloworld程序" class="headerlink" title="6，运行helloworld程序"></a>6，运行helloworld程序</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd examples/cpp/helloworld</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">出现问题：</span><br><span class="line">which: no grpc_cpp_plugin in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin)</span><br><span class="line">因为自己配置的路径，所以先给grpc_cpp_plugin  建立软连接</span><br><span class="line">ln -s /usr/local/helios/grpc/bin/grpc_cpp_plugin   /usr/local/bin/grpc_cpp_plugin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">helloworld.pb.h:10:40: fatal error: google/protobuf/port_def.inc: No such file or directory</span><br><span class="line">配置cpp头文件路径</span><br><span class="line">export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/helios/grpc/include</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Package protobuf was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `protobuf.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;protobuf&apos; found</span><br><span class="line">Package grpc was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `grpc.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;grpc&apos; found</span><br><span class="line">配置pkgconfig搜索路径</span><br><span class="line">export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/helios/protobuf/lib/pkgconfig/:/usr/local/helios/grpc/lib/pkgconfig/</span><br><span class="line"></span><br><span class="line">error while loading shared libraries: libgrpc_plugin_support.so.1: cannot open shared object file</span><br><span class="line">配置cpp动态库搜索路径</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/helios/grpc/lib/:/usr/local/helios/grpc/lib64/:/usr/local/helios/protobuf/lib</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>grpc</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-        <tag>grpc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git-大文件上传管理</title>
-    <url>/article/3538252460.html</url>
-    <content><![CDATA[<h3 id="git-lfs安装和配置"><a href="#git-lfs安装和配置" class="headerlink" title="git lfs安装和配置"></a>git lfs安装和配置</h3><p>git lfs 需要客户端支持, 请根据自己的操作系统下载对应的客户端</p>
-<p><a href="https://git-lfs.github.com/" target="_blank" rel="noopener">git lfs客户端下载</a></p>
-<p><code>以Centos7为例，下载客户端后运行rpm安装</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -i git-lfs-2.2.1-1.el7.x86_64.rpm</span><br><span class="line">git lfs install（完成初始化）</span><br></pre></td></tr></table></figure>
-<h3 id="设置管理的文件类型"><a href="#设置管理的文件类型" class="headerlink" title="设置管理的文件类型"></a>设置管理的文件类型</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#压缩包</span><br><span class="line">git lfs track *.tar *.tar.gz *.tgz *.zip *.7z</span><br><span class="line">#图片</span><br><span class="line">git lfs track *.jpg *.png *.jpeg *.bmp *.gif *.tiff</span><br><span class="line">#库</span><br><span class="line">git lfs track *.jar *.war *.so *.so.*</span><br><span class="line">#非文本文档</span><br><span class="line">git  lfs  track *.doc *.docx *.ppt *.pptx *.pdf *.xls *.xlsx</span><br><span class="line">#安装包</span><br><span class="line">git  lfs  track *.rpm *.deb *.img *.iso</span><br></pre></td></tr></table></figure>
-<p><code>设置完之后会在项目根目录下出现.gitattributes文件</code></p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo-gulp压缩</title>
     <url>/article/2127593710.html</url>
     <content><![CDATA[<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#全局安装</span><br><span class="line">npm install gulp -g</span><br><span class="line">#站点目录安装</span><br><span class="line">npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify --save</span><br></pre></td></tr></table></figure>
@@ -770,18 +821,23 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/article/1243066710.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
+    <title>hexo-常用命令</title>
+    <url>/article/3973852728.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。</p>
+<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;postname&quot; (hexo n postname)</span><br></pre></td></tr></table></figure>
+<h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;pagename&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="启动本地web服务"><a href="#启动本地web服务" class="headerlink" title="启动本地web服务"></a>启动本地web服务</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server (hexo s)</span><br><span class="line">本地网址：localhost:4000</span><br></pre></td></tr></table></figure>
+<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate (hexo g)</span><br></pre></td></tr></table></figure>
+<h3 id="生成部署"><a href="#生成部署" class="headerlink" title="生成部署"></a>生成部署</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<h3 id="生成预览"><a href="#生成预览" class="headerlink" title="生成预览"></a>生成预览</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s -g</span><br></pre></td></tr></table></figure>
+<h3 id="清理public文件夹"><a href="#清理public文件夹" class="headerlink" title="清理public文件夹"></a>清理public文件夹</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>hexo-next主题配置</title>
@@ -808,59 +864,14 @@
       </tags>
   </entry>
   <entry>
-    <title>image-libvips图片处理库源码编译</title>
-    <url>/article/3448999942.html</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目前主要是用于苹果平台图片heic图片的转码处理</span><br></pre></td></tr></table></figure>
-<h3 id="1，从GitHub上下载源码"><a href="#1，从GitHub上下载源码" class="headerlink" title="1，从GitHub上下载源码"></a>1，从GitHub上下载源码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git  clone  https://github.com/libvips/libvips.git</span><br></pre></td></tr></table></figure>
-<h3 id="2，下载需要的依赖"><a href="#2，下载需要的依赖" class="headerlink" title="2，下载需要的依赖"></a>2，下载需要的依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gtk-doc</span><br><span class="line">yum install gobject-introspection</span><br><span class="line">yum install gobject-introspection-devel</span><br><span class="line">yum install expat-devel</span><br><span class="line">yum install glib glib-devel</span><br><span class="line">yum install gcc gcc-c++</span><br><span class="line">yum install make pkgconfig autoconf automake</span><br></pre></td></tr></table></figure>
-<h3 id="3，编译出现的问题"><a href="#3，编译出现的问题" class="headerlink" title="3，编译出现的问题"></a>3，编译出现的问题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">libpango-1.0.so: undefined reference to `fribidi_get_par_embedding_levels_ex&apos;</span><br><span class="line"></span><br><span class="line">检查ldd /usr/lib64/libpango-1.0.so发现，有一个ibfribidi.so.0 =&gt; /lib64/libfribidi.so.0链接开始链接的是我自己的，有问题，改回来就好了，可能是版本冲突的原因，需要保证链接库的版本一致</span><br></pre></td></tr></table></figure>
-<h3 id="3，安装我们需要支持的图片格式依赖"><a href="#3，安装我们需要支持的图片格式依赖" class="headerlink" title="3，安装我们需要支持的图片格式依赖"></a>3，安装我们需要支持的图片格式依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y libjpeg-turbo libjpeg-turbo-devel</span><br><span class="line">yum install -y libexif libexif-devel</span><br><span class="line">yum install -y giflib giflib-devel</span><br><span class="line">yum install -y librsvg2 librsvg2-devel</span><br><span class="line">yum install -y libtiff libtiff-devel </span><br><span class="line">yum install -y libwebp libwebp-devel</span><br><span class="line">yum install -y libpng libpng-devel</span><br><span class="line">yum install -y  libgsf libgsf-devel</span><br><span class="line">yum install -y poppler-glib poppler-glib-devel</span><br><span class="line">yum install -y openslide openslide-devel</span><br><span class="line">yum install -y orc orc-devel</span><br><span class="line">yum install -y libimagequant libimagequant-devel</span><br><span class="line">yum install -y cfitsio cfitsio-devel</span><br><span class="line">yum install -y matio matio-devel</span><br><span class="line">yum install -y fftw fftw-devel</span><br></pre></td></tr></table></figure>
-<h3 id="4，安装libheif"><a href="#4，安装libheif" class="headerlink" title="4，安装libheif"></a>4，安装libheif</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1,git 源码安装libde265,## 注意这个必须安装，不然在编译libvips时，虽然configure表示支持，但是在真正使用的时候会报错</span><br><span class="line"></span><br><span class="line">2，git源码安装libheif，需要注意 配置libde265支持</span><br></pre></td></tr></table></figure>
-<h4 id="5，编译"><a href="#5，编译" class="headerlink" title="5，编译"></a>5，编译</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，./configure</span><br><span class="line">2,make &amp;&amp; make install</span><br><span class="line">自己写的myconfig.sh文件</span><br><span class="line"></span><br><span class="line">  1 #!/bin/sh                                                                                                                          </span><br><span class="line">  2 commoninclude=/usr/include</span><br><span class="line">  3 commonlib=/usr/lib64</span><br><span class="line">  4  </span><br><span class="line">  5 CPPFLAGS=&quot;-g -Wall -I$&#123;commoninclude&#125;  -L$&#123;commonlib&#125;&quot;    \</span><br><span class="line">  6 CXXFLAGS=&quot;-g -Wall -I$&#123;commoninclude&#125;  -L$&#123;commonlib&#125;&quot;    \</span><br><span class="line">  7 PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig:/usr/local/heif/lib/pkgconfig&quot;         \</span><br><span class="line">  8 ./configure  --enable-gtk-doc-pdf=yes --prefix=/usr/local/vips    \</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>图片处理</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-        <tag>image</tag>
-        <tag>lib.so</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo-常用命令</title>
-    <url>/article/3973852728.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。</p>
-<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;postname&quot; (hexo n postname)</span><br></pre></td></tr></table></figure>
-<h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;pagename&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="启动本地web服务"><a href="#启动本地web服务" class="headerlink" title="启动本地web服务"></a>启动本地web服务</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server (hexo s)</span><br><span class="line">本地网址：localhost:4000</span><br></pre></td></tr></table></figure>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate (hexo g)</span><br></pre></td></tr></table></figure>
-<h3 id="生成部署"><a href="#生成部署" class="headerlink" title="生成部署"></a>生成部署</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-<h3 id="生成预览"><a href="#生成预览" class="headerlink" title="生成预览"></a>生成预览</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s -g</span><br></pre></td></tr></table></figure>
-<h3 id="清理public文件夹"><a href="#清理public文件夹" class="headerlink" title="清理public文件夹"></a>清理public文件夹</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>image-图片处理库总结</title>
-    <url>/article/3226112650.html</url>
-    <content><![CDATA[<h3 id="一，提取exif信息的库"><a href="#一，提取exif信息的库" class="headerlink" title="一，提取exif信息的库"></a>一，提取exif信息的库</h3><p><a href="https://www.exiv2.org/" target="_blank" rel="noopener">Exif</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Exiv2 是一个用来提取图片中的EXIF、LPTC 和 XMP 元数据信息的C++类库。同时还提供了命令行工具。示例代码： Exiv2::Image::AutoPtr image =Exiv2::ImageFactory::open(argv[1]);assert(image.get() != 0);image-&gt;readMetadata(); Exi... 更多Exiv2信息</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/libvips/libvips" target="_blank" rel="noopener">libvips</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">libvips是一个需求驱动的水平线程 图像处理库。与类似的库相比，libvips运行迅速且几乎不占用内存。libvips是根据LGPL 2.1+许可的。</span><br><span class="line"></span><br><span class="line">它具有约300种运算， 涵盖算术，直方图，卷积，形态运算，频率滤波，颜色，重采样，统计等。它支持多种数字类型，从8位int到128位复数。图像可以具有任意数量的波段。它支持各种图像格式，包括JPEG，TIFF，PNG，WebP，HEIC，FITS，Matlab，OpenEXR，PDF，SVG，HDR，PPM / PGM / PFM，CSV，GIF，分析，NIfTI，DeepZoom和OpenSlide 。它还可以通过ImageMagick或GraphicsMagick加载图像，使其与DICOM等格式一起使用。</span><br><span class="line"></span><br><span class="line">主要用这个处理苹果平台heic图片格式的转码</span><br></pre></td></tr></table></figure>
-<p><a href="http://cimg.eu/" target="_blank" rel="noopener">CImg</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">就一个.h文件所以用起来很简明，但感觉功能上不如CxImage。可以与CxImage配合使用，因为CImg提供了基于</span><br><span class="line">lapack的矩阵运算函数和完善的线性滤波卷积函数，同时CImg做像素运算还是很方便的。另外，独有Display类可以方便的</span><br><span class="line">实现各种显示，包括显示图像、打字、画线等等。还有，该库有个基于光流的多尺度图像配准例子，很好.</span><br><span class="line"></span><br><span class="line">使用很方便，但是对于特殊的格式如heic，相机原生格式不支持</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.libraw.org/docs" target="_blank" rel="noopener">libraw</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LibRaw是一个用于从数码相机读取RAW文件的库（CRW / CR2，NEF，RAF，DNG，MOS，KDC，DCR等，实际上支持所有RAW格式）。</span><br><span class="line"></span><br><span class="line">它特别注意正确检索后续RAW转换所需的数据。</span><br><span class="line"></span><br><span class="line">该库旨在使用RAW文件作为初始数据嵌入RAW转换器，数据分析器和其他程序中。</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.codeproject.com/Articles/1300/CxImage" target="_blank" rel="noopener">CxImage</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对CxImage考察的印象：该开发包完全开放源代码，图像封装为一个类，功能极为强大，与Windows、MFC支持极好，支</span><br><span class="line">持图像的多种操作（线性滤波、中值滤波、直方图操作、旋转缩放、区域选取、阈值处理、膨胀腐蚀、alpha混合等等），支</span><br><span class="line">持从文件、内存或者win32api定义的位图图像格式中读取图像，支持将图像显示在任意窗口，功能可谓很强大了，而且对像</span><br><span class="line">素的操作很方便，另外还有一个界面很强的demo，可以直接在上面进行二次开发，推荐使用！</span><br><span class="line">缺点：里面的子库很多，用起来可能较麻烦；而且感觉速度稍慢，不如后面提到的freeimage</span><br><span class="line">但功能真的十分强大啊！</span><br><span class="line"></span><br><span class="line">主要使用这个处理相机原生图片，可以linux下自己不会编译</span><br></pre></td></tr></table></figure>
-<p><a href="https://opencv.org/" target="_blank" rel="noopener">OpenCV</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对OpenCV的印象：功能十分的强大，而且支持目前先进的图像处理技术，体系十分完善，操作手册很详细，手册首先给大</span><br><span class="line">家补计算机视觉的知识，几乎涵盖了近10年内的主流算法；然后将图像格式和矩阵运算，然后将各个算法的实现函数。我用</span><br><span class="line">它来做了一个Harris角点检测器和Canny边缘检测器，总共就花了一个小时（第一次用OpenCV）。而且该库显示图像极其</span><br><span class="line">方便，两句话就可以。但该库似乎不大稳定，对32F和16S、8U的图像数据支持上bug重重。我用cvFilter2D函数进行线性</span><br><span class="line">滤波，屡屡出错，后来一查原来是大bug。后来用cvmGet来取矩阵元素也是频繁出错，仔细检查了N遍确保程序没问题之后</span><br><span class="line">在yahoogroup上找到答案：仍然是bug。。。但好歹该库是开放的，所以自己可以修改；而且支持CVS。另外该库用的是</span><br><span class="line">IPL矩阵库，速度奇快～～</span><br><span class="line"></span><br><span class="line">目前没有使用</span><br></pre></td></tr></table></figure>
+    <title>image-libraw相机图片库源码编译</title>
+    <url>/article/1731984249.html</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LibRaw is a library for reading RAW files from digital photo cameras (CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are supported).</span><br></pre></td></tr></table></figure>
+<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/LibRaw/LibRaw.git</span><br></pre></td></tr></table></figure>
+<h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，查看文件DEVELOPER-NOTES，提示我们,执行mkdist.sh脚本来生成编译的东西</span><br><span class="line">2， 安装需要的软件</span><br><span class="line">	 yum install autoconf automake freetype-devel gcc gcc-c++ libtool make pkgconfig -y</span><br><span class="line">	 yum install wget -y</span><br><span class="line">	 yum install lcms2 lcms2-devel -y</span><br><span class="line">	 yum install jasper jasper-devel</span><br></pre></td></tr></table></figure>
+<h3 id="三，准备编译遇到的错误"><a href="#三，准备编译遇到的错误" class="headerlink" title="三，准备编译遇到的错误"></a>三，准备编译遇到的错误</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下载dcraw.c失败，我们需要手动的下载</span><br><span class="line">修改mkdist.sh脚本文件</span><br><span class="line">wget https://www.dechifro.org/dcraw/dcraw.c</span><br><span class="line">然后在执行 mkdist.sh脚本</span><br></pre></td></tr></table></figure>
+<h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./configure --prefix=/usr/local/helios CXX=/usr/local/bin/g++</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h3 id="五，执行遇到的问题"><a href="#五，执行遇到的问题" class="headerlink" title="五，执行遇到的问题"></a>五，执行遇到的问题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在程序中执行 open_file CR2的时候程序崩溃，因为自己的g++编译是4.8.5的，但是更新到4.9.2后就成功了</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>图片处理</category>
@@ -892,14 +903,20 @@
       </tags>
   </entry>
   <entry>
-    <title>image-libraw相机图片库源码编译</title>
-    <url>/article/1731984249.html</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LibRaw is a library for reading RAW files from digital photo cameras (CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are supported).</span><br></pre></td></tr></table></figure>
-<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/LibRaw/LibRaw.git</span><br></pre></td></tr></table></figure>
-<h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，查看文件DEVELOPER-NOTES，提示我们,执行mkdist.sh脚本来生成编译的东西</span><br><span class="line">2， 安装需要的软件</span><br><span class="line">	 yum install autoconf automake freetype-devel gcc gcc-c++ libtool make pkgconfig -y</span><br><span class="line">	 yum install wget -y</span><br><span class="line">	 yum install lcms2 lcms2-devel -y</span><br><span class="line">	 yum install jasper jasper-devel</span><br></pre></td></tr></table></figure>
-<h3 id="三，准备编译遇到的错误"><a href="#三，准备编译遇到的错误" class="headerlink" title="三，准备编译遇到的错误"></a>三，准备编译遇到的错误</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下载dcraw.c失败，我们需要手动的下载</span><br><span class="line">修改mkdist.sh脚本文件</span><br><span class="line">wget https://www.dechifro.org/dcraw/dcraw.c</span><br><span class="line">然后在执行 mkdist.sh脚本</span><br></pre></td></tr></table></figure>
-<h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./configure --prefix=/usr/local/helios CXX=/usr/local/bin/g++</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h3 id="五，执行遇到的问题"><a href="#五，执行遇到的问题" class="headerlink" title="五，执行遇到的问题"></a>五，执行遇到的问题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在程序中执行 open_file CR2的时候程序崩溃，因为自己的g++编译是4.8.5的，但是更新到4.9.2后就成功了</span><br></pre></td></tr></table></figure>
+    <title>image-图片处理库总结</title>
+    <url>/article/3226112650.html</url>
+    <content><![CDATA[<h3 id="一，提取exif信息的库"><a href="#一，提取exif信息的库" class="headerlink" title="一，提取exif信息的库"></a>一，提取exif信息的库</h3><p><a href="https://www.exiv2.org/" target="_blank" rel="noopener">Exif</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Exiv2 是一个用来提取图片中的EXIF、LPTC 和 XMP 元数据信息的C++类库。同时还提供了命令行工具。示例代码： Exiv2::Image::AutoPtr image =Exiv2::ImageFactory::open(argv[1]);assert(image.get() != 0);image-&gt;readMetadata(); Exi... 更多Exiv2信息</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/libvips/libvips" target="_blank" rel="noopener">libvips</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">libvips是一个需求驱动的水平线程 图像处理库。与类似的库相比，libvips运行迅速且几乎不占用内存。libvips是根据LGPL 2.1+许可的。</span><br><span class="line"></span><br><span class="line">它具有约300种运算， 涵盖算术，直方图，卷积，形态运算，频率滤波，颜色，重采样，统计等。它支持多种数字类型，从8位int到128位复数。图像可以具有任意数量的波段。它支持各种图像格式，包括JPEG，TIFF，PNG，WebP，HEIC，FITS，Matlab，OpenEXR，PDF，SVG，HDR，PPM / PGM / PFM，CSV，GIF，分析，NIfTI，DeepZoom和OpenSlide 。它还可以通过ImageMagick或GraphicsMagick加载图像，使其与DICOM等格式一起使用。</span><br><span class="line"></span><br><span class="line">主要用这个处理苹果平台heic图片格式的转码</span><br></pre></td></tr></table></figure>
+<p><a href="http://cimg.eu/" target="_blank" rel="noopener">CImg</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">就一个.h文件所以用起来很简明，但感觉功能上不如CxImage。可以与CxImage配合使用，因为CImg提供了基于</span><br><span class="line">lapack的矩阵运算函数和完善的线性滤波卷积函数，同时CImg做像素运算还是很方便的。另外，独有Display类可以方便的</span><br><span class="line">实现各种显示，包括显示图像、打字、画线等等。还有，该库有个基于光流的多尺度图像配准例子，很好.</span><br><span class="line"></span><br><span class="line">使用很方便，但是对于特殊的格式如heic，相机原生格式不支持</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.libraw.org/docs" target="_blank" rel="noopener">libraw</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LibRaw是一个用于从数码相机读取RAW文件的库（CRW / CR2，NEF，RAF，DNG，MOS，KDC，DCR等，实际上支持所有RAW格式）。</span><br><span class="line"></span><br><span class="line">它特别注意正确检索后续RAW转换所需的数据。</span><br><span class="line"></span><br><span class="line">该库旨在使用RAW文件作为初始数据嵌入RAW转换器，数据分析器和其他程序中。</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.codeproject.com/Articles/1300/CxImage" target="_blank" rel="noopener">CxImage</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对CxImage考察的印象：该开发包完全开放源代码，图像封装为一个类，功能极为强大，与Windows、MFC支持极好，支</span><br><span class="line">持图像的多种操作（线性滤波、中值滤波、直方图操作、旋转缩放、区域选取、阈值处理、膨胀腐蚀、alpha混合等等），支</span><br><span class="line">持从文件、内存或者win32api定义的位图图像格式中读取图像，支持将图像显示在任意窗口，功能可谓很强大了，而且对像</span><br><span class="line">素的操作很方便，另外还有一个界面很强的demo，可以直接在上面进行二次开发，推荐使用！</span><br><span class="line">缺点：里面的子库很多，用起来可能较麻烦；而且感觉速度稍慢，不如后面提到的freeimage</span><br><span class="line">但功能真的十分强大啊！</span><br><span class="line"></span><br><span class="line">主要使用这个处理相机原生图片，可以linux下自己不会编译</span><br></pre></td></tr></table></figure>
+<p><a href="https://opencv.org/" target="_blank" rel="noopener">OpenCV</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">对OpenCV的印象：功能十分的强大，而且支持目前先进的图像处理技术，体系十分完善，操作手册很详细，手册首先给大</span><br><span class="line">家补计算机视觉的知识，几乎涵盖了近10年内的主流算法；然后将图像格式和矩阵运算，然后将各个算法的实现函数。我用</span><br><span class="line">它来做了一个Harris角点检测器和Canny边缘检测器，总共就花了一个小时（第一次用OpenCV）。而且该库显示图像极其</span><br><span class="line">方便，两句话就可以。但该库似乎不大稳定，对32F和16S、8U的图像数据支持上bug重重。我用cvFilter2D函数进行线性</span><br><span class="line">滤波，屡屡出错，后来一查原来是大bug。后来用cvmGet来取矩阵元素也是频繁出错，仔细检查了N遍确保程序没问题之后</span><br><span class="line">在yahoogroup上找到答案：仍然是bug。。。但好歹该库是开放的，所以自己可以修改；而且支持CVS。另外该库用的是</span><br><span class="line">IPL矩阵库，速度奇快～～</span><br><span class="line"></span><br><span class="line">目前没有使用</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>图片处理</category>
@@ -954,6 +971,26 @@
       </tags>
   </entry>
   <entry>
+    <title>image-libvips图片处理库源码编译</title>
+    <url>/article/3448999942.html</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目前主要是用于苹果平台图片heic图片的转码处理</span><br></pre></td></tr></table></figure>
+<h3 id="1，从GitHub上下载源码"><a href="#1，从GitHub上下载源码" class="headerlink" title="1，从GitHub上下载源码"></a>1，从GitHub上下载源码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git  clone  https://github.com/libvips/libvips.git</span><br></pre></td></tr></table></figure>
+<h3 id="2，下载需要的依赖"><a href="#2，下载需要的依赖" class="headerlink" title="2，下载需要的依赖"></a>2，下载需要的依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gtk-doc</span><br><span class="line">yum install gobject-introspection</span><br><span class="line">yum install gobject-introspection-devel</span><br><span class="line">yum install expat-devel</span><br><span class="line">yum install glib glib-devel</span><br><span class="line">yum install gcc gcc-c++</span><br><span class="line">yum install make pkgconfig autoconf automake</span><br></pre></td></tr></table></figure>
+<h3 id="3，编译出现的问题"><a href="#3，编译出现的问题" class="headerlink" title="3，编译出现的问题"></a>3，编译出现的问题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">libpango-1.0.so: undefined reference to `fribidi_get_par_embedding_levels_ex&apos;</span><br><span class="line"></span><br><span class="line">检查ldd /usr/lib64/libpango-1.0.so发现，有一个ibfribidi.so.0 =&gt; /lib64/libfribidi.so.0链接开始链接的是我自己的，有问题，改回来就好了，可能是版本冲突的原因，需要保证链接库的版本一致</span><br></pre></td></tr></table></figure>
+<h3 id="3，安装我们需要支持的图片格式依赖"><a href="#3，安装我们需要支持的图片格式依赖" class="headerlink" title="3，安装我们需要支持的图片格式依赖"></a>3，安装我们需要支持的图片格式依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y libjpeg-turbo libjpeg-turbo-devel</span><br><span class="line">yum install -y libexif libexif-devel</span><br><span class="line">yum install -y giflib giflib-devel</span><br><span class="line">yum install -y librsvg2 librsvg2-devel</span><br><span class="line">yum install -y libtiff libtiff-devel </span><br><span class="line">yum install -y libwebp libwebp-devel</span><br><span class="line">yum install -y libpng libpng-devel</span><br><span class="line">yum install -y  libgsf libgsf-devel</span><br><span class="line">yum install -y poppler-glib poppler-glib-devel</span><br><span class="line">yum install -y openslide openslide-devel</span><br><span class="line">yum install -y orc orc-devel</span><br><span class="line">yum install -y libimagequant libimagequant-devel</span><br><span class="line">yum install -y cfitsio cfitsio-devel</span><br><span class="line">yum install -y matio matio-devel</span><br><span class="line">yum install -y fftw fftw-devel</span><br></pre></td></tr></table></figure>
+<h3 id="4，安装libheif"><a href="#4，安装libheif" class="headerlink" title="4，安装libheif"></a>4，安装libheif</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1,git 源码安装libde265,## 注意这个必须安装，不然在编译libvips时，虽然configure表示支持，但是在真正使用的时候会报错</span><br><span class="line"></span><br><span class="line">2，git源码安装libheif，需要注意 配置libde265支持</span><br></pre></td></tr></table></figure>
+<h4 id="5，编译"><a href="#5，编译" class="headerlink" title="5，编译"></a>5，编译</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，./configure</span><br><span class="line">2,make &amp;&amp; make install</span><br><span class="line">自己写的myconfig.sh文件</span><br><span class="line"></span><br><span class="line">  1 #!/bin/sh                                                                                                                          </span><br><span class="line">  2 commoninclude=/usr/include</span><br><span class="line">  3 commonlib=/usr/lib64</span><br><span class="line">  4  </span><br><span class="line">  5 CPPFLAGS=&quot;-g -Wall -I$&#123;commoninclude&#125;  -L$&#123;commonlib&#125;&quot;    \</span><br><span class="line">  6 CXXFLAGS=&quot;-g -Wall -I$&#123;commoninclude&#125;  -L$&#123;commonlib&#125;&quot;    \</span><br><span class="line">  7 PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig:/usr/local/heif/lib/pkgconfig&quot;         \</span><br><span class="line">  8 ./configure  --enable-gtk-doc-pdf=yes --prefix=/usr/local/vips    \</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>图片处理</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+        <tag>image</tag>
+        <tag>lib.so</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql-centos7源码安装mysql8.0</title>
     <url>/article/1044847951.html</url>
     <content><![CDATA[<pre><code>因为直接通过yum安装的是mariadb，所以我们需要通过另外的方法来进行安装
@@ -988,6 +1025,22 @@
       </tags>
   </entry>
   <entry>
+    <title>opencv-源码安装</title>
+    <url>/article/3084764285.html</url>
+    <content><![CDATA[<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><p>​        通过git源码下载OpenCV，直接在GitHub上下载的速度特别慢，所以我们需要先将其fork，然后同步到gitee上面，通过自己的gitee账号来进行下载，这个速度比较快。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://gitee.com/helioswei/opencv.git</span><br></pre></td></tr></table></figure>
+<h3 id="二，源码编译"><a href="#二，源码编译" class="headerlink" title="二，源码编译"></a>二，源码编译</h3><h5 id="1，cmake版本需求"><a href="#1，cmake版本需求" class="headerlink" title="1，cmake版本需求"></a>1，cmake版本需求</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CMake 3.5.1 or higher is required.  You are running version 2.8.12.2</span><br><span class="line">我们需要先源码编译cmake</span><br></pre></td></tr></table></figure>
+<h5 id="2，安装相关的依赖"><a href="#2，安装相关的依赖" class="headerlink" title="2，安装相关的依赖"></a>2，安装相关的依赖</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，需要Python的依赖包</span><br></pre></td></tr></table></figure>
+<h5 id="2，编译"><a href="#2，编译" class="headerlink" title="2，编译"></a>2，编译</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在OpenCV目录中，创建build目录，然后直接cmake</span><br><span class="line">cd opencv</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>opencv</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>others-时间管理</title>
     <url>/article/1904238135.html</url>
     <content><![CDATA[<p>目标设定是第一步，提供路线图</p>
@@ -996,6 +1049,22 @@
       <categories>
         <category>杂谈</category>
       </categories>
+  </entry>
+  <entry>
+    <title>poco-源码编译包含mysql</title>
+    <url>/article/3587508548.html</url>
+    <content><![CDATA[<h3 id="一，源码下载库"><a href="#一，源码下载库" class="headerlink" title="一，源码下载库"></a>一，源码下载库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">先在git上fork，然后同步到码云上，在clone可以加快下载的速度</span><br><span class="line">git clone https://gitee.com/helioswei/poco.git</span><br></pre></td></tr></table></figure>
+<h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc-c++ make openssl-devel</span><br></pre></td></tr></table></figure>
+<h3 id="三，安装mysql"><a href="#三，安装mysql" class="headerlink" title="三，安装mysql"></a>三，安装mysql</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">见mysql的源码安装，安装时没有头文件，所以我们需要安装头文件</span><br><span class="line">yum install mysql-devel</span><br></pre></td></tr></table></figure>
+<h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">需要提前安装GCC5.1.0来支持c++14</span><br><span class="line">./configure --shared --prefix=/usr/local/poco  --cflags=-std=c++14 --include-path=/usr/include/mysql/ --library-path=/usr/lib64/mysql/ --omit=Data/ODBC,MongoDB,PDF</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>poco</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+        <tag>mysql</tag>
+      </tags>
   </entry>
   <entry>
     <title>mysql-mysql常用命令</title>
@@ -1018,35 +1087,43 @@
       </tags>
   </entry>
   <entry>
-    <title>poco-源码编译包含mysql</title>
-    <url>/article/3587508548.html</url>
-    <content><![CDATA[<h3 id="一，源码下载库"><a href="#一，源码下载库" class="headerlink" title="一，源码下载库"></a>一，源码下载库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">先在git上fork，然后同步到码云上，在clone可以加快下载的速度</span><br><span class="line">git clone https://gitee.com/helioswei/poco.git</span><br></pre></td></tr></table></figure>
-<h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc-c++ make openssl-devel</span><br></pre></td></tr></table></figure>
-<h3 id="三，安装mysql"><a href="#三，安装mysql" class="headerlink" title="三，安装mysql"></a>三，安装mysql</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">见mysql的源码安装，安装时没有头文件，所以我们需要安装头文件</span><br><span class="line">yum install mysql-devel</span><br></pre></td></tr></table></figure>
-<h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">需要提前安装GCC5.1.0来支持c++14</span><br><span class="line">./configure --shared --prefix=/usr/local/poco  --cflags=-std=c++14 --include-path=/usr/include/mysql/ --library-path=/usr/lib64/mysql/ --omit=Data/ODBC,MongoDB,PDF</span><br></pre></td></tr></table></figure>
+    <title>s3-libs3源码编译</title>
+    <url>/article/3714481837.html</url>
+    <content><![CDATA[<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install libxml2-devel</span><br><span class="line"></span><br><span class="line">yum install libxml2</span><br><span class="line"></span><br><span class="line">yum install libcurl-devel</span><br></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">cd build/lib</span><br></pre></td></tr></table></figure>
+<p><code>有两个文件libs3.so.4</code></p>
 ]]></content>
       <categories>
-        <category>poco</category>
+        <category>s3</category>
       </categories>
       <tags>
-        <tag>cpp</tag>
-        <tag>mysql</tag>
+        <tag>s3</tag>
+        <tag>libs3</tag>
       </tags>
   </entry>
   <entry>
-    <title>opencv-源码安装</title>
-    <url>/article/3084764285.html</url>
-    <content><![CDATA[<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><p>​        通过git源码下载OpenCV，直接在GitHub上下载的速度特别慢，所以我们需要先将其fork，然后同步到gitee上面，通过自己的gitee账号来进行下载，这个速度比较快。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://gitee.com/helioswei/opencv.git</span><br></pre></td></tr></table></figure>
-<h3 id="二，源码编译"><a href="#二，源码编译" class="headerlink" title="二，源码编译"></a>二，源码编译</h3><h5 id="1，cmake版本需求"><a href="#1，cmake版本需求" class="headerlink" title="1，cmake版本需求"></a>1，cmake版本需求</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CMake 3.5.1 or higher is required.  You are running version 2.8.12.2</span><br><span class="line">我们需要先源码编译cmake</span><br></pre></td></tr></table></figure>
-<h5 id="2，安装相关的依赖"><a href="#2，安装相关的依赖" class="headerlink" title="2，安装相关的依赖"></a>2，安装相关的依赖</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，需要Python的依赖包</span><br></pre></td></tr></table></figure>
-<h5 id="2，编译"><a href="#2，编译" class="headerlink" title="2，编译"></a>2，编译</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在OpenCV目录中，创建build目录，然后直接cmake</span><br><span class="line">cd opencv</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
+    <title>s3-关于s3cmd的下载</title>
+    <url>/article/3778876136.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p>
+<h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote>
+<p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
+</blockquote>
+<h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote>
+<p>python get-pip.py</p>
+</blockquote>
+<h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote>
+<p>pip install s3cmd</p>
+</blockquote>
+<h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote>
+<p>设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>opencv</category>
+        <category>s3对象存储</category>
       </categories>
       <tags>
         <tag>centos7</tag>
+        <tag>s3</tag>
       </tags>
   </entry>
   <entry>
@@ -1083,58 +1160,18 @@
       </tags>
   </entry>
   <entry>
-    <title>rabbitmq-AMQPCPP的编译</title>
-    <url>/article/3142310907.html</url>
-    <content><![CDATA[<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/CopernicaMarketingSoftware/AMQP-CPP.git</span><br></pre></td></tr></table></figure>
-<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd AMQP-CPP</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake -DAMQP-CPP_BUILD_SHARED=true -DAMQP-CPP_LINUX_TCP=true -DCMAKE_INSTALL_PREFIX=/usr/local/amqpcpp ..</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+    <title>系统io状态排查</title>
+    <url>/article/4148759935.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;这几天在排查自己写的转码服务性能上不去，转码特别慢，正常情况下，转码时CPU可以飙到很高，但是在问题机器上CPU只要50%左右，排查了好久，最终确定是某个其它服务io资源占用了太多，导致了我的转码服务io占用几乎没有，所以出现了问题，介绍几个io的工具，帮助以后查看系统的情况。</p>
+<h3 id="iostat"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;iostat主要是用来查看系统的io使用情况，<br>只记录自己使用的命令</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install sysstat</span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iostat [-c ] [ -d ] [ -k ] [ -m ] [ -x ]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>rabbitmq</category>
+        <category>centos7</category>
       </categories>
       <tags>
-        <tag>rabbitmq</tag>
-        <tag>amqpcpp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>s3-关于s3cmd的下载</title>
-    <url>/article/3778876136.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p>
-<h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote>
-<p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
-</blockquote>
-<h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote>
-<p>python get-pip.py</p>
-</blockquote>
-<h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote>
-<p>pip install s3cmd</p>
-</blockquote>
-<h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote>
-<p>设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>s3对象存储</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-        <tag>s3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>s3-libs3源码编译</title>
-    <url>/article/3714481837.html</url>
-    <content><![CDATA[<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install libxml2-devel</span><br><span class="line"></span><br><span class="line">yum install libxml2</span><br><span class="line"></span><br><span class="line">yum install libcurl-devel</span><br></pre></td></tr></table></figure>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">cd build/lib</span><br></pre></td></tr></table></figure>
-<p><code>有两个文件libs3.so.4</code></p>
-]]></content>
-      <categories>
-        <category>s3</category>
-      </categories>
-      <tags>
-        <tag>s3</tag>
-        <tag>libs3</tag>
+        <tag>tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1194,21 +1231,6 @@
       </tags>
   </entry>
   <entry>
-    <title>系统io状态排查</title>
-    <url>/article/4148759935.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;这几天在排查自己写的转码服务性能上不去，转码特别慢，正常情况下，转码时CPU可以飙到很高，但是在问题机器上CPU只要50%左右，排查了好久，最终确定是某个其它服务io资源占用了太多，导致了我的转码服务io占用几乎没有，所以出现了问题，介绍几个io的工具，帮助以后查看系统的情况。</p>
-<h3 id="iostat"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;iostat主要是用来查看系统的io使用情况，<br>只记录自己使用的命令</p>
-<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install sysstat</span><br></pre></td></tr></table></figure>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iostat [-c ] [ -d ] [ -k ] [ -m ] [ -x ]</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>相机底片的解析</title>
     <url>/article/4054922039.html</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;公司要求对相机原生格式如后缀为dng,CR2等的图片进行转码，然后预览，自己查找了一下资料，目前仅仅是用命令行来进行处理的，因为我们是linux端的服务，所以直接封装命令行比较的简单。</p>
@@ -1226,6 +1248,21 @@
       </categories>
       <tags>
         <tag>image</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>rabbitmq-AMQPCPP的编译</title>
+    <url>/article/3142310907.html</url>
+    <content><![CDATA[<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/CopernicaMarketingSoftware/AMQP-CPP.git</span><br></pre></td></tr></table></figure>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd AMQP-CPP</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake -DAMQP-CPP_BUILD_SHARED=true -DAMQP-CPP_LINUX_TCP=true -DCMAKE_INSTALL_PREFIX=/usr/local/amqpcpp ..</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>rabbitmq</category>
+      </categories>
+      <tags>
+        <tag>rabbitmq</tag>
+        <tag>amqpcpp</tag>
       </tags>
   </entry>
 </search>
