@@ -1,9 +1,9 @@
 ---
 title: ffmpeg_avfilter的使用详解
-categories: ffmpeg
+categories: Media
 tags:
+  - Video
   - ffmpeg
-  - avfilter
 abbrlink: 4030313287
 date: 2019-03-27 10:23:18
 ---

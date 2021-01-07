@@ -1,10 +1,9 @@
 ---
 title: image-libvips图片处理库源码编译
-categories: 图片处理
+categories: Media
 tags:
   - image
-  - centos7
-  - lib.so
+  - libvips
 abbrlink: 3448999942
 date: 2020-01-15 09:43:01
 ---

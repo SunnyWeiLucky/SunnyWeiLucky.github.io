@@ -1,29 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>centos7-libreoffice安装和启动</title>
-    <url>/article/3025513893.html</url>
-    <content><![CDATA[<p>​    centos7下的文档转码的利器<code>libreoffice</code>，下面介绍一下centos7平台上对于这个软件的安装</p>
-<h3 id="libreoffice下载"><a href="#libreoffice下载" class="headerlink" title="libreoffice下载"></a>libreoffice下载</h3><p><a href="https://www.libreoffice.org/download/download/" target="_blank" rel="noopener">libreoffice下载</a>，在这里可以下载LO的最新的版本</p>
-<p>这个是网上找的镜像，<a href="http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/" target="_blank" rel="noopener">可以参考</a></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz -C /root/libreoffice</span><br></pre></td></tr></table></figure>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入每个目录下的RPMS目录下使用以下命令执行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure>
-<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install cairo</span><br><span class="line">yum install cups-libs</span><br><span class="line">yum install libSM</span><br></pre></td></tr></table></figure>
-<h4 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum groupinstall "fonts"</span><br></pre></td></tr></table></figure>
-<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">libreoffice6.4 --headless --invisible --convert-to pdf test.docx --outdir /data/file</span><br></pre></td></tr></table></figure>
-<h3 id="bug提交"><a href="#bug提交" class="headerlink" title="bug提交"></a>bug提交</h3><p>在使用的过程中，我发现了一个bug，影响了我产品的功能，所有让社区的管理帮忙提交了bug修复，<a href="https://bbs.libreofficechina.org/thread-2616-1-1.html" target="_blank" rel="noopener">见下</a></p>
-]]></content>
-      <categories>
-        <category>centos7</category>
-        <category>libreoffice</category>
-      </categories>
-      <tags>
-        <tag>libreoffice</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos7-163yum源下载</title>
     <url>/article/2361785990.html</url>
     <content><![CDATA[<p>我们在centos7上下载东西的时候，有时候自带的源里面没有我们需要的软件，所有我们需要更换源来进行下载</p>
@@ -40,40 +17,79 @@
       </tags>
   </entry>
   <entry>
-    <title>AI-PaddleHub的体验使用</title>
-    <url>/article/1959613013.html</url>
-    <content><![CDATA[<p>​        最近体验了一下比较火的AI项目，<a href="https://github.com/PaddlePaddle/PaddleHub" target="_blank" rel="noopener">PaddleHub</a>，对于python我是陌生的，所以下面是作为新手的一些操作指南，保证能够正确的尝试到这个项目的有趣之处。</p>
-<p>​        <a href="https://github.com/PaddlePaddle/PaddleHub/blob/release/v2.0.0-beta/README_ch.md" target="_blank" rel="noopener">官网操作指南</a></p>
-<h3 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h3><ol>
-<li>Python&gt;=3.6</li>
-<li>PaddlePaddle&gt;=2.0.0rc</li>
-</ol>
-<h3 id="环境更新"><a href="#环境更新" class="headerlink" title="环境更新"></a>环境更新</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pip3 install --upgrade pip</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip3 install --upgrade setuptools</span><br></pre></td></tr></table></figure>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="paddlepaddle的安装"><a href="#paddlepaddle的安装" class="headerlink" title="paddlepaddle的安装"></a>paddlepaddle的安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip3 install paddlepaddle==2.0.0rc</span><br></pre></td></tr></table></figure>
-<h4 id="paddlehub的安装"><a href="#paddlehub的安装" class="headerlink" title="paddlehub的安装"></a>paddlehub的安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip3 install paddlehub --upgrade -i https://mirrors.aliyun.com/pypi/simple  --default-timeout=100</span><br></pre></td></tr></table></figure>
-<h4 id="依赖库安装"><a href="#依赖库安装" class="headerlink" title="依赖库安装"></a>依赖库安装</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pip3 install matplotlib</span><br></pre></td></tr></table></figure>
-<h3 id="模型库的下载"><a href="#模型库的下载" class="headerlink" title="模型库的下载"></a>模型库的下载</h3><p>​        下载模型，PaddleHub必须在访问外网的情况下才能下载。你可以现在网络条件好的环境下，先下载安装对应的module，之后将安装好module 完整的拷贝到你需要的机器上，放在<code>HUB_HOME</code>下。<a href="https://github.com/PaddlePaddle/PaddleHub/blob/release/v1.7/docs/tutorial/cmdintro.md#paddlehub%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">关于<code>HUB_HOME</code>的解释参考</a></p>
-<p>​        <a href="https://paddlepaddle.org.cn/hublist" target="_blank" rel="noopener">PaddleHub支持模型列表</a>,我们可以在这个地址上找到所有需要的模型，然后我们通过手动的下载，比如<code>deeplabv3p_xception65_humanseg</code><a href="https://paddlepaddle.org.cn/hubdetail?name=deeplabv3p_xception65_humanseg&amp;en_category=ImageSegmentation" target="_blank" rel="noopener">模型下载</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hub install deeplabv3p_xception65_humanseg==1.1.1</span><br></pre></td></tr></table></figure>
-<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><h4 id="人像抠图"><a href="#人像抠图" class="headerlink" title="人像抠图"></a>人像抠图</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hub run deeplabv3p_xception65_humanseg  --input_path test_image.jpg  --visualization=True --output_dir=<span class="string">"human_output"</span></span><br></pre></td></tr></table></figure>
-<p><code>如果你开始没有下载模型库，则这个执行的过程会超级的慢，所以一般建议先手动的安装模型库</code></p>
-]]></content>
-      <categories>
-        <category>AI</category>
-        <category>PaddleHub</category>
-      </categories>
-      <tags>
-        <tag>PaddleHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos7-epel源下载</title>
     <url>/article/3859923575.html</url>
     <content><![CDATA[<h3 id="一，什么是epel"><a href="#一，什么是epel" class="headerlink" title="一，什么是epel"></a>一，什么是epel</h3><p><strong>EPEL的全称叫 Extra Packages for Enterprise Linux</strong> 。EPEL是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS、Scientific Linux 等提供高质量软件包的项目。装上了 EPEL之后，就相当于添加了一个第三方源。</p>
 <p>如果你知道rpmfusion.org的话，拿 rpmfusion 做比较还是很恰当的，rpmfusion 主要为桌面发行版提供大量rpm包，而<strong><em>EPEL则为服务器版本提供大量的rpm包，而且大多数rpm包在官方 repository 中是找不到的\</em></strong></p>
 <p>另外一个特点是<strong>绝大多数rpm包要比官方repository 的rpm包版本要来得新</strong>。所以，我们有时候在yum下载的时候如果没有找到某个包或者版本过低，可以使用这个方式来尝试。</p>
 <h3 id="二，yum下载"><a href="#二，yum下载" class="headerlink" title="二，yum下载"></a>二，yum下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y epel-release</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+      <tags>
+        <tag>yum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7-libreoffice安装和启动</title>
+    <url>/article/3025513893.html</url>
+    <content><![CDATA[<p>​    centos7下的文档转码的利器<code>libreoffice</code>，下面介绍一下centos7平台上对于这个软件的安装</p>
+<h3 id="libreoffice下载"><a href="#libreoffice下载" class="headerlink" title="libreoffice下载"></a>libreoffice下载</h3><p><a href="https://www.libreoffice.org/download/download/" target="_blank" rel="noopener">libreoffice下载</a>，在这里可以下载LO的最新的版本</p>
+<p>这个是网上找的镜像，<a href="http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/" target="_blank" rel="noopener">可以参考</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz -C /root/libreoffice</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入每个目录下的RPMS目录下使用以下命令执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install cairo</span><br><span class="line">yum install cups-libs</span><br><span class="line">yum install libSM</span><br></pre></td></tr></table></figure>
+<h4 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum groupinstall "fonts"</span><br></pre></td></tr></table></figure>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">libreoffice6.4 --headless --invisible --convert-to pdf test.docx --outdir /data/file</span><br></pre></td></tr></table></figure>
+<h3 id="bug提交"><a href="#bug提交" class="headerlink" title="bug提交"></a>bug提交</h3><p>在使用的过程中，我发现了一个bug，影响了我产品的功能，所有让社区的管理帮忙提交了bug修复，<a href="https://bbs.libreofficechina.org/thread-2616-1-1.html" target="_blank" rel="noopener">见下</a></p>
+]]></content>
+      <categories>
+        <category>Media</category>
+      </categories>
+      <tags>
+        <tag>doc</tag>
+        <tag>libreoffice</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7-openoffice安装和启动</title>
+    <url>/article/1736132591.html</url>
+    <content><![CDATA[<p>  本文介绍了openoffice在Centos7下的安装和启动以及使用的方法，供大家学习和参考。</p>
+<h3 id="openoffice包的下载"><a href="#openoffice包的下载" class="headerlink" title="openoffice包的下载"></a>openoffice包的下载</h3><p><a href="http://www.openoffice.org/download/" target="_blank" rel="noopener">openoffice下载</a></p>
+<p><img src="/images/openoffice/openoffice.png" alt="open"></p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf Apache_OpenOffice_4.1.8_Linux_x86-64_install-rpm_zh-CN.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="进入解压目录"><a href="#进入解压目录" class="headerlink" title="进入解压目录"></a>进入解压目录</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd zh-CN/RPMS</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure>
+<p><code>装完后会在当前目录下生成一个desktop-integration目录</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd zh-CN/RPMS/desktop-integration/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -ivh openoffice4.1.5-redhat-menus-4.1.5-9789.noarch.rpm</span><br></pre></td></tr></table></figure>
+<h4 id="下载依赖包"><a href="#下载依赖包" class="headerlink" title="下载依赖包"></a>下载依赖包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install libXext.x86_64</span><br></pre></td></tr></table></figure>
+<h4 id="下载java环境"><a href="#下载java环境" class="headerlink" title="下载java环境"></a>下载java环境</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install jre java-devel</span><br></pre></td></tr></table></figure>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=<span class="string">"socket,host=127.0.0.1,port=8100;urp;"</span> -nofirststartwizard</span><br></pre></td></tr></table></figure>
+<h3 id="JODConverter下载"><a href="#JODConverter下载" class="headerlink" title="JODConverter下载"></a>JODConverter下载</h3><p><a href="https://sourceforge.net/projects/jodconverter/" target="_blank" rel="noopener">jodConverter下载</a></p>
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unzip jodconverter-2.2.2.zip</span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p><code>必须先启动openoffice的服务，然后再使用这个命令行</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  inputfileName outputfileName</span><br></pre></td></tr></table></figure>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  media/01-自然语言处理-中文分词算法的实现.pptx.pptx  media/o1.pdf</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Media</category>
+      </categories>
+      <tags>
+        <tag>doc</tag>
+        <tag>openoffice</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7-yum的使用</title>
+    <url>/article/1714992348.html</url>
+    <content><![CDATA[<p>记录yum的使用</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="搜索指定的版本安装"><a href="#搜索指定的版本安装" class="headerlink" title="搜索指定的版本安装"></a>搜索指定的版本安装</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum list --showduplicates xxx</span><br></pre></td></tr></table></figure>
+<h4 id="下载软件包"><a href="#下载软件包" class="headerlink" title="下载软件包"></a>下载软件包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install yum-plugin-downloadonly</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install fontconfig --downloadonly --downloaddir=/root/wei/</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>centos7</category>
@@ -130,53 +146,7 @@
         <category>centos7</category>
       </categories>
       <tags>
-        <tag>centos7</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos7-yum的使用</title>
-    <url>/article/1714992348.html</url>
-    <content><![CDATA[<p>记录yum的使用</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="搜索指定的版本安装"><a href="#搜索指定的版本安装" class="headerlink" title="搜索指定的版本安装"></a>搜索指定的版本安装</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum list --showduplicates xxx</span><br></pre></td></tr></table></figure>
-<h4 id="下载软件包"><a href="#下载软件包" class="headerlink" title="下载软件包"></a>下载软件包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install yum-plugin-downloadonly</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install fontconfig --downloadonly --downloaddir=/root/wei/</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
-      <tags>
-        <tag>yum</tag>
-        <tag>centos7</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos7-openoffice安装和启动</title>
-    <url>/article/1736132591.html</url>
-    <content><![CDATA[<p>  本文介绍了openoffice在Centos7下的安装和启动以及使用的方法，供大家学习和参考。</p>
-<h3 id="openoffice包的下载"><a href="#openoffice包的下载" class="headerlink" title="openoffice包的下载"></a>openoffice包的下载</h3><p><a href="http://www.openoffice.org/download/" target="_blank" rel="noopener">openoffice下载</a></p>
-<p><img src="/images/openoffice/openoffice.png" alt="open"></p>
-<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf Apache_OpenOffice_4.1.8_Linux_x86-64_install-rpm_zh-CN.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="进入解压目录"><a href="#进入解压目录" class="headerlink" title="进入解压目录"></a>进入解压目录</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd zh-CN/RPMS</span><br></pre></td></tr></table></figure>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure>
-<p><code>装完后会在当前目录下生成一个desktop-integration目录</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd zh-CN/RPMS/desktop-integration/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -ivh openoffice4.1.5-redhat-menus-4.1.5-9789.noarch.rpm</span><br></pre></td></tr></table></figure>
-<h4 id="下载依赖包"><a href="#下载依赖包" class="headerlink" title="下载依赖包"></a>下载依赖包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install libXext.x86_64</span><br></pre></td></tr></table></figure>
-<h4 id="下载java环境"><a href="#下载java环境" class="headerlink" title="下载java环境"></a>下载java环境</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install jre java-devel</span><br></pre></td></tr></table></figure>
-<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=<span class="string">"socket,host=127.0.0.1,port=8100;urp;"</span> -nofirststartwizard</span><br></pre></td></tr></table></figure>
-<h3 id="JODConverter下载"><a href="#JODConverter下载" class="headerlink" title="JODConverter下载"></a>JODConverter下载</h3><p><a href="https://sourceforge.net/projects/jodconverter/" target="_blank" rel="noopener">jodConverter下载</a></p>
-<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unzip jodconverter-2.2.2.zip</span><br></pre></td></tr></table></figure>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p><code>必须先启动openoffice的服务，然后再使用这个命令行</code></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  inputfileName outputfileName</span><br></pre></td></tr></table></figure>
-<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  media/01-自然语言处理-中文分词算法的实现.pptx.pptx  media/o1.pdf</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>centos7</category>
-        <category>doc</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-        <tag>openoffice</tag>
+        <tag>cmd</tag>
       </tags>
   </entry>
   <entry>
@@ -191,14 +161,41 @@
 <h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>​    默认的配置文件是在<code>/root/.zshrc</code>，可以通过配置文件来配置一下插件以及功能</p>
 <h5 id="主题修改"><a href="#主题修改" class="headerlink" title="主题修改"></a>主题修改</h5><p>在<code>.zshrc</code>中找到<code>ZSH_THEME</code>，即可修改主题，<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/themes" target="_blank" rel="noopener">主题地址</a>可自己修改</p>
 <h5 id="zsh扩展"><a href="#zsh扩展" class="headerlink" title="zsh扩展"></a>zsh扩展</h5><p>​    在<code>/root/.zshrc</code>中找到<code>plugins</code>关键字，就可以自定义启用的插件了，目前插件存放在workspace上</p>
+<p>~~~</p>
 ]]></content>
       <categories>
         <category>centos7</category>
-        <category>zsh</category>
       </categories>
       <tags>
-        <tag>centos7</tag>
         <tag>zsh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos7-控制系统的CPU</title>
+    <url>/article/3687663458.html</url>
+    <content><![CDATA[<p>这里是linux的学习基地，我们可以学习一些linux的常用知识</p>
+]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>centos7-网络设置</title>
+    <url>/article/3594159119.html</url>
+    <content><![CDATA[<p>配置centos7的网络，让其可以正常的连接网络</p>
+<h3 id="一，打开网络配置所在的文件"><a href="#一，打开网络配置所在的文件" class="headerlink" title="一，打开网络配置所在的文件"></a>一，打开网络配置所在的文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts</span><br><span class="line">vi ifcfg-ens160 (不同的系统，文件名不同)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">#设置静态ip还是动态IP</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens160</span><br><span class="line">UUID=750fb5d2-4bff-437d-ab4e-75eaf038429d</span><br><span class="line">DEVICE=ens160</span><br><span class="line">#开机自启动</span><br><span class="line">ONBOOT=yes</span><br><span class="line">#静态ip地址</span><br><span class="line">IPADDR=192.168.50.72</span><br><span class="line">#静态网关</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">#路由</span><br><span class="line">GATEWAY=192.168.50.1</span><br></pre></td></tr></table></figure>
+<p>设置好之后，重启网络服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
+<h3 id="二，配置域名解析"><a href="#二，配置域名解析" class="headerlink" title="二，配置域名解析"></a>二，配置域名解析</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<p>添加内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nameserver   8.8.8.8</span><br><span class="line"></span><br><span class="line">nameserver   8.8.4.4</span><br><span class="line"></span><br><span class="line">nameserver    114.114.114.114</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>centos7</category>
+      </categories>
+      <tags>
+        <tag>network</tag>
       </tags>
   </entry>
   <entry>
@@ -217,17 +214,8 @@
         <category>cpp</category>
       </categories>
       <tags>
-        <tag>cpp</tag>
+        <tag>env</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>centos7-控制系统的CPU</title>
-    <url>/article/3687663458.html</url>
-    <content><![CDATA[<p>这里是linux的学习基地，我们可以学习一些linux的常用知识</p>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
   </entry>
   <entry>
     <title>cpp-devtoolset切换gcc的版本</title>
@@ -245,74 +233,8 @@
         <category>cpp</category>
       </categories>
       <tags>
-        <tag>cpp</tag>
         <tag>gcc</tag>
         <tag>devtoolset</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos7-网络设置</title>
-    <url>/article/3594159119.html</url>
-    <content><![CDATA[<p>配置centos7的网络，让其可以正常的连接网络</p>
-<h3 id="一，打开网络配置所在的文件"><a href="#一，打开网络配置所在的文件" class="headerlink" title="一，打开网络配置所在的文件"></a>一，打开网络配置所在的文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts</span><br><span class="line">vi ifcfg-ens160 (不同的系统，文件名不同)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">#设置静态ip还是动态IP</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens160</span><br><span class="line">UUID=750fb5d2-4bff-437d-ab4e-75eaf038429d</span><br><span class="line">DEVICE=ens160</span><br><span class="line">#开机自启动</span><br><span class="line">ONBOOT=yes</span><br><span class="line">#静态ip地址</span><br><span class="line">IPADDR=192.168.50.72</span><br><span class="line">#静态网关</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">#路由</span><br><span class="line">GATEWAY=192.168.50.1</span><br></pre></td></tr></table></figure>
-<p>设置好之后，重启网络服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
-<h3 id="二，配置域名解析"><a href="#二，配置域名解析" class="headerlink" title="二，配置域名解析"></a>二，配置域名解析</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/resolv.conf</span><br></pre></td></tr></table></figure>
-<p>添加内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nameserver   8.8.8.8</span><br><span class="line"></span><br><span class="line">nameserver   8.8.4.4</span><br><span class="line"></span><br><span class="line">nameserver    114.114.114.114</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>centos7</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>cpp-关于内存泄漏的问题</title>
-    <url>/article/834551784.html</url>
-    <content><![CDATA[<p>今天我们讨论一些怎么处理内存泄漏的问题</p>
-]]></content>
-      <categories>
-        <category>cpp</category>
-      </categories>
-      <tags>
-        <tag>cpp</tag>
-        <tag>ffmpeg</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker-docker常用命令</title>
-    <url>/article/2019996800.html</url>
-    <content><![CDATA[<p>记录一下自己在工作中常用的docker命令</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
-<p>验证是否可以正常运行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
-<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><h5 id="镜像构建通过dockfile"><a href="#镜像构建通过dockfile" class="headerlink" title="镜像构建通过dockfile"></a>镜像构建通过dockfile</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker build -t datatom/video-worker:v4.2.0 -f Dockerfile .</span><br></pre></td></tr></table></figure>
-<h5 id="镜像打包"><a href="#镜像打包" class="headerlink" title="镜像打包"></a>镜像打包</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker save -o video-worker.v4.2.0.tar datatom/video-worker:v4.2.0</span><br></pre></td></tr></table></figure>
-<h5 id="镜像导入"><a href="#镜像导入" class="headerlink" title="镜像导入"></a>镜像导入</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker load -i video-worker.v4.2.0.tar</span><br></pre></td></tr></table></figure>
-<h5 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p><img src="/images/docker/docker.png" alt="docker.png"></p>
-<h5 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi IMAGEID</span><br></pre></td></tr></table></figure>
-<p>如果当前镜像正在被容器使用，则需要先删除容器，可以使用如下命令删除</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm $(docker ps -a | grep IMAGEID|awk &apos;&#123;print $1&#125;&apos;) -f</span><br><span class="line">docker rmi IMAGEID</span><br></pre></td></tr></table></figure>
-<h5 id="删除none镜像"><a href="#删除none镜像" class="headerlink" title="删除none镜像"></a>删除none镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi $(docker images | grep &apos;&lt;none&gt;&apos;|awk &apos;&#123;print $3&#125;&apos;) -f</span><br></pre></td></tr></table></figure>
-<h5 id="镜像运行"><a href="#镜像运行" class="headerlink" title="镜像运行"></a>镜像运行</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -it e2cbe0447a2b /bin/bash</span><br></pre></td></tr></table></figure>
-<p>镜像运行时添加环境变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -e MEDIA_REDIS_IP=127.0.0.1 -e MEDIA_REDIS_PORT=5555  -it d3796bd153f8 /bin/bash</span><br></pre></td></tr></table></figure>
-<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><h5 id="查看正在运行的容器"><a href="#查看正在运行的容器" class="headerlink" title="查看正在运行的容器"></a>查看正在运行的容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-<h5 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker stop CONTAINERID</span><br></pre></td></tr></table></figure>
-<h5 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm CONTAINERID</span><br></pre></td></tr></table></figure>
-<h5 id="强制删除"><a href="#强制删除" class="headerlink" title="强制删除"></a>强制删除</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm CONTAINERID -f</span><br></pre></td></tr></table></figure>
-<h3 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h3><h5 id="修改镜像的tagid"><a href="#修改镜像的tagid" class="headerlink" title="修改镜像的tagid"></a>修改镜像的tagid</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker  tag   f92b7e4509da  datatom/image-worker:v4.1.1</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -337,48 +259,20 @@
         <category>cpp</category>
       </categories>
       <tags>
-        <tag>cpp</tag>
         <tag>restful</tag>
       </tags>
   </entry>
   <entry>
-    <title>cpp-日志库LOG的使用</title>
-    <url>/article/1373770285.html</url>
-    <content><![CDATA[<p>​    在开发的时候，我们经常要写日志，这里提供一个日志库的使用方法；</p>
-<p>​    目前我常用的cpp的日志库是这个<a href="https://github.com/amrayn/easyloggingpp" target="_blank" rel="noopener">easyloggingcpp</a>，官网有详细的一些说明怎么使用的，我这里记录一些使用中需要注意的地方：</p>
-<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>easyloggingcpp编译的时候比较的简单，直接把easyloggingcpp.h和easyloggingcpp.cpp放到自己的项目中进行编译就好了。</p>
-<h3 id="多线程中使用"><a href="#多线程中使用" class="headerlink" title="多线程中使用"></a>多线程中使用</h3><p>在多线程中使用，需要设置几个比较重要的点，不然就会抛出异常的错误，导致程序中断，有以下几点</p>
-<ol>
-<li><p>在编译的时候需要需要添加参数，<code>-DELPP_THREAD_SAFE</code>用以支持多线程，使用cmake进行编译时，需要在Cmakefile文件中设置如下参数，并且cmake的版本需要在3.0以上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET(CMAKE_CXX_FLAGS &quot;-DELPP_THREAD_SAFE&quot;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在使用的文件中，需要预定义一个变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define ELPP_THREAD_SAFE</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="主进程使用"><a href="#主进程使用" class="headerlink" title="主进程使用"></a>主进程使用</h3><p>我们需要在程序的入口位置设置下面的环境变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INITIALIZE_EASYLOGGINGPP</span><br></pre></td></tr></table></figure>
+    <title>cpp-关于内存泄漏的问题</title>
+    <url>/article/834551784.html</url>
+    <content><![CDATA[<p>今天我们讨论一些怎么处理内存泄漏的问题</p>
 ]]></content>
       <categories>
         <category>cpp</category>
       </categories>
       <tags>
         <tag>cpp</tag>
-        <tag>log</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ffmpeg_avfilter的使用详解</title>
-    <url>/article/4030313287.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，</p>
-<p>过滤的过程<br>解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面</p>
-]]></content>
-      <categories>
-        <category>ffmpeg</category>
-      </categories>
-      <tags>
         <tag>ffmpeg</tag>
-        <tag>avfilter</tag>
       </tags>
   </entry>
   <entry>
@@ -434,11 +328,83 @@
 <p><img src="/images/cuda/nouveau.png" alt="nouveau.png"></p>
 ]]></content>
       <categories>
-        <category>cuda</category>
+        <category>Media</category>
       </categories>
       <tags>
-        <tag>nvidia</tag>
-        <tag>驱动</tag>
+        <tag>video</tag>
+        <tag>cuda</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cpp-日志库LOG的使用</title>
+    <url>/article/1373770285.html</url>
+    <content><![CDATA[<p>​    在开发的时候，我们经常要写日志，这里提供一个日志库的使用方法；</p>
+<p>​    目前我常用的cpp的日志库是这个<a href="https://github.com/amrayn/easyloggingpp" target="_blank" rel="noopener">easyloggingcpp</a>，官网有详细的一些说明怎么使用的，我这里记录一些使用中需要注意的地方：</p>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>easyloggingcpp编译的时候比较的简单，直接把easyloggingcpp.h和easyloggingcpp.cpp放到自己的项目中进行编译就好了。</p>
+<h3 id="多线程中使用"><a href="#多线程中使用" class="headerlink" title="多线程中使用"></a>多线程中使用</h3><p>在多线程中使用，需要设置几个比较重要的点，不然就会抛出异常的错误，导致程序中断，有以下几点</p>
+<ol>
+<li><p>在编译的时候需要需要添加参数，<code>-DELPP_THREAD_SAFE</code>用以支持多线程，使用cmake进行编译时，需要在Cmakefile文件中设置如下参数，并且cmake的版本需要在3.0以上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET(CMAKE_CXX_FLAGS &quot;-DELPP_THREAD_SAFE&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在使用的文件中，需要预定义一个变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define ELPP_THREAD_SAFE</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="主进程使用"><a href="#主进程使用" class="headerlink" title="主进程使用"></a>主进程使用</h3><p>我们需要在程序的入口位置设置下面的环境变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INITIALIZE_EASYLOGGINGPP</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>cpp</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker-docker常用命令</title>
+    <url>/article/2019996800.html</url>
+    <content><![CDATA[<p>记录一下自己在工作中常用的docker命令</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<p>验证是否可以正常运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><h5 id="镜像构建通过dockfile"><a href="#镜像构建通过dockfile" class="headerlink" title="镜像构建通过dockfile"></a>镜像构建通过dockfile</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker build -t datatom/video-worker:v4.2.0 -f Dockerfile .</span><br></pre></td></tr></table></figure>
+<h5 id="镜像打包"><a href="#镜像打包" class="headerlink" title="镜像打包"></a>镜像打包</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker save -o video-worker.v4.2.0.tar datatom/video-worker:v4.2.0</span><br></pre></td></tr></table></figure>
+<h5 id="镜像导入"><a href="#镜像导入" class="headerlink" title="镜像导入"></a>镜像导入</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker load -i video-worker.v4.2.0.tar</span><br></pre></td></tr></table></figure>
+<h5 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p><img src="/images/docker/docker.png" alt="docker.png"></p>
+<h5 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi IMAGEID</span><br></pre></td></tr></table></figure>
+<p>如果当前镜像正在被容器使用，则需要先删除容器，可以使用如下命令删除</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm $(docker ps -a | grep IMAGEID|awk &apos;&#123;print $1&#125;&apos;) -f</span><br><span class="line">docker rmi IMAGEID</span><br></pre></td></tr></table></figure>
+<h5 id="删除none镜像"><a href="#删除none镜像" class="headerlink" title="删除none镜像"></a>删除none镜像</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi $(docker images | grep &apos;&lt;none&gt;&apos;|awk &apos;&#123;print $3&#125;&apos;) -f</span><br></pre></td></tr></table></figure>
+<h5 id="镜像运行"><a href="#镜像运行" class="headerlink" title="镜像运行"></a>镜像运行</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -it e2cbe0447a2b /bin/bash</span><br></pre></td></tr></table></figure>
+<p>镜像运行时添加环境变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -e MEDIA_REDIS_IP=127.0.0.1 -e MEDIA_REDIS_PORT=5555  -it d3796bd153f8 /bin/bash</span><br></pre></td></tr></table></figure>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><h5 id="查看正在运行的容器"><a href="#查看正在运行的容器" class="headerlink" title="查看正在运行的容器"></a>查看正在运行的容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<h5 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker stop CONTAINERID</span><br></pre></td></tr></table></figure>
+<h5 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm CONTAINERID</span><br></pre></td></tr></table></figure>
+<h5 id="强制删除"><a href="#强制删除" class="headerlink" title="强制删除"></a>强制删除</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm CONTAINERID -f</span><br></pre></td></tr></table></figure>
+<h3 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h3><h5 id="修改镜像的tagid"><a href="#修改镜像的tagid" class="headerlink" title="修改镜像的tagid"></a>修改镜像的tagid</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker  tag   f92b7e4509da  datatom/image-worker:v4.1.1</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>cmd</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ffmpeg_avfilter的使用详解</title>
+    <url>/article/4030313287.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在ffmpeg，我们对视音频进行一些处理，如添加水印，有个很方便的库，avfilter，</p>
+<p>过滤的过程<br>解码后的画面 -&gt; buffer过滤器 -&gt; 其他过滤器 -&gt; buffersink 过滤器 -&gt; 处理好的画面</p>
+]]></content>
+      <categories>
+        <category>Media</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+        <tag>Video</tag>
       </tags>
   </entry>
   <entry>
@@ -466,30 +432,12 @@
 <p>​    我们需要添加<code>movflags</code>参数来进行处理。</p>
 ]]></content>
       <categories>
-        <category>ffmpeg</category>
+        <category>Media</category>
       </categories>
       <tags>
         <tag>ffmpeg</tag>
+        <tag>video</tag>
         <tag>io</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ffmpeg-编码的步骤</title>
-    <url>/article/3394448682.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;总结一下编码的大致过程，方便自己下一次的处理，分为音频编码和视频</p>
-<h3 id="音频编码的过程"><a href="#音频编码的过程" class="headerlink" title="音频编码的过程"></a>音频编码的过程</h3><h4 id="1，打开输出的文件流"><a href="#1，打开输出的文件流" class="headerlink" title="1，打开输出的文件流"></a>1，打开输出的文件流</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AVFormatContext *ofmt_ctx;</span><br><span class="line">avformat_alloc_output_context2(&amp;ofmt_ctx, NULL, NULL, filename);</span><br></pre></td></tr></table></figure>
-<h4 id="2，创建输出的音频流"><a href="#2，创建输出的音频流" class="headerlink" title="2，创建输出的音频流"></a>2，创建输出的音频流</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AVStream *audioStream;</span><br><span class="line">AVCodec *encoder;</span><br><span class="line">AVCodecContext *enc_ctx;</span><br><span class="line">audioStream = avformat_new_stream(ofmt_ctx, NULL);</span><br><span class="line">if (!audioStream)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br><span class="line">encoder = avcodec_find_encoder(AV_CODEC_ID_AAC);</span><br><span class="line">if(!encoder)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="3，设置编码的上下文"><a href="#3，设置编码的上下文" class="headerlink" title="3，设置编码的上下文"></a>3，设置编码的上下文</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enc_ctx = avcodec_alloc_context3(encoder);</span><br><span class="line">if (!enc_ctx)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br><span class="line">enc_ctx -&gt; bit_rate = 64000;</span><br><span class="line">enc_ctx -&gt; sample_rate = 44100;</span><br><span class="line">enc_ctx -&gt; channel_layout = 2;//这个可以根据输入来设置</span><br><span class="line">enc_ctx -&gt; channels = av_get_channel_layout_nb_channels(enc_ctx -&gt; channel_layout);</span><br><span class="line">enc_ctx -&gt; sample_fmt = encoder -&gt; sample_fmts[0];</span><br><span class="line">AVRational time_base = &#123;1, enc_ctx -&gt; sample_rate&#125;;</span><br><span class="line">enc_ctx -&gt; time_base = time_base;</span><br></pre></td></tr></table></figure>
-<h4 id="4，设置flag"><a href="#4，设置flag" class="headerlink" title="4，设置flag"></a>4，设置flag</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (ofmt_ctx -&gt; oformat -&gt; flags &amp; AVFMT_GLOBALHEADER)</span><br><span class="line">	enc_ctx -&gt; flags |= AV_CODEC_FLAG_GLOBAL_HEADER;</span><br></pre></td></tr></table></figure>
-<h4 id="5，打开编码器"><a href="#5，打开编码器" class="headerlink" title="5，打开编码器"></a>5，打开编码器</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ret = avcodec_open2(enc_ctx, encoder, NULL);</span><br><span class="line">if (ret &lt; 0)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="6，设置codec-tag"><a href="#6，设置codec-tag" class="headerlink" title="6，设置codec_tag"></a>6，设置codec_tag</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">audioStream -&gt; codecpar -&gt; codec_tag = 0;</span><br></pre></td></tr></table></figure>
-<h4 id="7，copy-code-to-stream"><a href="#7，copy-code-to-stream" class="headerlink" title="7，copy code to stream"></a>7，copy code to stream</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ret = avcodec_parameters_from_context(audioStream -&gt; codecpar, enc_ctx);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>ffmpeg</category>
-      </categories>
-      <tags>
-        <tag>ffmpeg</tag>
       </tags>
   </entry>
   <entry>
@@ -622,11 +570,60 @@
 <h4 id="8，指定显卡进行转码"><a href="#8，指定显卡进行转码" class="headerlink" title="8，指定显卡进行转码"></a>8，指定显卡进行转码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ffmpeg -hwaccel cuvid -hwaccel_device 0 -c:v h264_cuvid -i &lt;input&gt; -c:v h264_nvenc -b:v 2048k -vf scale_npp=1280:-1 -y &lt;output&gt;</span><br><span class="line"></span><br><span class="line">ffmpeg -hwaccel cuvid -hwaccel_device 1 -c:v h264_cuvid -i &lt;input&gt; -c:v h264_nvenc -b:v 2048k -vf scale_npp=1280:-1 -y &lt;output&gt;</span><br><span class="line"></span><br><span class="line">ffmpeg -hwaccel cuvid -hwaccel_device 0 -c:v h264_cuvid -i /root/source_media/flv.flv -c:v h264_nvenc -b:v 2048k -vf scale_npp=1280:-1  -y /root/flv.mp4</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ffmpeg</category>
+        <category>Media</category>
       </categories>
       <tags>
-        <tag>centos7</tag>
         <tag>ffmpeg</tag>
+        <tag>video</tag>
+        <tag>GPU</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ffmpeg-编码的步骤</title>
+    <url>/article/3394448682.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;总结一下编码的大致过程，方便自己下一次的处理，分为音频编码和视频</p>
+<h3 id="音频编码的过程"><a href="#音频编码的过程" class="headerlink" title="音频编码的过程"></a>音频编码的过程</h3><h4 id="1，打开输出的文件流"><a href="#1，打开输出的文件流" class="headerlink" title="1，打开输出的文件流"></a>1，打开输出的文件流</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AVFormatContext *ofmt_ctx;</span><br><span class="line">avformat_alloc_output_context2(&amp;ofmt_ctx, NULL, NULL, filename);</span><br></pre></td></tr></table></figure>
+<h4 id="2，创建输出的音频流"><a href="#2，创建输出的音频流" class="headerlink" title="2，创建输出的音频流"></a>2，创建输出的音频流</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AVStream *audioStream;</span><br><span class="line">AVCodec *encoder;</span><br><span class="line">AVCodecContext *enc_ctx;</span><br><span class="line">audioStream = avformat_new_stream(ofmt_ctx, NULL);</span><br><span class="line">if (!audioStream)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br><span class="line">encoder = avcodec_find_encoder(AV_CODEC_ID_AAC);</span><br><span class="line">if(!encoder)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3，设置编码的上下文"><a href="#3，设置编码的上下文" class="headerlink" title="3，设置编码的上下文"></a>3，设置编码的上下文</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enc_ctx = avcodec_alloc_context3(encoder);</span><br><span class="line">if (!enc_ctx)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br><span class="line">enc_ctx -&gt; bit_rate = 64000;</span><br><span class="line">enc_ctx -&gt; sample_rate = 44100;</span><br><span class="line">enc_ctx -&gt; channel_layout = 2;//这个可以根据输入来设置</span><br><span class="line">enc_ctx -&gt; channels = av_get_channel_layout_nb_channels(enc_ctx -&gt; channel_layout);</span><br><span class="line">enc_ctx -&gt; sample_fmt = encoder -&gt; sample_fmts[0];</span><br><span class="line">AVRational time_base = &#123;1, enc_ctx -&gt; sample_rate&#125;;</span><br><span class="line">enc_ctx -&gt; time_base = time_base;</span><br></pre></td></tr></table></figure>
+<h4 id="4，设置flag"><a href="#4，设置flag" class="headerlink" title="4，设置flag"></a>4，设置flag</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (ofmt_ctx -&gt; oformat -&gt; flags &amp; AVFMT_GLOBALHEADER)</span><br><span class="line">	enc_ctx -&gt; flags |= AV_CODEC_FLAG_GLOBAL_HEADER;</span><br></pre></td></tr></table></figure>
+<h4 id="5，打开编码器"><a href="#5，打开编码器" class="headerlink" title="5，打开编码器"></a>5，打开编码器</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ret = avcodec_open2(enc_ctx, encoder, NULL);</span><br><span class="line">if (ret &lt; 0)&#123;</span><br><span class="line">	av_log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6，设置codec-tag"><a href="#6，设置codec-tag" class="headerlink" title="6，设置codec_tag"></a>6，设置codec_tag</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">audioStream -&gt; codecpar -&gt; codec_tag = 0;</span><br></pre></td></tr></table></figure>
+<h4 id="7，copy-code-to-stream"><a href="#7，copy-code-to-stream" class="headerlink" title="7，copy code to stream"></a>7，copy code to stream</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ret = avcodec_parameters_from_context(audioStream -&gt; codecpar, enc_ctx);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Media</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+        <tag>video</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI-PaddleHub的体验使用</title>
+    <url>/article/1959613013.html</url>
+    <content><![CDATA[<p>​        最近体验了一下比较火的AI项目，<a href="https://github.com/PaddlePaddle/PaddleHub" target="_blank" rel="noopener">PaddleHub</a>，对于python我是陌生的，所以下面是作为新手的一些操作指南，保证能够正确的尝试到这个项目的有趣之处。</p>
+<p>​        <a href="https://github.com/PaddlePaddle/PaddleHub/blob/release/v2.0.0-beta/README_ch.md" target="_blank" rel="noopener">官网操作指南</a></p>
+<h3 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h3><ol>
+<li>Python&gt;=3.6</li>
+<li>PaddlePaddle&gt;=2.0.0rc</li>
+</ol>
+<h3 id="环境更新"><a href="#环境更新" class="headerlink" title="环境更新"></a>环境更新</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pip3 install --upgrade pip</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip3 install --upgrade setuptools</span><br></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="paddlepaddle的安装"><a href="#paddlepaddle的安装" class="headerlink" title="paddlepaddle的安装"></a>paddlepaddle的安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip3 install paddlepaddle==2.0.0rc</span><br></pre></td></tr></table></figure>
+<h4 id="paddlehub的安装"><a href="#paddlehub的安装" class="headerlink" title="paddlehub的安装"></a>paddlehub的安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip3 install paddlehub --upgrade -i https://mirrors.aliyun.com/pypi/simple  --default-timeout=100</span><br></pre></td></tr></table></figure>
+<h4 id="依赖库安装"><a href="#依赖库安装" class="headerlink" title="依赖库安装"></a>依赖库安装</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pip3 install matplotlib</span><br></pre></td></tr></table></figure>
+<h3 id="模型库的下载"><a href="#模型库的下载" class="headerlink" title="模型库的下载"></a>模型库的下载</h3><p>​        下载模型，PaddleHub必须在访问外网的情况下才能下载。你可以现在网络条件好的环境下，先下载安装对应的module，之后将安装好module 完整的拷贝到你需要的机器上，放在<code>HUB_HOME</code>下。<a href="https://github.com/PaddlePaddle/PaddleHub/blob/release/v1.7/docs/tutorial/cmdintro.md#paddlehub%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">关于<code>HUB_HOME</code>的解释参考</a></p>
+<p>​        <a href="https://paddlepaddle.org.cn/hublist" target="_blank" rel="noopener">PaddleHub支持模型列表</a>,我们可以在这个地址上找到所有需要的模型，然后我们通过手动的下载，比如<code>deeplabv3p_xception65_humanseg</code><a href="https://paddlepaddle.org.cn/hubdetail?name=deeplabv3p_xception65_humanseg&amp;en_category=ImageSegmentation" target="_blank" rel="noopener">模型下载</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hub install deeplabv3p_xception65_humanseg==1.1.1</span><br></pre></td></tr></table></figure>
+<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><h4 id="人像抠图"><a href="#人像抠图" class="headerlink" title="人像抠图"></a>人像抠图</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hub run deeplabv3p_xception65_humanseg  --input_path test_image.jpg  --visualization=True --output_dir=<span class="string">"human_output"</span></span><br></pre></td></tr></table></figure>
+<p><code>如果你开始没有下载模型库，则这个执行的过程会超级的慢，所以一般建议先手动的安装模型库</code></p>
+]]></content>
+      <categories>
+        <category>AI</category>
+        <category>PaddleHub</category>
+      </categories>
+      <tags>
+        <tag>PaddleHub</tag>
       </tags>
   </entry>
   <entry>
@@ -638,6 +635,43 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -i git-lfs-2.2.1-1.el7.x86_64.rpm</span><br><span class="line">git lfs install（完成初始化）</span><br></pre></td></tr></table></figure>
 <h3 id="设置管理的文件类型"><a href="#设置管理的文件类型" class="headerlink" title="设置管理的文件类型"></a>设置管理的文件类型</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#压缩包</span><br><span class="line">git lfs track *.tar *.tar.gz *.tgz *.zip *.7z</span><br><span class="line">#图片</span><br><span class="line">git lfs track *.jpg *.png *.jpeg *.bmp *.gif *.tiff</span><br><span class="line">#库</span><br><span class="line">git lfs track *.jar *.war *.so *.so.*</span><br><span class="line">#非文本文档</span><br><span class="line">git  lfs  track *.doc *.docx *.ppt *.pptx *.pdf *.xls *.xlsx</span><br><span class="line">#安装包</span><br><span class="line">git  lfs  track *.rpm *.deb *.img *.iso</span><br></pre></td></tr></table></figure>
 <p><code>设置完之后会在项目根目录下出现.gitattributes文件</code></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-常用的命令</title>
+    <url>/article/2063445917.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。</p>
+<h3 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h3><h5 id="重命名文件夹"><a href="#重命名文件夹" class="headerlink" title="重命名文件夹"></a>重命名文件夹</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git  mv -f oldfolder newfolder</span><br></pre></td></tr></table></figure>
+<h5 id="删除新增的多个文件"><a href="#删除新增的多个文件" class="headerlink" title="删除新增的多个文件"></a>删除新增的多个文件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clean -xdf</span><br></pre></td></tr></table></figure>
+<h3 id="提交管理"><a href="#提交管理" class="headerlink" title="提交管理"></a>提交管理</h3><h5 id="删除中间的某次提交"><a href="#删除中间的某次提交" class="headerlink" title="删除中间的某次提交"></a>删除中间的某次提交</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git revert commit id</span><br></pre></td></tr></table></figure>
+<h5 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard commitid</span><br><span class="line">这个不会保留之前的记录</span><br></pre></td></tr></table></figure>
+<h5 id="撤销本地提交"><a href="#撤销本地提交" class="headerlink" title="撤销本地提交"></a>撤销本地提交</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --soft commitid</span><br><span class="line">git reset --mixed commitid</span><br><span class="line">两者的区别，--soft会将改动放在缓存区 --mixed不会讲改动放在缓存区</span><br></pre></td></tr></table></figure>
+<h5 id="撤销远程的提交"><a href="#撤销远程的提交" class="headerlink" title="撤销远程的提交"></a>撤销远程的提交</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log</span><br><span class="line">git reset --hard commitid</span><br><span class="line">git push origin HEAD:master --force</span><br></pre></td></tr></table></figure>
+<h5 id="强制提交"><a href="#强制提交" class="headerlink" title="强制提交"></a>强制提交</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push -u origin master -f</span><br></pre></td></tr></table></figure>
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><h5 id="将某个分支的提交copy到另一个分支上"><a href="#将某个分支的提交copy到另一个分支上" class="headerlink" title="将某个分支的提交copy到另一个分支上"></a>将某个分支的提交copy到另一个分支上</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例如，有两个分支，a,b,想要将a的某次提交，copy到b分支上</span><br><span class="line">1,在a分支上 git log 查询commitid</span><br><span class="line">2,git checkout b  切换分支</span><br><span class="line">3,git cherry-pick commitid</span><br></pre></td></tr></table></figure>
+<h5 id="统计当前分支的提交数目"><a href="#统计当前分支的提交数目" class="headerlink" title="统计当前分支的提交数目"></a>统计当前分支的提交数目</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rev-list HEAD | wc -l</span><br></pre></td></tr></table></figure>
+<h5 id="删除缓存的远程分支列表"><a href="#删除缓存的远程分支列表" class="headerlink" title="删除缓存的远程分支列表"></a>删除缓存的远程分支列表</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote prune origin</span><br><span class="line">or</span><br><span class="line">git fetch -p</span><br></pre></td></tr></table></figure>
+<h3 id="stash管理"><a href="#stash管理" class="headerlink" title="stash管理"></a>stash管理</h3><h5 id="冻结当前的分支修改"><a href="#冻结当前的分支修改" class="headerlink" title="冻结当前的分支修改"></a>冻结当前的分支修改</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash save &quot;说明信息选填&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="列出所有的工作现场存储"><a href="#列出所有的工作现场存储" class="headerlink" title="列出所有的工作现场存储"></a>列出所有的工作现场存储</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash list</span><br></pre></td></tr></table></figure>
+<h5 id="恢复某个工作现场"><a href="#恢复某个工作现场" class="headerlink" title="恢复某个工作现场"></a>恢复某个工作现场</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash apply stash@&#123;n&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="删除存储的某个工作现场"><a href="#删除存储的某个工作现场" class="headerlink" title="删除存储的某个工作现场"></a>删除存储的某个工作现场</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash drop stash@&#123;n&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="恢复的同时把stash内容也删除了"><a href="#恢复的同时把stash内容也删除了" class="headerlink" title="恢复的同时把stash内容也删除了"></a>恢复的同时把stash内容也删除了</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash pop stash@&#123;n&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><h5 id="解决git-clone-项目中某个文件都需要输入密码"><a href="#解决git-clone-项目中某个文件都需要输入密码" class="headerlink" title="解决git clone 项目中某个文件都需要输入密码"></a>解决git clone 项目中某个文件都需要输入密码</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+<h5 id="配置邮件和用户名"><a href="#配置邮件和用户名" class="headerlink" title="配置邮件和用户名"></a>配置邮件和用户名</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;xxx&quot;</span><br><span class="line">git config --global user.name &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="tag管理"><a href="#tag管理" class="headerlink" title="tag管理"></a>tag管理</h3><h5 id="列出本地标签"><a href="#列出本地标签" class="headerlink" title="列出本地标签"></a>列出本地标签</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+<h5 id="切换到某个tag"><a href="#切换到某个tag" class="headerlink" title="切换到某个tag"></a>切换到某个tag</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout tagName</span><br></pre></td></tr></table></figure>
+<h5 id="本地打标签-a-指定标签名，-m-指定说明文字"><a href="#本地打标签-a-指定标签名，-m-指定说明文字" class="headerlink" title="本地打标签 -a 指定标签名， -m 指定说明文字"></a>本地打标签 -a 指定标签名， -m 指定说明文字</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git  tag -a v4.1.1 -m &quot;删除临时文件&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="本地tag推送到远程"><a href="#本地tag推送到远程" class="headerlink" title="本地tag推送到远程"></a>本地tag推送到远程</h5><h6 id="单一"><a href="#单一" class="headerlink" title="单一"></a>单一</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin tagName</span><br><span class="line">#</span><br><span class="line">git push origin v4.1.1</span><br></pre></td></tr></table></figure>
+<h6 id="多个"><a href="#多个" class="headerlink" title="多个"></a>多个</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+<h5 id="删除远程tag"><a href="#删除远程tag" class="headerlink" title="删除远程tag"></a>删除远程tag</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin --delete tag tagName</span><br></pre></td></tr></table></figure>
+<h5 id="删除本地tag"><a href="#删除本地tag" class="headerlink" title="删除本地tag"></a>删除本地tag</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag -d tagName</span><br></pre></td></tr></table></figure>
+<h5 id="拉取tag到本地"><a href="#拉取tag到本地" class="headerlink" title="拉取tag到本地"></a>拉取tag到本地</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git fetch origin tag tagName</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>git</category>
@@ -703,57 +737,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git-常用的命令</title>
-    <url>/article/2063445917.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记录一些git常用的命令，便于在长时间不用时能够有个地方查阅，下面的几个是经常用到的。在windows下使用git，许多朋友都说无法使用一些状态（修改，保存，提交）图标，是因为图标显示不是git本身的功能呢，我们需要下载TortoiseGit才能使用图标。</p>
-<h3 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h3><h5 id="重命名文件夹"><a href="#重命名文件夹" class="headerlink" title="重命名文件夹"></a>重命名文件夹</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git  mv -f oldfolder newfolder</span><br></pre></td></tr></table></figure>
-<h5 id="删除新增的多个文件"><a href="#删除新增的多个文件" class="headerlink" title="删除新增的多个文件"></a>删除新增的多个文件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clean -xdf</span><br></pre></td></tr></table></figure>
-<h3 id="提交管理"><a href="#提交管理" class="headerlink" title="提交管理"></a>提交管理</h3><h5 id="删除中间的某次提交"><a href="#删除中间的某次提交" class="headerlink" title="删除中间的某次提交"></a>删除中间的某次提交</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git revert commit id</span><br></pre></td></tr></table></figure>
-<h5 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard commitid</span><br><span class="line">这个不会保留之前的记录</span><br></pre></td></tr></table></figure>
-<h5 id="撤销本地提交"><a href="#撤销本地提交" class="headerlink" title="撤销本地提交"></a>撤销本地提交</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --soft commitid</span><br><span class="line">git reset --mixed commitid</span><br><span class="line">两者的区别，--soft会将改动放在缓存区 --mixed不会讲改动放在缓存区</span><br></pre></td></tr></table></figure>
-<h5 id="撤销远程的提交"><a href="#撤销远程的提交" class="headerlink" title="撤销远程的提交"></a>撤销远程的提交</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log</span><br><span class="line">git reset --hard commitid</span><br><span class="line">git push origin HEAD:master --force</span><br></pre></td></tr></table></figure>
-<h5 id="强制提交"><a href="#强制提交" class="headerlink" title="强制提交"></a>强制提交</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push -u origin master -f</span><br></pre></td></tr></table></figure>
-<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><h5 id="将某个分支的提交copy到另一个分支上"><a href="#将某个分支的提交copy到另一个分支上" class="headerlink" title="将某个分支的提交copy到另一个分支上"></a>将某个分支的提交copy到另一个分支上</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例如，有两个分支，a,b,想要将a的某次提交，copy到b分支上</span><br><span class="line">1,在a分支上 git log 查询commitid</span><br><span class="line">2,git checkout b  切换分支</span><br><span class="line">3,git cherry-pick commitid</span><br></pre></td></tr></table></figure>
-<h5 id="统计当前分支的提交数目"><a href="#统计当前分支的提交数目" class="headerlink" title="统计当前分支的提交数目"></a>统计当前分支的提交数目</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rev-list HEAD | wc -l</span><br></pre></td></tr></table></figure>
-<h5 id="删除缓存的远程分支列表"><a href="#删除缓存的远程分支列表" class="headerlink" title="删除缓存的远程分支列表"></a>删除缓存的远程分支列表</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote prune origin</span><br><span class="line">or</span><br><span class="line">git fetch -p</span><br></pre></td></tr></table></figure>
-<h3 id="stash管理"><a href="#stash管理" class="headerlink" title="stash管理"></a>stash管理</h3><h5 id="冻结当前的分支修改"><a href="#冻结当前的分支修改" class="headerlink" title="冻结当前的分支修改"></a>冻结当前的分支修改</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash save &quot;说明信息选填&quot;</span><br></pre></td></tr></table></figure>
-<h5 id="列出所有的工作现场存储"><a href="#列出所有的工作现场存储" class="headerlink" title="列出所有的工作现场存储"></a>列出所有的工作现场存储</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash list</span><br></pre></td></tr></table></figure>
-<h5 id="恢复某个工作现场"><a href="#恢复某个工作现场" class="headerlink" title="恢复某个工作现场"></a>恢复某个工作现场</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash apply stash@&#123;n&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="删除存储的某个工作现场"><a href="#删除存储的某个工作现场" class="headerlink" title="删除存储的某个工作现场"></a>删除存储的某个工作现场</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash drop stash@&#123;n&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="恢复的同时把stash内容也删除了"><a href="#恢复的同时把stash内容也删除了" class="headerlink" title="恢复的同时把stash内容也删除了"></a>恢复的同时把stash内容也删除了</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash pop stash@&#123;n&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><h5 id="解决git-clone-项目中某个文件都需要输入密码"><a href="#解决git-clone-项目中某个文件都需要输入密码" class="headerlink" title="解决git clone 项目中某个文件都需要输入密码"></a>解决git clone 项目中某个文件都需要输入密码</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
-<h5 id="配置邮件和用户名"><a href="#配置邮件和用户名" class="headerlink" title="配置邮件和用户名"></a>配置邮件和用户名</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;xxx&quot;</span><br><span class="line">git config --global user.name &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="tag管理"><a href="#tag管理" class="headerlink" title="tag管理"></a>tag管理</h3><h5 id="列出本地标签"><a href="#列出本地标签" class="headerlink" title="列出本地标签"></a>列出本地标签</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
-<h5 id="切换到某个tag"><a href="#切换到某个tag" class="headerlink" title="切换到某个tag"></a>切换到某个tag</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout tagName</span><br></pre></td></tr></table></figure>
-<h5 id="本地打标签-a-指定标签名，-m-指定说明文字"><a href="#本地打标签-a-指定标签名，-m-指定说明文字" class="headerlink" title="本地打标签 -a 指定标签名， -m 指定说明文字"></a>本地打标签 -a 指定标签名， -m 指定说明文字</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git  tag -a v4.1.1 -m &quot;删除临时文件&quot;</span><br></pre></td></tr></table></figure>
-<h5 id="本地tag推送到远程"><a href="#本地tag推送到远程" class="headerlink" title="本地tag推送到远程"></a>本地tag推送到远程</h5><h6 id="单一"><a href="#单一" class="headerlink" title="单一"></a>单一</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin tagName</span><br><span class="line">#</span><br><span class="line">git push origin v4.1.1</span><br></pre></td></tr></table></figure>
-<h6 id="多个"><a href="#多个" class="headerlink" title="多个"></a>多个</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-<h5 id="删除远程tag"><a href="#删除远程tag" class="headerlink" title="删除远程tag"></a>删除远程tag</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin --delete tag tagName</span><br></pre></td></tr></table></figure>
-<h5 id="删除本地tag"><a href="#删除本地tag" class="headerlink" title="删除本地tag"></a>删除本地tag</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag -d tagName</span><br></pre></td></tr></table></figure>
-<h5 id="拉取tag到本地"><a href="#拉取tag到本地" class="headerlink" title="拉取tag到本地"></a>拉取tag到本地</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git fetch origin tag tagName</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/article/1243066710.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>grpc编译</title>
     <url>/article/1473358207.html</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">环境 centos7</span><br></pre></td></tr></table></figure>
@@ -770,9 +753,23 @@
         <category>grpc</category>
       </categories>
       <tags>
-        <tag>centos7</tag>
         <tag>grpc</tag>
+        <tag>centos7</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/article/1243066710.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>github-解决GitHub clone慢的问题</title>
@@ -802,44 +799,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo-gulp压缩</title>
-    <url>/article/2127593710.html</url>
-    <content><![CDATA[<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#全局安装</span><br><span class="line">npm install gulp -g</span><br><span class="line">#站点目录安装</span><br><span class="line">npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify --save</span><br></pre></td></tr></table></figure>
-<p>在这里说明一下，使用该工具可以压缩 HTML、CSS、JavaScript 文件，但我并没有压缩 JavaScript 文件，因为有很大的概率会报错，实际也并不需要压缩，因为大部分 JavaScript 都已压缩过。</p>
-<p>如果你也考虑不压缩 JavaScript 文件，可以选择不安装 <code>gulp-uglify</code>。</p>
-<h3 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h3><p>在站点文件夹的根目录下，新建一个文件。命名为gulpfile.js</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;);</span><br><span class="line"></span><br><span class="line">// Plugins 模块获取</span><br><span class="line">var minifycss = require(&apos;gulp-minify-css&apos;);</span><br><span class="line">var uglify = require(&apos;gulp-uglify&apos;);</span><br><span class="line">var htmlmin = require(&apos;gulp-htmlmin&apos;);</span><br><span class="line">var htmlclean = require(&apos;gulp-htmlclean&apos;);</span><br><span class="line"></span><br><span class="line">// 压缩 css</span><br><span class="line">gulp.task(&apos;minify-css&apos;, function () &#123;</span><br><span class="line">	return gulp.src(&apos;./public/**/*.css&apos;)</span><br><span class="line">		.pipe(minifycss())</span><br><span class="line">		.pipe(gulp.dest(&apos;./public&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 压缩 html</span><br><span class="line">gulp.task(&apos;minify-html&apos;, function () &#123;</span><br><span class="line">	return gulp.src(&apos;./public/**/*.html&apos;)</span><br><span class="line">		.pipe(htmlclean())</span><br><span class="line">		.pipe(htmlmin(&#123;</span><br><span class="line">			removeComments: true,</span><br><span class="line">			minifyJS: true,</span><br><span class="line">			minifyCSS: true,</span><br><span class="line">			minifyURLs: true,</span><br><span class="line">		&#125;))</span><br><span class="line">		.pipe(gulp.dest(&apos;./public&apos;))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 压缩 js 不压缩 min.js</span><br><span class="line">gulp.task(&apos;minify-js&apos;, function () &#123;</span><br><span class="line">	return gulp.src([&apos;./public/**/*.js&apos;, &apos;!./public/**/*.min.js&apos;])</span><br><span class="line">		.pipe(uglify())</span><br><span class="line">		.pipe(gulp.dest(&apos;./public&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 4.0 以前的写法 </span><br><span class="line">// gulp.task(&apos;default&apos;, [</span><br><span class="line">  //   &apos;minify-html&apos;, &apos;minify-css&apos;, &apos;minify-js&apos;</span><br><span class="line">// ]);</span><br><span class="line"></span><br><span class="line">// 4.0 以后的写法</span><br><span class="line">// 执行 gulp 命令时执行的任务</span><br><span class="line">gulp.task(&apos;default&apos;, gulp.parallel(&apos;minify-html&apos;, &apos;minify-css&apos;, &apos;minify-js&apos;));</span><br></pre></td></tr></table></figure>
-<p><code>如果不压缩 JavaScript 文件，则将上述代码中有关</code>minify-js<code>的代码删除即可</code></p>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[10:24:57] Starting &apos;default&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-html&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-css&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-js&apos;...</span><br><span class="line">[10:25:05] Finished &apos;minify-css&apos; after 8.3 s</span><br><span class="line">[10:25:05] Finished &apos;minify-js&apos; after 8.49 s</span><br><span class="line">[10:25:09] Finished &apos;minify-html&apos; after 12 s</span><br><span class="line">[10:25:09] Finished &apos;default&apos; after 12 s</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>gulp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo-常用命令</title>
-    <url>/article/3973852728.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。</p>
-<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;postname&quot; (hexo n postname)</span><br></pre></td></tr></table></figure>
-<h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;pagename&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="启动本地web服务"><a href="#启动本地web服务" class="headerlink" title="启动本地web服务"></a>启动本地web服务</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server (hexo s)</span><br><span class="line">本地网址：localhost:4000</span><br></pre></td></tr></table></figure>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate (hexo g)</span><br></pre></td></tr></table></figure>
-<h3 id="生成部署"><a href="#生成部署" class="headerlink" title="生成部署"></a>生成部署</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-<h3 id="生成预览"><a href="#生成预览" class="headerlink" title="生成预览"></a>生成预览</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s -g</span><br></pre></td></tr></table></figure>
-<h3 id="清理public文件夹"><a href="#清理public文件夹" class="headerlink" title="清理public文件夹"></a>清理public文件夹</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo-next主题配置</title>
     <url>/article/1968653668.html</url>
     <content><![CDATA[<p>主要记录一下自己在搭建个人博客的时候，一些配置，基本上是查阅别人的文章，这里记录一下</p>
@@ -864,6 +823,25 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo-常用命令</title>
+    <url>/article/3973852728.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下hexo经常使用的命令，发现自己好久没有hexo，命令都不记得了。</p>
+<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;postname&quot; (hexo n postname)</span><br></pre></td></tr></table></figure>
+<h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;pagename&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="启动本地web服务"><a href="#启动本地web服务" class="headerlink" title="启动本地web服务"></a>启动本地web服务</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server (hexo s)</span><br><span class="line">本地网址：localhost:4000</span><br></pre></td></tr></table></figure>
+<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate (hexo g)</span><br></pre></td></tr></table></figure>
+<h3 id="生成部署"><a href="#生成部署" class="headerlink" title="生成部署"></a>生成部署</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<h3 id="生成预览"><a href="#生成预览" class="headerlink" title="生成预览"></a>生成预览</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s -g</span><br></pre></td></tr></table></figure>
+<h3 id="清理public文件夹"><a href="#清理public文件夹" class="headerlink" title="清理public文件夹"></a>清理public文件夹</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>image-libraw相机图片库源码编译</title>
     <url>/article/1731984249.html</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LibRaw is a library for reading RAW files from digital photo cameras (CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are supported).</span><br></pre></td></tr></table></figure>
@@ -872,6 +850,45 @@
 <h3 id="三，准备编译遇到的错误"><a href="#三，准备编译遇到的错误" class="headerlink" title="三，准备编译遇到的错误"></a>三，准备编译遇到的错误</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下载dcraw.c失败，我们需要手动的下载</span><br><span class="line">修改mkdist.sh脚本文件</span><br><span class="line">wget https://www.dechifro.org/dcraw/dcraw.c</span><br><span class="line">然后在执行 mkdist.sh脚本</span><br></pre></td></tr></table></figure>
 <h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./configure --prefix=/usr/local/helios CXX=/usr/local/bin/g++</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <h3 id="五，执行遇到的问题"><a href="#五，执行遇到的问题" class="headerlink" title="五，执行遇到的问题"></a>五，执行遇到的问题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在程序中执行 open_file CR2的时候程序崩溃，因为自己的g++编译是4.8.5的，但是更新到4.9.2后就成功了</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>图片处理</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+        <tag>image</tag>
+        <tag>lib.so</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo-gulp压缩</title>
+    <url>/article/2127593710.html</url>
+    <content><![CDATA[<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#全局安装</span><br><span class="line">npm install gulp -g</span><br><span class="line">#站点目录安装</span><br><span class="line">npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify --save</span><br></pre></td></tr></table></figure>
+<p>在这里说明一下，使用该工具可以压缩 HTML、CSS、JavaScript 文件，但我并没有压缩 JavaScript 文件，因为有很大的概率会报错，实际也并不需要压缩，因为大部分 JavaScript 都已压缩过。</p>
+<p>如果你也考虑不压缩 JavaScript 文件，可以选择不安装 <code>gulp-uglify</code>。</p>
+<h3 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h3><p>在站点文件夹的根目录下，新建一个文件。命名为gulpfile.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;);</span><br><span class="line"></span><br><span class="line">// Plugins 模块获取</span><br><span class="line">var minifycss = require(&apos;gulp-minify-css&apos;);</span><br><span class="line">var uglify = require(&apos;gulp-uglify&apos;);</span><br><span class="line">var htmlmin = require(&apos;gulp-htmlmin&apos;);</span><br><span class="line">var htmlclean = require(&apos;gulp-htmlclean&apos;);</span><br><span class="line"></span><br><span class="line">// 压缩 css</span><br><span class="line">gulp.task(&apos;minify-css&apos;, function () &#123;</span><br><span class="line">	return gulp.src(&apos;./public/**/*.css&apos;)</span><br><span class="line">		.pipe(minifycss())</span><br><span class="line">		.pipe(gulp.dest(&apos;./public&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 压缩 html</span><br><span class="line">gulp.task(&apos;minify-html&apos;, function () &#123;</span><br><span class="line">	return gulp.src(&apos;./public/**/*.html&apos;)</span><br><span class="line">		.pipe(htmlclean())</span><br><span class="line">		.pipe(htmlmin(&#123;</span><br><span class="line">			removeComments: true,</span><br><span class="line">			minifyJS: true,</span><br><span class="line">			minifyCSS: true,</span><br><span class="line">			minifyURLs: true,</span><br><span class="line">		&#125;))</span><br><span class="line">		.pipe(gulp.dest(&apos;./public&apos;))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 压缩 js 不压缩 min.js</span><br><span class="line">gulp.task(&apos;minify-js&apos;, function () &#123;</span><br><span class="line">	return gulp.src([&apos;./public/**/*.js&apos;, &apos;!./public/**/*.min.js&apos;])</span><br><span class="line">		.pipe(uglify())</span><br><span class="line">		.pipe(gulp.dest(&apos;./public&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 4.0 以前的写法 </span><br><span class="line">// gulp.task(&apos;default&apos;, [</span><br><span class="line">  //   &apos;minify-html&apos;, &apos;minify-css&apos;, &apos;minify-js&apos;</span><br><span class="line">// ]);</span><br><span class="line"></span><br><span class="line">// 4.0 以后的写法</span><br><span class="line">// 执行 gulp 命令时执行的任务</span><br><span class="line">gulp.task(&apos;default&apos;, gulp.parallel(&apos;minify-html&apos;, &apos;minify-css&apos;, &apos;minify-js&apos;));</span><br></pre></td></tr></table></figure>
+<p><code>如果不压缩 JavaScript 文件，则将上述代码中有关</code>minify-js<code>的代码删除即可</code></p>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[10:24:57] Starting &apos;default&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-html&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-css&apos;...</span><br><span class="line">[10:24:57] Starting &apos;minify-js&apos;...</span><br><span class="line">[10:25:05] Finished &apos;minify-css&apos; after 8.3 s</span><br><span class="line">[10:25:05] Finished &apos;minify-js&apos; after 8.49 s</span><br><span class="line">[10:25:09] Finished &apos;minify-html&apos; after 12 s</span><br><span class="line">[10:25:09] Finished &apos;default&apos; after 12 s</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>gulp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>image-libvips图片处理库源码编译</title>
+    <url>/article/3448999942.html</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目前主要是用于苹果平台图片heic图片的转码处理</span><br></pre></td></tr></table></figure>
+<h3 id="1，从GitHub上下载源码"><a href="#1，从GitHub上下载源码" class="headerlink" title="1，从GitHub上下载源码"></a>1，从GitHub上下载源码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git  clone  https://github.com/libvips/libvips.git</span><br></pre></td></tr></table></figure>
+<h3 id="2，下载需要的依赖"><a href="#2，下载需要的依赖" class="headerlink" title="2，下载需要的依赖"></a>2，下载需要的依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gtk-doc</span><br><span class="line">yum install gobject-introspection</span><br><span class="line">yum install gobject-introspection-devel</span><br><span class="line">yum install expat-devel</span><br><span class="line">yum install glib glib-devel</span><br><span class="line">yum install gcc gcc-c++</span><br><span class="line">yum install make pkgconfig autoconf automake</span><br></pre></td></tr></table></figure>
+<h3 id="3，编译出现的问题"><a href="#3，编译出现的问题" class="headerlink" title="3，编译出现的问题"></a>3，编译出现的问题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">libpango-1.0.so: undefined reference to `fribidi_get_par_embedding_levels_ex&apos;</span><br><span class="line"></span><br><span class="line">检查ldd /usr/lib64/libpango-1.0.so发现，有一个ibfribidi.so.0 =&gt; /lib64/libfribidi.so.0链接开始链接的是我自己的，有问题，改回来就好了，可能是版本冲突的原因，需要保证链接库的版本一致</span><br></pre></td></tr></table></figure>
+<h3 id="3，安装我们需要支持的图片格式依赖"><a href="#3，安装我们需要支持的图片格式依赖" class="headerlink" title="3，安装我们需要支持的图片格式依赖"></a>3，安装我们需要支持的图片格式依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y libjpeg-turbo libjpeg-turbo-devel</span><br><span class="line">yum install -y libexif libexif-devel</span><br><span class="line">yum install -y giflib giflib-devel</span><br><span class="line">yum install -y librsvg2 librsvg2-devel</span><br><span class="line">yum install -y libtiff libtiff-devel </span><br><span class="line">yum install -y libwebp libwebp-devel</span><br><span class="line">yum install -y libpng libpng-devel</span><br><span class="line">yum install -y  libgsf libgsf-devel</span><br><span class="line">yum install -y poppler-glib poppler-glib-devel</span><br><span class="line">yum install -y openslide openslide-devel</span><br><span class="line">yum install -y orc orc-devel</span><br><span class="line">yum install -y libimagequant libimagequant-devel</span><br><span class="line">yum install -y cfitsio cfitsio-devel</span><br><span class="line">yum install -y matio matio-devel</span><br><span class="line">yum install -y fftw fftw-devel</span><br></pre></td></tr></table></figure>
+<h3 id="4，安装libheif"><a href="#4，安装libheif" class="headerlink" title="4，安装libheif"></a>4，安装libheif</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1,git 源码安装libde265,## 注意这个必须安装，不然在编译libvips时，虽然configure表示支持，但是在真正使用的时候会报错</span><br><span class="line"></span><br><span class="line">2，git源码安装libheif，需要注意 配置libde265支持</span><br></pre></td></tr></table></figure>
+<h4 id="5，编译"><a href="#5，编译" class="headerlink" title="5，编译"></a>5，编译</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，./configure</span><br><span class="line">2,make &amp;&amp; make install</span><br><span class="line">自己写的myconfig.sh文件</span><br><span class="line"></span><br><span class="line">  1 #!/bin/sh                                                                                                                          </span><br><span class="line">  2 commoninclude=/usr/include</span><br><span class="line">  3 commonlib=/usr/lib64</span><br><span class="line">  4  </span><br><span class="line">  5 CPPFLAGS=&quot;-g -Wall -I$&#123;commoninclude&#125;  -L$&#123;commonlib&#125;&quot;    \</span><br><span class="line">  6 CXXFLAGS=&quot;-g -Wall -I$&#123;commoninclude&#125;  -L$&#123;commonlib&#125;&quot;    \</span><br><span class="line">  7 PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig:/usr/local/heif/lib/pkgconfig&quot;         \</span><br><span class="line">  8 ./configure  --enable-gtk-doc-pdf=yes --prefix=/usr/local/vips    \</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>图片处理</category>
@@ -928,69 +945,6 @@
       </tags>
   </entry>
   <entry>
-    <title>json-cpp处理json</title>
-    <url>/article/3190039070.html</url>
-    <content><![CDATA[<p>cpp处理json常用的库</p>
-<h3 id="poco-json"><a href="#poco-json" class="headerlink" title="poco-json"></a>poco-json</h3><p>poco库中处理json的模块，将其转换为json字符串时键名会按照字母的顺序排列</p>
-<h3 id="jsoncpp"><a href="#jsoncpp" class="headerlink" title="jsoncpp"></a>jsoncpp</h3><p>jsoncpp这个库，将其转换为json字符串时键名也会按照字母的顺序排序</p>
-<h4 id="1，下载"><a href="#1，下载" class="headerlink" title="1，下载"></a>1，下载</h4><p><a href="https://sourceforge.net/projects/jsoncpp/" target="_blank" rel="noopener">jsonspp下载</a></p>
-<h4 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h4><h5 id="scons下载"><a href="#scons下载" class="headerlink" title="scons下载"></a>scons下载</h5><p>使用scons来安装，如果yum没有找到，则需要<a href="http://www.helioswei.top/article/3859923575.html">更新yum库</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install scons -y</span><br></pre></td></tr></table></figure>
-<h5 id="编译jsoncpp"><a href="#编译jsoncpp" class="headerlink" title="编译jsoncpp"></a>编译jsoncpp</h5><p>编译好的链接库，存放在jsoncpp源目录下的libs中<code>libjson_linux-gcc-4.8.5_libmt.so</code>，头文件放在include目录下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd jsoncpp的源目录</span><br><span class="line"></span><br><span class="line">scons platform=linux-gcc</span><br></pre></td></tr></table></figure>
-<h3 id="protobuf"><a href="#protobuf" class="headerlink" title="protobuf"></a>protobuf</h3><p>序列化，这个将其转换为json字符串时会按照message的顺序，比较的好。</p>
-<h4 id="1，使用步骤"><a href="#1，使用步骤" class="headerlink" title="1，使用步骤"></a>1，使用步骤</h4><h5 id="先写proto的文件-status-proto"><a href="#先写proto的文件-status-proto" class="headerlink" title="先写proto的文件 status.proto"></a>先写proto的文件 status.proto</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">syntax = &quot;proto3&quot;;                                                                                                                    </span><br><span class="line">package biyi;</span><br><span class="line"> </span><br><span class="line">message UnifiedLog&#123;</span><br><span class="line">    Cont content = 1;</span><br><span class="line">    string sign = 2;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">message Cont&#123;</span><br><span class="line">    string time_iso8601 = 1;</span><br><span class="line">    string companyId = 2;</span><br><span class="line">    string company = 3;</span><br><span class="line">    string projectNameCN = 4;</span><br><span class="line">    string projectName = 5;</span><br><span class="line">    string componentName = 6;</span><br><span class="line">    string componentMethodName = 7;</span><br><span class="line">    string componentType = 8;</span><br><span class="line">    string componentVer = 9;</span><br><span class="line">    string componentLang = 10; </span><br><span class="line">    string userName = 11; </span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="cpp调用"><a href="#cpp调用" class="headerlink" title="cpp调用"></a>cpp调用</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;../build/proto/status.pb.h&quot;</span><br><span class="line">#include &lt;google/protobuf/util/json_util.h&gt;</span><br><span class="line"> </span><br><span class="line">namespace proto = google::protobuf::util;</span><br><span class="line"> </span><br><span class="line">using namespace biyi;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main() &#123;</span><br><span class="line">    UnifiedLog uniLog;</span><br><span class="line">    uniLog.set_sign(</span><br><span class="line">        &quot;68f3ea8baebbaddc5a47d6d955ecf53892edb4d3d8a3afe08cf4518204d30af5&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_time_iso8601(&quot;2020-03-09T11:11:14+08:00&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_companyid(&quot;000&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_company(&quot;ctsi&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_projectnamecn(&quot;001&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_projectname(&quot;biyi&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentname(&quot;micro-service-statics&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentmethodname(&quot;DemoBean.echo&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componenttype(&quot;微服务组件&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentver(&quot;v1.0.0&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentlang(&quot;java&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_username(&quot;admin&quot;);</span><br><span class="line"> </span><br><span class="line">    cout &lt;&lt; uniLog.sign() &lt;&lt; endl;</span><br><span class="line">    // message to json string</span><br><span class="line">    string str;</span><br><span class="line">    proto::Status status = proto::MessageToJsonString(uniLog, &amp;str);</span><br><span class="line">    if (!status.ok()) &#123;</span><br><span class="line">        cout &lt;&lt; status.ToString() &lt;&lt; endl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;str: &quot; &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>cpp</category>
-      </categories>
-      <tags>
-        <tag>cpp</tag>
-        <tag>json</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>markdown语言的总结</title>
-    <url>/article/769639735.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>mupdf-源码安装</title>
-    <url>/article/3549577056.html</url>
-    <content><![CDATA[<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">直接到官网上下载源码包</span><br><span class="line">https://www.mupdf.com/downloads/index.html</span><br><span class="line">mupdf-1.16.1-source.tar.gz</span><br></pre></td></tr></table></figure>
-<h3 id="二，相关依赖下载"><a href="#二，相关依赖下载" class="headerlink" title="二，相关依赖下载"></a>二，相关依赖下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</span><br><span class="line">You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licenses</span><br><span class="line"></span><br><span class="line">yum install freeglut-devel</span><br></pre></td></tr></table></figure>
-<h3 id="三，编译安装"><a href="#三，编译安装" class="headerlink" title="三，编译安装"></a>三，编译安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make prefix=/usr/local install</span><br></pre></td></tr></table></figure>
-<h3 id="四，使用注意"><a href="#四，使用注意" class="headerlink" title="四，使用注意"></a>四，使用注意</h3><p>在cmake的项目中使用静态库的时候，你只能生成静态链接库，在生成应用的时候，链接静态库和动态库都是一样的用法</p>
-]]></content>
-      <categories>
-        <category>doc</category>
-      </categories>
-      <tags>
-        <tag>pdf</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>image-libvips图片处理库源码编译</title>
-    <url>/article/3448999942.html</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目前主要是用于苹果平台图片heic图片的转码处理</span><br></pre></td></tr></table></figure>
-<h3 id="1，从GitHub上下载源码"><a href="#1，从GitHub上下载源码" class="headerlink" title="1，从GitHub上下载源码"></a>1，从GitHub上下载源码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git  clone  https://github.com/libvips/libvips.git</span><br></pre></td></tr></table></figure>
-<h3 id="2，下载需要的依赖"><a href="#2，下载需要的依赖" class="headerlink" title="2，下载需要的依赖"></a>2，下载需要的依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gtk-doc</span><br><span class="line">yum install gobject-introspection</span><br><span class="line">yum install gobject-introspection-devel</span><br><span class="line">yum install expat-devel</span><br><span class="line">yum install glib glib-devel</span><br><span class="line">yum install gcc gcc-c++</span><br><span class="line">yum install make pkgconfig autoconf automake</span><br></pre></td></tr></table></figure>
-<h3 id="3，编译出现的问题"><a href="#3，编译出现的问题" class="headerlink" title="3，编译出现的问题"></a>3，编译出现的问题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">libpango-1.0.so: undefined reference to `fribidi_get_par_embedding_levels_ex&apos;</span><br><span class="line"></span><br><span class="line">检查ldd /usr/lib64/libpango-1.0.so发现，有一个ibfribidi.so.0 =&gt; /lib64/libfribidi.so.0链接开始链接的是我自己的，有问题，改回来就好了，可能是版本冲突的原因，需要保证链接库的版本一致</span><br></pre></td></tr></table></figure>
-<h3 id="3，安装我们需要支持的图片格式依赖"><a href="#3，安装我们需要支持的图片格式依赖" class="headerlink" title="3，安装我们需要支持的图片格式依赖"></a>3，安装我们需要支持的图片格式依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y libjpeg-turbo libjpeg-turbo-devel</span><br><span class="line">yum install -y libexif libexif-devel</span><br><span class="line">yum install -y giflib giflib-devel</span><br><span class="line">yum install -y librsvg2 librsvg2-devel</span><br><span class="line">yum install -y libtiff libtiff-devel </span><br><span class="line">yum install -y libwebp libwebp-devel</span><br><span class="line">yum install -y libpng libpng-devel</span><br><span class="line">yum install -y  libgsf libgsf-devel</span><br><span class="line">yum install -y poppler-glib poppler-glib-devel</span><br><span class="line">yum install -y openslide openslide-devel</span><br><span class="line">yum install -y orc orc-devel</span><br><span class="line">yum install -y libimagequant libimagequant-devel</span><br><span class="line">yum install -y cfitsio cfitsio-devel</span><br><span class="line">yum install -y matio matio-devel</span><br><span class="line">yum install -y fftw fftw-devel</span><br></pre></td></tr></table></figure>
-<h3 id="4，安装libheif"><a href="#4，安装libheif" class="headerlink" title="4，安装libheif"></a>4，安装libheif</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1,git 源码安装libde265,## 注意这个必须安装，不然在编译libvips时，虽然configure表示支持，但是在真正使用的时候会报错</span><br><span class="line"></span><br><span class="line">2，git源码安装libheif，需要注意 配置libde265支持</span><br></pre></td></tr></table></figure>
-<h4 id="5，编译"><a href="#5，编译" class="headerlink" title="5，编译"></a>5，编译</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，./configure</span><br><span class="line">2,make &amp;&amp; make install</span><br><span class="line">自己写的myconfig.sh文件</span><br><span class="line"></span><br><span class="line">  1 #!/bin/sh                                                                                                                          </span><br><span class="line">  2 commoninclude=/usr/include</span><br><span class="line">  3 commonlib=/usr/lib64</span><br><span class="line">  4  </span><br><span class="line">  5 CPPFLAGS=&quot;-g -Wall -I$&#123;commoninclude&#125;  -L$&#123;commonlib&#125;&quot;    \</span><br><span class="line">  6 CXXFLAGS=&quot;-g -Wall -I$&#123;commoninclude&#125;  -L$&#123;commonlib&#125;&quot;    \</span><br><span class="line">  7 PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig:/usr/local/heif/lib/pkgconfig&quot;         \</span><br><span class="line">  8 ./configure  --enable-gtk-doc-pdf=yes --prefix=/usr/local/vips    \</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>图片处理</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-        <tag>image</tag>
-        <tag>lib.so</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mysql-centos7源码安装mysql8.0</title>
     <url>/article/1044847951.html</url>
     <content><![CDATA[<pre><code>因为直接通过yum安装的是mariadb，所以我们需要通过另外的方法来进行安装
@@ -1019,51 +973,37 @@
         <category>mysql</category>
       </categories>
       <tags>
-        <tag>centos7</tag>
         <tag>tools</tag>
+        <tag>centos7</tag>
         <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
-    <title>opencv-源码安装</title>
-    <url>/article/3084764285.html</url>
-    <content><![CDATA[<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><p>​        通过git源码下载OpenCV，直接在GitHub上下载的速度特别慢，所以我们需要先将其fork，然后同步到gitee上面，通过自己的gitee账号来进行下载，这个速度比较快。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://gitee.com/helioswei/opencv.git</span><br></pre></td></tr></table></figure>
-<h3 id="二，源码编译"><a href="#二，源码编译" class="headerlink" title="二，源码编译"></a>二，源码编译</h3><h5 id="1，cmake版本需求"><a href="#1，cmake版本需求" class="headerlink" title="1，cmake版本需求"></a>1，cmake版本需求</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CMake 3.5.1 or higher is required.  You are running version 2.8.12.2</span><br><span class="line">我们需要先源码编译cmake</span><br></pre></td></tr></table></figure>
-<h5 id="2，安装相关的依赖"><a href="#2，安装相关的依赖" class="headerlink" title="2，安装相关的依赖"></a>2，安装相关的依赖</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，需要Python的依赖包</span><br></pre></td></tr></table></figure>
-<h5 id="2，编译"><a href="#2，编译" class="headerlink" title="2，编译"></a>2，编译</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在OpenCV目录中，创建build目录，然后直接cmake</span><br><span class="line">cd opencv</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>opencv</category>
-      </categories>
-      <tags>
-        <tag>centos7</tag>
-      </tags>
+    <title>markdown语言的总结</title>
+    <url>/article/769639735.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>others-时间管理</title>
-    <url>/article/1904238135.html</url>
-    <content><![CDATA[<p>目标设定是第一步，提供路线图</p>
-<p>你的目标是什么？<br>短期内。你希望达成什么样的愿望？<br>长期来说。你希望你的人生是什么样子？</p>
+    <title>json-cpp处理json</title>
+    <url>/article/3190039070.html</url>
+    <content><![CDATA[<p>cpp处理json常用的库</p>
+<h3 id="poco-json"><a href="#poco-json" class="headerlink" title="poco-json"></a>poco-json</h3><p>poco库中处理json的模块，将其转换为json字符串时键名会按照字母的顺序排列</p>
+<h3 id="jsoncpp"><a href="#jsoncpp" class="headerlink" title="jsoncpp"></a>jsoncpp</h3><p>jsoncpp这个库，将其转换为json字符串时键名也会按照字母的顺序排序</p>
+<h4 id="1，下载"><a href="#1，下载" class="headerlink" title="1，下载"></a>1，下载</h4><p><a href="https://sourceforge.net/projects/jsoncpp/" target="_blank" rel="noopener">jsonspp下载</a></p>
+<h4 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h4><h5 id="scons下载"><a href="#scons下载" class="headerlink" title="scons下载"></a>scons下载</h5><p>使用scons来安装，如果yum没有找到，则需要<a href="http://www.helioswei.top/article/3859923575.html">更新yum库</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install scons -y</span><br></pre></td></tr></table></figure>
+<h5 id="编译jsoncpp"><a href="#编译jsoncpp" class="headerlink" title="编译jsoncpp"></a>编译jsoncpp</h5><p>编译好的链接库，存放在jsoncpp源目录下的libs中<code>libjson_linux-gcc-4.8.5_libmt.so</code>，头文件放在include目录下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd jsoncpp的源目录</span><br><span class="line"></span><br><span class="line">scons platform=linux-gcc</span><br></pre></td></tr></table></figure>
+<h3 id="protobuf"><a href="#protobuf" class="headerlink" title="protobuf"></a>protobuf</h3><p>序列化，这个将其转换为json字符串时会按照message的顺序，比较的好。</p>
+<h4 id="1，使用步骤"><a href="#1，使用步骤" class="headerlink" title="1，使用步骤"></a>1，使用步骤</h4><h5 id="先写proto的文件-status-proto"><a href="#先写proto的文件-status-proto" class="headerlink" title="先写proto的文件 status.proto"></a>先写proto的文件 status.proto</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">syntax = &quot;proto3&quot;;                                                                                                                    </span><br><span class="line">package biyi;</span><br><span class="line"> </span><br><span class="line">message UnifiedLog&#123;</span><br><span class="line">    Cont content = 1;</span><br><span class="line">    string sign = 2;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">message Cont&#123;</span><br><span class="line">    string time_iso8601 = 1;</span><br><span class="line">    string companyId = 2;</span><br><span class="line">    string company = 3;</span><br><span class="line">    string projectNameCN = 4;</span><br><span class="line">    string projectName = 5;</span><br><span class="line">    string componentName = 6;</span><br><span class="line">    string componentMethodName = 7;</span><br><span class="line">    string componentType = 8;</span><br><span class="line">    string componentVer = 9;</span><br><span class="line">    string componentLang = 10; </span><br><span class="line">    string userName = 11; </span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="cpp调用"><a href="#cpp调用" class="headerlink" title="cpp调用"></a>cpp调用</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;../build/proto/status.pb.h&quot;</span><br><span class="line">#include &lt;google/protobuf/util/json_util.h&gt;</span><br><span class="line"> </span><br><span class="line">namespace proto = google::protobuf::util;</span><br><span class="line"> </span><br><span class="line">using namespace biyi;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main() &#123;</span><br><span class="line">    UnifiedLog uniLog;</span><br><span class="line">    uniLog.set_sign(</span><br><span class="line">        &quot;68f3ea8baebbaddc5a47d6d955ecf53892edb4d3d8a3afe08cf4518204d30af5&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_time_iso8601(&quot;2020-03-09T11:11:14+08:00&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_companyid(&quot;000&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_company(&quot;ctsi&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_projectnamecn(&quot;001&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_projectname(&quot;biyi&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentname(&quot;micro-service-statics&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentmethodname(&quot;DemoBean.echo&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componenttype(&quot;微服务组件&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentver(&quot;v1.0.0&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentlang(&quot;java&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_username(&quot;admin&quot;);</span><br><span class="line"> </span><br><span class="line">    cout &lt;&lt; uniLog.sign() &lt;&lt; endl;</span><br><span class="line">    // message to json string</span><br><span class="line">    string str;</span><br><span class="line">    proto::Status status = proto::MessageToJsonString(uniLog, &amp;str);</span><br><span class="line">    if (!status.ok()) &#123;</span><br><span class="line">        cout &lt;&lt; status.ToString() &lt;&lt; endl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;str: &quot; &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>杂谈</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>poco-源码编译包含mysql</title>
-    <url>/article/3587508548.html</url>
-    <content><![CDATA[<h3 id="一，源码下载库"><a href="#一，源码下载库" class="headerlink" title="一，源码下载库"></a>一，源码下载库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">先在git上fork，然后同步到码云上，在clone可以加快下载的速度</span><br><span class="line">git clone https://gitee.com/helioswei/poco.git</span><br></pre></td></tr></table></figure>
-<h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc-c++ make openssl-devel</span><br></pre></td></tr></table></figure>
-<h3 id="三，安装mysql"><a href="#三，安装mysql" class="headerlink" title="三，安装mysql"></a>三，安装mysql</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">见mysql的源码安装，安装时没有头文件，所以我们需要安装头文件</span><br><span class="line">yum install mysql-devel</span><br></pre></td></tr></table></figure>
-<h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">需要提前安装GCC5.1.0来支持c++14</span><br><span class="line">./configure --shared --prefix=/usr/local/poco  --cflags=-std=c++14 --include-path=/usr/include/mysql/ --library-path=/usr/lib64/mysql/ --omit=Data/ODBC,MongoDB,PDF</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>poco</category>
+        <category>cpp</category>
       </categories>
       <tags>
         <tag>cpp</tag>
-        <tag>mysql</tag>
+        <tag>json</tag>
       </tags>
   </entry>
   <entry>
@@ -1087,43 +1027,75 @@
       </tags>
   </entry>
   <entry>
-    <title>s3-libs3源码编译</title>
-    <url>/article/3714481837.html</url>
-    <content><![CDATA[<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install libxml2-devel</span><br><span class="line"></span><br><span class="line">yum install libxml2</span><br><span class="line"></span><br><span class="line">yum install libcurl-devel</span><br></pre></td></tr></table></figure>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">cd build/lib</span><br></pre></td></tr></table></figure>
-<p><code>有两个文件libs3.so.4</code></p>
+    <title>opencv-源码安装</title>
+    <url>/article/3084764285.html</url>
+    <content><![CDATA[<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><p>​        通过git源码下载OpenCV，直接在GitHub上下载的速度特别慢，所以我们需要先将其fork，然后同步到gitee上面，通过自己的gitee账号来进行下载，这个速度比较快。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://gitee.com/helioswei/opencv.git</span><br></pre></td></tr></table></figure>
+<h3 id="二，源码编译"><a href="#二，源码编译" class="headerlink" title="二，源码编译"></a>二，源码编译</h3><h5 id="1，cmake版本需求"><a href="#1，cmake版本需求" class="headerlink" title="1，cmake版本需求"></a>1，cmake版本需求</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CMake 3.5.1 or higher is required.  You are running version 2.8.12.2</span><br><span class="line">我们需要先源码编译cmake</span><br></pre></td></tr></table></figure>
+<h5 id="2，安装相关的依赖"><a href="#2，安装相关的依赖" class="headerlink" title="2，安装相关的依赖"></a>2，安装相关的依赖</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1，需要Python的依赖包</span><br></pre></td></tr></table></figure>
+<h5 id="2，编译"><a href="#2，编译" class="headerlink" title="2，编译"></a>2，编译</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在OpenCV目录中，创建build目录，然后直接cmake</span><br><span class="line">cd opencv</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>s3</category>
-      </categories>
-      <tags>
-        <tag>s3</tag>
-        <tag>libs3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>s3-关于s3cmd的下载</title>
-    <url>/article/3778876136.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p>
-<h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote>
-<p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
-</blockquote>
-<h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote>
-<p>python get-pip.py</p>
-</blockquote>
-<h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote>
-<p>pip install s3cmd</p>
-</blockquote>
-<h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote>
-<p>设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>s3对象存储</category>
+        <category>opencv</category>
       </categories>
       <tags>
         <tag>centos7</tag>
-        <tag>s3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mupdf-源码安装</title>
+    <url>/article/3549577056.html</url>
+    <content><![CDATA[<h3 id="一，源码下载"><a href="#一，源码下载" class="headerlink" title="一，源码下载"></a>一，源码下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">直接到官网上下载源码包</span><br><span class="line">https://www.mupdf.com/downloads/index.html</span><br><span class="line">mupdf-1.16.1-source.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="二，相关依赖下载"><a href="#二，相关依赖下载" class="headerlink" title="二，相关依赖下载"></a>二，相关依赖下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</span><br><span class="line">You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licenses</span><br><span class="line"></span><br><span class="line">yum install freeglut-devel</span><br></pre></td></tr></table></figure>
+<h3 id="三，编译安装"><a href="#三，编译安装" class="headerlink" title="三，编译安装"></a>三，编译安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make prefix=/usr/local install</span><br></pre></td></tr></table></figure>
+<h3 id="四，使用注意"><a href="#四，使用注意" class="headerlink" title="四，使用注意"></a>四，使用注意</h3><p>在cmake的项目中使用静态库的时候，你只能生成静态链接库，在生成应用的时候，链接静态库和动态库都是一样的用法</p>
+]]></content>
+      <categories>
+        <category>doc</category>
+      </categories>
+      <tags>
+        <tag>pdf</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>others-时间管理</title>
+    <url>/article/1904238135.html</url>
+    <content><![CDATA[<p>目标设定是第一步，提供路线图</p>
+<p>你的目标是什么？<br>短期内。你希望达成什么样的愿望？<br>长期来说。你希望你的人生是什么样子？</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>rabbitmq-AMQPCPP的编译</title>
+    <url>/article/3142310907.html</url>
+    <content><![CDATA[<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/CopernicaMarketingSoftware/AMQP-CPP.git</span><br></pre></td></tr></table></figure>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd AMQP-CPP</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake -DAMQP-CPP_BUILD_SHARED=true -DAMQP-CPP_LINUX_TCP=true -DCMAKE_INSTALL_PREFIX=/usr/local/amqpcpp ..</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>rabbitmq</category>
+      </categories>
+      <tags>
+        <tag>rabbitmq</tag>
+        <tag>amqpcpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>poco-源码编译包含mysql</title>
+    <url>/article/3587508548.html</url>
+    <content><![CDATA[<h3 id="一，源码下载库"><a href="#一，源码下载库" class="headerlink" title="一，源码下载库"></a>一，源码下载库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">先在git上fork，然后同步到码云上，在clone可以加快下载的速度</span><br><span class="line">git clone https://gitee.com/helioswei/poco.git</span><br></pre></td></tr></table></figure>
+<h3 id="二，编译环境准备"><a href="#二，编译环境准备" class="headerlink" title="二，编译环境准备"></a>二，编译环境准备</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc-c++ make openssl-devel</span><br></pre></td></tr></table></figure>
+<h3 id="三，安装mysql"><a href="#三，安装mysql" class="headerlink" title="三，安装mysql"></a>三，安装mysql</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">见mysql的源码安装，安装时没有头文件，所以我们需要安装头文件</span><br><span class="line">yum install mysql-devel</span><br></pre></td></tr></table></figure>
+<h3 id="四，编译"><a href="#四，编译" class="headerlink" title="四，编译"></a>四，编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">需要提前安装GCC5.1.0来支持c++14</span><br><span class="line">./configure --shared --prefix=/usr/local/poco  --cflags=-std=c++14 --include-path=/usr/include/mysql/ --library-path=/usr/lib64/mysql/ --omit=Data/ODBC,MongoDB,PDF</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>poco</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -1160,18 +1132,123 @@
       </tags>
   </entry>
   <entry>
-    <title>系统io状态排查</title>
-    <url>/article/4148759935.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;这几天在排查自己写的转码服务性能上不去，转码特别慢，正常情况下，转码时CPU可以飙到很高，但是在问题机器上CPU只要50%左右，排查了好久，最终确定是某个其它服务io资源占用了太多，导致了我的转码服务io占用几乎没有，所以出现了问题，介绍几个io的工具，帮助以后查看系统的情况。</p>
-<h3 id="iostat"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;iostat主要是用来查看系统的io使用情况，<br>只记录自己使用的命令</p>
-<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install sysstat</span><br></pre></td></tr></table></figure>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iostat [-c ] [ -d ] [ -k ] [ -m ] [ -x ]</span><br></pre></td></tr></table></figure>
+    <title>s3-libs3源码编译</title>
+    <url>/article/3714481837.html</url>
+    <content><![CDATA[<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install libxml2-devel</span><br><span class="line"></span><br><span class="line">yum install libxml2</span><br><span class="line"></span><br><span class="line">yum install libcurl-devel</span><br></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">cd build/lib</span><br></pre></td></tr></table></figure>
+<p><code>有两个文件libs3.so.4</code></p>
 ]]></content>
       <categories>
-        <category>centos7</category>
+        <category>s3</category>
       </categories>
       <tags>
-        <tag>tools</tag>
+        <tag>s3</tag>
+        <tag>libs3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客的分类</title>
+    <url>/article/2992991387.html</url>
+    <content><![CDATA[<p>​    本篇文档介绍一个该博客的分类情况，方便以后写博客时目录的清晰。博客的分类如下（一级分类，二级标签）：</p>
+<ul>
+<li><code>AI</code>  AI相关的知识；<ul>
+<li>PaddleHUb</li>
+</ul>
+</li>
+<li><code>Centos7</code>  服务器系统方面的知识；<ul>
+<li>zsh</li>
+<li>yum</li>
+</ul>
+</li>
+<li><code>Docker</code>  容器方面的知识；<ul>
+<li>cmd</li>
+</ul>
+</li>
+<li><code>Media</code>  音视频，图片，文档等媒体处理方面的知识；<ul>
+<li>doc</li>
+<li>image</li>
+<li>video<ul>
+<li>cuda</li>
+<li>ffmpeg<ul>
+<li>io</li>
+<li>avfilter</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Database</code>  数据存储，缓存等方面的知识；<ul>
+<li>mysql</li>
+<li>rabbitmq</li>
+<li>s3</li>
+</ul>
+</li>
+<li><code>Tool</code>  常用的一些工具；<ul>
+<li>git</li>
+</ul>
+</li>
+<li><code>Talk</code> 生活感悟文章；</li>
+<li><code>Cpp</code> c cpp 开发； <ul>
+<li>gcc</li>
+<li>env</li>
+<li>restful</li>
+<li>log</li>
+</ul>
+</li>
+<li><code>Blog</code>  本博客的说明</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>s3-关于s3cmd的下载</title>
+    <url>/article/3778876136.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;很多人都用过对象存储，比如亚马逊的s3平台，我想大家都比较熟悉，今天来介绍一款工具，用来在centos7平台上方便的操作对象存储的东西，比如查看自己的桶，创建桶等。</p>
+<h2 id="s3cmd的下载"><a href="#s3cmd的下载" class="headerlink" title="s3cmd的下载"></a>s3cmd的下载</h2><h3 id="第一步下载get-pip-py"><a href="#第一步下载get-pip-py" class="headerlink" title="第一步下载get-pip.py"></a>第一步下载get-pip.py</h3><blockquote>
+<p>wget  <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
+</blockquote>
+<h3 id="第二步安装get-pip-py"><a href="#第二步安装get-pip-py" class="headerlink" title="第二步安装get-pip.py"></a>第二步安装get-pip.py</h3><blockquote>
+<p>python get-pip.py</p>
+</blockquote>
+<h3 id="第三步安装s3cmd"><a href="#第三步安装s3cmd" class="headerlink" title="第三步安装s3cmd"></a>第三步安装s3cmd</h3><blockquote>
+<p>pip install s3cmd</p>
+</blockquote>
+<h3 id="第四步设置-s3cfg"><a href="#第四步设置-s3cfg" class="headerlink" title="第四步设置.s3cfg"></a>第四步设置.s3cfg</h3><blockquote>
+<p>设置三个比较主要的<br><img src="/images/access_key.png" alt="设置access_key"><br><img src="/images/host_bucket.png" alt="设置host_bucket"><br><img src="/images/secret_key.png" alt="设置secret_key">  </p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>s3对象存储</category>
+      </categories>
+      <tags>
+        <tag>centos7</tag>
+        <tag>s3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>相机底片的解析</title>
+    <url>/article/4054922039.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;公司要求对相机原生格式如后缀为dng,CR2等的图片进行转码，然后预览，自己查找了一下资料，目前仅仅是用命令行来进行处理的，因为我们是linux端的服务，所以直接封装命令行比较的简单。</p>
+<h3 id="DNG数据格式的介绍"><a href="#DNG数据格式的介绍" class="headerlink" title="DNG数据格式的介绍"></a>DNG数据格式的介绍</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http://www.cnblogs.com/adong7639/p/4446828.html</span><br><span class="line">https://blog.csdn.net/wgx571859177/article/details/80755793?utm_source=blogxgwz1</span><br></pre></td></tr></table></figure>
+<h3 id="DNG格式基本的概念"><a href="#DNG格式基本的概念" class="headerlink" title="DNG格式基本的概念"></a>DNG格式基本的概念</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  DNG格式是在TIFF的基础上扩展出来的，要了解DNG，需要清楚TIFF,</span><br><span class="line">TIFF/EP,DNG,RAW之间的关系。</span><br><span class="line">  DNG（Digital Negative）是Adobe开发的一种开发的raw image file format ,</span><br><span class="line">主要是为了统一不同厂商的raw格式。里面使用的tag基本上都定义在TIFF或者TIFF/EP 中，</span><br><span class="line">在DNG Sepcification中只是定义或者建议了数据的组织方式，颜色空间的转换等等。</span><br></pre></td></tr></table></figure>
+<h3 id="TIFF-EP"><a href="#TIFF-EP" class="headerlink" title="TIFF/EP"></a>TIFF/EP</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TIFF是一个灵活适应性强的文件格式。通过在文件标头中使用&quot;标签&quot;，它能够在一个</span><br><span class="line">文件中处理多幅图像和数据。标签能够标明图像的如图像大小这样的基本几何尺寸，</span><br><span class="line">或者定义图像数据是如何排列的，或者是否使用了各种各样的图像压缩选项。</span><br><span class="line"></span><br><span class="line">TIFF/EP的全称是&quot;Tag Image File Format / Electronic Photography&quot;。 </span><br><span class="line">它是一个名为&quot;Electronic still-picture imaging – Removable </span><br><span class="line">memory – Part 2: TIFF/EP image data format&quot;ISO标准， 标准号为</span><br><span class="line">ISO12234-2。TIFF/EP对TIFF文件扩展部分标记属性。</span><br></pre></td></tr></table></figure>
+<h3 id="RAW"><a href="#RAW" class="headerlink" title="RAW"></a>RAW</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RAW文件包含创建一个可视图像所必须的相机传感器数据信息。RAW文件的结构，包括ISO标准的RAW图像格式ISO 12234-2 ，TIFF / EP，往往遵循一个共同的模式，那就是：</span><br><span class="line"></span><br><span class="line">一个短的文件头，它通常包含文件的字节顺序，文件标识符和主数据的文件偏移量摄像传感器元数据，用来描述图像传感器的数据，包括传感器的尺寸， 颜色滤波矩阵(color filter array)的属性和它的颜色配置文件</span><br><span class="line"></span><br><span class="line">列入任何CMS环境或数据库中需要的图像元数据。这些措施包括曝光设定，相机/扫描仪/镜头模型，拍摄/扫描日期（和可选的位置信息），创作信息和其他。一些原始文件包含可交换图像格式的标准化元数据节；</span><br><span class="line"></span><br><span class="line">图像缩略图；</span><br><span class="line"></span><br><span class="line">可选的JPEG格式缩小尺寸的图像，可用于快速预览；</span><br><span class="line"></span><br><span class="line">在电影胶片扫描中，无论是文件序列的时间码，序列码或帧编号都代表在扫描卷轴中的帧顺序。这个项目允许文件被被按帧顺序排列（不依赖于它的文件名​）；</span><br><span class="line"></span><br><span class="line">传感器图像数据；</span><br></pre></td></tr></table></figure>
+<h3 id="常见的RAW格式"><a href="#常见的RAW格式" class="headerlink" title="常见的RAW格式"></a>常见的RAW格式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">许多RAW格式, 包括 3FR (Hasselblad), DCR, K25, KDC (Kodak), IIQ (Phase One), CR2 (Canon), </span><br><span class="line">ERF (Epson), MEF (Mamiya), MOS (Leaf), NEF (Nikon), ORF (Olympus), PEF (Pentax), </span><br><span class="line">RW2 (Panasonic) and ARW, SRF, SR2 (Sony), 都是基于TIFF格式。 这些文件可能在许多方面偏离TIFF标准，</span><br><span class="line">包括使用一个非标准的文件头，列入额外的图像标记和一些标签的数据加密。</span><br></pre></td></tr></table></figure>
+<h3 id="TIFF-TIFF-EP-DNG-RAW之间的关系"><a href="#TIFF-TIFF-EP-DNG-RAW之间的关系" class="headerlink" title="TIFF, TIFF/EP, DNG, RAW之间的关系"></a>TIFF, TIFF/EP, DNG, RAW之间的关系</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TIFF和DNG同为Specification，分别定义了后缀名为.tif/.tiff和.dng的文件格式同时在TIFF Specification也定义个baseline及部分扩展的tag。</span><br><span class="line"></span><br><span class="line">TIFF/EP则定义并规范了在电子影像中所使用的TAG。</span><br><span class="line"></span><br><span class="line">DNG同时与TIFF和TIFF/EP兼容，并包含了EXIF和XMP信息。DNG实际上就是扩张的TIFF， 把DNG的扩展名改成TIF就可以直接预览图片。</span><br><span class="line"></span><br><span class="line">在DNG出现以前，各个数码相机制造商都有自己的格式，比如Canon(cr2/crw), Nikon(nef), Olympus(orf), Pentex(pef)等等。之所以出现这么多格式，一方面的原因是在这之前没有统一的raw格式， 但更重要的是，各个厂商希望用这个只对自己公开的数据格式来保护自己的私密信息。Adobe推出DNG希望能一统raw的天下。</span><br></pre></td></tr></table></figure>
+<h3 id="处理不同格式RAW或者DNG底片的方法"><a href="#处理不同格式RAW或者DNG底片的方法" class="headerlink" title="处理不同格式RAW或者DNG底片的方法"></a>处理不同格式RAW或者DNG底片的方法</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;为了能够得到RAW格式或者DNG格式的jpg图片供我们预览，可以使用DCRAW和ffmpeg来结合使用</p>
+<h4 id="dcraw介绍"><a href="#dcraw介绍" class="headerlink" title="dcraw介绍"></a>dcraw介绍</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://blog.csdn.net/bi_diu1368/article/details/80411304</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1,dcraw 下载   yum  install dcraw</span><br><span class="line">2.1,如果相机底片有缩略图，则直接可以通过  dcraw  -e   test.dng  获得其缩略图（注意，缩略图也有不存在的时候）</span><br><span class="line"></span><br><span class="line">2.2,如果没有缩略图，则可以先将RAW格式的转化为ppm   dcraw  -v  test.dng  获取其ppm的图片；</span><br><span class="line">然后在通过ffmpeg可以将 ppm格式的图片转码jpg  ffmpeg  -i  test.ppm out.jpg</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>图片处理</category>
+      </categories>
+      <tags>
+        <tag>image</tag>
       </tags>
   </entry>
   <entry>
@@ -1231,38 +1308,18 @@
       </tags>
   </entry>
   <entry>
-    <title>相机底片的解析</title>
-    <url>/article/4054922039.html</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;公司要求对相机原生格式如后缀为dng,CR2等的图片进行转码，然后预览，自己查找了一下资料，目前仅仅是用命令行来进行处理的，因为我们是linux端的服务，所以直接封装命令行比较的简单。</p>
-<h3 id="DNG数据格式的介绍"><a href="#DNG数据格式的介绍" class="headerlink" title="DNG数据格式的介绍"></a>DNG数据格式的介绍</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http://www.cnblogs.com/adong7639/p/4446828.html</span><br><span class="line">https://blog.csdn.net/wgx571859177/article/details/80755793?utm_source=blogxgwz1</span><br></pre></td></tr></table></figure>
-<h3 id="DNG格式基本的概念"><a href="#DNG格式基本的概念" class="headerlink" title="DNG格式基本的概念"></a>DNG格式基本的概念</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  DNG格式是在TIFF的基础上扩展出来的，要了解DNG，需要清楚TIFF,</span><br><span class="line">TIFF/EP,DNG,RAW之间的关系。</span><br><span class="line">  DNG（Digital Negative）是Adobe开发的一种开发的raw image file format ,</span><br><span class="line">主要是为了统一不同厂商的raw格式。里面使用的tag基本上都定义在TIFF或者TIFF/EP 中，</span><br><span class="line">在DNG Sepcification中只是定义或者建议了数据的组织方式，颜色空间的转换等等。</span><br></pre></td></tr></table></figure>
-<h3 id="TIFF-EP"><a href="#TIFF-EP" class="headerlink" title="TIFF/EP"></a>TIFF/EP</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TIFF是一个灵活适应性强的文件格式。通过在文件标头中使用&quot;标签&quot;，它能够在一个</span><br><span class="line">文件中处理多幅图像和数据。标签能够标明图像的如图像大小这样的基本几何尺寸，</span><br><span class="line">或者定义图像数据是如何排列的，或者是否使用了各种各样的图像压缩选项。</span><br><span class="line"></span><br><span class="line">TIFF/EP的全称是&quot;Tag Image File Format / Electronic Photography&quot;。 </span><br><span class="line">它是一个名为&quot;Electronic still-picture imaging – Removable </span><br><span class="line">memory – Part 2: TIFF/EP image data format&quot;ISO标准， 标准号为</span><br><span class="line">ISO12234-2。TIFF/EP对TIFF文件扩展部分标记属性。</span><br></pre></td></tr></table></figure>
-<h3 id="RAW"><a href="#RAW" class="headerlink" title="RAW"></a>RAW</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RAW文件包含创建一个可视图像所必须的相机传感器数据信息。RAW文件的结构，包括ISO标准的RAW图像格式ISO 12234-2 ，TIFF / EP，往往遵循一个共同的模式，那就是：</span><br><span class="line"></span><br><span class="line">一个短的文件头，它通常包含文件的字节顺序，文件标识符和主数据的文件偏移量摄像传感器元数据，用来描述图像传感器的数据，包括传感器的尺寸， 颜色滤波矩阵(color filter array)的属性和它的颜色配置文件</span><br><span class="line"></span><br><span class="line">列入任何CMS环境或数据库中需要的图像元数据。这些措施包括曝光设定，相机/扫描仪/镜头模型，拍摄/扫描日期（和可选的位置信息），创作信息和其他。一些原始文件包含可交换图像格式的标准化元数据节；</span><br><span class="line"></span><br><span class="line">图像缩略图；</span><br><span class="line"></span><br><span class="line">可选的JPEG格式缩小尺寸的图像，可用于快速预览；</span><br><span class="line"></span><br><span class="line">在电影胶片扫描中，无论是文件序列的时间码，序列码或帧编号都代表在扫描卷轴中的帧顺序。这个项目允许文件被被按帧顺序排列（不依赖于它的文件名​）；</span><br><span class="line"></span><br><span class="line">传感器图像数据；</span><br></pre></td></tr></table></figure>
-<h3 id="常见的RAW格式"><a href="#常见的RAW格式" class="headerlink" title="常见的RAW格式"></a>常见的RAW格式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">许多RAW格式, 包括 3FR (Hasselblad), DCR, K25, KDC (Kodak), IIQ (Phase One), CR2 (Canon), </span><br><span class="line">ERF (Epson), MEF (Mamiya), MOS (Leaf), NEF (Nikon), ORF (Olympus), PEF (Pentax), </span><br><span class="line">RW2 (Panasonic) and ARW, SRF, SR2 (Sony), 都是基于TIFF格式。 这些文件可能在许多方面偏离TIFF标准，</span><br><span class="line">包括使用一个非标准的文件头，列入额外的图像标记和一些标签的数据加密。</span><br></pre></td></tr></table></figure>
-<h3 id="TIFF-TIFF-EP-DNG-RAW之间的关系"><a href="#TIFF-TIFF-EP-DNG-RAW之间的关系" class="headerlink" title="TIFF, TIFF/EP, DNG, RAW之间的关系"></a>TIFF, TIFF/EP, DNG, RAW之间的关系</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TIFF和DNG同为Specification，分别定义了后缀名为.tif/.tiff和.dng的文件格式同时在TIFF Specification也定义个baseline及部分扩展的tag。</span><br><span class="line"></span><br><span class="line">TIFF/EP则定义并规范了在电子影像中所使用的TAG。</span><br><span class="line"></span><br><span class="line">DNG同时与TIFF和TIFF/EP兼容，并包含了EXIF和XMP信息。DNG实际上就是扩张的TIFF， 把DNG的扩展名改成TIF就可以直接预览图片。</span><br><span class="line"></span><br><span class="line">在DNG出现以前，各个数码相机制造商都有自己的格式，比如Canon(cr2/crw), Nikon(nef), Olympus(orf), Pentex(pef)等等。之所以出现这么多格式，一方面的原因是在这之前没有统一的raw格式， 但更重要的是，各个厂商希望用这个只对自己公开的数据格式来保护自己的私密信息。Adobe推出DNG希望能一统raw的天下。</span><br></pre></td></tr></table></figure>
-<h3 id="处理不同格式RAW或者DNG底片的方法"><a href="#处理不同格式RAW或者DNG底片的方法" class="headerlink" title="处理不同格式RAW或者DNG底片的方法"></a>处理不同格式RAW或者DNG底片的方法</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;为了能够得到RAW格式或者DNG格式的jpg图片供我们预览，可以使用DCRAW和ffmpeg来结合使用</p>
-<h4 id="dcraw介绍"><a href="#dcraw介绍" class="headerlink" title="dcraw介绍"></a>dcraw介绍</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://blog.csdn.net/bi_diu1368/article/details/80411304</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1,dcraw 下载   yum  install dcraw</span><br><span class="line">2.1,如果相机底片有缩略图，则直接可以通过  dcraw  -e   test.dng  获得其缩略图（注意，缩略图也有不存在的时候）</span><br><span class="line"></span><br><span class="line">2.2,如果没有缩略图，则可以先将RAW格式的转化为ppm   dcraw  -v  test.dng  获取其ppm的图片；</span><br><span class="line">然后在通过ffmpeg可以将 ppm格式的图片转码jpg  ffmpeg  -i  test.ppm out.jpg</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>图片处理</category>
-      </categories>
-      <tags>
-        <tag>image</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>rabbitmq-AMQPCPP的编译</title>
-    <url>/article/3142310907.html</url>
-    <content><![CDATA[<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/CopernicaMarketingSoftware/AMQP-CPP.git</span><br></pre></td></tr></table></figure>
-<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd AMQP-CPP</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake -DAMQP-CPP_BUILD_SHARED=true -DAMQP-CPP_LINUX_TCP=true -DCMAKE_INSTALL_PREFIX=/usr/local/amqpcpp ..</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+    <title>系统io状态排查</title>
+    <url>/article/4148759935.html</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;这几天在排查自己写的转码服务性能上不去，转码特别慢，正常情况下，转码时CPU可以飙到很高，但是在问题机器上CPU只要50%左右，排查了好久，最终确定是某个其它服务io资源占用了太多，导致了我的转码服务io占用几乎没有，所以出现了问题，介绍几个io的工具，帮助以后查看系统的情况。</p>
+<h3 id="iostat"><a href="#iostat" class="headerlink" title="iostat"></a>iostat</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;iostat主要是用来查看系统的io使用情况，<br>只记录自己使用的命令</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install sysstat</span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iostat [-c ] [ -d ] [ -k ] [ -m ] [ -x ]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>rabbitmq</category>
+        <category>centos7</category>
       </categories>
       <tags>
-        <tag>rabbitmq</tag>
-        <tag>amqpcpp</tag>
+        <tag>tools</tag>
       </tags>
   </entry>
 </search>

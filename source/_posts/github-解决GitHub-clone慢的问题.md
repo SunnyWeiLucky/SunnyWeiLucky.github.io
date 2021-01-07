@@ -1,11 +1,7 @@
 ---
 title: github-解决GitHub clone慢的问题
-categories:
-  - github
-  - git
-tags:
-  - github
-  - git
+categories: Tool
+tags: git
 abbrlink: 814027255
 date: 2020-06-01 15:23:20
 ---

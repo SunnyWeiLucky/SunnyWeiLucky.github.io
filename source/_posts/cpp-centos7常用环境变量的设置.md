@@ -2,7 +2,7 @@
 title: cpp-centos7常用环境变量的设置
 categories: cpp
 tags:
-  - cpp
+  - env
 abbrlink: 1768093973
 date: 2020-06-19 11:56:16
 ---

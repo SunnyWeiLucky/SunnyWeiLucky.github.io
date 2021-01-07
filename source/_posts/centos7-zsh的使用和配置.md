@@ -2,9 +2,7 @@
 title: centos7-zsh的使用和配置
 categories:
   - centos7
-  - zsh
 tags:
-  - centos7
   - zsh
 abbrlink: 192192511
 date: 2020-12-08 16:58:14
@@ -46,3 +44,5 @@ chsh -s /bin/zsh
 
 ​	在`/root/.zshrc`中找到`plugins`关键字，就可以自定义启用的插件了，目前插件存放在workspace上
 
+
+~~~

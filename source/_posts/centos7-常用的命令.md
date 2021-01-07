@@ -4,7 +4,7 @@ categories: centos7
 abbrlink: 2689943165
 date: 2020-05-06 14:52:04
 tags: 
-- centos7
+- cmd
 ---
 
 记录一下自己常用的centos7上的命令行

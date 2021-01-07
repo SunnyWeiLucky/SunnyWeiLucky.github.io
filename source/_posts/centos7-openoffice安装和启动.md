@@ -1,10 +1,8 @@
 ---
 title: centos7-openoffice安装和启动
-categories:
-  - centos7
-  - doc
+categories: Media
 tags:
-  - centos7
+  - doc
   - openoffice
 abbrlink: 1736132591
 date: 2020-12-03 10:17:28

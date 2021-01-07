@@ -1,7 +1,7 @@
 ---
 title: ffmpeg-编码的步骤
-categories: ffmpeg
-tags: ffmpeg
+categories: Media
+tags: [video,ffmpeg]
 abbrlink: 3394448682
 date: 2019-05-05 14:39:17
 ---

@@ -1,7 +1,7 @@
 ---
 title: docker-docker常用命令
-categories: docker
-tags: docker
+categories: Docker
+tags: cmd
 abbrlink: 2019996800
 date: 2020-05-25 16:50:55
 ---

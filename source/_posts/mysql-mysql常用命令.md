@@ -1,7 +1,7 @@
 ---
 title: mysql-mysql常用命令
-categories: mysql
-tags: mysql
+categories: Centos7
+tags: [mysql,cmd]
 abbrlink: 4107582643
 date: 2020-05-28 14:33:43
 ---

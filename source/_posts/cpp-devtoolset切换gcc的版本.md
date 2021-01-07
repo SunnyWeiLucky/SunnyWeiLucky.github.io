@@ -2,7 +2,6 @@
 title: cpp-devtoolset切换gcc的版本
 categories: cpp
 tags:
-  - cpp
   - gcc
   - devtoolset
 abbrlink: 2538200340

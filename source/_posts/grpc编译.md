@@ -1,9 +1,7 @@
 ---
 title: grpc编译
-categories: grpc
-tags:
-  - grpc
-  - centos7
+categories: Cpp
+tags: [grpc]
 abbrlink: 1473358207
 date: 2020-01-14 18:54:12
 ---

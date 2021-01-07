@@ -1,10 +1,7 @@
 ---
 title: image-libraw相机图片库源码编译
-categories: 图片处理
-tags:
-  - image
-  - centos7
-  - lib.so
+categories: Media
+tags: [image,libraw]
 abbrlink: 1731984249
 date: 2020-01-17 17:37:04
 ---

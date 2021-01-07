@@ -1,9 +1,10 @@
 ---
 title: ffmpeg-源码编译支持GPU
-categories: ffmpeg
+categories: Media
 tags:
+  - video
   - ffmpeg
-  - centos7
+  - GPU
 abbrlink: 2764140538
 date: 2020-01-14 19:09:01
 ---

@@ -1,8 +1,7 @@
 ---
 title: opencv-源码安装
-categories: opencv
-tags:
-  - centos7
+categories: Media
+tags: [image,opencv]
 abbrlink: 3084764285
 date: 2020-04-29 11:41:25
 ---

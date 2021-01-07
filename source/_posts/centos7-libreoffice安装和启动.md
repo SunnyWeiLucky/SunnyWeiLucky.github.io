@@ -1,9 +1,7 @@
 ---
 title: centos7-libreoffice安装和启动
-categories:
-  - centos7
-  - libreoffice
-tags: libreoffice
+categories: Media
+tags: [doc,libreoffice]
 abbrlink: 3025513893
 date: 2020-12-03 10:17:38
 ---

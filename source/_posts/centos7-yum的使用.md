@@ -2,7 +2,6 @@
 title: centos7-yum的使用
 categories: centos7
 tags:
-  - centos7
   - yum
 abbrlink: 1714992348
 date: 2020-11-19 17:40:53

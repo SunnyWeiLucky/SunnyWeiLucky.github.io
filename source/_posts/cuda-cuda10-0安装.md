@@ -1,9 +1,9 @@
 ---
 title: cuda-cuda10.0安装
-categories: cuda
+categories: Media
 tags:
-  - nvidia
-  - 驱动
+  - video
+  - cuda
 abbrlink: 2055195890
 date: 2020-05-07 10:48:26
 ---
