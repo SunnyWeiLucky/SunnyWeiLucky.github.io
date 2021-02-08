@@ -1,8 +1,7 @@
 ---
 title: hexo-常用命令
-categories: Tool
+categories: [Tool,hexo]
 tags:
-  - hexo
   - cmd
 abbrlink: 3973852728
 date: 2019-04-12 18:35:51

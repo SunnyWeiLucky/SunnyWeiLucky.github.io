@@ -1,7 +1,7 @@
 ---
 title: opencv-源码安装
-categories: Media
-tags: [image,opencv]
+categories: [Media,image]
+tags: opencv
 abbrlink: 3084764285
 date: 2020-04-29 11:41:25
 ---

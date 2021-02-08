@@ -1,9 +1,8 @@
 ---
 title: rabbitmq-AMQPCPP的编译
-categories: rabbitmq
+categories: [Database,rabbitmq]
 tags:
   - rabbitmq
-  - amqpcpp
 abbrlink: 3142310907
 date: 2020-07-27 17:01:57
 ---

@@ -1,9 +1,7 @@
 ---
 title: rabbitmq-AMQPCPP使用问题记录
-categories: rabbitmq
-tags:
-  - rabbitmq
-  - AMQP_CPP
+categories: [Database,rabbitmq]
+tags: rabbitmq
 abbrlink: 3077642244
 date: 2020-09-29 16:57:46
 ---

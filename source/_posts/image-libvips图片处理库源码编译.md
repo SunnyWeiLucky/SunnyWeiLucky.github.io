@@ -1,9 +1,7 @@
 ---
 title: image-libvips图片处理库源码编译
-categories: Media
-tags:
-  - image
-  - libvips
+categories: [Media,image]
+tags: libvips
 abbrlink: 3448999942
 date: 2020-01-15 09:43:01
 ---

@@ -1,8 +1,7 @@
 ---
 title: ffmpeg-源码编译支持GPU
-categories: Media
+categories: [Media,video]
 tags:
-  - video
   - ffmpeg
   - GPU
 abbrlink: 2764140538

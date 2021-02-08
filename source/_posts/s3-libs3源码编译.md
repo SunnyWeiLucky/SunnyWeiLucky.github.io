@@ -1,9 +1,8 @@
 ---
 title: s3-libs3源码编译
-categories: s3
+categories: [Database,s3]
 tags:
   - s3
-  - libs3
 abbrlink: 3714481837
 date: 2020-07-14 18:06:16
 ---

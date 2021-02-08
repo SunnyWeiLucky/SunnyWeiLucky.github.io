@@ -1,8 +1,8 @@
 ---
 title: cpp-日志库LOG的使用
-categories: cpp
+categories: [Cpp,log]
 tags:
-  - log
+  - easyloggingcpp
 abbrlink: 1373770285
 date: 2020-09-11 17:52:33
 ---

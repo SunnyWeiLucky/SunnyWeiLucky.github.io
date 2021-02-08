@@ -1,7 +1,7 @@
 ---
 title: git-常用的命令
-categories: Tool
-tags: [git,cmd]
+categories: [Tool,git]
+tags: cmd
 abbrlink: 2063445917
 date: 2019-03-15 16:27:10
 ---

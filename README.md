@@ -9,6 +9,8 @@ blog 分支用于同步本地的文件，用于环境的迁移，以及写博客
 
 ### 同步迁移步骤（windows)
 
+​	必须先安装这些软件，再来clone源码，当出现地址(http://localhost:4000/)访问不到时可以重启机器看看。
+
 ##### 1，安装git
 [git下载](https://git-scm.com/downloads)
 ~~~
@@ -24,11 +26,18 @@ node -v
 ~~~
 npm install hexo-cli -g
 ~~~
-##### 4，clone
+##### 4，安装gulp
+
+~~~
+npm install --global gulp-cli
+~~~
+
+##### 5，clone
+
 ~~~
 git clone https://github.com/SunnyWeiLucky/SunnyWeiLucky.github.io.git
 ~~~
-##### 5， hexo
+##### 6， hexo
 ~~~
 cd SunnyWeiLucky.github.io
 git checkout blog

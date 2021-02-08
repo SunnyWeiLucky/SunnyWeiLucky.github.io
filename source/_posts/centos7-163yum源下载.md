@@ -1,6 +1,6 @@
 ---
 title: centos7-163yum源下载
-categories: centos7
+categories: Centos7
 tags: yum
 abbrlink: 2361785990
 date: 2020-05-06 11:14:01

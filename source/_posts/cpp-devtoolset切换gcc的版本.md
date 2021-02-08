@@ -1,6 +1,6 @@
 ---
 title: cpp-devtoolset切换gcc的版本
-categories: cpp
+categories: [Cpp,gcc]
 tags:
   - gcc
   - devtoolset

@@ -1,6 +1,6 @@
 ---
 title: centos7-网络设置
-categories: centos7
+categories: Centos7
 tags: network
 abbrlink: 3594159119
 date: 2020-06-09 14:19:49

@@ -1,8 +1,7 @@
 ---
 title: spider-centos7安装selenium模拟浏览器请求
-categories: spider
+categories: [Tool,spider]
 tags:
-  - spider
   - selenium
 abbrlink: 933612194
 date: 2020-07-22 09:32:16

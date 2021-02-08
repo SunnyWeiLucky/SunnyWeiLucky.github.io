@@ -1,6 +1,6 @@
 ---
 title: mysql-centos7源码安装mysql8.0
-categories: Centos7
+categories: [Database,mysql]
 tags: mysql
 abbrlink: 1044847951
 date: 2020-04-17 10:24:23

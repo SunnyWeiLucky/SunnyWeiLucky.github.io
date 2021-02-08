@@ -1,9 +1,7 @@
 ---
 title: s3-关于s3cmd的下载
-categories: s3对象存储
-tags:
-  - s3
-  - centos7
+categories: [Database,s3]
+tags: [s3,cmd]
 abbrlink: 3778876136
 date: 2019-03-18 18:02:31
 ---

@@ -1,7 +1,7 @@
 ---
 title: ffmpeg-转码后丢帧的问题
-categories: Media
-tags: [video,ffmpeg]
+categories: [Media,video]
+tags: ffmpeg
 abbrlink: 3032443121
 date: 2020-09-29 16:35:30
 ---

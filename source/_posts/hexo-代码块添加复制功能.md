@@ -1,6 +1,6 @@
 ---
 title: hexo-代码块添加复制功能
-categories: Tool
+categories: [Tool,hexo]
 tags: hexo
 abbrlink: 853195356
 date: 2020-05-25 10:58:19

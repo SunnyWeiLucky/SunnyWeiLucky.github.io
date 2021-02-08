@@ -1,7 +1,7 @@
 ---
 title: mupdf-源码安装
-categories: Media
-tags: [doc,pdf]
+categories: [Media,doc]
+tags: mupdf
 abbrlink: 3549577056
 date: 2020-04-29 11:44:14
 ---

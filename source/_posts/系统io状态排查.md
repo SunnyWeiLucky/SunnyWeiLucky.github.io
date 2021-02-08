@@ -1,7 +1,7 @@
 ---
 title: 系统io状态排查
-categories: centos7
-tags: tools
+categories: Centos7
+tags: io
 abbrlink: 4148759935
 date: 2019-04-28 14:36:56
 ---

@@ -1,7 +1,7 @@
 ---
 title: git-大文件上传管理
-categories: Tool
-tags: [git,lfs]
+categories: [Tool,git]
+tags: lfs
 abbrlink: 3538252460
 date: 2020-05-22 16:32:56
 ---

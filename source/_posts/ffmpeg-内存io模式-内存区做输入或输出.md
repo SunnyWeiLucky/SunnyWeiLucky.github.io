@@ -1,8 +1,7 @@
 ---
 title: ffmpeg-内存io模式(内存区做输入或输出)
-categories: Media
+categories: [Media,video]
 tags:
-  - video
   - ffmpeg
   - io
 abbrlink: 2452888490

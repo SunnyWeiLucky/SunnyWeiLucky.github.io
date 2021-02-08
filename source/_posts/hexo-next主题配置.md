@@ -1,7 +1,7 @@
 ---
 title: hexo-next主题配置
-categories: Tool
-tags: hexo
+categories: [Tool,hexo]
+tags: next
 abbrlink: 1968653668
 date: 2020-05-07 16:46:52
 ---

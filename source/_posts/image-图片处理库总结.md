@@ -1,7 +1,7 @@
 ---
 title: image-图片处理库总结
-categories: Media
-tags: image
+categories: [Media,image]
+tags:
 abbrlink: 3226112650
 date: 2020-01-15 09:47:54
 ---

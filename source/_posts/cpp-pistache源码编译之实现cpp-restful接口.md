@@ -2,8 +2,8 @@
 title: cpp-pistache源码编译之实现cpp restful接口
 abbrlink: 2728951675
 date: 2020-06-19 15:07:56
-categories: cpp
-tags: restful
+categories: [Cpp,restful]
+tags: pistache
 ---
 
 cpp实现restful类型的接口比较的复杂，我们使用pistache库来解决这个问题，经对比，这个库是速度最快的。

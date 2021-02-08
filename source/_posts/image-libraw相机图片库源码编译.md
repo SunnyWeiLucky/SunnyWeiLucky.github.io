@@ -1,7 +1,7 @@
 ---
 title: image-libraw相机图片库源码编译
-categories: Media
-tags: [image,libraw]
+categories: [Media,image]
+tags: libraw
 abbrlink: 1731984249
 date: 2020-01-17 17:37:04
 ---

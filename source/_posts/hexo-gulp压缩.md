@@ -1,7 +1,7 @@
 ---
 title: hexo-gulp压缩
-categories: Tool
-tags: hexo
+categories: [Tool,hexo]
+tags: gulp
 abbrlink: 2127593710
 date: 2020-05-25 10:21:08
 ---
