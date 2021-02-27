@@ -6,6 +6,7 @@ categories:
 tags: PaddleHub
 abbrlink: 1959613013
 date: 2020-12-03 14:25:47
+password: 123456
 ---
 
 ​		最近体验了一下比较火的AI项目，[PaddleHub](https://github.com/PaddlePaddle/PaddleHub)，对于python我是陌生的，所以下面是作为新手的一些操作指南，保证能够正确的尝试到这个项目的有趣之处。

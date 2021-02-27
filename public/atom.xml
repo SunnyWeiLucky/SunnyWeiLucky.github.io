@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Helios</title>
+  
+  <subtitle>世人谓我恋长安，其实只恋长安某</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.helioswei.top/"/>
+  <updated>2021-02-27T13:59:36.398Z</updated>
+  <id>http://www.helioswei.top/</id>
+  
+  <author>
+    <name>Helioswei</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://www.helioswei.top/article/1243066710.html"/>
+    <id>http://www.helioswei.top/article/1243066710.html</id>
+    <published>2021-02-27T13:59:36.398Z</published>
+    <updated>2021-02-27T13:59:36.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>cpp-gtest集成Lcov代码覆盖率测试</title>
+    <link href="http://www.helioswei.top/article/3264464113.html"/>
+    <id>http://www.helioswei.top/article/3264464113.html</id>
+    <published>2021-02-08T07:04:47.000Z</published>
+    <updated>2021-02-27T13:59:36.392Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    做好了单元测试但是别人并不知道我们的单元测试做的如何，是否覆盖了所有的需要被测试的类方法或者变量等，所以我们需要对单测case做一个覆盖率统计。其实本质就是看代码执行时候运行了你需要测试文件里面的所有代码，比如switch分支 if分支等。</p><h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><h4 id="安装下载lcov"><a href="#安装下载lcov" class="headerlink" title="安装下载lcov"></a>安装下载lcov</h4><pre><code>http://ltp.sourceforge.net/coverage/lcov.php，有rpm包和源码包。（以源码包为例）</code></pre><p>解压lcov-x.xx.tar.gz，进入源码包，执行make install<br>在命令行执行lcov -v，正确输出版本号即安装成功</p><h4 id="增加Lcov编译选项"><a href="#增加Lcov编译选项" class="headerlink" title="增加Lcov编译选项"></a>增加Lcov编译选项</h4><p>​    在项目顶层目录CmakeLists.txt中添加以下编译指令：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coverage option</span></span><br><span class="line"><span class="keyword">OPTION</span> (ENABLE_COVERAGE <span class="string">&quot;Use gcov&quot;</span> <span class="keyword">ON</span>)</span><br><span class="line"><span class="keyword">MESSAGE</span>(STATUS ENABLE_COVERAGE=<span class="variable">$&#123;ENABLE_COVERAGE&#125;</span>)</span><br><span class="line"><span class="keyword">IF</span>(ENABLE_COVERAGE)</span><br><span class="line">    <span class="keyword">SET</span>(CMAKE_CXX_FLAGS <span class="string">&quot;$&#123;CMAKE_CXX_FLAGS&#125; -fprofile-arcs -ftest-coverage&quot;</span>)</span><br><span class="line">    <span class="keyword">SET</span>(CMAKE_C_FLAGS <span class="string">&quot;$&#123;CMAKE_C_FLAGS&#125; -fprofile-arcs -ftest-coverage&quot;</span>)</span><br><span class="line">    <span class="keyword">SET</span>(CMAKE_EXE_LINKER_FLAGS <span class="string">&quot;$&#123;CMAKE_EXE_LINKER_FLAGS&#125; -fprofile-arcs -ftest-coverage&quot;</span>)</span><br><span class="line"><span class="keyword">ENDIF</span>()</span><br></pre></td></tr></table></figure><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><ol><li><p>将cmake编译选项设置为-DENABLE_COVERAGE=OFF …，或者将顶层目录CmakeLists.txt中OPTION (ENABLE_COVERAGE “Use gcov” OFF)编译选项手动设置为ON；</p></li><li><p>编译产生<code>.gcno</code>文件，运行则产生<code>.gcda</code>（与.gcno对应）文件；</p><ul><li>我们使用的是<code>cmake编译</code>，则编译后生成的.gcno文件存在build目录下的每个项目中，例如：<img src="/images/cpp/gcno.png" alt="gcno" style="zoom:75%;" /></li><li><code>运行</code>我们的测试代码才会产生.gcda文件，如图是运行后产生的。<ul><li>若用户进程<code>并非调用 exit 正常退出</code>，覆盖率统计数据就无法输出，也就无从生成报告了。后台服务程序若非专门设计，一旦启动就很少主动退出，用 kill 杀死进程强制退出时就不会调用 exit，因此没有覆盖率统计结果产生。所以必须当前进程退出后才会产生.gcda文件。</li></ul></li></ul></li><li><p>使用Lcov生成覆盖率统计文件；</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lcov -d cmake-build-debug -t test -o test.info -b . -c  --no-external</span><br></pre></td></tr></table></figure><p>命令参数含义解释如下：</p><ul><li>-d src_dir： 待覆盖率测试的源码目录，本工程设置为cmake-build-debug；</li><li>-t ‘test’: 目标的名称，此处为test；</li><li>-o ‘test.info’: 生成的覆盖率文件，可自定义，可不带引号；</li><li>-b .：相对目录的起始位置；</li><li>-c: capture，采集覆盖率；</li></ul><p>因为我们是cmake进行编译的，所以我们可以直接在build目录下使用lcov命令生成覆盖率报表</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lcov -c -o result.info  -b . -d . </span><br></pre></td></tr></table></figure></li><li><p>使用genhtml生成覆盖率报表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genhtml -o report test.info</span><br></pre></td></tr></table></figure><ul><li><p>-o result: 输出的目标文件夹，可带路径，此处为当前目录下的result目录；</p></li><li><p>test.info: 覆盖率的统计文件；</p></li></ul><p>如果我们需要对覆盖率报表进行过滤，比如把include文件或者系统的文件给过滤掉，可以使用下面的命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lcov --remove result.info  &#x27;/usr/*&#x27; &#x27;*/inc/*&#x27; -o finalresult.info</span><br><span class="line">genhtml finalresult.info  -o cppreport</span><br></pre></td></tr></table></figure></li><li><p>html报表生成如下，这个是未过滤的。<img src="/images/cpp/html.png" alt="html.png"></p></li></ol><p>相关文章参考：</p><ul><li><a href="https://blog.csdn.net/weixin_43892514/article/details/107822769">这篇文章</a>对lcov讲解的比较详细以及cmake添加的选项比较好用，但是对生成的.gcno和.gcda文件在哪里没有说明，对于我这个初学者来说比较的蒙。</li><li><a href="https://www.cnblogs.com/zhaoxd07/p/5608177.html">这篇文章</a>对文件生成的位置有详细的说明。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​    做好了单元测试但是别人并不知道我们的单元测试做的如何，是否覆盖了所有的需要被测试的类方法或者变量等，所以我们需要对单测case做一个覆盖率统计。其实本质就是看代码执行时候运行了你需要测试文件里面的所有代码，比如switch分支 if分支等。&lt;/p&gt;
+&lt;h3 id=
+      
+    
+    </summary>
+    
+      <category term="Cpp" scheme="http://www.helioswei.top/categories/Cpp/"/>
+    
+      <category term="unitTest" scheme="http://www.helioswei.top/categories/Cpp/unitTest/"/>
+    
+    
+      <category term="gtest" scheme="http://www.helioswei.top/tags/gtest/"/>
+    
+      <category term="lcov" scheme="http://www.helioswei.top/tags/lcov/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客的分类</title>
+    <link href="http://www.helioswei.top/article/2992991387.html"/>
+    <id>http://www.helioswei.top/article/2992991387.html</id>
+    <published>2021-01-06T03:51:26.000Z</published>
+    <updated>2021-02-27T13:59:36.405Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    本篇文档介绍一个该博客的分类情况，方便以后写博客时目录的清晰。博客的分类如下（一级分类，二级标签）：</p><ul><li><code>AI</code>  AI相关的知识；<ul><li>PaddleHUb</li></ul></li><li><code>Centos7</code>  服务器系统方面的知识；<ul><li>zsh</li><li>yum</li><li>cmd</li><li>network</li><li>io</li></ul></li><li><code>Docker</code>  容器方面的知识；<ul><li>cmd</li></ul></li><li><code>Media</code>  音视频，图片，文档等媒体处理方面的知识；<ul><li>doc<ul><li>pdf</li></ul></li><li>image<ul><li>libraw</li><li>libvips</li><li>opencv</li></ul></li><li>video<ul><li>cuda</li><li>ffmpeg<ul><li>io</li><li>avfilter</li><li>GPU</li></ul></li></ul></li></ul></li><li><code>Database</code>  数据存储，缓存等方面的知识；<ul><li>mysql</li><li>rabbitmq</li><li>s3</li></ul></li><li><code>Tool</code>  常用的一些工具；<ul><li>git<ul><li>cmd</li><li>lfs</li></ul></li><li>hexo<ul><li>cmd</li><li>gulp</li><li>next</li></ul></li><li>spider 爬虫<ul><li>selenium</li></ul></li></ul></li><li><code>Talk</code> 生活感悟文章；</li><li><code>Cpp</code> c cpp 开发； <ul><li>gcc<ul><li>env</li></ul></li><li>protocol<ul><li>grpc</li><li>json</li></ul></li><li>restful</li><li>log</li><li>poco</li><li>unitTest<ul><li>gtest+lcov</li></ul></li></ul></li><li><code>Blog</code>  本博客的说明</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​    本篇文档介绍一个该博客的分类情况，方便以后写博客时目录的清晰。博客的分类如下（一级分类，二级标签）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;AI&lt;/code&gt;  AI相关的知识；&lt;ul&gt;
+&lt;li&gt;PaddleHUb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;co
+      
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://www.helioswei.top/categories/Blog/"/>
+    
+    
+      <category term="Blog" scheme="http://www.helioswei.top/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos7-zsh的使用和配置</title>
+    <link href="http://www.helioswei.top/article/192192511.html"/>
+    <id>http://www.helioswei.top/article/192192511.html</id>
+    <published>2020-12-08T08:58:14.000Z</published>
+    <updated>2021-02-27T13:59:36.390Z</updated>
+    
+    <content type="html"><![CDATA[<p>​     本文主要是记录centos7搭建自己个性的命令行。</p><h3 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install zsh</span><br></pre></td></tr></table></figure><h4 id="将其设置为默认shell"><a href="#将其设置为默认shell" class="headerlink" title="将其设置为默认shell"></a>将其设置为默认shell</h4><p>~~~`<br>chsh -s /bin/zsh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;可以通过echo $SHELL来查看当前默认的shell，如果没有改为&#x2F;bin&#x2F;zsh,那么需要重新启动shell&#96;</span><br><span class="line"></span><br><span class="line">### 安装oh-my-zsh</span><br><span class="line"></span><br><span class="line">[地址](https:&#x2F;&#x2F;github.com&#x2F;ohmyzsh&#x2F;ohmyzsh)</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>    sh -c “$(wget -O- <a href="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;">https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 配置文件</span><br><span class="line"></span><br><span class="line">​默认的配置文件是在&#96;&#x2F;root&#x2F;.zshrc&#96;，可以通过配置文件来配置一下插件以及功能</span><br><span class="line"></span><br><span class="line">##### 主题修改</span><br><span class="line"></span><br><span class="line">在&#96;.zshrc&#96;中找到&#96;ZSH_THEME&#96;，即可修改主题，[主题地址](https:&#x2F;&#x2F;github.com&#x2F;ohmyzsh&#x2F;ohmyzsh&#x2F;wiki&#x2F;themes)可自己修改</span><br><span class="line"></span><br><span class="line">##### zsh扩展</span><br><span class="line"></span><br><span class="line">​在&#96;&#x2F;root&#x2F;.zshrc&#96;中找到&#96;plugins&#96;关键字，就可以自定义启用的插件了，目前插件存放在workspace上</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​     本文主要是记录centos7搭建自己个性的命令行。&lt;/p&gt;
+&lt;h3 id=&quot;安装zsh&quot;&gt;&lt;a href=&quot;#安装zsh&quot; class=&quot;headerlink&quot; title=&quot;安装zsh&quot;&gt;&lt;/a&gt;安装zsh&lt;/h3&gt;&lt;figure class=&quot;highlig
+      
+    
+    </summary>
+    
+      <category term="Centos7" scheme="http://www.helioswei.top/categories/Centos7/"/>
+    
+    
+      <category term="zsh" scheme="http://www.helioswei.top/tags/zsh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AI-PaddleHub的体验使用</title>
+    <link href="http://www.helioswei.top/article/1959613013.html"/>
+    <id>http://www.helioswei.top/article/1959613013.html</id>
+    <published>2020-12-03T06:25:47.000Z</published>
+    <updated>2021-02-27T18:37:26.283Z</updated>
+    
+    <content type="html"><![CDATA[<p>​        最近体验了一下比较火的AI项目，<a href="https://github.com/PaddlePaddle/PaddleHub">PaddleHub</a>，对于python我是陌生的，所以下面是作为新手的一些操作指南，保证能够正确的尝试到这个项目的有趣之处。</p><p>​        <a href="https://github.com/PaddlePaddle/PaddleHub/blob/release/v2.0.0-beta/README_ch.md">官网操作指南</a></p><h3 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h3><ol><li>Python&gt;=3.6</li><li>PaddlePaddle&gt;=2.0.0rc</li></ol><h3 id="环境更新"><a href="#环境更新" class="headerlink" title="环境更新"></a>环境更新</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --upgrade pip</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --upgrade setuptools</span><br></pre></td></tr></table></figure><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="paddlepaddle的安装"><a href="#paddlepaddle的安装" class="headerlink" title="paddlepaddle的安装"></a>paddlepaddle的安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install paddlepaddle&#x3D;&#x3D;2.0.0rc</span><br></pre></td></tr></table></figure><h4 id="paddlehub的安装"><a href="#paddlehub的安装" class="headerlink" title="paddlehub的安装"></a>paddlehub的安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install paddlehub --upgrade -i https://mirrors.aliyun.com/pypi/simple  --default-timeout=100</span><br></pre></td></tr></table></figure><h4 id="依赖库安装"><a href="#依赖库安装" class="headerlink" title="依赖库安装"></a>依赖库安装</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install matplotlib</span><br></pre></td></tr></table></figure><h3 id="模型库的下载"><a href="#模型库的下载" class="headerlink" title="模型库的下载"></a>模型库的下载</h3><p>​        下载模型，PaddleHub必须在访问外网的情况下才能下载。你可以现在网络条件好的环境下，先下载安装对应的module，之后将安装好module 完整的拷贝到你需要的机器上，放在<code>HUB_HOME</code>下。<a href="https://github.com/PaddlePaddle/PaddleHub/blob/release/v1.7/docs/tutorial/cmdintro.md#paddlehub%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7">关于<code>HUB_HOME</code>的解释参考</a></p><p>​        <a href="https://paddlepaddle.org.cn/hublist">PaddleHub支持模型列表</a>,我们可以在这个地址上找到所有需要的模型，然后我们通过手动的下载，比如<code>deeplabv3p_xception65_humanseg</code><a href="https://paddlepaddle.org.cn/hubdetail?name=deeplabv3p_xception65_humanseg&amp;en_category=ImageSegmentation">模型下载</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hub install deeplabv3p_xception65_humanseg&#x3D;&#x3D;1.1.1</span><br></pre></td></tr></table></figure><h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><h4 id="人像抠图"><a href="#人像抠图" class="headerlink" title="人像抠图"></a>人像抠图</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hub run deeplabv3p_xception65_humanseg  --input_path test_image.jpg  --visualization=True --output_dir=<span class="string">&quot;human_output&quot;</span></span><br></pre></td></tr></table></figure><p><code>如果你开始没有下载模型库，则这个执行的过程会超级的慢，所以一般建议先手动的安装模型库</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​        最近体验了一下比较火的AI项目，&lt;a href=&quot;https://github.com/PaddlePaddle/PaddleHub&quot;&gt;PaddleHub&lt;/a&gt;，对于python我是陌生的，所以下面是作为新手的一些操作指南，保证能够正确的尝试到这个项目的
+      
+    
+    </summary>
+    
+      <category term="AI" scheme="http://www.helioswei.top/categories/AI/"/>
+    
+      <category term="PaddleHub" scheme="http://www.helioswei.top/categories/AI/PaddleHub/"/>
+    
+    
+      <category term="PaddleHub" scheme="http://www.helioswei.top/tags/PaddleHub/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos7-libreoffice安装和启动</title>
+    <link href="http://www.helioswei.top/article/3025513893.html"/>
+    <id>http://www.helioswei.top/article/3025513893.html</id>
+    <published>2020-12-03T02:17:38.000Z</published>
+    <updated>2021-02-27T13:59:36.389Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    centos7下的文档转码的利器<code>libreoffice</code>，下面介绍一下centos7平台上对于这个软件的安装</p><h3 id="libreoffice下载"><a href="#libreoffice下载" class="headerlink" title="libreoffice下载"></a>libreoffice下载</h3><p><a href="https://www.libreoffice.org/download/download/">libreoffice下载</a>，在这里可以下载LO的最新的版本</p><p>这个是网上找的镜像，<a href="http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/">可以参考</a></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz</span><br><span class="line">LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz</span><br></pre></td></tr></table></figure><h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_langpack_zh-CN.tar -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm.tar.gz -C /root/libreoffice</span><br><span class="line">tar -zxvf LibreOffice_6.4.3_Linux_x86-64_rpm_sdk.tar.gz -C /root/libreoffice</span><br></pre></td></tr></table></figure><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入每个目录下的RPMS目录下使用以下命令执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure><h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install cairo</span><br><span class="line">yum install cups-libs</span><br><span class="line">yum install libSM</span><br></pre></td></tr></table></figure><h4 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &quot;fonts&quot;</span><br></pre></td></tr></table></figure><h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libreoffice6.4 --headless --invisible --convert-to pdf test.docx --outdir /data/file</span><br></pre></td></tr></table></figure><h3 id="bug提交"><a href="#bug提交" class="headerlink" title="bug提交"></a>bug提交</h3><p>在使用的过程中，我发现了一个bug，影响了我产品的功能，所有让社区的管理帮忙提交了bug修复，<a href="https://bbs.libreofficechina.org/thread-2616-1-1.html">见下</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​    centos7下的文档转码的利器&lt;code&gt;libreoffice&lt;/code&gt;，下面介绍一下centos7平台上对于这个软件的安装&lt;/p&gt;
+&lt;h3 id=&quot;libreoffice下载&quot;&gt;&lt;a href=&quot;#libreoffice下载&quot; class=&quot;header
+      
+    
+    </summary>
+    
+      <category term="Media" scheme="http://www.helioswei.top/categories/Media/"/>
+    
+      <category term="doc" scheme="http://www.helioswei.top/categories/Media/doc/"/>
+    
+    
+      <category term="libreoffice" scheme="http://www.helioswei.top/tags/libreoffice/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos7-openoffice安装和启动</title>
+    <link href="http://www.helioswei.top/article/1736132591.html"/>
+    <id>http://www.helioswei.top/article/1736132591.html</id>
+    <published>2020-12-03T02:17:28.000Z</published>
+    <updated>2021-02-27T13:59:36.389Z</updated>
+    
+    <content type="html"><![CDATA[<p>  本文介绍了openoffice在Centos7下的安装和启动以及使用的方法，供大家学习和参考。</p><h3 id="openoffice包的下载"><a href="#openoffice包的下载" class="headerlink" title="openoffice包的下载"></a>openoffice包的下载</h3><p><a href="http://www.openoffice.org/download/">openoffice下载</a></p><p><img src="/images/openoffice/openoffice.png" alt="open"></p><h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf Apache_OpenOffice_4.1.8_Linux_x86-64_install-rpm_zh-CN.tar.gz</span><br></pre></td></tr></table></figure><h4 id="进入解压目录"><a href="#进入解压目录" class="headerlink" title="进入解压目录"></a>进入解压目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd zh-CN/RPMS</span><br></pre></td></tr></table></figure><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum localinstall *.rpm</span><br></pre></td></tr></table></figure><p><code>装完后会在当前目录下生成一个desktop-integration目录</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd zh-CN&#x2F;RPMS&#x2F;desktop-integration&#x2F;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh openoffice4.1.5-redhat-menus-4.1.5-9789.noarch.rpm</span><br></pre></td></tr></table></figure><h4 id="下载依赖包"><a href="#下载依赖包" class="headerlink" title="下载依赖包"></a>下载依赖包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install libXext.x86_64</span><br></pre></td></tr></table></figure><h4 id="下载java环境"><a href="#下载java环境" class="headerlink" title="下载java环境"></a>下载java环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install jre java-devel</span><br></pre></td></tr></table></figure><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=<span class="string">&quot;socket,host=127.0.0.1,port=8100;urp;&quot;</span> -nofirststartwizard</span><br></pre></td></tr></table></figure><h3 id="JODConverter下载"><a href="#JODConverter下载" class="headerlink" title="JODConverter下载"></a>JODConverter下载</h3><p><a href="https://sourceforge.net/projects/jodconverter/">jodConverter下载</a></p><h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip jodconverter-2.2.2.zip</span><br></pre></td></tr></table></figure><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p><code>必须先启动openoffice的服务，然后再使用这个命令行</code></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  inputfileName outputfileName</span><br></pre></td></tr></table></figure><h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jodconverter-2.2.2/lib/jodconverter-cli-2.2.2.jar  media/01-自然语言处理-中文分词算法的实现.pptx.pptx  media/o1.pdf</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;  本文介绍了openoffice在Centos7下的安装和启动以及使用的方法，供大家学习和参考。&lt;/p&gt;
+&lt;h3 id=&quot;openoffice包的下载&quot;&gt;&lt;a href=&quot;#openoffice包的下载&quot; class=&quot;headerlink&quot; title=&quot;openoff
+      
+    
+    </summary>
+    
+      <category term="Media" scheme="http://www.helioswei.top/categories/Media/"/>
+    
+      <category term="doc" scheme="http://www.helioswei.top/categories/Media/doc/"/>
+    
+    
+      <category term="openoffice" scheme="http://www.helioswei.top/tags/openoffice/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos7-yum的使用</title>
+    <link href="http://www.helioswei.top/article/1714992348.html"/>
+    <id>http://www.helioswei.top/article/1714992348.html</id>
+    <published>2020-11-19T09:40:53.000Z</published>
+    <updated>2021-02-27T13:59:36.390Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录yum的使用</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="搜索指定的版本安装"><a href="#搜索指定的版本安装" class="headerlink" title="搜索指定的版本安装"></a>搜索指定的版本安装</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list --showduplicates xxx</span><br></pre></td></tr></table></figure><h4 id="下载软件包"><a href="#下载软件包" class="headerlink" title="下载软件包"></a>下载软件包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install yum-plugin-downloadonly</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install fontconfig --downloadonly --downloaddir&#x3D;&#x2F;root&#x2F;wei&#x2F;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;记录yum的使用&lt;/p&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;h4 id=&quot;搜索指定的版本安装&quot;&gt;&lt;a href=&quot;#搜索指定的版本安装&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+      <category term="Centos7" scheme="http://www.helioswei.top/categories/Centos7/"/>
+    
+    
+      <category term="yum" scheme="http://www.helioswei.top/tags/yum/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ffmpeg-内存io模式(内存区做输入或输出)</title>
+    <link href="http://www.helioswei.top/article/2452888490.html"/>
+    <id>http://www.helioswei.top/article/2452888490.html</id>
+    <published>2020-10-14T07:03:21.000Z</published>
+    <updated>2021-02-27T13:59:36.394Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    在转码的过程中，我们有时候需要从远程下载文件，当文件很大的时候会占用本地的磁盘空间，同时下载的时间也比较的长，这时候我们考虑直接读取流信息或者写入流信息来进行操作，而不是上传或者下载整个文件来解决。</p><h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><p>​    转码的基础逻辑不变，仅仅是在输入输出读取的方式不同，我们需要自己实现输入输出的函数。</p><h4 id="关键结构体"><a href="#关键结构体" class="headerlink" title="关键结构体"></a>关键结构体</h4><p>​    <code>AVIOContext</code>，我们需要初始化这个结构体来存放内存的数据。</p><h3 id="内存读取数据"><a href="#内存读取数据" class="headerlink" title="内存读取数据"></a>内存读取数据</h3><p>​        转码的基本流程不变，仅仅是在开始读取数据的时候有些不同</p><h4 id="读取本地文件"><a href="#读取本地文件" class="headerlink" title="读取本地文件"></a>读取本地文件</h4><p><img src="/images/ffmpeg/file.png" alt="file"></p><h4 id="读取流文件"><a href="#读取流文件" class="headerlink" title="读取流文件"></a>读取流文件</h4><p><img src="/images/ffmpeg/stream.png" alt="stream"></p><p><img src="/images/ffmpeg/readstream.png" alt="read"></p><h3 id="ffmpeg内存读取数据"><a href="#ffmpeg内存读取数据" class="headerlink" title="ffmpeg内存读取数据"></a>ffmpeg内存读取数据</h3><p>​    如图,<font color="red">红色框</font>内是当输入是流时的处理，<font color="green">绿色框</font>内是当输入是文件时的处理，二选一即可。<img src="/images/ffmpeg/stream/input.png" alt="input.png"></p><p><code>fill_iobuffer</code> 函数是我们自己实现的输入流的函数，内容如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">359</span> <span class="comment">//读取流数据</span></span><br><span class="line"><span class="number">360</span> <span class="function"><span class="keyword">int</span> <span class="title">fill_iobuffer</span><span class="params">(<span class="keyword">void</span> *opaque, <span class="keyword">uint8_t</span> *buf, <span class="keyword">int</span> buf_size)</span> </span>&#123;</span><br><span class="line"><span class="number">361</span>     <span class="built_in">string</span> hosts = <span class="string">&quot;192.168.50.31:7480&quot;</span>;</span><br><span class="line"><span class="number">362</span>     <span class="built_in">string</span> ak = <span class="string">&quot;11043ee2070d01eb5740f9870dfe3abd&quot;</span>;</span><br><span class="line"><span class="number">363</span>     <span class="built_in">string</span> sk = <span class="string">&quot;bb31a3a96b829976513ee62b4e28ee3f&quot;</span>;</span><br><span class="line"><span class="number">364</span>     <span class="function">S3::Client <span class="title">client</span><span class="params">(hosts, ak, sk)</span></span>;</span><br><span class="line"><span class="number">365</span>     <span class="keyword">static</span> <span class="keyword">uint64_t</span> offset = <span class="number">0</span>;</span><br><span class="line"><span class="number">366</span>     <span class="keyword">uint64_t</span> num;</span><br><span class="line"><span class="number">367</span>     <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="number">368</span>         <span class="comment">// num  = client.GetObject(&quot;leopardsrc&quot;, &quot;video-H263-AC3.avi&quot;,offset,</span></span><br><span class="line"><span class="number">369</span>         <span class="comment">// buf_size, (char* )buf);</span></span><br><span class="line"><span class="number">370</span>         num = client.GetObject(<span class="string">&quot;leopardsrc&quot;</span>, <span class="string">&quot;video-H264-AAC.m4v&quot;</span>, offset,</span><br><span class="line"><span class="number">371</span>                                buf_size, (<span class="keyword">char</span> *)buf);</span><br><span class="line"><span class="number">372</span>         offset += num;</span><br><span class="line"><span class="number">373</span>         <span class="keyword">return</span> num;</span><br><span class="line"><span class="number">374</span>     &#125;</span><br><span class="line"><span class="number">375</span>     <span class="keyword">catch</span> (S3::S3Exception &amp;e) &#123;</span><br><span class="line"><span class="number">376</span>         LOG(ERROR) &lt;&lt; e.str();</span><br><span class="line"><span class="number">377</span>         <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">378</span>     &#125;</span><br><span class="line"><span class="number">379</span> &#125;   </span><br></pre></td></tr></table></figure><h3 id="ffmpeg内存存储数据"><a href="#ffmpeg内存存储数据" class="headerlink" title="ffmpeg内存存储数据"></a>ffmpeg内存存储数据</h3><p>​    如图,<font color="red">红色框</font>内是当输入是流时的处理，<font color="green">绿色框</font>内是当输入是文件时的处理，二选一即可。<img src="/images/ffmpeg/stream/output.png" alt="output.png"></p><p><code>write_buffer</code> 函数是我们自己实现的输出流的函数，内容如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">614</span> <span class="function"><span class="keyword">int</span> <span class="title">write_buffer</span><span class="params">(<span class="keyword">void</span> *opaque, <span class="keyword">uint8_t</span> *buf, <span class="keyword">int</span> buf_size)</span> </span>&#123;</span><br><span class="line"><span class="number">627</span>     <span class="keyword">if</span> (!feof(fp_write)) &#123;</span><br><span class="line"><span class="number">634</span>         <span class="keyword">int</span> true_size = fwrite(buf, <span class="number">1</span>, buf_size, fp_write);</span><br><span class="line"><span class="number">635</span>         <span class="keyword">return</span> true_size;</span><br><span class="line"><span class="number">636</span>     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="number">637</span>         <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"><span class="number">638</span>     &#125;</span><br><span class="line"><span class="number">639</span> &#125; </span><br></pre></td></tr></table></figure><p>​    目前这个是测试ffmpeg能够支持自己的输出函数，如果是关于s3的输出支持，需要看s3关于流的实现接口。目前s3是不支持流的处理，只能考虑s3的分块上传。</p><h4 id="输出到内存注意事项"><a href="#输出到内存注意事项" class="headerlink" title="输出到内存注意事项"></a>输出到内存注意事项</h4><h5 id="avio-open"><a href="#avio-open" class="headerlink" title="avio_open"></a>avio_open</h5><p>​    当你的输出函数是自己实现的，不是默认的写入到本地文件，则<code>avio_open</code>这个函数不能够被调用。如图,加入一个判断，当输出为自定义函数时不调用avio_open函数。<img src="/images/ffmpeg/stream/avio.png" alt="avio.png"></p><p>同样，在释放资源的时候也需要做相同的处理。在文件<code>mediainfo.h</code>中的<code>~FileInfoStruct()</code>函数中加入一层判断。<img src="/images/ffmpeg/stream/avio1.png" alt="avio1.png"></p><h5 id="输出封装格式的限制"><a href="#输出封装格式的限制" class="headerlink" title="输出封装格式的限制"></a>输出封装格式的限制</h5><p>​    有一些封装格式不支持以流的方式作为输出，如mp4，错误信息如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mp4 @ 0x8d0c80] muxer does not support non seekable output</span><br></pre></td></tr></table></figure><p>​    解决方法：通过将mp4文件进行碎片化，即生成Fmp4格式来进行操作。如图  <img src="/images/ffmpeg/stream/fmp4.png" alt="fmp4.png"></p><p>​    我们需要添加<code>movflags</code>参数来进行处理。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​    在转码的过程中，我们有时候需要从远程下载文件，当文件很大的时候会占用本地的磁盘空间，同时下载的时间也比较的长，这时候我们考虑直接读取流信息或者写入流信息来进行操作，而不是上传或者下载整个文件来解决。&lt;/p&gt;
+&lt;h3 id=&quot;实现方法&quot;&gt;&lt;a href=&quot;#实现方法
+      
+    
+    </summary>
+    
+      <category term="Media" scheme="http://www.helioswei.top/categories/Media/"/>
+    
+      <category term="video" scheme="http://www.helioswei.top/categories/Media/video/"/>
+    
+    
+      <category term="ffmpeg" scheme="http://www.helioswei.top/tags/ffmpeg/"/>
+    
+      <category term="io" scheme="http://www.helioswei.top/tags/io/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rabbitmq-AMQPCPP使用问题记录</title>
+    <link href="http://www.helioswei.top/article/3077642244.html"/>
+    <id>http://www.helioswei.top/article/3077642244.html</id>
+    <published>2020-09-29T08:57:46.000Z</published>
+    <updated>2021-02-27T13:59:36.403Z</updated>
+    
+    <content type="html"><![CDATA[<p>​        记录<a href="https://github.com/CopernicaMarketingSoftware/AMQP-CPP">AMQP_CPP</a>的使用过程中出现的问题，我是用的主要是<code>LibEvHandler</code>这个类来进行处理的,以下所有的问题都是在这个基础上面,仔细的查看头文件可以了解更多的使用方法。</p><h3 id="任务执行长时间后导致连接丢失的问题"><a href="#任务执行长时间后导致连接丢失的问题" class="headerlink" title="任务执行长时间后导致连接丢失的问题"></a>任务执行长时间后导致连接丢失的问题</h3><p><code>LibEvHandler</code>中对于rabbitmq的默认心跳是60s，如果当前队列没有任务处理，则其会自动的发送心跳，保持client和server之间的连接，如果你执行某个任务的时间过长，大于60s，则在执行任务期间，其不会自动的发送心跳导致两者之间的连接断开，导致下次获取数据时提示链接错误，获取数据失败。解决办法：</p><ol><li><p>重写LibEvHandler中的<code>onNegotiate</code>以及<code>onHeartbeat</code>这两个方法，前者用于设置心跳的时间，后者用于心跳发送时的函数。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="number">23</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> :</span> <span class="keyword">public</span> AMQP::LibEvHandler &#123;</span><br><span class="line">   <span class="number">24</span>  </span><br><span class="line">   <span class="number">25</span>    <span class="keyword">public</span>:</span><br><span class="line">&gt;&gt; <span class="number">26</span>     MyHandler(struct ev_loop* loop) : AMQP::LibEvHandler(loop) &#123;&#125;</span><br><span class="line">   <span class="number">27</span>     <span class="comment">//解决consume在处理任务时的连接超时的问题</span></span><br><span class="line">&gt;&gt; <span class="number">28</span>     <span class="function"><span class="keyword">uint16_t</span> <span class="title">onNegotiate</span><span class="params">(AMQP::TcpConnection* connection, <span class="keyword">uint16_t</span> timeout)</span> </span>&#123;</span><br><span class="line">   <span class="number">29</span>         <span class="keyword">return</span> <span class="number">70</span>;<span class="comment">//必须设置一个值</span></span><br><span class="line">   <span class="number">30</span>     &#125;</span><br><span class="line">&gt;&gt; <span class="number">31</span>     <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">onHeartbeat</span><span class="params">(AMQP::TcpConnection* connection)</span> </span>&#123;</span><br><span class="line">   <span class="number">32</span>         connection-&gt;heartbeat();</span><br><span class="line">   <span class="number">33</span>     &#125;</span><br><span class="line">   <span class="number">34</span> &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><p>另外开一个线程，定时手动的发送心跳给rabbitmq</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   <span class="number">46</span>     <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&gt;&gt; <span class="number">47</span>         <span class="class"><span class="keyword">struct</span> <span class="title">ev_loop</span>* <span class="title">loop</span> =</span> ev_loop_new();</span><br><span class="line">   <span class="number">48</span>         <span class="comment">// AMQP::LibEvHandler handler(loop);</span></span><br><span class="line">   <span class="number">49</span>         <span class="function">MyHandler <span class="title">handler</span><span class="params">(loop)</span></span>;</span><br><span class="line">   <span class="number">50</span>         <span class="function">AMQP::TcpConnection <span class="title">connection</span><span class="params">(&amp;handler, *_address)</span></span>;</span><br><span class="line">   <span class="number">51</span>         _connection = &amp;connection;</span><br><span class="line">   <span class="number">52</span>         <span class="function">AMQP::TcpChannel <span class="title">channel</span><span class="params">(&amp;connection)</span></span>;</span><br><span class="line">   <span class="number">53</span>         <span class="comment">//// channel.setQos(1);</span></span><br><span class="line">   <span class="number">54</span>         _channel = &amp;channel;</span><br><span class="line">              <span class="comment">//另外开一个线程，用于检测rabbitmq的链接，以及定时的发送心跳</span></span><br><span class="line">   <span class="number">55</span>         <span class="function"><span class="built_in">std</span>::thread <span class="title">check</span><span class="params">(&amp;Consume::checkConnect, <span class="keyword">this</span>)</span></span>;</span><br><span class="line">   <span class="number">56</span>         <span class="comment">// 1s后执行一次回调，之后每10s执行一次</span></span><br><span class="line">   <span class="number">57</span>         ev_timer_init(&amp;_timer, TClass::callback, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">   <span class="number">58</span>         _timer.data = <span class="keyword">this</span>;</span><br><span class="line">   <span class="number">59</span>         ev_timer_start(loop, &amp;_timer);</span><br><span class="line">   <span class="number">60</span>         ev_run(loop, <span class="number">0</span>);</span><br><span class="line">   <span class="number">61</span>         check.join();</span><br><span class="line">   <span class="number">62</span>     &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">165</span>     <span class="function"><span class="keyword">void</span> <span class="title">checkConnect</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="number">166</span>         <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="comment">//判读链接是否可用，可用即发送心跳</span></span><br><span class="line"><span class="number">167</span>             <span class="keyword">if</span> (_connection-&gt;usable()) _connection-&gt;heartbeat();</span><br><span class="line">                <span class="comment">//判读当前通道是否可用，如果失败则杀死当前程序</span></span><br><span class="line"><span class="number">168</span>             _channel-&gt;onError([&amp;](<span class="keyword">const</span> <span class="keyword">char</span>* message) &#123;</span><br><span class="line"><span class="number">169</span>                 LOG(ERROR) &lt;&lt; <span class="string">&quot;The channel is error, exit: &quot;</span> &lt;&lt; message;</span><br><span class="line"><span class="number">170</span>                 killAll();</span><br><span class="line"><span class="number">171</span>             &#125;);</span><br><span class="line">                <span class="comment">//判读当前连接是否关闭，如果关闭则杀死当前程序</span></span><br><span class="line"><span class="number">172</span>             <span class="keyword">if</span> (_connection-&gt;closed()) &#123;</span><br><span class="line"><span class="number">173</span>                 <span class="keyword">if</span> (_connection != <span class="literal">NULL</span>) _connection-&gt;close();</span><br><span class="line"><span class="number">174</span>                 LOG(ERROR) &lt;&lt; <span class="string">&quot;The connection is closed,exit&quot;</span>;</span><br><span class="line"><span class="number">175</span>                 killAll();</span><br><span class="line"><span class="number">176</span>             &#125;</span><br><span class="line">                <span class="comment">//sleep 5s</span></span><br><span class="line"><span class="number">177</span>             Poco::Thread::sleep(<span class="number">5000</span>);</span><br><span class="line"><span class="number">178</span>         &#125;</span><br><span class="line"><span class="number">179</span>     &#125;</span><br><span class="line"><span class="number">180</span>     <span class="function"><span class="keyword">void</span> <span class="title">killAll</span><span class="params">()</span> </span>&#123; kill(<span class="number">0</span>, SIGABRT); &#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure></li></ol><h3 id="每次仅仅处理一个任务的问题"><a href="#每次仅仅处理一个任务的问题" class="headerlink" title="每次仅仅处理一个任务的问题"></a>每次仅仅处理一个任务的问题</h3><p>​        对于消息者来说，监听一个队列，如果队列里面有多条的数据，其会一下子都消费掉（有个最大值可查文档），比如你的队列里面有100条数据，其会都拿到放到内存中，如果过程中你的服务挂掉，则数据会丢失，为了解决这个问题，我们需要设置消费者每次拿到的数据量。AMQP_CPP中使用<code>setQos()</code>来进行设置</p><font color="red"><code>注意：仅对手动ack有效</code></font><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">AMQP::TcpChannel <span class="title">channel</span><span class="params">(&amp;connection)</span></span>;</span><br><span class="line">channel.setQos(<span class="number">1</span>);</span><br></pre></td></tr></table></figure><h3 id="无法重新连接的问题"><a href="#无法重新连接的问题" class="headerlink" title="无法重新连接的问题"></a>无法重新连接的问题</h3><p>如果我们的rabbitmq挂了我们的服务应该怎么办了，一般对于这种有两种方法来处理</p><ol><li>实现rabbitmq的重试机制，rabbitmq连接断开后，我们能够自动的恢复；</li><li>服务中断机制，rabbitmq连接断开，我们的服务也中断，再通过某个服务能够拉起（守护进程）</li></ol><p>再AMQP_CPP中重连的机制不好处理，所以我们选择第二种方法</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​        记录&lt;a href=&quot;https://github.com/CopernicaMarketingSoftware/AMQP-CPP&quot;&gt;AMQP_CPP&lt;/a&gt;的使用过程中出现的问题，我是用的主要是&lt;code&gt;LibEvHandler&lt;/code&gt;这个类来进
+      
+    
+    </summary>
+    
+      <category term="Database" scheme="http://www.helioswei.top/categories/Database/"/>
+    
+      <category term="rabbitmq" scheme="http://www.helioswei.top/categories/Database/rabbitmq/"/>
+    
+    
+      <category term="rabbitmq" scheme="http://www.helioswei.top/tags/rabbitmq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ffmpeg-转码后丢帧的问题</title>
+    <link href="http://www.helioswei.top/article/3032443121.html"/>
+    <id>http://www.helioswei.top/article/3032443121.html</id>
+    <published>2020-09-29T08:35:30.000Z</published>
+    <updated>2021-02-27T13:59:36.395Z</updated>
+    
+    <content type="html"><![CDATA[<p>在生产环境的使用中，我们转码有时候会出现缺帧的情况，比如一个10s的视频，经过转码后只有了7s，这就是因为转码逻辑没有处理好，导致丢失了大量的帧。</p><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h5 id="ffmpeg提供了两组函数，分别用于编码和解码："><a href="#ffmpeg提供了两组函数，分别用于编码和解码：" class="headerlink" title="ffmpeg提供了两组函数，分别用于编码和解码："></a>ffmpeg提供了两组函数，分别用于编码和解码：</h5><ul><li>解码：<code>avcodec_send_packet()</code>、<code>avcodec_receive_frame()</code></li><li>编码：<code>avcodec_send_frame()</code>、<code>avcodec_receive_packet()</code></li></ul><h5 id="在一个循环体内去接收codec的输出"><a href="#在一个循环体内去接收codec的输出" class="headerlink" title="在一个循环体内去接收codec的输出"></a>在一个循环体内去接收codec的输出</h5><p>即周期性地调用<code>avcodec_receive_()</code>来接收codec输出的数据：</p><ul><li><p><strong>解码</strong>：调用<code>avcodec_receive_frame()</code>，如果成功会返回一个包含未压缩数据的<code>AVFrame</code>。</p></li><li><p><strong>编码</strong>：调用<code>avcodec_receive_packet()</code>，如果成功会返回一个包含压缩数据的<code>AVPacket</code>。</p></li><li><p><strong>反复</strong>地调用<code>avcodec_receive_packet()</code>直到返回 <code>AVERROR(EAGAIN)</code>或其他错误。返回<code>AVERROR(EAGAIN)</code>错误表示codec需要新的输入来输出更多的数据。对于每个输入的packet或frame，codec一般会输出一个frame或packet，<strong>但是也有可能输出0个或者多于1个</strong>。部分代码实例：</p></li><li><p>~~~cpp<br>1514     while(true){<br>  1515         //对于每个输入的packet或者frame，codec一般会输出一个frame或者packet，但是也有可能输出0个或者多于1个<br>  1516         //对于多于1个的情况，我们使用while来解决<br>  1517         error = avcodec_receive_packet(encCtx, &amp;outputPacket);<br>  1518         if (error == AVERROR(EAGAIN)) {<br>  1519             error = 0;<br>  1520             // cout &lt;&lt; “EAGAIN” &lt;&lt; endl;<br>  1521             goto cleanup;<br>  1522         } else if (error == AVERROR_EOF) {<br>  1523             error = 0;<br>  1524             goto cleanup;<br>  1525         } else if (error &lt; 0) {<br>  1526             av_log(NULL, AV_LOG_ERROR, “Could not encode frame\n”);<br>  1527             goto cleanup;<br>  1528         } else {<br>  1529             <em>dataPresent = 1;<br>  1530         }<br>  1531<br>  1532         outputPacket.stream_index = streamIndex;<br>  1533<br>  1534         //转换pts<br>  1535         av_packet_rescale_ts(&amp;outputPacket, encCtx-&gt;time_base,<br>  1536                              ofmtCtx-&gt;streams[streamIndex]-&gt;time_base);<br>  1537<br>  1538         // if (AVMEDIA_TYPE_AUDIO == encCtx -&gt; codec_type){<br>  1539         //  _pts2ms = outputPacket.pts </em>av_q2d(ofmtCtx -&gt; streams[streamIndex] -&gt;<br>  1540         // time_base) <em> 1000 ;//单位ms(微妙)<br>  1541         //}<br>  1542         //_pts2ms = outputPacket.pts </em>av_q2d(ofmtCtx -&gt; streams[streamIndex] -&gt;<br>  1543         // time_base) <em> 1000 ;//单位ms(微妙)<br>  1544         pts2ms = outputPacket.pts </em><br>  1545                  av_q2d(ofmtCtx-&gt;streams[streamIndex]-&gt;time_base) <em><br>  1546                  1000;  //单位ms(微妙)<br>  1547                         //编码视频和音频的时候，两者的时间是不一样的，为了保证进度一直向前，所以取最大值<br>  1548         if (pts2ms &gt; _pts2ms) _pts2ms = pts2ms;<br>  1549         av_log(NULL, AV_LOG_INFO, “progress: %s\n”, printProgress().c_str());<br>  1550         sendProgress();<br>  1551         if (!_ip.empty()) printProgress(_ip, _port);<br>  1552<br>  1553         if (</em>dataPresent &amp;&amp;<br>  1554             (error = av_interleaved_write_frame(ofmtCtx, &amp;outputPacket)) &lt; 0) {<br>  1555             av_log(NULL, AV_LOG_ERROR, “Could not write frame,%s,%s:%d\n”,<br>  1556                    av_err2str(error), <strong>FILE</strong>, <strong>LINE</strong>);<br>  1557             goto cleanup;<br>  1558         }<br>  1559     }   </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 流处理结束的时候需要flush（洗刷） codec。因为codec可能在内部缓冲多个frame或packet，出于性能或其他必要的情况（如考虑B帧的情况）。 处理流程如下：</span><br><span class="line"></span><br><span class="line">  1. 调用&#96;avcodec_send_()&#96;传入的AVFrame或AVPacket指针设置为NULL。 这将开启draining mode（排水模式）</span><br><span class="line"></span><br><span class="line">     ~~~cpp</span><br><span class="line">       1653     int dataWritten;</span><br><span class="line">       1654     int ret;       </span><br><span class="line">       1655     if (NULL !&#x3D; output-&gt;videoStream) &#123;</span><br><span class="line">       1656         do &#123;       </span><br><span class="line">       1657             dataWritten &#x3D; 0;</span><br><span class="line">       1658             ret &#x3D; encodeMediaFrame(NULL, output-&gt;formatContext,</span><br><span class="line">       1659                                    output-&gt;videoCodecCtx, &amp;dataWritten,</span><br><span class="line">       1660                                    output-&gt;videoStream-&gt;index);</span><br><span class="line">       1661             if (0 &gt; ret) &#123;</span><br><span class="line">       1662                 av_log(NULL, AV_LOG_ERROR,</span><br><span class="line">       1663                        &quot;Failed whileflush video encode, %s:%d\n&quot;, __FILE__,</span><br><span class="line">       1664                        __LINE__);</span><br><span class="line">       1665                 return ret;</span><br><span class="line">       1666             &#125;      </span><br><span class="line">       1667             av_log(NULL, AV_LOG_INFO, &quot;flush video encoder data\n&quot;);</span><br><span class="line">       1668         &#125; while (dataWritten);</span><br><span class="line">       1669     &#125;  </span><br></pre></td></tr></table></figure><ol start="2"><li><p>反复地调用<code>avcodec_receive_()</code>直到返回<code>AVERROR_EOF</code>的错误，这个方法这个时候不会返回<code>AVERROR(EAGAIN)</code>的错误，除非你忘记了开启draining mode</p></li><li><p>codec可以重新开启，但是需要先调用 <code>avcodec_flush_buffers()</code>来重置codec</p></li></ol></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在生产环境的使用中，我们转码有时候会出现缺帧的情况，比如一个10s的视频，经过转码后只有了7s，这就是因为转码逻辑没有处理好，导致丢失了大量的帧。&lt;/p&gt;
+&lt;h3 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="Media" scheme="http://www.helioswei.top/categories/Media/"/>
+    
+      <category term="video" scheme="http://www.helioswei.top/categories/Media/video/"/>
+    
+    
+      <category term="ffmpeg" scheme="http://www.helioswei.top/tags/ffmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cpp-日志库LOG的使用</title>
+    <link href="http://www.helioswei.top/article/1373770285.html"/>
+    <id>http://www.helioswei.top/article/1373770285.html</id>
+    <published>2020-09-11T09:52:33.000Z</published>
+    <updated>2021-02-27T13:59:36.393Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    在开发的时候，我们经常要写日志，这里提供一个日志库的使用方法；</p><p>​    目前我常用的cpp的日志库是这个<a href="https://github.com/amrayn/easyloggingpp">easyloggingcpp</a>，官网有详细的一些说明怎么使用的，我这里记录一些使用中需要注意的地方：</p><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>easyloggingcpp编译的时候比较的简单，直接把easyloggingcpp.h和easyloggingcpp.cpp放到自己的项目中进行编译就好了。</p><h3 id="多线程中使用"><a href="#多线程中使用" class="headerlink" title="多线程中使用"></a>多线程中使用</h3><p>在多线程中使用，需要设置几个比较重要的点，不然就会抛出异常的错误，导致程序中断，有以下几点</p><ol><li><p>在编译的时候需要需要添加参数，<code>-DELPP_THREAD_SAFE</code>用以支持多线程，使用cmake进行编译时，需要在Cmakefile文件中设置如下参数，并且cmake的版本需要在3.0以上</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET(CMAKE_CXX_FLAGS &quot;-DELPP_THREAD_SAFE&quot;)</span><br></pre></td></tr></table></figure></li><li><p>在使用的文件中，需要预定义一个变量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define ELPP_THREAD_SAFE</span><br></pre></td></tr></table></figure></li></ol><h3 id="主进程使用"><a href="#主进程使用" class="headerlink" title="主进程使用"></a>主进程使用</h3><p>我们需要在程序的入口位置设置下面的环境变量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INITIALIZE_EASYLOGGINGPP</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​    在开发的时候，我们经常要写日志，这里提供一个日志库的使用方法；&lt;/p&gt;
+&lt;p&gt;​    目前我常用的cpp的日志库是这个&lt;a href=&quot;https://github.com/amrayn/easyloggingpp&quot;&gt;easyloggingcpp&lt;/a&gt;，官网有
+      
+    
+    </summary>
+    
+      <category term="Cpp" scheme="http://www.helioswei.top/categories/Cpp/"/>
+    
+      <category term="log" scheme="http://www.helioswei.top/categories/Cpp/log/"/>
+    
+    
+      <category term="easyloggingcpp" scheme="http://www.helioswei.top/tags/easyloggingcpp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rabbitmq-AMQPCPP的编译</title>
+    <link href="http://www.helioswei.top/article/3142310907.html"/>
+    <id>http://www.helioswei.top/article/3142310907.html</id>
+    <published>2020-07-27T09:01:57.000Z</published>
+    <updated>2021-02-27T13:59:36.404Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;CopernicaMarketingSoftware&#x2F;AMQP-CPP.git</span><br></pre></td></tr></table></figure><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd AMQP-CPP</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake -DAMQP-CPP_BUILD_SHARED&#x3D;true -DAMQP-CPP_LINUX_TCP&#x3D;true -DCMAKE_INSTALL_PREFIX&#x3D;&#x2F;usr&#x2F;local&#x2F;amqpcpp ..</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span 
+      
+    
+    </summary>
+    
+      <category term="Database" scheme="http://www.helioswei.top/categories/Database/"/>
+    
+      <category term="rabbitmq" scheme="http://www.helioswei.top/categories/Database/rabbitmq/"/>
+    
+    
+      <category term="rabbitmq" scheme="http://www.helioswei.top/tags/rabbitmq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spider-centos7安装selenium模拟浏览器请求</title>
+    <link href="http://www.helioswei.top/article/933612194.html"/>
+    <id>http://www.helioswei.top/article/933612194.html</id>
+    <published>2020-07-22T01:32:16.000Z</published>
+    <updated>2021-02-27T13:59:36.405Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="安装selenium"><a href="#安装selenium" class="headerlink" title="安装selenium"></a>安装selenium</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure><h3 id="安装chrome浏览器"><a href="#安装chrome浏览器" class="headerlink" title="安装chrome浏览器"></a>安装chrome浏览器</h3><h5 id="1，配置yum源"><a href="#1，配置yum源" class="headerlink" title="1，配置yum源"></a>1，配置yum源</h5><p>在目录/etc/yum.repos.d/ 下新建文件 google-chrome.repo</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;yum.repos.d&#x2F;</span><br><span class="line">vim google-chrome.repo</span><br></pre></td></tr></table></figure><p>写入以下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[google-chrome]</span><br><span class="line">name&#x3D;google-chrome</span><br><span class="line">baseurl&#x3D;http:&#x2F;&#x2F;dl.google.com&#x2F;linux&#x2F;chrome&#x2F;rpm&#x2F;stable&#x2F;$basearch</span><br><span class="line">enabled&#x3D;1</span><br><span class="line">gpgcheck&#x3D;1</span><br><span class="line">gpgkey&#x3D;https:&#x2F;&#x2F;dl-ssl.google.com&#x2F;linux&#x2F;linux_signing_key.pub</span><br></pre></td></tr></table></figure><p>安装google chrome浏览器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install google-chrome-stable</span><br></pre></td></tr></table></figure><p>google官方源可能在中国无法使用，导致安装失败或者在国内无法更新，可以添加以下参数来安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install google-chrome-stable --nogpgcheck</span><br></pre></td></tr></table></figure><h5 id="运行chrome"><a href="#运行chrome" class="headerlink" title="运行chrome"></a>运行chrome</h5><p>找到chrome路径，并做个软连接，方便使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">which google-chrome-stable</span><br><span class="line">ln -s xxx &#x2F;bin&#x2F;chrome</span><br></pre></td></tr></table></figure><p>使用root用户启动chrome示例时会提示添加参数–no-sandbox flag</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome --no-sandbox flag</span><br></pre></td></tr></table></figure><h3 id="安装chromedriver"><a href="#安装chromedriver" class="headerlink" title="安装chromedriver"></a>安装chromedriver</h3><p>查看google-chrome的版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">google-chrome --version</span><br></pre></td></tr></table></figure><p>chromedriver版本支持的Chrome版本</p><p><a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">chromeDriver官网</a>官网一般比较慢</p><p><a href="http://npm.taobao.org/mirrors/chromedriver/">淘宝镜像</a></p><p>移动chromedriver到/usr/bin</p><h3 id="selenium-python验证"><a href="#selenium-python验证" class="headerlink" title="selenium+python验证"></a>selenium+python验证</h3><p>运行一段test.py</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver                                                                                                       </span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"> </span><br><span class="line">chrome_options = Options()</span><br><span class="line">chrome_options.add_argument(<span class="string">&quot;--headless&quot;</span>)</span><br><span class="line">chrome_options.add_argument(<span class="string">&#x27;--disable-gpu&#x27;</span>)</span><br><span class="line">chrome_options.add_argument(<span class="string">&#x27;--no-sandbox&#x27;</span>)    <span class="comment"># 禁止沙箱模式，否则肯能会报错遇到chrome异常</span></span><br><span class="line">url=<span class="string">&quot;https://www.west.cn/login.asp&quot;</span></span><br><span class="line">brower=webdriver.Chrome(executable_path=<span class="string">&quot;/usr/bin/chromedriver&quot;</span>, chrome_options=chrome_options)</span><br><span class="line">brower.get(url)</span><br><span class="line">print(brower.current_url)</span><br><span class="line">brower.get(<span class="string">&quot;https://www.west.cn/Manager/&quot;</span>)</span><br><span class="line">print(brower.current_url)</span><br><span class="line">brower.quit()</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3.6 test.py</span><br></pre></td></tr></table></figure><p>结果：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.west.cn&#x2F;login.asp</span><br><span class="line">https:&#x2F;&#x2F;www.west.cn&#x2F;login.asp?pageStr&#x3D;&#x2F;Manager&#x2F;Default.asp</span><br></pre></td></tr></table></figure><h3 id="使用pyautogui"><a href="#使用pyautogui" class="headerlink" title="使用pyautogui"></a>使用pyautogui</h3><p>对于一些元素虽然页面可以点击，但是获取的元素无法点击，我们可以使用pyautogui来模拟鼠标的点击更加的方便</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyautogui</span><br></pre></td></tr></table></figure><h3 id="远程调用"><a href="#远程调用" class="headerlink" title="远程调用"></a>远程调用</h3><p>使用selenium-server-standalone进行远程调用，<a href="https://www.xiehai.win/java/2019/05/24/selenium-server-standalone.html">详解可以看这篇连接</a></p><p><a href="http://selenium-release.storage.googleapis.com/index.html">selenium-server-standalone下载</a></p><h5 id="jar8环境的安装"><a href="#jar8环境的安装" class="headerlink" title="jar8环境的安装"></a>jar8环境的安装</h5><p><a href="https://www.yaosansi.com/post/install-java-jdk-on-centos/">jar环境的安装</a></p><h5 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h5><p>参数配置方式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 启动hub</span><br><span class="line">java -jar selenium-server-standalone-3.141.59.jar -role hub -maxSession 10 -port 4444</span><br><span class="line"># 启动node</span><br><span class="line">java -jar  -&quot;Dwebdriver.chrome.driver&#x3D;C:\\tools\\driver\\chromedriver.exe&quot; selenium-server-standalone-3.141.59.jar -role node  -hub http:&#x2F;&#x2F;localhost:4444&#x2F;grid&#x2F;register -port 4445</span><br></pre></td></tr></table></figure><p>配置文件方式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 启动hub</span><br><span class="line">java -jar selenium-server-standalone-3.141.59.jar -role hub -hubConfig hub.json</span><br><span class="line"># 启动node</span><br><span class="line">java -jar selenium-server-standalone-3.141.59.jar -role node -hub http:&#x2F;&#x2F;localhost:4444&#x2F;grid&#x2F;register -nodeConfig node.json</span><br></pre></td></tr></table></figure><p><code>hub.json</code></p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;port&quot;</span>: <span class="number">4444</span>,</span><br><span class="line">  <span class="attr">&quot;newSessionWaitTimeout&quot;</span>: <span class="number">-1</span>,</span><br><span class="line">  <span class="attr">&quot;servlets&quot;</span>: [],</span><br><span class="line">  <span class="attr">&quot;capabilityMatcher&quot;</span>: <span class="string">&quot;org.openqa.grid.internal.utils.DefaultCapabilityMatcher&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;throwOnCapabilityNotPresent&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;nodePolling&quot;</span>: <span class="number">5000</span>,</span><br><span class="line">  <span class="attr">&quot;cleanUpCycle&quot;</span>: <span class="number">5000</span>,</span><br><span class="line">  <span class="attr">&quot;timeout&quot;</span>: <span class="number">60</span>,</span><br><span class="line">  <span class="attr">&quot;browserTimeout&quot;</span>: <span class="number">60</span>,</span><br><span class="line">  <span class="attr">&quot;maxSession&quot;</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">&quot;jettyMaxThreads&quot;</span>: <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>node.json</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;capabilities&quot;: [</span><br><span class="line">&#123;</span><br><span class="line">  &quot;browserName&quot;: &quot;firefox&quot;,</span><br><span class="line">  &quot;marionette&quot;: true,</span><br><span class="line">  &quot;maxInstances&quot;: 1,</span><br><span class="line">  &quot;seleniumProtocol&quot;: &quot;WebDriver&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  &quot;browserName&quot;: &quot;chrome&quot;,</span><br><span class="line">  &quot;maxInstances&quot;: 3,</span><br><span class="line">  &quot;platform&quot;: &quot;WINDOWS&quot;,</span><br><span class="line">  &quot;webdriver.chrome.driver&quot;: &quot;D:\\javaproject\\oATFWeb\\External\\chromedriver2.4.1.exe&quot;,</span><br><span class="line">  &quot;seleniumProtocol&quot;: &quot;WebDriver&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  &quot;browserName&quot;: &quot;internet explorer&quot;,</span><br><span class="line">  &quot;platform&quot;: &quot;WINDOWS&quot;,</span><br><span class="line">  &quot;maxInstances&quot;: 1,</span><br><span class="line">  &quot;seleniumProtocol&quot;: &quot;WebDriver&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  &quot;browserName&quot;: &quot;safari&quot;,</span><br><span class="line">  &quot;technologyPreview&quot;: false,</span><br><span class="line">  &quot;platform&quot;: &quot;MAC&quot;,</span><br><span class="line">  &quot;maxInstances&quot;: 1,</span><br><span class="line">  &quot;seleniumProtocol&quot;: &quot;WebDriver&quot;</span><br><span class="line">&#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;proxy&quot;: &quot;org.openqa.grid.selenium.proxy.DefaultRemoteProxy&quot;,</span><br><span class="line">  &quot;maxSession&quot;: 5,</span><br><span class="line">  &quot;port&quot;: 5555,</span><br><span class="line">  &quot;register&quot;: true,</span><br><span class="line">  &quot;registerCycle&quot;: 5000,</span><br><span class="line">  &quot;hub&quot;: &quot;http:&#x2F;&#x2F;10.12.1.140:4444&quot;,</span><br><span class="line">  &quot;nodeStatusCheckTimeout&quot;: 5000,</span><br><span class="line">  &quot;nodePolling&quot;: 5000,</span><br><span class="line">  &quot;role&quot;: &quot;node&quot;,</span><br><span class="line">  &quot;unregisterIfStillDownAfter&quot;: 60000,</span><br><span class="line">  &quot;downPollingLimit&quot;: 2,</span><br><span class="line">  &quot;debug&quot;: false,</span><br><span class="line">  &quot;servlets&quot;: [],</span><br><span class="line">  &quot;withoutServlets&quot;: [],</span><br><span class="line">  &quot;custom&quot;: &#123;&#125;,</span><br><span class="line">  &quot;browserTimeout&quot;: 60,</span><br><span class="line">  &quot;timeout&quot;: 60</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>访问http://hub.ip:port/grid/console可以看到node的详细配置</code></p><h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.remote.webdriver <span class="keyword">import</span> WebDriver <span class="keyword">as</span> RemoteWebDriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">chrome_options = Options()</span><br><span class="line"> </span><br><span class="line">proxy=<span class="string">&#x27;58.254.220.116:53579&#x27;</span></span><br><span class="line"><span class="comment">#chrome_options.add_experimental_option(&#x27;excludeSwitches&#x27;, [&#x27;enable-automation&#x27;])</span></span><br><span class="line"><span class="comment">#chrome_options.add_argument(&quot;--proxy-server=http://&quot; + proxy)</span></span><br><span class="line">chrome_options.add_argument(<span class="string">&quot;start-maximized&quot;</span>)</span><br><span class="line">chrome_options.add_argument(<span class="string">&quot;enable-automation&quot;</span>)</span><br><span class="line">chrome_options.add_argument(<span class="string">&quot;--headless&quot;</span>)</span><br><span class="line"><span class="comment">#chrome_options.add_argument(&quot;blink-settings=imagesEnabled=false&quot;)</span></span><br><span class="line">chrome_options.add_argument(<span class="string">&#x27;--disable-gpu&#x27;</span>)</span><br><span class="line"><span class="comment">#chrome_options.add_argument(&quot;--dns-prefetch-disable&quot;)</span></span><br><span class="line"><span class="comment">#chrome_options.add_argument(&quot;--no-proxy-server&quot;)</span></span><br><span class="line">chrome_options.add_argument(<span class="string">&#x27;--no-sandbox&#x27;</span>)    <span class="comment"># 禁止沙箱模式，否则肯能会报错遇到chrome异常</span></span><br><span class="line"><span class="comment">#url=&quot;https://www.365365918.com/#/AC/B1/C1/D8/E91032124/F3/I1/&quot;</span></span><br><span class="line"><span class="comment">#url=&quot;https://www.365365918.com/&quot;</span></span><br><span class="line">url=<span class="string">&quot;https://www.betvictor68.mobi/&quot;</span></span><br><span class="line"><span class="comment">#url=&quot;https://blog.csdn.net/tiantiantdx/article/details/79434550?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.edu_weight&quot;</span></span><br><span class="line"><span class="comment">#url=&quot;https://juejin.im/entry/5b2ca6316fb9a00e7747561a&quot;</span></span><br><span class="line"><span class="comment">#url=&quot;https://stackoverflow.com/questions/48450594/selenium-timed-out-receiving-message-from-renderer&quot;</span></span><br><span class="line"><span class="comment">#url=&quot;https://zhuanlan.zhihu.com/p/111859925&quot;</span></span><br><span class="line"><span class="comment">#打开google浏览器</span></span><br><span class="line"><span class="comment">#brower=webdriver.Chrome(executable_path=&quot;/usr/bin/chromedriver&quot;, chrome_options=chrome_options)</span></span><br><span class="line">brower=RemoteWebDriver(command_executor=<span class="string">&quot;http://192.168.50.74:4444/wd/hub&quot;</span>, desired_capabilities=chrome_options.to_capabilities())</span><br><span class="line"><span class="comment">#访问地址</span></span><br><span class="line">brower.get(url)</span><br><span class="line"><span class="comment">#设置请求的时间，等待js执行完毕</span></span><br><span class="line"><span class="comment">#time.sleep(5)</span></span><br><span class="line">brower.implicitly_wait(<span class="number">30</span>);</span><br><span class="line">pageSource=brower.find_element_by_xpath(<span class="string">&quot;//*&quot;</span>).get_attribute(<span class="string">&quot;outerHTML&quot;</span>)</span><br><span class="line"><span class="comment">#pageSource=brower.execute_script(&quot;return document.documentElement.outerHTML&quot;)</span></span><br><span class="line">fo = <span class="built_in">open</span>(<span class="string">&quot;/root/bet365.html&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">fo.write(pageSource)</span><br><span class="line">fo.close()</span><br><span class="line"><span class="comment">#print(pageSource)</span></span><br><span class="line"><span class="comment">#退出Google浏览器</span></span><br><span class="line">brower.quit()</span><br></pre></td></tr></table></figure><h3 id="windows搭建python的环境"><a href="#windows搭建python的环境" class="headerlink" title="windows搭建python的环境"></a>windows搭建python的环境</h3><p><a href="https://www.python.org/downloads/windows/">直接到官网</a>下载对应版本的</p><p>submit text3执行python</p><h5 id="设置build"><a href="#设置build" class="headerlink" title="设置build"></a>设置build</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开sublime，依次点击菜单Tools--&gt;Build System--&gt;New Build System</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;cmd&quot;: [&quot;D:\helios\software\python\python.exe&quot;, &quot;-u&quot;, &quot;$file&quot;],</span><br><span class="line">&quot;file_regex&quot;: &quot;[ ]File \&quot;(…?)\&quot;, line ([0-9]*)&quot;,</span><br><span class="line">&quot;selector&quot;: &quot;source.python&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl + b来执行python</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;安装selenium&quot;&gt;&lt;a href=&quot;#安装selenium&quot; class=&quot;headerlink&quot; title=&quot;安装selenium&quot;&gt;&lt;/a&gt;安装selenium&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t
+      
+    
+    </summary>
+    
+      <category term="Tool" scheme="http://www.helioswei.top/categories/Tool/"/>
+    
+      <category term="spider" scheme="http://www.helioswei.top/categories/Tool/spider/"/>
+    
+    
+      <category term="selenium" scheme="http://www.helioswei.top/tags/selenium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>s3-libs3源码编译</title>
+    <link href="http://www.helioswei.top/article/3714481837.html"/>
+    <id>http://www.helioswei.top/article/3714481837.html</id>
+    <published>2020-07-14T10:06:16.000Z</published>
+    <updated>2021-02-27T13:59:36.404Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install libxml2-devel</span><br><span class="line"></span><br><span class="line">yum install libxml2</span><br><span class="line"></span><br><span class="line">yum install libcurl-devel</span><br></pre></td></tr></table></figure><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">cd build&#x2F;lib</span><br></pre></td></tr></table></figure><p><code>有两个文件libs3.so.4</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;依赖&quot;&gt;&lt;a href=&quot;#依赖&quot; class=&quot;headerlink&quot; title=&quot;依赖&quot;&gt;&lt;/a&gt;依赖&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span 
+      
+    
+    </summary>
+    
+      <category term="Database" scheme="http://www.helioswei.top/categories/Database/"/>
+    
+      <category term="s3" scheme="http://www.helioswei.top/categories/Database/s3/"/>
+    
+    
+      <category term="s3" scheme="http://www.helioswei.top/tags/s3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cpp-devtoolset切换gcc的版本</title>
+    <link href="http://www.helioswei.top/article/2538200340.html"/>
+    <id>http://www.helioswei.top/article/2538200340.html</id>
+    <published>2020-06-19T08:47:14.000Z</published>
+    <updated>2021-02-27T13:59:36.392Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们在编译cpp的时候，有时候需要支持c++11/14的一些特性，就需要升级gcc的版本，为了简单的升级，Red Hat提供了scl软件集来为用户提供一种以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是更新的）版本的方式，同时避免把系统搞乱。下载devtoolset</p><p>使用scl升级gcc的步骤</p><h3 id="一，安装scl源"><a href="#一，安装scl源" class="headerlink" title="一，安装scl源"></a>一，安装scl源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-scl scl-utils-build</span><br></pre></td></tr></table></figure><h3 id="二，列出scl有哪些可用的源"><a href="#二，列出scl有哪些可用的源" class="headerlink" title="二，列出scl有哪些可用的源"></a>二，列出scl有哪些可用的源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list all --enablerepo&#x3D;&#39;centos-sclo-rh&#39; | grep devtoolset</span><br></pre></td></tr></table></figure><h3 id="三，安装gcc，g"><a href="#三，安装gcc，g" class="headerlink" title="三，安装gcc，g++"></a>三，安装gcc，g++</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install devtoolset-7-gcc devtoolset-7-gcc-c++</span><br></pre></td></tr></table></figure><h3 id="四，切换版本"><a href="#四，切换版本" class="headerlink" title="四，切换版本"></a>四，切换版本</h3><p>这个版本的切换仅对当前的环境有用</p><h5 id="启动环境"><a href="#启动环境" class="headerlink" title="启动环境"></a>启动环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scl enable devtoolset-7 bash</span><br><span class="line">gcc -v</span><br><span class="line"></span><br></pre></td></tr></table></figure><h5 id="退出环境"><a href="#退出环境" class="headerlink" title="退出环境"></a>退出环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们在编译cpp的时候，有时候需要支持c++11/14的一些特性，就需要升级gcc的版本，为了简单的升级，Red Hat提供了scl软件集来为用户提供一种以方便、安全地安装和使用应用程序和运行时环境的多个（而且可能是更新的）版本的方式，同时避免把系统搞乱。下载devtool
+      
+    
+    </summary>
+    
+      <category term="Cpp" scheme="http://www.helioswei.top/categories/Cpp/"/>
+    
+      <category term="gcc" scheme="http://www.helioswei.top/categories/Cpp/gcc/"/>
+    
+    
+      <category term="gcc" scheme="http://www.helioswei.top/tags/gcc/"/>
+    
+      <category term="devtoolset" scheme="http://www.helioswei.top/tags/devtoolset/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cpp-pistache源码编译之实现cpp restful接口</title>
+    <link href="http://www.helioswei.top/article/2728951675.html"/>
+    <id>http://www.helioswei.top/article/2728951675.html</id>
+    <published>2020-06-19T07:07:56.000Z</published>
+    <updated>2021-02-27T13:59:36.392Z</updated>
+    
+    <content type="html"><![CDATA[<p>cpp实现restful类型的接口比较的复杂，我们使用pistache库来解决这个问题，经对比，这个库是速度最快的。</p><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;oktal&#x2F;pistache.git</span><br></pre></td></tr></table></figure><h3 id="第三方库更新"><a href="#第三方库更新" class="headerlink" title="第三方库更新"></a>第三方库更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><h5 id="依赖下载gcc升级"><a href="#依赖下载gcc升级" class="headerlink" title="依赖下载gcc升级"></a>依赖下载gcc升级</h5><p><a href="http://www.helioswei.top/article/2230395924.html">gcc5.1.0源码编译</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc version &gt;5.1.0 #我们需要支持c++14</span><br></pre></td></tr></table></figure><p>我们虽然重新编译安装了gcc，但系统有多个gcc的环境，我们在使用的时候可能还是默认的调用gcc4.8的低级版本，为了解决这个问题，我们可以显示的设置调用，我们需要设置编译器的环境变量，将5.1.0的编译器命令行设置到环境变量中：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CC&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;gcc</span><br><span class="line">export CXX&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;g++</span><br></pre></td></tr></table></figure><h5 id="cmake升级"><a href="#cmake升级" class="headerlink" title="cmake升级"></a>cmake升级</h5><p><a href="https://cmake.org/download/">cmake下载</a>，选择最新的下载即可，然后执行安装三部曲</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake version &gt; 3.18.0</span><br></pre></td></tr></table></figure><h5 id="curl-devel下载"><a href="#curl-devel下载" class="headerlink" title="curl-devel下载"></a>curl-devel下载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel -y</span><br></pre></td></tr></table></figure><h5 id="编译-1"><a href="#编译-1" class="headerlink" title="编译"></a>编译</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd pistache</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake -G &quot;Unix Makefiles&quot; -DCMAKE_BUILD_TYPE&#x3D;Release -DPISTACHE_BUILD_EXAMPLES&#x3D;true -DPISTACHE_BUILD_TESTS&#x3D;true -DPISTACHE_BUILD_DOCS&#x3D;false -DPISTACHE_USE_SSL&#x3D;true -DCMAKE_INSTALL_PREFIX&#x3D;&#x2F;usr&#x2F;local&#x2F;pistache ..</span><br><span class="line">make -j 4</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><code>注意，这个在使用的时候需要选择c++的标准,设置</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -std&#x3D;c++14 #一般常用的是c++11</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;cpp实现restful类型的接口比较的复杂，我们使用pistache库来解决这个问题，经对比，这个库是速度最快的。&lt;/p&gt;
+&lt;h3 id=&quot;源码下载&quot;&gt;&lt;a href=&quot;#源码下载&quot; class=&quot;headerlink&quot; title=&quot;源码下载&quot;&gt;&lt;/a&gt;源码下载&lt;/h3
+      
+    
+    </summary>
+    
+      <category term="Cpp" scheme="http://www.helioswei.top/categories/Cpp/"/>
+    
+      <category term="restful" scheme="http://www.helioswei.top/categories/Cpp/restful/"/>
+    
+    
+      <category term="pistache" scheme="http://www.helioswei.top/tags/pistache/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cpp-centos7常用环境变量的设置</title>
+    <link href="http://www.helioswei.top/article/1768093973.html"/>
+    <id>http://www.helioswei.top/article/1768093973.html</id>
+    <published>2020-06-19T03:56:16.000Z</published>
+    <updated>2021-02-27T13:59:36.391Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们在centos7开发的cpp的时候，在编译的时候需要设置一些常有的环境变量，如头文件的路径，动态库的路径</p><h3 id="设置c语言的头文件的搜索路径"><a href="#设置c语言的头文件的搜索路径" class="headerlink" title="设置c语言的头文件的搜索路径"></a>设置c语言的头文件的搜索路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export C_INCLUDE_PATH &#x3D;</span><br></pre></td></tr></table></figure><h3 id="设置c语言的链接库的搜索路径"><a href="#设置c语言的链接库的搜索路径" class="headerlink" title="设置c语言的链接库的搜索路径"></a>设置c语言的链接库的搜索路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LIBRARY_PATH &#x3D; </span><br></pre></td></tr></table></figure><h3 id="设置cpp的头文件的搜索路径"><a href="#设置cpp的头文件的搜索路径" class="headerlink" title="设置cpp的头文件的搜索路径"></a>设置cpp的头文件的搜索路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CPLUS_INCLUDE_PATH &#x3D; </span><br></pre></td></tr></table></figure><h3 id="设置cpp的链接库的搜索路径"><a href="#设置cpp的链接库的搜索路径" class="headerlink" title="设置cpp的链接库的搜索路径"></a>设置cpp的链接库的搜索路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LD_LIBRARY_PATH &#x3D; </span><br></pre></td></tr></table></figure><h3 id="对于GCC版本的选择"><a href="#对于GCC版本的选择" class="headerlink" title="对于GCC版本的选择"></a>对于GCC版本的选择</h3><p>我们在用cmake编译源码的时候，有时候需要gcc不同的版本，以支持c++11的特性</p><p><code>gcc4.8.5以下不支持`</code>gcc5.1.0支持c++11`,我们在编译的时候可以显示的设置编译器的选择,下面是我自己编译的gcc5.1.0版本，这样在编译的时候就会调用</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CC&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;gcc</span><br><span class="line">export CXX&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;g++</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们在centos7开发的cpp的时候，在编译的时候需要设置一些常有的环境变量，如头文件的路径，动态库的路径&lt;/p&gt;
+&lt;h3 id=&quot;设置c语言的头文件的搜索路径&quot;&gt;&lt;a href=&quot;#设置c语言的头文件的搜索路径&quot; class=&quot;headerlink&quot; title=&quot;设置
+      
+    
+    </summary>
+    
+      <category term="Cpp" scheme="http://www.helioswei.top/categories/Cpp/"/>
+    
+      <category term="gcc" scheme="http://www.helioswei.top/categories/Cpp/gcc/"/>
+    
+    
+      <category term="env" scheme="http://www.helioswei.top/tags/env/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>json-cpp处理json</title>
+    <link href="http://www.helioswei.top/article/3190039070.html"/>
+    <id>http://www.helioswei.top/article/3190039070.html</id>
+    <published>2020-06-16T03:27:54.000Z</published>
+    <updated>2021-02-27T13:59:36.401Z</updated>
+    
+    <content type="html"><![CDATA[<p>cpp处理json常用的库</p><h3 id="poco-json"><a href="#poco-json" class="headerlink" title="poco-json"></a>poco-json</h3><p>poco库中处理json的模块，将其转换为json字符串时键名会按照字母的顺序排列</p><h3 id="jsoncpp"><a href="#jsoncpp" class="headerlink" title="jsoncpp"></a>jsoncpp</h3><p>jsoncpp这个库，将其转换为json字符串时键名也会按照字母的顺序排序</p><h4 id="1，下载"><a href="#1，下载" class="headerlink" title="1，下载"></a>1，下载</h4><p><a href="https://sourceforge.net/projects/jsoncpp/">jsonspp下载</a></p><h4 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h4><h5 id="scons下载"><a href="#scons下载" class="headerlink" title="scons下载"></a>scons下载</h5><p>使用scons来安装，如果yum没有找到，则需要<a href="http://www.helioswei.top/article/3859923575.html">更新yum库</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install scons -y</span><br></pre></td></tr></table></figure><h5 id="编译jsoncpp"><a href="#编译jsoncpp" class="headerlink" title="编译jsoncpp"></a>编译jsoncpp</h5><p>编译好的链接库，存放在jsoncpp源目录下的libs中<code>libjson_linux-gcc-4.8.5_libmt.so</code>，头文件放在include目录下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd jsoncpp的源目录</span><br><span class="line"></span><br><span class="line">scons platform&#x3D;linux-gcc</span><br></pre></td></tr></table></figure><h3 id="protobuf"><a href="#protobuf" class="headerlink" title="protobuf"></a>protobuf</h3><p>序列化，这个将其转换为json字符串时会按照message的顺序，比较的好。</p><h4 id="1，使用步骤"><a href="#1，使用步骤" class="headerlink" title="1，使用步骤"></a>1，使用步骤</h4><h5 id="先写proto的文件-status-proto"><a href="#先写proto的文件-status-proto" class="headerlink" title="先写proto的文件 status.proto"></a>先写proto的文件 status.proto</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">syntax &#x3D; &quot;proto3&quot;;                                                                                                                    </span><br><span class="line">package biyi;</span><br><span class="line"> </span><br><span class="line">message UnifiedLog&#123;</span><br><span class="line">    Cont content &#x3D; 1;</span><br><span class="line">    string sign &#x3D; 2;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">message Cont&#123;</span><br><span class="line">    string time_iso8601 &#x3D; 1;</span><br><span class="line">    string companyId &#x3D; 2;</span><br><span class="line">    string company &#x3D; 3;</span><br><span class="line">    string projectNameCN &#x3D; 4;</span><br><span class="line">    string projectName &#x3D; 5;</span><br><span class="line">    string componentName &#x3D; 6;</span><br><span class="line">    string componentMethodName &#x3D; 7;</span><br><span class="line">    string componentType &#x3D; 8;</span><br><span class="line">    string componentVer &#x3D; 9;</span><br><span class="line">    string componentLang &#x3D; 10; </span><br><span class="line">    string userName &#x3D; 11; </span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="cpp调用"><a href="#cpp调用" class="headerlink" title="cpp调用"></a>cpp调用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;..&#x2F;build&#x2F;proto&#x2F;status.pb.h&quot;</span><br><span class="line">#include &lt;google&#x2F;protobuf&#x2F;util&#x2F;json_util.h&gt;</span><br><span class="line"> </span><br><span class="line">namespace proto &#x3D; google::protobuf::util;</span><br><span class="line"> </span><br><span class="line">using namespace biyi;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main() &#123;</span><br><span class="line">    UnifiedLog uniLog;</span><br><span class="line">    uniLog.set_sign(</span><br><span class="line">        &quot;68f3ea8baebbaddc5a47d6d955ecf53892edb4d3d8a3afe08cf4518204d30af5&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_time_iso8601(&quot;2020-03-09T11:11:14+08:00&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_companyid(&quot;000&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_company(&quot;ctsi&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_projectnamecn(&quot;001&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_projectname(&quot;biyi&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentname(&quot;micro-service-statics&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentmethodname(&quot;DemoBean.echo&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componenttype(&quot;微服务组件&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentver(&quot;v1.0.0&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_componentlang(&quot;java&quot;);</span><br><span class="line">    uniLog.mutable_content()-&gt;set_username(&quot;admin&quot;);</span><br><span class="line"> </span><br><span class="line">    cout &lt;&lt; uniLog.sign() &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; message to json string</span><br><span class="line">    string str;</span><br><span class="line">    proto::Status status &#x3D; proto::MessageToJsonString(uniLog, &amp;str);</span><br><span class="line">    if (!status.ok()) &#123;</span><br><span class="line">        cout &lt;&lt; status.ToString() &lt;&lt; endl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;str: &quot; &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;cpp处理json常用的库&lt;/p&gt;
+&lt;h3 id=&quot;poco-json&quot;&gt;&lt;a href=&quot;#poco-json&quot; class=&quot;headerlink&quot; title=&quot;poco-json&quot;&gt;&lt;/a&gt;poco-json&lt;/h3&gt;&lt;p&gt;poco库中处理json的模块，将其转换为
+      
+    
+    </summary>
+    
+      <category term="Cpp" scheme="http://www.helioswei.top/categories/Cpp/"/>
+    
+      <category term="protocol" scheme="http://www.helioswei.top/categories/Cpp/protocol/"/>
+    
+    
+      <category term="json" scheme="http://www.helioswei.top/tags/json/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos7-网络设置</title>
+    <link href="http://www.helioswei.top/article/3594159119.html"/>
+    <id>http://www.helioswei.top/article/3594159119.html</id>
+    <published>2020-06-09T06:19:49.000Z</published>
+    <updated>2021-02-27T13:59:36.391Z</updated>
+    
+    <content type="html"><![CDATA[<p>配置centos7的网络，让其可以正常的连接网络</p><h3 id="一，打开网络配置所在的文件"><a href="#一，打开网络配置所在的文件" class="headerlink" title="一，打开网络配置所在的文件"></a>一，打开网络配置所在的文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts</span><br><span class="line">vi ifcfg-ens160 (不同的系统，文件名不同)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">TYPE&#x3D;Ethernet</span><br><span class="line">PROXY_METHOD&#x3D;none</span><br><span class="line">BROWSER_ONLY&#x3D;no</span><br><span class="line">#设置静态ip还是动态IP</span><br><span class="line">BOOTPROTO&#x3D;static</span><br><span class="line">DEFROUTE&#x3D;yes</span><br><span class="line">IPV4_FAILURE_FATAL&#x3D;no</span><br><span class="line">IPV6INIT&#x3D;yes</span><br><span class="line">IPV6_AUTOCONF&#x3D;yes</span><br><span class="line">IPV6_DEFROUTE&#x3D;yes</span><br><span class="line">IPV6_FAILURE_FATAL&#x3D;no</span><br><span class="line">IPV6_ADDR_GEN_MODE&#x3D;stable-privacy</span><br><span class="line">NAME&#x3D;ens160</span><br><span class="line">UUID&#x3D;750fb5d2-4bff-437d-ab4e-75eaf038429d</span><br><span class="line">DEVICE&#x3D;ens160</span><br><span class="line">#开机自启动</span><br><span class="line">ONBOOT&#x3D;yes</span><br><span class="line">#静态ip地址</span><br><span class="line">IPADDR&#x3D;192.168.50.72</span><br><span class="line">#静态网关</span><br><span class="line">NETMASK&#x3D;255.255.255.0</span><br><span class="line">#路由</span><br><span class="line">GATEWAY&#x3D;192.168.50.1</span><br></pre></td></tr></table></figure><p>设置好之后，重启网络服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure><h3 id="二，配置域名解析"><a href="#二，配置域名解析" class="headerlink" title="二，配置域名解析"></a>二，配置域名解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;resolv.conf</span><br></pre></td></tr></table></figure><p>添加内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nameserver   8.8.8.8</span><br><span class="line"></span><br><span class="line">nameserver   8.8.4.4</span><br><span class="line"></span><br><span class="line">nameserver    114.114.114.114</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;配置centos7的网络，让其可以正常的连接网络&lt;/p&gt;
+&lt;h3 id=&quot;一，打开网络配置所在的文件&quot;&gt;&lt;a href=&quot;#一，打开网络配置所在的文件&quot; class=&quot;headerlink&quot; title=&quot;一，打开网络配置所在的文件&quot;&gt;&lt;/a&gt;一，打开网络配置所在的文件&lt;/
+      
+    
+    </summary>
+    
+      <category term="Centos7" scheme="http://www.helioswei.top/categories/Centos7/"/>
+    
+    
+      <category term="network" scheme="http://www.helioswei.top/tags/network/"/>
+    
+  </entry>
+  
+</feed>

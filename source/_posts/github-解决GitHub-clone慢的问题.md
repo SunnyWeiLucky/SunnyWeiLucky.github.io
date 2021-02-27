@@ -10,13 +10,13 @@ date: 2020-06-01 15:23:20
 
 
 
-### 一，使用gitee码云来进行clone
+### 使用gitee码云来进行clone
 
 将需要clone的项目，先转移到码云上，然后通过码云来下载本地，速度很快；
 
 
 
-### 二，修改hosts
+### 修改hosts
 
 通过[查询IP地址网站](https://www.ipaddress.com/)查询下面两个域名的IP地址
 
@@ -45,4 +45,20 @@ github.com
    ipconfig/flushdns
    ~~~
 
-   
+
+### 设置代理
+
+​	推荐有代理的使用，作为一名开发，经常需要Google，要不自己搭建一个梯子，要不就是买一个。我们在github上clone的时候可以设置代理。
+
+~~~
+
+git config --global https.proxy http://127.0.0.1:1080
+
+git config --global https.proxy https://127.0.0.1:1080
+
+git config --global --unset http.proxy
+
+git config --global --unset https.proxy
+
+~~~
+
